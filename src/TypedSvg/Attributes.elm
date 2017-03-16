@@ -3,11 +3,15 @@ module TypedSvg.Attributes
         ( AccumulateOption(..)
         , AdditiveOption(..)
         , AttributeTypeOption(..)
+        , BezierAnchorPoint
         , CalcModeOption(..)
         , ClipOption(..)
         , CoordinateSystem(..)
         , DurationValue(..)
         , EdgeModeOption(..)
+        , LengthAdjustOption(..)
+        , MarkerCoordinateSystem(..)
+        , ModeOption(..)
         , TimingValue(..)
         , Transform(..)
           {--Regular Attributes-}
@@ -34,6 +38,7 @@ module TypedSvg.Attributes
           -- , capHeight
         , class
         , clipPathUnits
+        , compositeOperator
         , contentScriptType
         , contentStyleType
         , cx
@@ -84,7 +89,7 @@ module TypedSvg.Attributes
           -- , lang
         , lengthAdjust
         , limitingConeAngle
-        , local
+          -- , local
         , markerHeight
         , markerUnits
         , markerWidth
@@ -97,9 +102,10 @@ module TypedSvg.Attributes
         , min
         , mode
           -- , name
+        , morphologyOperator
         , numOctaves
           -- , offset
-        , operator
+          -- , operator -- see compositeOperator, morphologyOperator
         , order
           -- , orient
           -- , orientation
@@ -274,7 +280,7 @@ import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
 import Html exposing (Html, a)
 import Svg exposing (Attribute, Svg, a, svg)
-import Svg.Attributes as Attr exposing (contentScriptType, enableBackground, externalResourcesRequired, gradientTransform, kernelMatrix, kernelUnitLength)
+import Svg.Attributes as Attr exposing (contentScriptType, enableBackground, externalResourcesRequired, gradientTransform, kernelMatrix, kernelUnitLength, lengthAdjust, limitingConeAngle, markerHeight)
 import TypedSvg.Lengths exposing (..)
 
 
@@ -623,7 +629,8 @@ type CalcModeOption
 
     An element's class name serves two key roles:
 
-    - As a style sheet selector, for when an author assigns style information to a set of elements.
+    - As a style sheet selector, for when an author assigns style information
+      to a set of elements.
     - For general use by the browser.
 
     Used by Elements: a, altGlyph, circle, clipPath, defs, desc, ellipse,
@@ -703,6 +710,46 @@ type ClipOption
 clipPathUnits : CoordinateSystem -> Attribute a
 clipPathUnits coordinateSystem =
     Attr.clipPathUnits <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    compositeOperator defines the compositing operation that is to be performed
+    in the `feComposite` element
+
+    Used by Elements: feComposite
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
+-}
+compositeOperator : CompositeOperator -> Attribute a
+compositeOperator operator =
+    Attr.operator <|
+        case operator of
+            CompositeOperatorOver ->
+                "over"
+
+            CompositeOperatorIn ->
+                "in"
+
+            CompositeOperatorOut ->
+                "out"
+
+            CompositeOperatorAtop ->
+                "atop"
+
+            CompositeOperatorXor ->
+                "xor"
+
+            CompositeOperatorArithmetic ->
+                "arithmetic"
+
+
+type CompositeOperator
+    = CompositeOperatorOver
+    | CompositeOperatorIn
+    | CompositeOperatorOut
+    | CompositeOperatorAtop
+    | CompositeOperatorXor
+    | CompositeOperatorArithmetic
 
 
 {-|
@@ -1014,25 +1061,7 @@ gradientUnits coordinateSystem =
 -}
 in_ : InValue -> Attribute a
 in_ value =
-    Attr.in_ <|
-        case value of
-            InSourceGraphic ->
-                "sourceGraphic"
-
-            InSourceAlpha ->
-                "sourceAlpha"
-
-            InBackgroundAlpha ->
-                "backgroundAlpha"
-
-            InFillPaint ->
-                "fillPaint"
-
-            InStrokePaint ->
-                "strokePaint"
-
-            InReference str ->
-                str
+    Attr.in_ <| inValueToString value
 
 
 type InValue
@@ -1042,6 +1071,42 @@ type InValue
     | InFillPaint
     | InStrokePaint
     | InReference String
+
+
+inValueToString value =
+    case value of
+        InSourceGraphic ->
+            "sourceGraphic"
+
+        InSourceAlpha ->
+            "sourceAlpha"
+
+        InBackgroundAlpha ->
+            "backgroundAlpha"
+
+        InFillPaint ->
+            "fillPaint"
+
+        InStrokePaint ->
+            "strokePaint"
+
+        InReference str ->
+            str
+
+
+{-|
+    The `in2` attribute identifies the second input for the given filter
+    primitive. It works exactly like the in attribute.
+
+    Used by Elements: feBlend, feColorMatrix, feComponentTransfer, feComposite,
+        feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feGaussianBlur,
+        feMorphology, feOffset, feSpecularLighting, feTile
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in2
+-}
+in2 : InValue -> Attribute a
+in2 value =
+    Attr.in2 <| inValueToString value
 
 
 {-|
@@ -1196,6 +1261,338 @@ type KerningOption
     = KerningAuto
     | KerningInherit
     | KerningLength Length
+
+
+{-|
+    The keySplines attribute define a set of Bézier control points associated
+    with the keyTimes list, defining a cubic Bézier function that controls
+    interval pacing.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keySplines
+-}
+keySplines : List BezierAnchorPoint -> Attribute a
+keySplines bezierAnchorPointList =
+    Attr.keySplines <| (List.map bezierAnchorPointToString bezierAnchorPointList |> String.join ";")
+
+
+type alias BezierAnchorPoint =
+    ( Float, Float, Float, Float )
+
+
+bezierAnchorPointToString ( x1, y1, x2, y2 ) =
+    List.map toString [ x1, y1, x2, y1 ] |> String.join " "
+
+
+{-|
+    The keyTimes attribute is a semicolon-separated list of time `values` used
+    to control the pacing of the animation. Each time in the list corresponds to
+    a value in the values attribute list, and defines when the value is used in
+    the animation. Each time value in the keyTimes list is specified as a
+    floating point value between 0 and 1 (inclusive), representing a
+    proportional offset into the duration of the animation element.
+
+    If a list of keyTimes is specified, there must be exactly as many values in
+    the keyTimes list as in the values list.
+
+    Each successive time value must be greater than or equal to the preceding
+    time value.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyTimes
+-}
+keyTimes : List Float -> Attribute a
+keyTimes floatList =
+    Attr.keyTimes <| (List.map toString floatList |> String.join ";")
+
+
+{-|
+    When an SVG `text` or `tspan` element has a specific length set using the
+    textLength attribute, the lengthAdjust attribute controls how the text is
+    stretched or compressed into that length.
+
+    The two possible values for the attribute are:
+
+    - LengthAdjustSpacing
+    - LengthAdjustSpacingAndGlyphs
+
+    Using LengthAdjustSpacing (the default), the letter forms are preserved,
+    but the space between them grows or shrinks.
+
+    Using LengthAdjustSpacingAndGlyphs, the entire text element is stretched in
+    the direction of the text.
+
+    Used by Elements: text, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust
+-}
+lengthAdjust : LengthAdjustOption -> Attribute a
+lengthAdjust option =
+    Attr.lengthAdjust <|
+        case option of
+            LengthAdjustSpacing ->
+                "spacing"
+
+            LengthAdjustSpacingAndGlyphs ->
+                "spacingAndGlyphs"
+
+
+type LengthAdjustOption
+    = LengthAdjustSpacing
+    | LengthAdjustSpacingAndGlyphs
+
+
+{-|
+    The limitingConeAngle attribute represents the angle in degrees between
+    the spot light axis (i.e. the axis between the light source and the point
+    to which it is pointing at) and the spot light cone. So it defines a
+    limiting cone which restricts the region where the light is projected.
+    No light is projected outside the cone.
+
+    If no value is specified, then no limiting cone will be applied.
+
+    Used by Elements: feSpotlight
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/limitingConeAngle
+-}
+limitingConeAngle : number -> Attribute a
+limitingConeAngle number =
+    Attr.limitingConeAngle (toString number)
+
+
+{-|
+    The markerHeight represents the height of the viewport into which the
+    `marker` is to be fitted when it is rendered.
+
+    A value of zero disables rendering of the element.
+
+    If the attribute is not specified, the effect is as if a value of 3 were
+    specified.
+
+    Used by Elements: marker
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerHeight
+-}
+markerHeight : Length -> Attribute a
+markerHeight height =
+    Attr.markerHeight <| lengthToString height
+
+
+{-|
+    The `markerUnits` attribute defines the coordinate system for the attributes
+    `markerWidth`, `markerHeight` and the contents of the `marker`.
+
+    If the `markerUnits` attribute is not specified, then the effect is as if a
+    value of `strokeWidth` were specified.
+
+    Used by Elements: marker
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerUnits
+-}
+markerUnits : MarkerCoordinateSystem -> Attribute a
+markerUnits markerCoordinateSystem =
+    Attr.markerUnits <|
+        case markerCoordinateSystem of
+            MarkerCoordinateSystemUserSpaceOnUse ->
+                "userSpaceOnUse"
+
+            MarkerCoordinateSystemStrokeWidth ->
+                "strokeWidth"
+
+
+type MarkerCoordinateSystem
+    = MarkerCoordinateSystemUserSpaceOnUse
+    | MarkerCoordinateSystemStrokeWidth
+
+
+{-|
+    The markerWidth represents the width of the viewport into which the
+    `marker` is to be fitted when it is rendered.
+
+    A value of zero disables rendering of the element.
+
+    If the attribute is not specified, the effect is as if a value of 3 were
+    specified.
+
+    Used by Elements: marker
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerWidth
+-}
+markerWidth : Length -> Attribute a
+markerWidth width =
+    Attr.markerWidth <| lengthToString width
+
+
+{-|
+    The maskContentUnits attribute defines the coordinate system for the
+    contents of the `mask`.
+
+    If the `maskContentUnits` attribute isn't specified, then the effect is as
+    if a value of CoordinateSystemUserSpaceOnUse were specified.
+
+    Note that values defined as a percentage inside the content of the `mask`
+    are not affected by this attribute. It means that even if you set the value
+    of `maskContentUnits` to CoordinateSystemObjectBoundingBox, percentage
+    values will be calculated as if the value of the attribute were
+    CoordinateSystemUserSpaceOnUse.
+
+    Used by Elements: mask
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits
+-}
+maskContentUnits : CoordinateSystem -> Attribute a
+maskContentUnits coordinateSystem =
+    Attr.maskContentUnits <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    The `maskUnits` attribute defines the coordinate system for attributes x, y,
+    width and height.
+
+    If the `maskUnits` attribute isn't specified, then the effect is as if a
+    value of CoordinateSystemObjectBoundingBox were specified.
+
+    Used by Elements: mask
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskUnits
+-}
+maskUnits : CoordinateSystem -> Attribute a
+maskUnits coordinateSystem =
+    Attr.maskUnits <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    This attribute specifies the maximum value of the active duration.
+
+    The default value for max is 0. This does not constrain the active duration
+    at all.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform,
+        discard, mpath, set
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/max
+-}
+max : ClockValue -> Attribute a
+max clockValue =
+    Attr.max <| clockValue
+
+
+{-|
+    This attribute specifies the minimum value of the active duration.
+
+    The default value for max is 0. This does not constrain the active duration
+    at all.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform,
+        discard, mpath, set
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/min
+-}
+min : ClockValue -> Attribute a
+min clockValue =
+    Attr.min <| clockValue
+
+
+{-|
+    The mode attribute defines the blending mode on the `feBlend` filter
+    primitive.
+
+    Used by Elements: feBlend
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mode
+-}
+mode : ModeOption -> Attribute a
+mode option =
+    Attr.mode <|
+        case option of
+            ModeNormal ->
+                "normal"
+
+            ModeMultiply ->
+                "multiply"
+
+            ModeScreen ->
+                "screen"
+
+            ModeDarken ->
+                "darken"
+
+            ModeLighten ->
+                "lighten"
+
+
+type ModeOption
+    = ModeNormal
+    | ModeMultiply
+    | ModeScreen
+    | ModeDarken
+    | ModeLighten
+
+
+{-|
+    The numOctaves parameter for the noise function of the `feTurbulence`
+    primitive.
+
+    If the attribute is not specified, then the effect is as if a value of 1
+    were specified.
+
+    Used by Elements: feTurbulence
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+-}
+numOctaves : Int -> Attribute a
+numOctaves int =
+    Attr.numOctaves (toString int)
+
+
+{-|
+    compositeOperator defines the compositing operation that is to be performed
+    in the `feMorphology` element
+
+    Used by Elements: feMorphology
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
+-}
+morphologyOperator : MorphologyOperator -> Attribute a
+morphologyOperator operator =
+    Attr.operator <|
+        case operator of
+            MorphologyOperatorErode ->
+                "erode"
+
+            MorphologyOperatorDilate ->
+                "dilate"
+
+
+type MorphologyOperator
+    = MorphologyOperatorErode
+    | MorphologyOperatorDilate
+
+
+{-|
+    The order attribute indicates the size of the matrix to be used by an
+    `feConvolveMatrix` element.
+
+    The values provided must be integers greater than zero. The first number,
+    `orderX`, indicates the number of columns in the matrix. The second number,
+    `orderY`, indicates the number of rows in the matrix.
+
+    A typical value is order="3". It is recommended that only small values
+    (e.g., 3) be used; higher values may result in very high CPU overhead and
+    usually do not produce results that justify the impact on performance.
+
+    If the attribute is not specified, the effect is as if a value of 3 were
+    specified.
+
+    Used by Elements: feConvolveMatrix
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+-}
+order : number -> number -> Attribute a
+order orderX orderY =
+    Attr.order <| (toString orderX) ++ " " ++ (toString orderY)
 
 
 {-|
