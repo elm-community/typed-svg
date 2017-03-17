@@ -12,6 +12,7 @@ module TypedSvg.Attributes
         , LengthAdjustOption(..)
         , MarkerCoordinateSystem(..)
         , ModeOption(..)
+        , ShapeRenderingOption(..)
         , TimingValue(..)
         , Transform(..)
           {--Regular Attributes-}
@@ -113,12 +114,12 @@ module TypedSvg.Attributes
         , overlinePosition
         , overlineThickness
           -- , panose1
-        , path
+          -- , path
         , pathLength
         , patternContentUnits
         , patternTransform
         , patternUnits
-        , pointOrder
+          -- , pointOrder
         , points
         , pointsAtX
         , pointsAtY
@@ -144,17 +145,17 @@ module TypedSvg.Attributes
         , seed
           -- , slope
           -- , spacing
-        , specularConstant
-        , specularExponent
+          -- , specularConstant
+          -- , specularExponent
           -- , speed
           -- , spreadMethod
           -- , startOffset
-        , stdDeviation
+          -- , stdDeviation
           -- , stemh
           -- , stemv
-        , stitchTiles
-        , strikethroughPosition
-        , strikethroughThickness
+          -- , stitchTiles
+          -- , strikethroughPosition
+          -- , strikethroughThickness
           -- , string
         , style
         , surfaceScale
@@ -187,7 +188,7 @@ module TypedSvg.Attributes
         , viewBox
           -- , viewTarget
           -- , widths
-        , xChannelSelector
+          -- , xChannelSelector
           -- , xlinkActuate
           -- , xlinkArcrole
         , xlinkHref
@@ -198,7 +199,7 @@ module TypedSvg.Attributes
           -- , xmlBase
         , xmlLang
         , xmlSpace
-        , yChannelSelector
+          -- , yChannelSelector
         , z
           -- , zoomAndPan
           --
@@ -280,7 +281,7 @@ import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
 import Html exposing (Html, a)
 import Svg exposing (Attribute, Svg, a, svg)
-import Svg.Attributes as Attr exposing (contentScriptType, enableBackground, externalResourcesRequired, gradientTransform, kernelMatrix, kernelUnitLength, lengthAdjust, limitingConeAngle, markerHeight)
+import Svg.Attributes as Attr exposing (contentScriptType, enableBackground, externalResourcesRequired, gradientTransform, kernelMatrix, kernelUnitLength, lengthAdjust, limitingConeAngle, markerHeight, name, pathLength, patternContentUnits, preserveAlpha, preserveAspectRatio, surfaceScale)
 import TypedSvg.Lengths exposing (..)
 
 
@@ -386,6 +387,16 @@ type CoordinateSystem
     | CoordinateSystemObjectBoundingBox
 
 
+boolToString : Bool -> String
+boolToString bool =
+    case bool of
+        True ->
+            "true"
+
+        False ->
+            "false"
+
+
 {-| Defines the distance from the origin to the top of accent characters,
     measured by a distance within the font coordinate system.
 
@@ -395,7 +406,7 @@ type CoordinateSystem
 -}
 accentHeight : number -> Attribute a
 accentHeight height =
-    Attr.accentHeight (toString height)
+    Attr.accentHeight <| toString height
 
 
 {-| Defines a simple acceleration of time for the element. Element time will
@@ -411,7 +422,7 @@ accentHeight height =
 -}
 accelerate : number -> Attribute a
 accelerate rate =
-    Attr.accelerate (toString rate)
+    Attr.accelerate <| toString rate
 
 
 {-| This attribute controls whether or not the animation is cumulative.
@@ -476,7 +487,7 @@ type AdditiveOption
 -}
 ascent : number -> Attribute a
 ascent maxDepth =
-    Attr.ascent (toString maxDepth)
+    Attr.ascent <| toString maxDepth
 
 
 {-| This attribute indicates the name of the attribute in the parent element
@@ -531,7 +542,7 @@ type AttributeTypeOption
 -}
 azimuth : number -> Attribute a
 azimuth angle =
-    Attr.azimuth (toString angle)
+    Attr.azimuth <| toString angle
 
 
 {-|
@@ -586,7 +597,7 @@ begin timingValues =
 -}
 bias : number -> Attribute a
 bias rangeShift =
-    Attr.bias (toString rangeShift)
+    Attr.bias <| toString rangeShift
 
 
 {-|
@@ -847,7 +858,7 @@ diffuseConstant kdValue =
 -}
 divisor : number -> Attribute a
 divisor value =
-    Attr.divisor (toString value)
+    Attr.divisor <| toString value
 
 
 {-|
@@ -860,18 +871,21 @@ divisor value =
 -}
 dur : DurationValue -> Attribute a
 dur duration =
-    Attr.dur <|
-        case duration of
-            Duration clockValue ->
-                clockValue
-
-            DurationIndefinite ->
-                "indefinite"
+    Attr.dur <| durationToString duration
 
 
 type DurationValue
     = Duration ClockValue
     | DurationIndefinite
+
+
+durationToString duration =
+    case duration of
+        Duration clockValue ->
+            clockValue
+
+        DurationIndefinite ->
+            "indefinite"
 
 
 {-|
@@ -914,7 +928,7 @@ type EdgeModeOption
 -}
 elevation : number -> Attribute a
 elevation angle =
-    Attr.elevation (toString angle)
+    Attr.elevation <| toString angle
 
 
 {-|
@@ -952,13 +966,7 @@ end timingValues =
 -}
 externalResourcesRequired : Bool -> Attribute a
 externalResourcesRequired bool =
-    Attr.externalResourcesRequired <|
-        case bool of
-            True ->
-                "true"
-
-            False ->
-                "false"
+    Attr.externalResourcesRequired <| boolToString bool
 
 
 {-|
@@ -1002,7 +1010,7 @@ filterUnits coordinateSystem =
 -}
 from : number -> Attribute a
 from value =
-    Attr.from (toString value)
+    Attr.from <| toString value
 
 
 {-|
@@ -1121,7 +1129,7 @@ in2 value =
 -}
 k1 : number -> Attribute a
 k1 value =
-    Attr.k1 (toString value)
+    Attr.k1 <| toString value
 
 
 {-|
@@ -1136,7 +1144,7 @@ k1 value =
 -}
 k2 : number -> Attribute a
 k2 value =
-    Attr.k2 (toString value)
+    Attr.k2 <| toString value
 
 
 {-|
@@ -1151,7 +1159,7 @@ k2 value =
 -}
 k3 : number -> Attribute a
 k3 value =
-    Attr.k3 (toString value)
+    Attr.k3 <| toString value
 
 
 {-|
@@ -1166,7 +1174,7 @@ k3 value =
 -}
 k4 : number -> Attribute a
 k4 value =
-    Attr.k4 (toString value)
+    Attr.k4 <| toString value
 
 
 {-|
@@ -1359,7 +1367,7 @@ type LengthAdjustOption
 -}
 limitingConeAngle : number -> Attribute a
 limitingConeAngle number =
-    Attr.limitingConeAngle (toString number)
+    Attr.limitingConeAngle <| toString number
 
 
 {-|
@@ -1544,7 +1552,7 @@ type ModeOption
 -}
 numOctaves : Int -> Attribute a
 numOctaves int =
-    Attr.numOctaves (toString int)
+    Attr.numOctaves <| toString int
 
 
 {-|
@@ -1588,11 +1596,518 @@ type MorphologyOperator
 
     Used by Elements: feConvolveMatrix
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/order
 -}
 order : number -> number -> Attribute a
 order orderX orderY =
     Attr.order <| (toString orderX) ++ " " ++ (toString orderY)
+
+
+{-|
+    The `overlinePosition` attribute represents the ideal vertical position of
+    the overline. The overline position is expressed in the font's coordinate
+    system.
+
+    Used by Elements: fontFace
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlinePosition
+-}
+overlinePosition : number -> Attribute a
+overlinePosition position =
+    Attr.overlinePosition <| toString position
+
+
+{-|
+    The `overlineThickness` attribute represents the ideal thickness of
+    the overline. The overline position is expressed in the font's coordinate
+    system.
+
+    Used by Elements: fontFace
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlineThickness
+-}
+overlineThickness : number -> Attribute a
+overlineThickness thickness =
+    Attr.overlineThickness <| toString thickness
+
+
+{-|
+    This attribute lets the author specify a total length for the path, in user
+    units. This value is then used to calibrate the browser's distance
+    calculations with those of the author, by scaling all distance computations
+    using the ratio pathLength / (computed value of path length).
+
+    Used by Elements: path
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/path
+-}
+pathLength : number -> Attribute a
+pathLength length =
+    Attr.pathLength <| toString length
+
+
+{-|
+    The `patternContentUnits` attribute defines the coordinate system for the
+    contents of the `pattern`. Note that this attribute has no effect if
+    attribute viewBox is specified on the `pattern` element.
+
+    If the `patternContentUnits` attribute isn't specified, then the effect is
+    as if a value of CoordinateSystemUserSpaceOnUse were specified.
+
+    Used by Elements: pattern
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternContentUnits
+-}
+patternContentUnits : CoordinateSystem -> Attribute a
+patternContentUnits coordinateSystem =
+    Attr.patternContentUnits <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    The `patternTransform` attribute contains the definition of an optional
+    additional transformation from the pattern coordinate system onto the target
+    coordinate system. This allows for things such as skewing the pattern tiles.
+    This additional transformation matrix is post-multiplied to (i.e., inserted
+    to the right of) any previously defined transformations, including the
+    implicit transformation necessary to convert from object bounding box units
+    to user space.
+
+    If attribute `patternTransform` is not specified, then the effect is as if
+    an identity transform were specified.
+
+    Used by Elements: pattern
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform
+-}
+patternTransform : List Transform -> Attribute a
+patternTransform transforms =
+    Attr.patternTransform <| String.join " " (List.map transformToString transforms)
+
+
+{-|
+    The `patternUnits` attribute defines the coordinate system for attributes
+    x, y, width and height.
+
+    If the `patternUnits` attribute isn't specified, then the effect is as if a
+    value of CoordinateSystemObjectBoundingBox were specified.
+
+    Used by Elements: pattern
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternUnits
+-}
+patternUnits : CoordinateSystem -> Attribute a
+patternUnits coordinateSystem =
+    Attr.patternUnits <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    The points attribute defines a list of points required to draw a `polyline`
+    or `polygon` element.
+
+    Each point is defined by an X and a Y coordinate (pair) in the user
+    coordinate system.
+
+    Used by Elements: polyline, polygon
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points
+-}
+points : List ( number, number ) -> Attribute a
+points pts =
+    let
+        pointToString ( x, y ) =
+            (toString x) ++ ", " ++ (toString y)
+    in
+        Attr.points <| String.join " " (List.map pointToString pts)
+
+
+{-|
+    The `pointsAtX` attribute represent the X location in the coordinate system
+    established by attribute primitiveUnits on the `filter` element of the point
+    at which the light source is pointing.
+
+    If the attribute is not specified, then the effect is as if a value of 0
+    were specified.
+
+    Used by Elements: feSpotlight
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtX
+-}
+pointsAtX : number -> Attribute a
+pointsAtX lightSourceX =
+    Attr.pointsAtX <| toString lightSourceX
+
+
+{-|
+    The `pointsAtY` attribute represent the Y location in the coordinate system
+    established by attribute primitiveUnits on the `filter` element of the point
+    at which the light source is pointing.
+
+    If the attribute is not specified, then the effect is as if a value of 0
+    were specified.
+
+    Used by Elements: feSpotlight
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtY
+-}
+pointsAtY : number -> Attribute a
+pointsAtY lightSourceY =
+    Attr.pointsAtY <| toString lightSourceY
+
+
+{-|
+    The `pointsAtZ` attribute represents the Z location in the coordinate system
+    established by attribute primitiveUnits on the `filter` element of the point
+    at which the light source is pointing.
+
+    If the attribute is not specified, then the effect is as if a value of 0
+    were specified.
+
+    Used by Elements: feSpotlight
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtZ
+-}
+pointsAtZ : number -> Attribute a
+pointsAtZ lightSourceZ =
+    Attr.pointsAtZ <| toString lightSourceZ
+
+
+{-|
+    The `preserveAlpha` attribute indicates how an `feConvolveMatrix` element
+    handles alpha transparency.
+
+    A value of false indicates that the convolution matrix will apply to all
+    channels, including the alpha channel. This is the default value.
+
+    A value of true indicates that the convolution matrix will only apply to the
+    color channels.
+
+    Used by Elements: feConvolveMatrix
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAlpha
+-}
+preserveAlpha : Bool -> Attribute a
+preserveAlpha applyOnlyToColorChannels =
+    Attr.preserveAlpha <| boolToString applyOnlyToColorChannels
+
+
+preserveAspectRatio : AlignOption -> MeetOrSliceOption -> Attribute a
+preserveAspectRatio alignOption meetOrSliceOption =
+    let
+        a =
+            case alignOption of
+                AlignNone ->
+                    "none"
+
+                Align x y ->
+                    "x" ++ (scaleToString x) ++ "y" ++ (scaleToString y)
+
+        b =
+            case meetOrSliceOption of
+                Meet ->
+                    "meet"
+
+                Slice ->
+                    "slice"
+    in
+        Attr.preserveAspectRatio <| String.join " " [ a, b ]
+
+
+type AlignOption
+    = Align ScaleOption ScaleOption
+    | AlignNone
+
+
+type ScaleOption
+    = ScaleMin
+    | ScaleMid
+    | ScaleMax
+
+
+scaleToString : ScaleOption -> String
+scaleToString scaleOption =
+    case scaleOption of
+        ScaleMin ->
+            "min"
+
+        ScaleMid ->
+            "mid"
+
+        ScaleMax ->
+            "max"
+
+
+type MeetOrSliceOption
+    = Meet
+    | Slice
+
+
+{-|
+    The `primitiveUnits` attribute specifies the coordinate system for the
+    various length values within the `filter` primitives and for the attributes
+    that define the filter primitive subregion.
+
+    If the `primitiveUnits` attribute isn't specified, then the effect is as if
+    a value of CoordinateSystemUserSpaceOnUse were specified.
+
+    Used by Elements: filter
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/primitiveUnits
+-}
+primitiveUnits : CoordinateSystem -> Attribute a
+primitiveUnits coordinateSystem =
+    Attr.primitiveUnits <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    The `radius` attribute represent the radius for the operation on a given
+    `femorphology` filter primitive. The values are in the coordinate system
+    established by the `primitiveUnits` attribute on the `filter` element.
+
+    If the attribute is not specified, then the effect is as if a value of 0
+    were specified.
+
+    Used by Elements: feMorphology
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/radius
+-}
+radius : number -> number -> Attribute a
+radius xRadius yRadius =
+    Attr.radius <| (toString xRadius) ++ " " ++ (toString yRadius)
+
+
+{-|
+    This attribute indicates the number of times the animation will take place.
+
+    The number can be a partial iteration, expressed as a fraction. Its value
+    must be greater than 0.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform,
+        discard, mpath, set
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatCount
+-}
+repeatCount : RepeatCount -> Attribute a
+repeatCount repeatCount =
+    Attr.repeatCount <|
+        case repeatCount of
+            RepeatCount count ->
+                toString count
+
+            RepeatIndefinite ->
+                "indefinite"
+
+
+type RepeatCount
+    = RepeatCount Float
+    | RepeatIndefinite
+
+
+{-|
+    This attribute specifies the total duration for repeat.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform,
+        discard, mpath, set
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatDur
+-}
+repeatDur : DurationValue -> Attribute a
+repeatDur duration =
+    Attr.repeatDur <| durationToString duration
+
+
+{-|
+    This attribute takes a list of feature strings. It determines whether or not
+    all of the named features are supported by the browser; if all of them are
+    supported, the attribute evaluates to true end the element is rendered;
+    otherwise, the attribute evaluates to false and the current element and its
+    children are skipped and thus will not be rendered. This provides a way to
+    design SVG that gracefully falls back when features aren't available.
+
+    If the attribute is not present, then its implicit evaluated value is true.
+    If a null string or empty string value is given to attribute
+    `requiredFeatures`, the attribute is evaluate to false.
+
+    `requiredFeatures` is often used in conjunction with the `switch` element.
+    If `requiredFeatures` is used in other situations, it represents a simple
+    switch on the given element whether to render the element or not.
+
+    Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
+        animateTransform, circle, clipPath, cursor, defs, discard, ellipse,
+        foreignObject, g, image, line, mask, mesh, mpath, path, pattern,
+        polygon, polyline, rect, set, svg, switch, text, textPath, tref,
+        tspan, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/requiredFeatures
+-}
+requiredFeatures : List String -> Attribute a
+requiredFeatures features =
+    Attr.requiredFeatures <| String.join " " features
+
+
+{-|
+    This attribute indicates when animation can or can not restart.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform,
+        discard, mpath, set
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart
+-}
+restart : RestartOption -> Attribute a
+restart option =
+    Attr.restart <|
+        case option of
+            RestartAlways ->
+                "always"
+
+            RestartWhenNotActive ->
+                "whenNotActive"
+
+            RestartNever ->
+                "never"
+
+
+type RestartOption
+    = RestartAlways
+    | RestartWhenNotActive
+    | RestartNever
+
+
+{-|
+    The `result` attribute defines the assigned name for this filter primitive.
+    If supplied, then graphics that result from processing this filter primitive
+    can be referenced by an in attribute on a subsequent filter primitive within
+    the same `filter` element.
+
+    If no value is provided, the output will only be available for re-use as the
+    implicit input into the next filter primitive if that filter primitive
+    provides no value for its in attribute.
+
+    Used by Elements: feBlend, feColorMatrix, feComponentTransfer, feComposite,
+        feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feDropShadow,
+        feFlood,feFuncA, feFuncB, feFuncG, feFuncR,feGaussianBlur, feImage,
+        feMerge, feMergeNode, feMorphology, feOffset, feSpecularLighting,
+        feTile, feTurbulence
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/result
+-}
+result : String -> Attribute a
+result reference =
+    Attr.result <| reference
+
+
+{-|
+    The `scale` attribute define the displacement scale factor to be used on a
+    `feDisplacementMap` filter primitive. The amount is expressed in the
+    coordinate system established by the `primitiveUnits` attribute on the
+    `filter` element.
+
+    When the value of this attribute is 0, this operation has no effect on the
+    source image.
+
+    If the attribute is not specified, then the effect is as if a value of 0
+    were specified.
+
+    Used by Elements: feDisplacementMap
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/scale
+-}
+scale : number -> Attribute a
+scale value =
+    Attr.scale <| toString value
+
+
+{-|
+    The seed attribute represents the starting number for the pseudo random
+    number generator of the `feTurbulence` primitive.
+
+    If the attribute is not specified, then the effect is as if a value of 0
+    were specified.
+
+    Used by Elements: feTurbulence
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/seed
+-}
+seed : number -> Attribute a
+seed value =
+    Attr.seed <| toString value
+
+
+{-|
+    The creator of SVG content might want to provide a hint about what tradeoffs
+    to make as the browser renders `path` element or basic shapes. The
+    shape-rendering attribute provides these hints.
+
+    Used by Elements: circle, ellipse, line, mesh, path, polygon, polyline,
+        rect, svg
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering
+-}
+shapeRendering : ShapeRenderingOption -> Attribute a
+shapeRendering option =
+    Attr.shapeRendering <|
+        case option of
+            RenderAuto ->
+                "auto"
+
+            RenderOptimizeSpeed ->
+                "optimizeSpeed"
+
+            RenderCrispEdges ->
+                "crispEdges"
+
+            RenderGeometricPrecision ->
+                "geometricPrecision"
+
+            RenderInherit ->
+                "inherit"
+
+
+type ShapeRenderingOption
+    = RenderAuto
+    | RenderOptimizeSpeed
+    | RenderCrispEdges
+    | RenderGeometricPrecision
+    | RenderInherit
+
+
+{-|
+    The style attribute specifies style information for its element. It
+    functions identically to the style attribute in HTML.
+
+    Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, circle, clipPath,
+        defs, defs, ellipse, feBlend, feColorMatrix, feComponentTransfer,
+        feComposite, feConvolveMatrix, feDiffuseLighting, feDisplacementMap,
+        feDropShadow, feFlood, feFuncA, feFuncB, feFuncG, feFuncR,
+        feGaussianBlur, feImage, feMerge, feMergeNode, feMorphology, feOffset,
+        feSpecularLighting, feTile, feTurbulence, filter, font, foreignObject,
+        g, glyph, glyph, glyphRef, glyphRef, image, line, linearGradient,
+        marker, mask, mesh, meshGradient, missingGlyph, path, pattern, polygon,
+        polyline, radialGradient, rect, stop, svg, svg, switch, symbol, symbol,
+        text, text, textPath, tref, tspan, use, use
+
+    TODO: easy use of a typed CSS library?
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/style
+-}
+style : String -> Attribute a
+style value =
+    Attr.style <| value
+
+
+{-|
+    The `surfaceScale` attribute represents the height of the surface for a
+    light filter primitive.
+
+    If the attribute is not specified, then the effect is as if a value of 1
+    were specified.
+
+    Used by Elements: feDiffuseLighting, feSpecularLighting
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/surfaceScale
+-}
+surfaceScale : number -> Attribute a
+surfaceScale value =
+    Attr.surfaceScale <| toString value
 
 
 {-|
