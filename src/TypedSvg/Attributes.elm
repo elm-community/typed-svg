@@ -165,10 +165,9 @@ module TypedSvg.Attributes
         , targetX
         , targetY
         , textLength
-        , title
+          -- , title
         , to
         , transform
-        , type_
           -- , u1
           -- , u2
         , underlinePosition
@@ -180,7 +179,6 @@ module TypedSvg.Attributes
           -- , vHanging
           -- , vIdeographic
           -- , vMathematical
-        , values
         , version
           -- , vertAdvY
           -- , vertOriginX
@@ -191,14 +189,11 @@ module TypedSvg.Attributes
           -- , xChannelSelector
           -- , xlinkActuate
           -- , xlinkArcrole
-        , xlinkHref
           -- , xlinkRole
         , xlinkShow
         , xlinkTitle
           -- , xlinkType
           -- , xmlBase
-        , xmlLang
-        , xmlSpace
           -- , yChannelSelector
         , z
           -- , zoomAndPan
@@ -210,8 +205,8 @@ module TypedSvg.Attributes
         , width
         , x
         , y
-        , y1
         , x1
+        , y1
         , x2
         , y2
           --
@@ -280,8 +275,8 @@ module TypedSvg.Attributes
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
 import Html exposing (Html, a)
-import Svg exposing (Attribute, Svg, a, svg)
-import Svg.Attributes as Attr exposing (contentScriptType, enableBackground, externalResourcesRequired, gradientTransform, kernelMatrix, kernelUnitLength, lengthAdjust, limitingConeAngle, markerHeight, name, pathLength, patternContentUnits, preserveAlpha, preserveAspectRatio, surfaceScale)
+import Svg exposing (Attribute, Svg, a, animateTransform, svg)
+import Svg.Attributes as Attr exposing (contentScriptType, enableBackground, externalResourcesRequired, gradientTransform, kernelMatrix, kernelUnitLength, lengthAdjust, limitingConeAngle, markerHeight, name, pathLength, patternContentUnits, preserveAlpha, preserveAspectRatio, surfaceScale, textLength, underlinePosition, xlinkHref, xlinkShow)
 import TypedSvg.Lengths exposing (..)
 
 
@@ -309,22 +304,22 @@ transformToString xform =
     in
         case xform of
             Matrix a b c d e f ->
-                tr <| "matrix" [ a, b, c, d, e, f ]
+                tr "matrix" [ a, b, c, d, e, f ]
 
             Rotate a x y ->
-                tr <| "rotate" [ a, x, y ]
+                tr "rotate" [ a, x, y ]
 
             Scale x y ->
-                tr <| "scale" [ x, y ]
+                tr "scale" [ x, y ]
 
             SkewX x ->
-                tr <| "skewX" [ x ]
+                tr "skewX" [ x ]
 
             SkewY y ->
-                tr <| "skewY" [ y ]
+                tr "skewY" [ y ]
 
             Translate x y ->
-                tr <| "translate" [ x, y ]
+                tr "translate" [ x, y ]
 
 
 {-| In a future version of TypedSvg, this may be turned into a DSL
@@ -837,7 +832,7 @@ d =
 -}
 diffuseConstant : number -> Attribute a
 diffuseConstant kdValue =
-    Attr.diffuseConstant kdValue
+    Attr.diffuseConstant <| toString kdValue
 
 
 {-|
@@ -879,6 +874,7 @@ type DurationValue
     | DurationIndefinite
 
 
+durationToString : DurationValue -> String
 durationToString duration =
     case duration of
         Duration clockValue ->
@@ -982,7 +978,7 @@ externalResourcesRequired bool =
 -}
 filterRes : number -> number -> Attribute a
 filterRes xPixels yPixels =
-    Attr.filterRes <| (toString xPixels) ++ " " (toString yPixels)
+    Attr.filterRes <| (toString xPixels) ++ " " ++ (toString yPixels)
 
 
 {-|
@@ -1029,7 +1025,7 @@ from value =
 -}
 gradientTransform : List Transform -> Attribute a
 gradientTransform transforms =
-    String.join " " (List.map transformToString transforms)
+    Attr.gradientTransform <| String.join " " (List.map transformToString transforms)
 
 
 {-|
@@ -1081,6 +1077,7 @@ type InValue
     | InReference String
 
 
+inValueToString : InValue -> String
 inValueToString value =
     case value of
         InSourceGraphic ->
@@ -1289,8 +1286,9 @@ type alias BezierAnchorPoint =
     ( Float, Float, Float, Float )
 
 
+bezierAnchorPointToString : ( number, number, number, number ) -> String
 bezierAnchorPointToString ( x1, y1, x2, y2 ) =
-    List.map toString [ x1, y1, x2, y1 ] |> String.join " "
+    List.map toString [ x1, y1, x2, y2 ] |> String.join " "
 
 
 {-|
@@ -2108,6 +2106,423 @@ style value =
 surfaceScale : number -> Attribute a
 surfaceScale value =
     Attr.surfaceScale <| toString value
+
+
+{-|
+    The `targetX` attribute determines the positioning in X of the convolution
+    matrix relative to a given target pixel in the input image. The leftmost
+    column of the matrix is column number zero. The value must be such that:
+
+        0 <= targetX < orderX
+
+    By default, the convolution matrix is centered in X over each pixel of the
+    input image (i.e., targetX = floor ( orderX / 2 )).
+
+    Used by Elements: feConvolveMatrix
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetX
+-}
+targetX : number -> Attribute a
+targetX xPosition =
+    Attr.targetX <| toString xPosition
+
+
+{-|
+    The targetY attribute determines the positioning in Y of the convolution
+    matrix relative to a given target pixel in the input image. The topmost
+    row of the matrix is row number zero. The value must be such that:
+
+        0 <= targetY < orderY
+
+    By default, the convolution matrix is centered in Y over each pixel of the
+    input image (i.e., targetY = floor ( orderY / 2 )).
+
+    Used by Elements: feConvolveMatrix
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetY
+-}
+targetY : number -> Attribute a
+targetY yPosition =
+    Attr.targetY <| toString yPosition
+
+
+{-|
+    The `textLength` attribute is intended to preserve a span of SVG text's
+    display width across a variety of conditions, such as webfonts not loading.
+
+    Used by Elements: text, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength
+-}
+textLength : Length -> Attribute a
+textLength length =
+    Attr.textLength <| lengthToString length
+
+
+{-|
+    This attribute indicates the final value of the attribute that will be
+    modified during the animation. The value of the attribute will change
+    between the from attribute value and this value. By default the change will
+    be linear.
+
+    When this attribute is used with the `set` element, it specifies the value
+    for the attribute during the duration of the `set` element.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to
+-}
+to : number -> Attribute a
+to value =
+    Attr.to <| toString value
+
+
+{-|
+    The transform attribute defines a list of transform definitions that are
+    applied to an element and the element's children. The items in the transform
+    list are applied from right to left.
+
+    Used by Elements: a, circle, clipPath, defs, ellipse, foreignObject, g,
+        image, line, mesh, path, polygon, polyline, rect, switch, text, use,
+        svg
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
+-}
+transform : List Transform -> Attribute a
+transform transforms =
+    Attr.transform <| String.join " " (List.map transformToString transforms)
+
+
+{-|
+    Defines the type of transformation, whose values change over time.
+
+    Used by Elements: animateTransform
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+-}
+animateTransformType : AnimateTransformType -> Attribute a
+animateTransformType t =
+    Attr.type_ <|
+        case t of
+            TypeTranslate ->
+                "translate"
+
+            TypeScale ->
+                "scale"
+
+            TypeRotate ->
+                "rotate"
+
+            TypeSkewX ->
+                "skewX"
+
+            TypeSkewY ->
+                "skewY"
+
+
+type AnimateTransformType
+    = TypeTranslate
+    | TypeScale
+    | TypeRotate
+    | TypeSkewX
+    | TypeSkewY
+
+
+{-|
+    Indicates the type of matrix operation. The keyword matrix indicates that a
+    full 5x4 matrix of values will be provided. The other keywords represent
+    convenience shortcuts to allow commonly used color operations to be
+    performed without specifying a complete matrix.
+
+    Used by Elements: feColorMatrix
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+-}
+feColorMatrixType : FeColorMatrixType -> Attribute a
+feColorMatrixType t =
+    Attr.type_ <|
+        case t of
+            TypeMatrix ->
+                "matrix"
+
+            TypeSaturate ->
+                "saturate"
+
+            TypeHueRotate ->
+                "hueRotate"
+
+            TypeLuminanceToAlpha ->
+                "luminanceToAlpha"
+
+
+type FeColorMatrixType
+    = TypeMatrix
+    | TypeSaturate
+    | TypeHueRotate
+    | TypeLuminanceToAlpha
+
+
+{-|
+    Indicates the type of component transfer function.
+
+    Used by Elements: feFuncR, feFuncG, feFuncA, feFuncB
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+-}
+feFuncType : FeFuncType -> Attribute a
+feFuncType t =
+    Attr.type_ <|
+        case t of
+            TypeIdentity ->
+                "identity"
+
+            TypeTable ->
+                "table"
+
+            TypeDiscrete ->
+                "discrete"
+
+            TypeLinear ->
+                "linear"
+
+            TypeGamma ->
+                "gamma"
+
+
+type FeFuncType
+    = TypeIdentity
+    | TypeTable
+    | TypeDiscrete
+    | TypeLinear
+    | TypeGamma
+
+
+{-|
+    Indicates whether the filter primitive should perform a noise or turbulence
+    function.
+
+    Used by Elements: feTurbulence
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+-}
+feTurbulenceType : FeTurbulenceType -> Attribute a
+feTurbulenceType t =
+    Attr.type_ <|
+        case t of
+            TypeFractalNoise ->
+                "fractalNoise"
+
+            TypeTurbulence ->
+                "turbulence"
+
+
+type FeTurbulenceType
+    = TypeFractalNoise
+    | TypeTurbulence
+
+
+{-|
+    Defines the content type of the element.
+
+    Used by Elements: script, style
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+-}
+contentType : String -> Attribute a
+contentType t =
+    Attr.type_ t
+
+
+{-|
+    The underlinePosition attribute represents the ideal vertical position of
+    the underline. The underline position is expressed in the font's
+    coordinate system.
+
+    Used by Elements: fontFace
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-position
+-}
+underlinePosition : number -> Attribute a
+underlinePosition position =
+    Attr.underlinePosition <| toString position
+
+
+{-|
+    The underlineThickness attribute represents the ideal thickness of the
+    underline. The underline thickness is expressed in the font's coordinate
+    system.
+
+    Used by Elements: fontFace
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-thickness
+-}
+underlineThickness : number -> Attribute a
+underlineThickness thickness =
+    Attr.underlineThickness <| toString thickness
+
+
+{-|
+    Values will be applied in order over the course of the animation. If a list
+    of values is specified, any `from`, `to` and `by` attribute values are
+    ignored.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform,
+        discard, mpath, set
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
+-}
+animationValues : List number -> Attribute a
+animationValues values =
+    Attr.values <| String.join ";" (List.map toString values)
+
+
+{-|
+    Contents of feColorMatrixValues depends on the value of the attribute
+    `type`.
+
+    Used by Elements: feColorMatrix
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
+-}
+feColorMatrixValues : String -> Attribute a
+feColorMatrixValues string =
+    Attr.values string
+
+
+{-|
+    The version attribute is used to indicate what specification a SVG document
+    conforms to. It is only allowed on the root <svg> element. It is purely
+    advisory and has no influence on rendering or processing.
+
+    While it is specified to accept any number, the only two valid choices are
+    currently 1.0 and 1.1.
+
+    Used by Elements: svg
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version
+-}
+version : Float -> Attribute a
+version number =
+    Attr.version <| toString number
+
+
+{-|
+    This attribute is provided for backwards compatibility with SVG 1.1. It
+    provides documentation to XLink-aware processors. In case of a conflict,
+    the target attribute has priority, since it can express a wider range of
+    values.
+
+    Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
+        animateTransform, colorProfile, cursor, feImage, filter, fontFaceUri,
+        glyphRef, image, linearGradient, mpath, pattern, radialGradient,
+        script, set, textPath, tref, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkShow
+-}
+xlinkShow : String -> Attribute a
+xlinkShow str =
+    Attr.xlinkShow str
+
+
+{-|
+    The xlinkTitle attribute is used to describe the meaning of a link or
+    resource in a human-readable fashion, along the same lines as the xlinkRole
+    or xlinkArcrole attribute. It is a string that describes the resource.
+    In general it is preferable to use a `title` child element rather than a
+    xlinkTitle attribute.
+
+    Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
+        animateTransform, colorProfile, cursor, feImage, filter, fontFaceUri,
+        glyphRef, image, linearGradient, mpath, pattern, radialGradient,
+        script, set, textPath, tref, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkTitle
+-}
+xlinkTitle : String -> Attribute a
+xlinkTitle str =
+    Attr.xlinkTitle str
+
+
+{-|
+    The `z` attribute difines the location along the Z-axis for a light source
+    in the coordinate system established by the primitiveUnits attribute on the
+    `filter` element, assuming that, in the initial coordinate system, the
+    positive Z-axis comes out towards the person viewing the content and
+    assuming that one unit along the Z-axis equals on unit in X and Z.
+
+    If the attribute is not specified, then the effect is as if a value of 0 were specified.
+
+    Used by Elements: fePointlight, feSpotlight
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/z
+-}
+z : number -> Attribute a
+z value =
+    Attr.z <| toString value
+
+
+{-|
+    This attribute defines the x-axis coordinate of the start of a line or
+    linearGradient.
+
+    If the attribute is not specified, the effect is as if a value of 0
+    (or 0%, in the case of a linearGradient) were specified.
+
+    Used by Elements: line, linearGradient
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+-}
+x1 : Length -> Attribute a
+x1 position =
+    Attr.x1 <| lengthToString position
+
+
+{-|
+    This attribute defines the y-axis coordinate of the start of a line or
+    linearGradient.
+
+    If the attribute is not specified, the effect is as if a value of 0
+    (or 0%, in the case of a linearGradient) were specified.
+
+    Used by Elements: line, linearGradient
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
+-}
+y1 : Length -> Attribute a
+y1 position =
+    Attr.y1 <| lengthToString position
+
+
+{-|
+    This attribute defines the x-axis coordinate of the end of a line or
+    linearGradient.
+
+    If the attribute is not specified, the effect is as if a value of 0
+    (or 0%, in the case of a linearGradient) were specified.
+
+    Used by Elements: line, linearGradient
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+-}
+x2 : Length -> Attribute a
+x2 position =
+    Attr.x2 <| lengthToString position
+
+
+{-|
+    This attribute defines the y-axis coordinate of the end of a line or
+    linearGradient.
+
+    If the attribute is not specified, the effect is as if a value of 0
+    (or 0%, in the case of a linearGradient) were specified.
+
+    Used by Elements: line, linearGradient
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
+-}
+y2 : Length -> Attribute a
+y2 position =
+    Attr.y2 <| lengthToString position
 
 
 {-|
