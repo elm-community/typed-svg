@@ -6,7 +6,10 @@ module TypedSvg.Attributes
         , BezierAnchorPoint
         , CalcModeOption(..)
         , ClipOption(..)
+        , ColorInterpolation(..)
         , CoordinateSystem(..)
+        , Cursor(..)
+        , Direction(..)
         , DurationValue(..)
         , EdgeModeOption(..)
         , LengthAdjustOption(..)
@@ -211,72 +214,73 @@ module TypedSvg.Attributes
         , y2
           --
           {--Presentation Attributes-}
-          -- , alignmentBaseline
-          -- , baselineShift
-          -- , clipPath
-          -- , clipRule
-          -- , clip
-          -- , colorInterpolationFilters
-          -- , colorInterpolation
-          -- , colorProfile
-          -- , colorRendering
-          -- , color
-          -- , cursor
-          -- , direction
-          -- , display
-          -- , dominantBaseline
-          -- , enableBackground
-          -- , fillOpacity
-          -- , fillRule
-          -- , fill
-          -- , filter
-          -- , floodColor
-          -- , floodOpacity
-          -- , fontFamily
-          -- , fontSizeAdjust
-          -- , fontSize
-          -- , fontStretch
-          -- , fontStyle
-          -- , fontVariant
-          -- , fontWeight
-          -- , glyphOrientationHorizontal
-          -- , glyphOrientationVertical
-          -- , imageRendering
-          -- , kerning
-          -- , letterSpacing
-          -- , lightingColor
-          -- , markerEnd
-          -- , markerMid
-          -- , markerStart
-          -- , mask
-          -- , opacity
-          -- , overflow
-          -- , pointerEvents
-          -- , shapeRendering
-          -- , stopColor
-          -- , stopOpacity
-          -- , strokeDasharray
-          -- , strokeDashoffset
-          -- , strokeLinecap
-          -- , strokeLinejoin
-          -- , strokeMiterlimit
-          -- , strokeOpacity
-          -- , strokeWidth
-          -- , stroke
-          -- , textAnchor
-          -- , textDecoration
-          -- , textRendering
-          -- , unicodeBidi
-          -- , visibility
-          -- , wordSpacing
-          -- , writingMode
+        , alignmentBaseline
+        , baselineShift
+        , clipPath
+        , clipRule
+        , clip
+        , colorInterpolationFilters
+        , colorInterpolation
+        , colorProfile
+        , colorRendering
+        , color
+        , cursor
+        , direction
+        , display
+        , dominantBaseline
+        , enableBackground
+        , fillOpacity
+        , fillRule
+        , fill
+        , filter
+        , floodColor
+        , floodOpacity
+        , fontFamily
+        , fontSizeAdjust
+        , fontSize
+        , fontStretch
+        , fontStyle
+        , fontVariant
+        , fontWeight
+        , glyphOrientationHorizontal
+        , glyphOrientationVertical
+        , imageRendering
+        , kerning
+        , letterSpacing
+        , lightingColor
+        , markerEnd
+        , markerMid
+        , markerStart
+        , mask
+        , opacity
+        , overflow
+        , pointerEvents
+        , shapeRendering
+        , stopColor
+        , stopOpacity
+        , strokeDasharray
+        , strokeDashoffset
+        , strokeLinecap
+        , strokeLinejoin
+        , strokeMiterlimit
+        , strokeOpacity
+        , strokeWidth
+        , stroke
+        , textAnchor
+        , textDecoration
+        , textRendering
+        , unicodeBidi
+        , visibility
+        , wordSpacing
+        , writingMode
         )
 
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
-import Html exposing (Html, a)
-import Svg exposing (Attribute, Svg, a, animateTransform, svg)
-import Svg.Attributes as Attr exposing (contentScriptType, enableBackground, externalResourcesRequired, gradientTransform, kernelMatrix, kernelUnitLength, lengthAdjust, limitingConeAngle, markerHeight, name, pathLength, patternContentUnits, preserveAlpha, preserveAspectRatio, surfaceScale, textLength, underlinePosition, xlinkHref, xlinkShow)
+import Html exposing (Html)
+import Html.Attributes exposing (name)
+import Svg exposing (Attribute, Svg)
+import Svg.Attributes as Attr exposing (colorInterpolationFilters)
 import TypedSvg.Lengths exposing (..)
 
 
@@ -470,6 +474,83 @@ type AdditiveOption
     | AdditiveReplace
 
 
+{-|
+    The alignmentBaseline attribute specifies how an object is aligned with
+    respect to its parent. This property specifies which baseline of this
+    element is to be aligned with the corresponding baseline of the parent. For
+    example, this allows alphabetic baselines in Roman text to stay aligned
+    across font size changes.
+
+    It defaults to the baseline with the same name as the computed value of the
+    alignmentBaseline property.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet, see css alignmentBaseline for further information.
+
+    Used by Elements: altGlyph, tspan, tref, textPath
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignmentBaseline
+-}
+alignmentBaseline : AlignmentBaseline -> Attribute a
+alignmentBaseline alignmentBaseline =
+    Attr.alignmentBaseline <|
+        case alignmentBaseline of
+            AlignmentAuto ->
+                "auto"
+
+            AlignmentBaseline ->
+                "baseline"
+
+            AlignmentBeforeEdge ->
+                "before-edge"
+
+            AlignmentTextBeforeEdge ->
+                "text-before-edge"
+
+            AlignmentMiddle ->
+                "middle"
+
+            AlignmentCentral ->
+                "central"
+
+            AlignmentAfterEdge ->
+                "after-edge"
+
+            AlignmentTextAfterEdge ->
+                "text-after-edge"
+
+            AlignmentIdeographic ->
+                "ideographic"
+
+            AlignmentAlphabetic ->
+                "alphabetic"
+
+            AlignmentHanging ->
+                "hanging"
+
+            AlignmentMathematical ->
+                "mathematical"
+
+            AlignmentInherit ->
+                "inherit"
+
+
+type AlignmentBaseline
+    = AlignmentAuto
+    | AlignmentBaseline
+    | AlignmentBeforeEdge
+    | AlignmentTextBeforeEdge
+    | AlignmentMiddle
+    | AlignmentCentral
+    | AlignmentAfterEdge
+    | AlignmentTextAfterEdge
+    | AlignmentIdeographic
+    | AlignmentAlphabetic
+    | AlignmentHanging
+    | AlignmentMathematical
+    | AlignmentInherit
+
+
 {-| This attribute defines the maximum unaccented depth of the font within the
     font coordinate system.
 
@@ -558,6 +639,54 @@ azimuth angle =
 baseFrequency : number -> number -> Attribute a
 baseFrequency xFrequency yFrequency =
     Attr.baseFrequency <| (toString xFrequency) ++ " " ++ (toString yFrequency)
+
+
+{-|
+    The baselineShift attribute allows repositioning of the dominant-baseline
+    relative to the dominant-baseline of the parent text content element. The
+    shifted object might be a sub- or superscript.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet, see css baseline-shift for further information.
+
+    Used by Elements: altGlyph, tref, tspan, textPath
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baselineShift
+-}
+baselineShift : BaselineShift -> Attribute a
+baselineShift baselineShift =
+    Attr.baselineShift <|
+        case baselineShift of
+            ShiftAuto ->
+                "auto"
+
+            ShiftBaseline ->
+                "baseline"
+
+            ShiftSuper ->
+                "super"
+
+            ShiftSub ->
+                "sub"
+
+            ShiftPercentage value ->
+                (toString value) ++ "%"
+
+            ShiftLength length ->
+                (lengthToString length)
+
+            ShiftInherit ->
+                "inherit"
+
+
+type BaselineShift
+    = ShiftAuto
+    | ShiftBaseline
+    | ShiftSuper
+    | ShiftSub
+    | ShiftPercentage Float
+    | ShiftLength Length
+    | ShiftInherit
 
 
 {-|
@@ -698,6 +827,39 @@ type ClipOption
 
 
 {-|
+    The `clipPath` attribute binds the element it is applied to with a given
+    `clipPath` element.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: a, circle, defs, ellipse, g, image, line, marker, mask,
+        mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
+        switch, symbol, text, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-path
+-}
+clipPath : ClipPath -> Attribute a
+clipPath clipPath =
+    Attr.clipPath <|
+        case clipPath of
+            ClipPathNone ->
+                "none"
+
+            ClipPathInherit ->
+                "inherit"
+
+            ClipPathFunc value ->
+                value
+
+
+type ClipPath
+    = ClipPathNone
+    | ClipPathInherit
+    | ClipPathFunc String
+
+
+{-|
     The clipPathUnits attribute defines the coordinate system for the contents
     of the clipPath element.
 
@@ -716,6 +878,213 @@ type ClipOption
 clipPathUnits : CoordinateSystem -> Attribute a
 clipPathUnits coordinateSystem =
     Attr.clipPathUnits <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    The `clipRule` attribute only applies to graphics elements that are
+    contained within a `clipPath` element. The `clipRule` attribute basically
+    works as the `fillRule` attribute, except that it applies to `clipPath`
+    definitions.
+
+    Used by Elements: circle, ellipse, image, line, mesh, path, polygon,
+        polyline, rect, text, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule
+-}
+clipRule : ClipRule -> Attribute a
+clipRule clipRule =
+    Attr.clipRule <|
+        case clipRule of
+            ClipRuleNonZero ->
+                "nonzero"
+
+            ClipRuleEvenOdd ->
+                "evenodd"
+
+            ClipRuleInherit ->
+                "inherit"
+
+
+type ClipRule
+    = ClipRuleNonZero
+    | ClipRuleEvenOdd
+    | ClipRuleInherit
+
+
+{-|
+    The `colorInterpolation` attribute specifies the color space for gradient
+    interpolations, color animations, and alpha compositing.
+
+    When a child element is blended into a background, the value of the
+    `colorInterpolation` attribute on the child determines the type of blending,
+    not the value of the `colorInterpolation` on the parent.
+
+    For gradients which make use of the `xlinkHref` attribute to reference
+    another gradient, the gradient uses the `colorInterpolation` attribute value
+    from the gradient element which is directly referenced by the fill or stroke
+    attribute.
+
+    When animating colors, color interpolation is performed according to the
+    value of the `colorInterpolation` attribute on the element being animated.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: a, animage, animateColor, circle, defs, ellipse, g, image,
+        line, marker, mask, mesh, missing-glyph, path, pattern, polygon,
+        polyline, rect, svg, switch, symbol, text, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation
+-}
+colorInterpolation : ColorInterpolation -> Attribute a
+colorInterpolation colorInterpolation =
+    Attr.colorInterpolation <| colorInterpolationToString colorInterpolation
+
+
+type ColorInterpolation
+    = ColorInterpolationAuto
+    | ColorInterpolationSRGB
+    | ColorInterpolationLinearRGB
+    | ColorInterpolationInherit
+
+
+colorInterpolationToString : ColorInterpolation -> String
+colorInterpolationToString colorInterpolation =
+    case colorInterpolation of
+        ColorInterpolationAuto ->
+            "auto"
+
+        ColorInterpolationSRGB ->
+            "sRGB"
+
+        ColorInterpolationLinearRGB ->
+            "linearRGB"
+
+        ColorInterpolationInherit ->
+            "inherit"
+
+
+{-|
+    The `colorInterpolationFilters` attribute specifies the color space for
+    imaging operations performed via filter effects.
+
+    Note that `colorInterpolationFilters` has a different initial value than
+    `colorInterpolation`. `colorInterpolationFilters` has an initial value of
+    linearRGB, whereas color-interpolation has an initial value of sRGB. Thus,
+    in the default case, filter effects operations occur in the linearRGB
+    color space, whereas all other color interpolations occur by default in the
+    sRGB color space.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: feBlend, feColorMatrix, feComponentTransfer, feComposite,
+        feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feGaussianBlur,
+        feMorphology, feOffset, feSpecularLighting, feTile
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation-filters
+-}
+colorInterpolationFilters : ColorInterpolation -> Attribute a
+colorInterpolationFilters colorInterpolation =
+    Attr.colorInterpolationFilters <| colorInterpolationToString colorInterpolation
+
+
+{-|
+    The `colorProfile` attribute is used to define which color profile a raster
+    image included through the `image` element should use.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: image
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-profile
+-}
+colorProfile : ColorProfile -> Attribute a
+colorProfile colorProfile =
+    Attr.colorProfile <|
+        case colorProfile of
+            ColorProfileAuto ->
+                "auto"
+
+            ColorProfileSRGB ->
+                "sRGB"
+
+            ColorProfile name ->
+                name
+
+            ColorProfileInherit ->
+                "inherit"
+
+
+type ColorProfile
+    = ColorProfileAuto
+    | ColorProfileSRGB
+    | ColorProfile String
+    | ColorProfileInherit
+
+
+{-|
+    The colorRendering attribute provides a hint to the SVG user agent about
+    how to optimize its color interpolation and compositing operations.
+
+    `colorRendering` takes precedence over `colorInterpolationFilters`. For
+    example, assume `colorRendering` is set to `optimizeSpeed`, and
+    `ColorInterpolationFilters` is set to `linearRGB`. In this case, the SVG
+    user agent should perform color operations in a way that optimizes
+    performance, which might mean sacrificing the color interpolation precision
+    as specified by `colorInterpolationFilters`.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: a, animate, animateColor, circle, defs, ellipse, g, image,
+        line, marker, mask, mesh, missing-glyph, path, pattern, polygon,
+        polyline, rect, svg, switch, symbol, text, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-rendering
+-}
+colorRendering : ColorRendering -> Attribute a
+colorRendering colorRendering =
+    Attr.colorRendering <|
+        case colorRendering of
+            ColorRenderingAuto ->
+                "auto"
+
+            ColorRenderingOptimizeSpeed ->
+                "optimizeSpeed"
+
+            ColorRenderingOptimizeQuality ->
+                "optimizeQuality"
+
+            ColorRenderingInherit ->
+                "inherit"
+
+
+type ColorRendering
+    = ColorRenderingAuto
+    | ColorRenderingOptimizeSpeed
+    | ColorRenderingOptimizeQuality
+    | ColorRenderingInherit
+
+
+{-|
+    The `color` attribute is used to provide a potential indirect value
+    (currentColor) for the fill, stroke, stopColor, floodColor and
+    lightingColor attributes.
+
+    As a presentation attribute, it can also be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
+        feDiffuseLighting, feFlood, feSpecularLighting, glyph, glyphRef, line,
+        mesh, path, polygon, polyline, rect, stop, text, textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color
+-}
+color : Color -> Attribute a
+color c =
+    Attr.color <| colorToCssRgba c
 
 
 {-|
@@ -788,6 +1157,99 @@ contentStyleType styleSheetLanguage =
 
 
 {-|
+    The `cursor` attribute specifies the mouse cursor displayed when the mouse
+    pointer is over an element.
+
+    This attribute behaves exactly like the css cursor property except that if
+    the browser supports the `cursor` element, you should be able to use it
+    with the `funcIRI` notation.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: a, circle, defs, ellipse, g, image, line, marker, mask,
+        mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
+        switch, symbol, text, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cursor
+-}
+cursor : Cursor -> Attribute a
+cursor c =
+    Attr.cursor <|
+        case c of
+            CursorAuto ->
+                "auto"
+
+            CursorDefault ->
+                "default"
+
+            CursorCrosshair ->
+                "crosshair"
+
+            CursorPointer ->
+                "pointer"
+
+            CursorMove ->
+                "move"
+
+            CursorEResize ->
+                "e-resize"
+
+            CursorNEResize ->
+                "ne-resize"
+
+            CursorNWResize ->
+                "nw-resize"
+
+            CursorNResize ->
+                "n-resize"
+
+            CursorSEResize ->
+                "se-resize"
+
+            CursorSWResize ->
+                "sw-resize"
+
+            CursorWResize ->
+                "w-resize"
+
+            CursorText ->
+                "text"
+
+            CursorWait ->
+                "wait"
+
+            CursorHelp ->
+                "help"
+
+            CursorInherit ->
+                "inherit"
+
+            Cursor funcIRI ->
+                funcIRI
+
+
+type Cursor
+    = CursorAuto
+    | CursorDefault
+    | CursorCrosshair
+    | CursorPointer
+    | CursorMove
+    | CursorEResize
+    | CursorNEResize
+    | CursorNWResize
+    | CursorNResize
+    | CursorSEResize
+    | CursorSWResize
+    | CursorWResize
+    | CursorText
+    | CursorWait
+    | CursorHelp
+    | CursorInherit
+    | Cursor String
+
+
+{-|
     This attribute defines a path to follow.
 
     NOTE: You probably want to import the "folkertdev/svg-path-dsl" package for
@@ -854,6 +1316,144 @@ diffuseConstant kdValue =
 divisor : number -> Attribute a
 divisor value =
     Attr.divisor <| toString value
+
+
+{-|
+    The `direction` attribute specifies the base writing direction of text and
+    the direction of embeddings and overrides for the Unicode bidirectional
+    algorithm.
+
+    For the direction attribute to have any effect on an element that does not
+    by itself establish a new text chunk (such as a `tspan` element without
+    absolute position adjustments due to `x` or `y` attributes), the
+    unicode-bidi property's value must be `embed` or `bidiOverride`.
+
+    The `direction` attribute applies only to glyphs oriented perpendicular to
+    the `inlineProgressionDirection`, which includes the usual case of
+    horizontally-oriented Latin or Arabic text and the case of narrow-cell
+    Latin or Arabic characters rotated 90 degrees clockwise relative to a
+    top-to-bottom inline-progression-direction.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+        text, textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/direction
+-}
+direction : Direction -> Attribute a
+direction dir =
+    Attr.direction <|
+        case dir of
+            DirectionLTR ->
+                "ltr"
+
+            DirectionRTL ->
+                "rtl"
+
+            DirectionInherit ->
+                "inherit"
+
+
+type Direction
+    = DirectionLTR
+    | DirectionRTL
+    | DirectionInherit
+
+
+{-|
+    The `display` attribute lets you control the rendering of graphical or
+    container elements. It is similar to the CSS "display" attribute (e.g.
+    display: "none", "block", etc.)
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
+        foreignobject, g, glyph, glyphRef, image, line, mesh, path, polygon,
+        polyline, rect, svg, switch, text, text, textPath, tref, tspan, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display
+-}
+display : Display -> Attribute a
+display d =
+    Attr.display <|
+        case d of
+            DisplayInline ->
+                "inline"
+
+            DisplayBlock ->
+                "block"
+
+            DisplayListItem ->
+                "list-item"
+
+            DisplayRunIn ->
+                "run-in"
+
+            DisplayCompact ->
+                "compact"
+
+            DisplayMarker ->
+                "marker"
+
+            DisplayTable ->
+                "table"
+
+            DisplayInlineTable ->
+                "inline-table"
+
+            DisplayTableRowGroup ->
+                "table-row-group"
+
+            DisplayTableHeaderGroup ->
+                "table-header-group"
+
+            DisplayTableFooterGroup ->
+                "table-footer-group"
+
+            DisplayTableRow ->
+                "table-row"
+
+            DisplayTableColumnGroup ->
+                "table-column-group"
+
+            DisplayTableColumn ->
+                "table-column"
+
+            DisplayTableCell ->
+                "table-cell"
+
+            DisplayTableCaption ->
+                "table-caption"
+
+            DisplayNone ->
+                "none"
+
+            DisplayInherit ->
+                "inherit"
+
+
+type Display
+    = DisplayInline
+    | DisplayBlock
+    | DisplayListItem
+    | DisplayRunIn
+    | DisplayCompact
+    | DisplayMarker
+    | DisplayTable
+    | DisplayInlineTable
+    | DisplayTableRowGroup
+    | DisplayTableHeaderGroup
+    | DisplayTableFooterGroup
+    | DisplayTableRow
+    | DisplayTableColumnGroup
+    | DisplayTableColumn
+    | DisplayTableCell
+    | DisplayTableCaption
+    | DisplayNone
+    | DisplayInherit
 
 
 {-|
@@ -2080,7 +2680,7 @@ type ShapeRenderingOption
         feSpecularLighting, feTile, feTurbulence, filter, font, foreignObject,
         g, glyph, glyph, glyphRef, glyphRef, image, line, linearGradient,
         marker, mask, mesh, meshGradient, missingGlyph, path, pattern, polygon,
-        polyline, radialGradient, rect, stop, svg, svg, switch, symbol, symbol,
+        polyline, radialGradient, rect, stop, svg, svg, switch, symbol,
         text, text, textPath, tref, tspan, use, use
 
     TODO: easy use of a typed CSS library?
@@ -2525,13 +3125,6 @@ y2 position =
     Attr.y2 <| lengthToString position
 
 
-{-|
-    Template
-
-    Used by Elements:
-
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
--}
 svgBox : ( number, number ) -> List (Svg msg) -> Html msg
 svgBox ( width, height ) =
     svg [ viewBox 0 0 800 600 ]
