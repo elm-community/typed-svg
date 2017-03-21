@@ -1,6 +1,6 @@
 # TypedSvg
 
-TypedSvg is an Elm package that makes it more pleasant to work with SVG (Scalable Vector Graphics) in Elm. It is based on [nphollon's](https://github.com/nphollon/typed-svg) original work.
+TypedSvg is an Elm package that makes it more pleasant to work with SVG (Scalable Vector Graphics). It is based on [nphollon's](https://github.com/nphollon/typed-svg) original work.
 
 ## Usage
 
