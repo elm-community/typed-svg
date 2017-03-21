@@ -226,7 +226,7 @@ import Color.Convert exposing (colorToCssRgba)
 import Html exposing (Html)
 import Html.Attributes exposing (name)
 import Svg exposing (Attribute, Svg)
-import Svg.Attributes as Attr exposing (colorInterpolationFilters, enableBackground)
+import Svg.Attributes as Attr exposing (colorInterpolationFilters, enableBackground, fontSizeAdjust)
 import TypedSvg.Types exposing (..)
 
 
@@ -848,6 +848,24 @@ fillRule fillRule =
 filter : Filter -> Attribute msg
 filter f =
     Attr.filter <| filterToString f
+
+
+{-|
+    The `fontSizeAdjust` attribute allows authors to specify an aspect value
+    for an element that will preserve the X height of the first choice font in
+    a substitute font.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+        text, textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust
+-}
+fontSizeAdjust : FontSizeAdjust -> Attribute msg
+fontSizeAdjust fontSizeAdjust =
+    Attr.fontSizeAdjust <| fontSizeAdjustToString fontSizeAdjust
 
 
 {-|

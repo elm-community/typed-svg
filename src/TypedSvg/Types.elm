@@ -142,29 +142,29 @@ anchorAlignmentToString anchorAlignment =
 
 
 type AnimateTransformType
-    = TypeTranslate
-    | TypeScale
-    | TypeRotate
-    | TypeSkewX
-    | TypeSkewY
+    = AnimateTransformTypeTranslate
+    | AnimateTransformTypeScale
+    | AnimateTransformTypeRotate
+    | AnimateTransformTypeSkewX
+    | AnimateTransformTypeSkewY
 
 
 animateTransformTypeToString : AnimateTransformType -> String
 animateTransformTypeToString animateTransformType =
     case animateTransformType of
-        TypeTranslate ->
+        AnimateTransformTypeTranslate ->
             "translate"
 
-        TypeScale ->
+        AnimateTransformTypeScale ->
             "scale"
 
-        TypeRotate ->
+        AnimateTransformTypeRotate ->
             "rotate"
 
-        TypeSkewX ->
+        AnimateTransformTypeSkewX ->
             "skewX"
 
-        TypeSkewY ->
+        AnimateTransformTypeSkewY ->
             "skewY"
 
 
@@ -781,6 +781,25 @@ floodColorToString floodColor =
 
         FloodICC iccColor ->
             iccColor
+
+
+type FontSizeAdjust
+    = FontSizeAdjustNone
+    | FontSizeAdjustInherit
+    | FontSizeAdjust Float
+
+
+fontSizeAdjustToString : FontSizeAdjust -> String
+fontSizeAdjustToString fontSizeAdjust =
+    case fontSizeAdjust of
+        FontSizeAdjustNone ->
+            "none"
+
+        FontSizeAdjustInherit ->
+            "inherit"
+
+        FontSizeAdjust aspect ->
+            toString aspect
 
 
 type FuncType
