@@ -802,6 +802,143 @@ fontSizeAdjustToString fontSizeAdjust =
             toString aspect
 
 
+type FontStretch
+    = FontStretchNormal
+    | FontStretchWider
+    | FontStretchNarrower
+    | FontStretchUltraCondensed
+    | FontStretchExtraCondensed
+    | FontStretchCondensed
+    | FontStretchSemiCondensed
+    | FontStretchSemiExpanded
+    | FontStretchExpanded
+    | FontStretchExtraExpanded
+    | FontStretchUltraExpanded
+    | FontStretchInherit
+
+
+fontStretchToString : FontStretch -> String
+fontStretchToString fontStretch =
+    case fontStretch of
+        FontStretchNormal ->
+            "normal"
+
+        FontStretchWider ->
+            "wider"
+
+        FontStretchNarrower ->
+            "narrower"
+
+        FontStretchUltraCondensed ->
+            "ultra-condensed"
+
+        FontStretchExtraCondensed ->
+            "extra-condensed"
+
+        FontStretchCondensed ->
+            "condensed"
+
+        FontStretchSemiCondensed ->
+            "semi-condensed"
+
+        FontStretchSemiExpanded ->
+            "semi-expanded"
+
+        FontStretchExpanded ->
+            "expanded"
+
+        FontStretchExtraExpanded ->
+            "extra-expanded"
+
+        FontStretchUltraExpanded ->
+            "ultra-expanded"
+
+        FontStretchInherit ->
+            "inherit"
+
+
+type FontStyle
+    = FontStyleNormal
+    | FontStyleItalic
+    | FontStyleOblique
+    | FontStyleInherit
+
+
+fontStyleToString : FontStyle -> String
+fontStyleToString fontStyle =
+    case fontStyle of
+        FontStyleNormal ->
+            "normal"
+
+        FontStyleItalic ->
+            "italic"
+
+        FontStyleOblique ->
+            "oblique"
+
+        FontStyleInherit ->
+            "inherit"
+
+
+type FontVariant
+    = FontVariantNormal
+    | FontVariantSmallCaps
+    | FontVariantInherit
+
+
+fontVariantToString : FontVariant -> String
+fontVariantToString fontVariant =
+    case fontVariant of
+        FontVariantNormal ->
+            "normal"
+
+        FontVariantSmallCaps ->
+            "small-caps"
+
+        FontVariantInherit ->
+            "inherit"
+
+
+type FontWeight
+    = FontWeightNormal
+    | FontWeightBold
+    | FontWeightBolder
+    | FontWeightLighter
+    | FontWeightInherit
+    | FontWeight Int
+
+
+fontWeightToString : FontWeight -> String
+fontWeightToString fontWeight =
+    let
+        {- The weight will be rounded to the nearest allowed value. Allowed values are
+           multiples of 100 between 100 to 900.
+        -}
+        fontWeightClamped : Int -> Int
+        fontWeightClamped weight =
+            (((weight + 50) // 100) * 100)
+                |> clamp 100 900
+    in
+        case fontWeight of
+            FontWeightNormal ->
+                "normal"
+
+            FontWeightBold ->
+                "bold"
+
+            FontWeightBolder ->
+                "bolder"
+
+            FontWeightLighter ->
+                "lighter"
+
+            FontWeightInherit ->
+                "inherit"
+
+            FontWeight weight ->
+                fontWeightClamped weight |> toString
+
+
 type FuncType
     = FuncTypeIdentity
     | FuncTypeTable

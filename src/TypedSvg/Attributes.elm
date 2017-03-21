@@ -869,6 +869,75 @@ fontSizeAdjust fontSizeAdjust =
 
 
 {-|
+    The `fontStretch` attribute indicates the desired amount of condensing or
+    expansion in the glyphs used to render the text.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+        text, textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch
+-}
+fontStretch : fontStretch -> Attribute msg
+fontStretch fontStretch =
+    Attr.fontStretch <| fontStretchToString fontStretch
+
+
+{-|
+    The `fontStyle` attribute specifies whether the text is to be rendered using
+    a normal, italic or oblique face.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+        text, textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style
+-}
+fontStyle : FontStyle -> Attribute msg
+fontStyle fontStyle =
+    Attr.fontStyle <| fontStyleToString fontStyle
+
+
+{-|
+    The `fontVariant` attribute indicates whether the text is to be rendered
+    using the normal glyphs for lowercase characters or using small-caps glyphs
+    for lowercase characters.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+        text, textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant
+-}
+fontVariant : FontVariant -> Attribute msg
+fontVariant fontVariant =
+    Attr.fontVariant <| fontVariantToString fontVariant
+
+
+{-|
+    The `fontWeight` attribute refers to the boldness or lightness of the glyphs
+    used to render the text, relative to other fonts in the same font family.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+        text, textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight
+-}
+fontWeight : FontWeight -> Attribute msg
+fontWeight fontWeight =
+    Attr.fontWeight <| fontWeightToString fontWeight
+
+
+{-|
     This attribute indicates the initial value of the attribute that will be
     modified during the animation. When used with the `to` attribute, the
     animation will change the modified attribute from the from value to the to
