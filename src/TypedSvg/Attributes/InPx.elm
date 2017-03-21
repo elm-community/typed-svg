@@ -12,56 +12,56 @@ import TypedSvg.Attributes as AnyUnit
 -}
 
 
-cx : Float -> Attribute a
+cx : Float -> Attribute msg
 cx value =
     AnyUnit.cx (px value)
 
 
-cy : Float -> Attribute a
+cy : Float -> Attribute msg
 cy value =
     AnyUnit.cy (px value)
 
 
-x : Float -> Attribute a
+x : Float -> Attribute msg
 x value =
     AnyUnit.x (px value)
 
 
-y : Float -> Attribute a
+y : Float -> Attribute msg
 y value =
     AnyUnit.y (px value)
 
 
-rx : Float -> Attribute a
+rx : Float -> Attribute msg
 rx value =
     AnyUnit.rx (px value)
 
 
-ry : Float -> Attribute a
+ry : Float -> Attribute msg
 ry value =
     AnyUnit.ry (px value)
 
 
-r : Float -> Attribute a
+r : Float -> Attribute msg
 r value =
     AnyUnit.r (px value)
 
 
-strokeWidth : Float -> Attribute a
+strokeWidth : Float -> Attribute msg
 strokeWidth value =
     AnyUnit.strokeWidth (px value)
 
 
-width : Float -> Attribute a
+width : Float -> Attribute msg
 width value =
     AnyUnit.width (px value)
 
 
-height : Float -> Attribute a
+height : Float -> Attribute msg
 height value =
     AnyUnit.height (px value)
 
 
-fontSize : Float -> Attribute a
+fontSize : Float -> Attribute msg
 fontSize value =
     AnyUnit.fontSize (px value)

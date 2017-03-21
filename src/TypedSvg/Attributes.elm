@@ -237,7 +237,7 @@ import TypedSvg.Types exposing (..)
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accent-height
 -}
-accentHeight : number -> Attribute a
+accentHeight : number -> Attribute msg
 accentHeight height =
     Attr.accentHeight <| toString height
 
@@ -253,7 +253,7 @@ accentHeight height =
 
     See https://www.w3.org/TR/smil/smil-timemanip.html#TimeManip-accelerateSyntax
 -}
-accelerate : number -> Attribute a
+accelerate : number -> Attribute msg
 accelerate rate =
     Attr.accelerate <| toString rate
 
@@ -267,7 +267,7 @@ accelerate rate =
 
     See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accumulate
 -}
-accumulate : Accumulate -> Attribute a
+accumulate : Accumulate -> Attribute msg
 accumulate option =
     Attr.accumulate <| accumulateToString option
 
@@ -281,7 +281,7 @@ accumulate option =
 
     See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/additive
 -}
-additive : Additive -> Attribute a
+additive : Additive -> Attribute msg
 additive option =
     Attr.additive <| additiveToString option
 
@@ -303,7 +303,7 @@ additive option =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignmentBaseline
 -}
-alignmentBaseline : AlignmentBaseline -> Attribute a
+alignmentBaseline : AlignmentBaseline -> Attribute msg
 alignmentBaseline alignmentBaseline =
     Attr.alignmentBaseline <| alignmentBaselineToString alignmentBaseline
 
@@ -318,7 +318,7 @@ alignmentBaseline alignmentBaseline =
 
     See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ascent
 -}
-ascent : number -> Attribute a
+ascent : number -> Attribute msg
 ascent maxDepth =
     Attr.ascent <| toString maxDepth
 
@@ -330,7 +330,7 @@ ascent maxDepth =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName
 -}
-attributeName : String -> Attribute a
+attributeName : String -> Attribute msg
 attributeName name =
     Attr.attributeName name
 
@@ -342,7 +342,7 @@ attributeName name =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeType
 -}
-attributeType : AttributeType -> Attribute a
+attributeType : AttributeType -> Attribute msg
 attributeType attributeType =
     Attr.attributeType <| attributeTypeToString attributeType
 
@@ -359,7 +359,7 @@ attributeType attributeType =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baselineShift
 -}
-baselineShift : BaselineShift -> Attribute a
+baselineShift : BaselineShift -> Attribute msg
 baselineShift baselineShift =
     Attr.baselineShift <| baselineShiftToString baselineShift
 
@@ -375,7 +375,7 @@ baselineShift baselineShift =
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/begin
     See: https://www.w3.org/TR/2001/REC-smil-animation-20010904/#Timing-EvaluationOfBeginEndTimeLists
 -}
-begin : List TimingValue -> Attribute a
+begin : List TimingValue -> Attribute msg
 begin timingValues =
     Attr.begin <| String.join ";" (List.map timingValueAsString timingValues)
 
@@ -390,7 +390,7 @@ begin timingValues =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode
 -}
-calcMode : CalcMode -> Attribute a
+calcMode : CalcMode -> Attribute msg
 calcMode calcMode =
     Attr.calcMode <| calcModeToString calcMode
 
@@ -416,7 +416,7 @@ calcMode calcMode =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/class
 -}
-class : List String -> Attribute a
+class : List String -> Attribute msg
 class names =
     Attr.class (String.join " " names)
 
@@ -435,7 +435,7 @@ class names =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip
 -}
-clip : Clip -> Attribute a
+clip : Clip -> Attribute msg
 clip clip =
     Attr.clip <| clipToString clip
 
@@ -453,7 +453,7 @@ clip clip =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-path
 -}
-clipPath : ClipPath -> Attribute a
+clipPath : ClipPath -> Attribute msg
 clipPath clipPath =
     Attr.clipPath <| clipPathToString clipPath
 
@@ -474,7 +474,7 @@ clipPath clipPath =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clipPathUnits
 -}
-clipPathUnits : CoordinateSystem -> Attribute a
+clipPathUnits : CoordinateSystem -> Attribute msg
 clipPathUnits coordinateSystem =
     Attr.clipPathUnits <| coordinateSystemToString coordinateSystem
 
@@ -490,7 +490,7 @@ clipPathUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule
 -}
-clipRule : ClipRule -> Attribute a
+clipRule : ClipRule -> Attribute msg
 clipRule clipRule =
     Attr.clipRule <| clipRuleToString clipRule
 
@@ -520,7 +520,7 @@ clipRule clipRule =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation
 -}
-colorInterpolation : ColorInterpolation -> Attribute a
+colorInterpolation : ColorInterpolation -> Attribute msg
 colorInterpolation colorInterpolation =
     Attr.colorInterpolation <| colorInterpolationToString colorInterpolation
 
@@ -536,7 +536,7 @@ colorInterpolation colorInterpolation =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-profile
 -}
-colorProfile : ColorProfile -> Attribute a
+colorProfile : ColorProfile -> Attribute msg
 colorProfile colorProfile =
     Attr.colorProfile <| colorProfileToString colorProfile
 
@@ -561,7 +561,7 @@ colorProfile colorProfile =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-rendering
 -}
-colorRendering : ColorRendering -> Attribute a
+colorRendering : ColorRendering -> Attribute msg
 colorRendering colorRendering =
     Attr.colorRendering <| colorRenderingToString colorRendering
 
@@ -580,7 +580,7 @@ colorRendering colorRendering =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color
 -}
-color : Color -> Attribute a
+color : Color -> Attribute msg
 color c =
     Attr.color <| colorToCssRgba c
 
@@ -597,7 +597,7 @@ color c =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentScriptType
 -}
-contentScriptType : String -> Attribute a
+contentScriptType : String -> Attribute msg
 contentScriptType mimeType =
     Attr.contentScriptType mimeType
 
@@ -609,7 +609,7 @@ contentScriptType mimeType =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentStyleType
 -}
-contentStyleType : String -> Attribute a
+contentStyleType : String -> Attribute msg
 contentStyleType styleSheetLanguage =
     Attr.contentStyleType styleSheetLanguage
 
@@ -631,7 +631,7 @@ contentStyleType styleSheetLanguage =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cursor
 -}
-cursor : Cursor -> Attribute a
+cursor : Cursor -> Attribute msg
 cursor cursor =
     Attr.cursor <| cursorToString cursor
 
@@ -663,7 +663,7 @@ cursor cursor =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
 -}
-d : String -> Attribute a
+d : String -> Attribute msg
 d =
     Attr.d
 
@@ -692,7 +692,7 @@ d =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/direction
 -}
-direction : Direction -> Attribute a
+direction : Direction -> Attribute msg
 direction direction =
     Attr.direction <| directionToString direction
 
@@ -711,7 +711,7 @@ direction direction =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display
 -}
-display : Display -> Attribute a
+display : Display -> Attribute msg
 display display =
     Attr.display <| displayToString display
 
@@ -739,7 +739,7 @@ display display =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline
 -}
-dominantBaseline : DominantBaseline -> Attribute a
+dominantBaseline : DominantBaseline -> Attribute msg
 dominantBaseline dominantBaseline =
     Attr.dominantBaseline <| dominantBaselineToString dominantBaseline
 
@@ -752,7 +752,7 @@ dominantBaseline dominantBaseline =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dur
 -}
-dur : Duration -> Attribute a
+dur : Duration -> Attribute msg
 dur duration =
     Attr.dur <| durationToString duration
 
@@ -769,7 +769,7 @@ dur duration =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/end
 -}
-end : List TimingValue -> Attribute a
+end : List TimingValue -> Attribute msg
 end timingValues =
     Attr.end <| String.join ";" (List.map timingValueAsString timingValues)
 
@@ -790,7 +790,7 @@ end timingValues =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/externalResourcesRequired
 -}
-externalResourcesRequired : Bool -> Attribute a
+externalResourcesRequired : Bool -> Attribute msg
 externalResourcesRequired bool =
     Attr.externalResourcesRequired <| boolToString bool
 
@@ -805,7 +805,7 @@ externalResourcesRequired bool =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity
 -}
-fillOpacity : Opacity -> Attribute a
+fillOpacity : Opacity -> Attribute msg
 fillOpacity opacity =
     Attr.fillOpacity <| opacityToString opacity
 
@@ -827,7 +827,7 @@ fillOpacity opacity =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
 -}
-fillRule : FillRule -> Attribute a
+fillRule : FillRule -> Attribute msg
 fillRule fillRule =
     Attr.fillRule <| fillRuleToString fillRule
 
@@ -845,7 +845,7 @@ fillRule fillRule =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filter
 -}
-filter : Filter -> Attribute a
+filter : Filter -> Attribute msg
 filter f =
     Attr.filter <| filterToString f
 
@@ -860,7 +860,7 @@ filter f =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from
 -}
-from : number -> Attribute a
+from : number -> Attribute msg
 from value =
     Attr.from <| toString value
 
@@ -879,7 +879,7 @@ from value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientTransform
 -}
-gradientTransform : List Transform -> Attribute a
+gradientTransform : List Transform -> Attribute msg
 gradientTransform transforms =
     Attr.gradientTransform <| String.join " " (List.map transformToString transforms)
 
@@ -896,7 +896,7 @@ gradientTransform transforms =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientUnits
 -}
-gradientUnits : CoordinateSystem -> Attribute a
+gradientUnits : CoordinateSystem -> Attribute msg
 gradientUnits coordinateSystem =
     Attr.gradientUnits <| coordinateSystemToString coordinateSystem
 
@@ -936,7 +936,7 @@ gradientUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kerning
 -}
-kerning : Kerning -> Attribute a
+kerning : Kerning -> Attribute msg
 kerning k =
     Attr.kerning <| kerningToString k
 
@@ -950,7 +950,7 @@ kerning k =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keySplines
 -}
-keySplines : List BezierAnchorPoint -> Attribute a
+keySplines : List BezierAnchorPoint -> Attribute msg
 keySplines bezierAnchorPointList =
     Attr.keySplines <| (List.map bezierAnchorPointToString bezierAnchorPointList |> String.join ";")
 
@@ -978,7 +978,7 @@ bezierAnchorPointToString ( x1, y1, x2, y2 ) =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyTimes
 -}
-keyTimes : List Float -> Attribute a
+keyTimes : List Float -> Attribute msg
 keyTimes floatList =
     Attr.keyTimes <| (List.map toString floatList |> String.join ";")
 
@@ -1003,7 +1003,7 @@ keyTimes floatList =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust
 -}
-lengthAdjust : LengthAdjust -> Attribute a
+lengthAdjust : LengthAdjust -> Attribute msg
 lengthAdjust option =
     Attr.lengthAdjust <| lengthAdjustToString option
 
@@ -1021,7 +1021,7 @@ lengthAdjust option =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerHeight
 -}
-markerHeight : Length -> Attribute a
+markerHeight : Length -> Attribute msg
 markerHeight height =
     Attr.markerHeight <| lengthToString height
 
@@ -1037,7 +1037,7 @@ markerHeight height =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerUnits
 -}
-markerUnits : MarkerCoordinateSystem -> Attribute a
+markerUnits : MarkerCoordinateSystem -> Attribute msg
 markerUnits markerCoordinateSystem =
     Attr.markerUnits <| markerCoordinateSystemToString markerCoordinateSystem
 
@@ -1055,7 +1055,7 @@ markerUnits markerCoordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerWidth
 -}
-markerWidth : Length -> Attribute a
+markerWidth : Length -> Attribute msg
 markerWidth width =
     Attr.markerWidth <| lengthToString width
 
@@ -1077,7 +1077,7 @@ markerWidth width =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits
 -}
-maskContentUnits : CoordinateSystem -> Attribute a
+maskContentUnits : CoordinateSystem -> Attribute msg
 maskContentUnits coordinateSystem =
     Attr.maskContentUnits <| coordinateSystemToString coordinateSystem
 
@@ -1093,7 +1093,7 @@ maskContentUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskUnits
 -}
-maskUnits : CoordinateSystem -> Attribute a
+maskUnits : CoordinateSystem -> Attribute msg
 maskUnits coordinateSystem =
     Attr.maskUnits <| coordinateSystemToString coordinateSystem
 
@@ -1109,7 +1109,7 @@ maskUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/max
 -}
-max : ClockValue -> Attribute a
+max : ClockValue -> Attribute msg
 max clockValue =
     Attr.max <| clockValue
 
@@ -1125,7 +1125,7 @@ max clockValue =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/min
 -}
-min : ClockValue -> Attribute a
+min : ClockValue -> Attribute msg
 min clockValue =
     Attr.min <| clockValue
 
@@ -1139,7 +1139,7 @@ min clockValue =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlinePosition
 -}
-overlinePosition : number -> Attribute a
+overlinePosition : number -> Attribute msg
 overlinePosition position =
     Attr.overlinePosition <| toString position
 
@@ -1153,7 +1153,7 @@ overlinePosition position =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlineThickness
 -}
-overlineThickness : number -> Attribute a
+overlineThickness : number -> Attribute msg
 overlineThickness thickness =
     Attr.overlineThickness <| toString thickness
 
@@ -1168,7 +1168,7 @@ overlineThickness thickness =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/path
 -}
-pathLength : number -> Attribute a
+pathLength : number -> Attribute msg
 pathLength length =
     Attr.pathLength <| toString length
 
@@ -1185,7 +1185,7 @@ pathLength length =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternContentUnits
 -}
-patternContentUnits : CoordinateSystem -> Attribute a
+patternContentUnits : CoordinateSystem -> Attribute msg
 patternContentUnits coordinateSystem =
     Attr.patternContentUnits <| coordinateSystemToString coordinateSystem
 
@@ -1206,7 +1206,7 @@ patternContentUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform
 -}
-patternTransform : List Transform -> Attribute a
+patternTransform : List Transform -> Attribute msg
 patternTransform transforms =
     Attr.patternTransform <| String.join " " (List.map transformToString transforms)
 
@@ -1222,7 +1222,7 @@ patternTransform transforms =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternUnits
 -}
-patternUnits : CoordinateSystem -> Attribute a
+patternUnits : CoordinateSystem -> Attribute msg
 patternUnits coordinateSystem =
     Attr.patternUnits <| coordinateSystemToString coordinateSystem
 
@@ -1238,7 +1238,7 @@ patternUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points
 -}
-points : List ( number, number ) -> Attribute a
+points : List ( number, number ) -> Attribute msg
 points pts =
     let
         pointToString ( x, y ) =
@@ -1257,7 +1257,7 @@ points pts =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
 -}
-preserveAspectRatio : Align -> MeetOrSlice -> Attribute a
+preserveAspectRatio : Align -> MeetOrSlice -> Attribute msg
 preserveAspectRatio align meetOrSlice =
     Attr.preserveAspectRatio <|
         String.join " "
@@ -1278,7 +1278,7 @@ preserveAspectRatio align meetOrSlice =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/primitiveUnits
 -}
-primitiveUnits : CoordinateSystem -> Attribute a
+primitiveUnits : CoordinateSystem -> Attribute msg
 primitiveUnits coordinateSystem =
     Attr.primitiveUnits <| coordinateSystemToString coordinateSystem
 
@@ -1294,7 +1294,7 @@ primitiveUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatCount
 -}
-repeatCount : RepeatCount -> Attribute a
+repeatCount : RepeatCount -> Attribute msg
 repeatCount repeatCount =
     Attr.repeatCount <| repeatCountToString repeatCount
 
@@ -1307,7 +1307,7 @@ repeatCount repeatCount =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatDur
 -}
-repeatDur : DurationValue -> Attribute a
+repeatDur : DurationValue -> Attribute msg
 repeatDur duration =
     Attr.repeatDur <| durationToString duration
 
@@ -1336,7 +1336,7 @@ repeatDur duration =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/requiredFeatures
 -}
-requiredFeatures : List String -> Attribute a
+requiredFeatures : List String -> Attribute msg
 requiredFeatures features =
     Attr.requiredFeatures <| String.join " " features
 
@@ -1349,7 +1349,7 @@ requiredFeatures features =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart
 -}
-restart : Restart -> Attribute a
+restart : Restart -> Attribute msg
 restart restart =
     Attr.restart <| restartToString restart
 
@@ -1364,7 +1364,7 @@ restart restart =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering
 -}
-shapeRendering : ShapeRendering -> Attribute a
+shapeRendering : ShapeRendering -> Attribute msg
 shapeRendering shapeRendering =
     Attr.shapeRendering <| shapeRenderingToString shapeRendering
 
@@ -1388,7 +1388,7 @@ shapeRendering shapeRendering =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/style
 -}
-style : String -> Attribute a
+style : String -> Attribute msg
 style value =
     Attr.style <| value
 
@@ -1401,7 +1401,7 @@ style value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength
 -}
-textLength : Length -> Attribute a
+textLength : Length -> Attribute msg
 textLength length =
     Attr.textLength <| lengthToString length
 
@@ -1419,7 +1419,7 @@ textLength length =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to
 -}
-to : number -> Attribute a
+to : number -> Attribute msg
 to value =
     Attr.to <| toString value
 
@@ -1435,7 +1435,7 @@ to value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
 -}
-transform : List Transform -> Attribute a
+transform : List Transform -> Attribute msg
 transform transforms =
     Attr.transform <| String.join " " (List.map transformToString transforms)
 
@@ -1447,7 +1447,7 @@ transform transforms =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
-animateTransformType : AnimateTransformType -> Attribute a
+animateTransformType : AnimateTransformType -> Attribute msg
 animateTransformType animateTransformType =
     Attr.type_ <| animateTransformTypeToString animateTransformType
 
@@ -1459,7 +1459,7 @@ animateTransformType animateTransformType =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
-contentType : String -> Attribute a
+contentType : String -> Attribute msg
 contentType t =
     Attr.type_ t
 
@@ -1473,7 +1473,7 @@ contentType t =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-position
 -}
-underlinePosition : number -> Attribute a
+underlinePosition : number -> Attribute msg
 underlinePosition position =
     Attr.underlinePosition <| toString position
 
@@ -1487,7 +1487,7 @@ underlinePosition position =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-thickness
 -}
-underlineThickness : number -> Attribute a
+underlineThickness : number -> Attribute msg
 underlineThickness thickness =
     Attr.underlineThickness <| toString thickness
 
@@ -1502,7 +1502,7 @@ underlineThickness thickness =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
 -}
-animationValues : List number -> Attribute a
+animationValues : List number -> Attribute msg
 animationValues values =
     Attr.values <| String.join ";" (List.map toString values)
 
@@ -1519,7 +1519,7 @@ animationValues values =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version
 -}
-version : Float -> Attribute a
+version : Float -> Attribute msg
 version number =
     Attr.version <| toString number
 
@@ -1537,7 +1537,7 @@ version number =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkShow
 -}
-xlinkShow : String -> Attribute a
+xlinkShow : String -> Attribute msg
 xlinkShow str =
     Attr.xlinkShow str
 
@@ -1556,7 +1556,7 @@ xlinkShow str =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkTitle
 -}
-xlinkTitle : String -> Attribute a
+xlinkTitle : String -> Attribute msg
 xlinkTitle str =
     Attr.xlinkTitle str
 
@@ -1572,7 +1572,7 @@ xlinkTitle str =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
 -}
-x1 : Length -> Attribute a
+x1 : Length -> Attribute msg
 x1 position =
     Attr.x1 <| lengthToString position
 
@@ -1588,7 +1588,7 @@ x1 position =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
 -}
-y1 : Length -> Attribute a
+y1 : Length -> Attribute msg
 y1 position =
     Attr.y1 <| lengthToString position
 
@@ -1604,7 +1604,7 @@ y1 position =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
 -}
-x2 : Length -> Attribute a
+x2 : Length -> Attribute msg
 x2 position =
     Attr.x2 <| lengthToString position
 
@@ -1620,7 +1620,7 @@ x2 position =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
 -}
-y2 : Length -> Attribute a
+y2 : Length -> Attribute msg
 y2 position =
     Attr.y2 <| lengthToString position
 
@@ -1630,7 +1630,7 @@ svgBox ( width, height ) =
     svg [ viewBox 0 0 800 600 ]
 
 
-viewBox : number -> number -> number -> number -> Attribute a
+viewBox : number -> number -> number -> number -> Attribute msg
 viewBox minX minY width height =
     [ minX, minY, width, height ]
         |> List.map toString
@@ -1638,24 +1638,24 @@ viewBox minX minY width height =
         |> Attr.viewBox
 
 
-stroke : Color -> Attribute a
+stroke : Color -> Attribute msg
 stroke color =
     Attr.stroke (colorToCssRgba color)
 
 
-fill : Color -> Attribute a
+fill : Color -> Attribute msg
 fill color =
     Attr.fill (colorToCssRgba color)
 
 
-noFill : Attribute a
+noFill : Attribute msg
 noFill =
     fill (Color.rgba 0 0 0 0.0)
 
 
 {-| An empty list will set `font-family: inherit`
 -}
-fontFamily : List String -> Attribute a
+fontFamily : List String -> Attribute msg
 fontFamily families =
     case families of
         [] ->
@@ -1665,7 +1665,7 @@ fontFamily families =
             Attr.fontFamily (String.join ", " families)
 
 
-textAnchor : AnchorAlignment -> Attribute a
+textAnchor : AnchorAlignment -> Attribute msg
 textAnchor anchorAlignment =
     Attr.textAnchor <| anchorAlignmentToString anchorAlignment
 
@@ -1674,27 +1674,27 @@ textAnchor anchorAlignment =
 {- Attributes that express Lengths -}
 
 
-cx : Length -> Attribute a
+cx : Length -> Attribute msg
 cx length =
     Attr.cx <| lengthToString length
 
 
-cy : Length -> Attribute a
+cy : Length -> Attribute msg
 cy length =
     Attr.cy <| lengthToString length
 
 
-dx : Length -> Attribute a
+dx : Length -> Attribute msg
 dx length =
     Attr.dx <| lengthToString length
 
 
-dy : Length -> Attribute a
+dy : Length -> Attribute msg
 dy length =
     Attr.dy <| lengthToString length
 
 
-fontSize : Length -> Attribute a
+fontSize : Length -> Attribute msg
 fontSize length =
     Attr.fontSize <| lengthToString length
 
@@ -1710,7 +1710,7 @@ fontSize length =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
 -}
-fx : Length -> Attribute a
+fx : Length -> Attribute msg
 fx length =
     Attr.fx <| lengthToString length
 
@@ -1726,46 +1726,46 @@ fx length =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
 -}
-fy : Length -> Attribute a
+fy : Length -> Attribute msg
 fy length =
     Attr.fy <| lengthToString length
 
 
-rx : Length -> Attribute a
+rx : Length -> Attribute msg
 rx length =
     Attr.rx <| lengthToString length
 
 
-ry : Length -> Attribute a
+ry : Length -> Attribute msg
 ry length =
     Attr.ry <| lengthToString length
 
 
-r : Length -> Attribute a
+r : Length -> Attribute msg
 r length =
     Attr.r <| lengthToString length
 
 
-strokeWidth : Length -> Attribute a
+strokeWidth : Length -> Attribute msg
 strokeWidth length =
     Attr.strokeWidth <| lengthToString length
 
 
-width : Length -> Attribute a
+width : Length -> Attribute msg
 width length =
     Attr.width <| lengthToString length
 
 
-height : Length -> Attribute a
+height : Length -> Attribute msg
 height length =
     Attr.height <| lengthToString length
 
 
-x : Length -> Attribute a
+x : Length -> Attribute msg
 x length =
     Attr.x <| lengthToString length
 
 
-y : Length -> Attribute a
+y : Length -> Attribute msg
 y length =
     Attr.y <| lengthToString length

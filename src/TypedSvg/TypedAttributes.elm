@@ -159,7 +159,7 @@ skewY y =
     atomicTransform "skewY" [ y ]
 
 
-transform : List Transform -> Attribute a
+transform : List Transform -> Attribute msg
 transform =
     List.map transformString >> String.join " " >> Att.transform
 
@@ -261,19 +261,19 @@ paintString paint =
 -- Fonts
 
 
-bold : Attribute a
+bold : Attribute msg
 bold =
     Att.fontWeight "bold"
 
 
-bolder : Attribute a
+bolder : Attribute msg
 bolder =
     Att.fontWeight "bolder"
 
 
 {-| An empty list will set `font-family: inherit`
 -}
-fontFamily : List String -> Attribute a
+fontFamily : List String -> Attribute msg
 fontFamily families =
     case families of
         [] ->
@@ -285,14 +285,14 @@ fontFamily families =
 
 {-| This function takes an explicit length. Absolute and relative font sizes (such as `small` or `larger` have their own functions.
 -}
-fontSize : Length -> Attribute a
+fontSize : Length -> Attribute msg
 fontSize =
     lengthString >> Att.fontSize
 
 
 {-| The weight will be rounded to the nearest allowed value... multiples of 100 between 100 to 900.
 -}
-intWeight : Int -> Attribute a
+intWeight : Int -> Attribute msg
 intWeight i =
     let
         rounded =
@@ -302,57 +302,57 @@ intWeight i =
         Att.fontWeight (toString rounded)
 
 
-large : Attribute a
+large : Attribute msg
 large =
     Att.fontSize "large"
 
 
-larger : Attribute a
+larger : Attribute msg
 larger =
     Att.fontSize "larger"
 
 
-lighter : Attribute a
+lighter : Attribute msg
 lighter =
     Att.fontWeight "lighter"
 
 
-medium : Attribute a
+medium : Attribute msg
 medium =
     Att.fontSize "medium"
 
 
-normalWeight : Attribute a
+normalWeight : Attribute msg
 normalWeight =
     Att.fontWeight "normal"
 
 
-small : Attribute a
+small : Attribute msg
 small =
     Att.fontSize "small"
 
 
-smaller : Attribute a
+smaller : Attribute msg
 smaller =
     Att.fontSize "smaller"
 
 
-xLarge : Attribute a
+xLarge : Attribute msg
 xLarge =
     Att.fontSize "x-large"
 
 
-xSmall : Attribute a
+xSmall : Attribute msg
 xSmall =
     Att.fontSize "x-small"
 
 
-xxLarge : Attribute a
+xxLarge : Attribute msg
 xxLarge =
     Att.fontSize "xx-large"
 
 
-xxSmall : Attribute a
+xxSmall : Attribute msg
 xxSmall =
     Att.fontSize "xx-small"
 
@@ -361,82 +361,82 @@ xxSmall =
 -- Misc Attributes
 
 
-cx : Length -> Attribute a
+cx : Length -> Attribute msg
 cx =
     lengthString >> Att.cx
 
 
-cy : Length -> Attribute a
+cy : Length -> Attribute msg
 cy =
     lengthString >> Att.cy
 
 
-fill : Paint -> Attribute a
+fill : Paint -> Attribute msg
 fill =
     paintString >> Att.fill
 
 
-height : Length -> Attribute a
+height : Length -> Attribute msg
 height =
     lengthString >> Att.height
 
 
-pointerEventsVisiblePainted : Attribute a
+pointerEventsVisiblePainted : Attribute msg
 pointerEventsVisiblePainted =
     Att.pointerEvents "visiblePainted"
 
 
-pointerEventsVisibleFill : Attribute a
+pointerEventsVisibleFill : Attribute msg
 pointerEventsVisibleFill =
     Att.pointerEvents "visibleFill"
 
 
-pointerEventsVisibleStroke : Attribute a
+pointerEventsVisibleStroke : Attribute msg
 pointerEventsVisibleStroke =
     Att.pointerEvents "visibleStroke"
 
 
-pointerEventsVisible : Attribute a
+pointerEventsVisible : Attribute msg
 pointerEventsVisible =
     Att.pointerEvents "visible"
 
 
-pointerEventsPainted : Attribute a
+pointerEventsPainted : Attribute msg
 pointerEventsPainted =
     Att.pointerEvents "painted"
 
 
-pointerEventsFill : Attribute a
+pointerEventsFill : Attribute msg
 pointerEventsFill =
     Att.pointerEvents "fill"
 
 
-pointerEventsStroke : Attribute a
+pointerEventsStroke : Attribute msg
 pointerEventsStroke =
     Att.pointerEvents "stroke"
 
 
-pointerEventsAll : Attribute a
+pointerEventsAll : Attribute msg
 pointerEventsAll =
     Att.pointerEvents "all"
 
 
-pointerEventsNone : Attribute a
+pointerEventsNone : Attribute msg
 pointerEventsNone =
     Att.pointerEvents "none"
 
 
-opacity : Float -> Attribute a
+opacity : Float -> Attribute msg
 opacity =
     toString >> Att.opacity
 
 
-r : Length -> Attribute a
+r : Length -> Attribute msg
 r =
     lengthString >> Att.r
 
 
-viewBox : number -> number -> number -> number -> Attribute a
+viewBox : number -> number -> number -> number -> Attribute msg
 viewBox minX minY width height =
     [ minX, minY, width, height ]
         |> List.map toString
@@ -444,16 +444,16 @@ viewBox minX minY width height =
         |> Att.viewBox
 
 
-width : Length -> Attribute a
+width : Length -> Attribute msg
 width =
     lengthString >> Att.width
 
 
-x : Length -> Attribute a
+x : Length -> Attribute msg
 x =
     lengthString >> Att.x
 
 
-y : Length -> Attribute a
+y : Length -> Attribute msg
 y =
     lengthString >> Att.y

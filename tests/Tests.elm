@@ -40,7 +40,7 @@ all =
         ]
 
 
-testLengthAttrEqual : String -> (Length -> Attribute a) -> (String -> Attribute a) -> Test
+testLengthAttrEqual : String -> (Length -> Attribute msg) -> (String -> Attribute msg) -> Test
 testLengthAttrEqual name typed untyped =
     describe name
         [ test "no unit" <|
@@ -96,7 +96,7 @@ testLengthAttrEqual name typed untyped =
         ]
 
 
-testNumberAttrEqual : String -> (Float -> Attribute a) -> (String -> Attribute a) -> Test
+testNumberAttrEqual : String -> (Float -> Attribute msg) -> (String -> Attribute msg) -> Test
 testNumberAttrEqual name typed untyped =
     test name <|
         \() ->
@@ -105,7 +105,7 @@ testNumberAttrEqual name typed untyped =
                 (untyped "12.1")
 
 
-testPaintAttrEqual : String -> (Paint -> Attribute a) -> (String -> Attribute a) -> Test
+testPaintAttrEqual : String -> (Paint -> Attribute msg) -> (String -> Attribute msg) -> Test
 testPaintAttrEqual name typed untyped =
     describe name
         [ test "no color" <|

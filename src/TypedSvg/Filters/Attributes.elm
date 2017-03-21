@@ -21,7 +21,7 @@ import TypedSvg.Types exposing (..)
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/azimuth
 -}
-azimuth : number -> Attribute a
+azimuth : number -> Attribute msg
 azimuth angle =
     Attr.azimuth <| toString angle
 
@@ -41,7 +41,7 @@ azimuth angle =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseFrequency
 -}
-baseFrequency : number -> number -> Attribute a
+baseFrequency : number -> number -> Attribute msg
 baseFrequency xFrequency yFrequency =
     Attr.baseFrequency <| (toString xFrequency) ++ " " ++ (toString yFrequency)
 
@@ -60,7 +60,7 @@ baseFrequency xFrequency yFrequency =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/bias
 -}
-bias : number -> Attribute a
+bias : number -> Attribute msg
 bias rangeShift =
     Attr.bias <| toString rangeShift
 
@@ -85,7 +85,7 @@ bias rangeShift =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation-filters
 -}
-colorInterpolationFilters : ColorInterpolation -> Attribute a
+colorInterpolationFilters : ColorInterpolation -> Attribute msg
 colorInterpolationFilters colorInterpolation =
     Attr.colorInterpolationFilters <| colorInterpolationToString colorInterpolation
 
@@ -98,7 +98,7 @@ colorInterpolationFilters colorInterpolation =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
 -}
-compositeOperator : CompositeOperator -> Attribute a
+compositeOperator : CompositeOperator -> Attribute msg
 compositeOperator operator =
     Attr.operator <|
         case operator of
@@ -141,7 +141,7 @@ type CompositeOperator
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/diffuseConstant
 -}
-diffuseConstant : number -> Attribute a
+diffuseConstant : number -> Attribute msg
 diffuseConstant kdValue =
     Attr.diffuseConstant <| toString kdValue
 
@@ -162,7 +162,7 @@ diffuseConstant kdValue =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/divisor
 -}
-divisor : number -> Attribute a
+divisor : number -> Attribute msg
 divisor value =
     Attr.divisor <| toString value
 
@@ -176,7 +176,7 @@ divisor value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/edgeMode
 -}
-edgeMode : EdgeMode -> Attribute a
+edgeMode : EdgeMode -> Attribute msg
 edgeMode option =
     Attr.edgeMode <|
         case option of
@@ -205,7 +205,7 @@ type EdgeMode
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/elevation
 -}
-elevation : number -> Attribute a
+elevation : number -> Attribute msg
 elevation angle =
     Attr.elevation <| toString angle
 
@@ -221,7 +221,7 @@ elevation angle =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterRes
 -}
-filterRes : number -> number -> Attribute a
+filterRes : number -> number -> Attribute msg
 filterRes xPixels yPixels =
     Attr.filterRes <| (toString xPixels) ++ " " ++ (toString yPixels)
 
@@ -234,7 +234,7 @@ filterRes xPixels yPixels =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterUnits
 -}
-filterUnits : CoordinateSystem -> Attribute a
+filterUnits : CoordinateSystem -> Attribute msg
 filterUnits coordinateSystem =
     Attr.filterUnits <| coordinateSystemToString coordinateSystem
 
@@ -252,7 +252,7 @@ filterUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-color
 -}
-floodColor : FloodColor -> Attribute a
+floodColor : FloodColor -> Attribute msg
 floodColor color =
     Attr.floodColor <|
         case color of
@@ -284,7 +284,7 @@ type FloodColor
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-opacity
 -}
-floodOpacity : Opacity -> Attribute a
+floodOpacity : Opacity -> Attribute msg
 floodOpacity opacity =
     Attr.floodOpacity <| opacityToString opacity
 
@@ -307,7 +307,7 @@ floodOpacity opacity =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in
 -}
-in_ : InValue -> Attribute a
+in_ : InValue -> Attribute msg
 in_ value =
     Attr.in_ <| inValueToString value
 
@@ -322,7 +322,7 @@ in_ value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in2
 -}
-in2 : InValue -> Attribute a
+in2 : InValue -> Attribute msg
 in2 value =
     Attr.in2 <| inValueToString value
 
@@ -368,7 +368,7 @@ inValueToString value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k1
 -}
-k1 : number -> Attribute a
+k1 : number -> Attribute msg
 k1 value =
     Attr.k1 <| toString value
 
@@ -383,7 +383,7 @@ k1 value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k2
 -}
-k2 : number -> Attribute a
+k2 : number -> Attribute msg
 k2 value =
     Attr.k2 <| toString value
 
@@ -398,7 +398,7 @@ k2 value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k3
 -}
-k3 : number -> Attribute a
+k3 : number -> Attribute msg
 k3 value =
     Attr.k3 <| toString value
 
@@ -413,7 +413,7 @@ k3 value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k4
 -}
-k4 : number -> Attribute a
+k4 : number -> Attribute msg
 k4 value =
     Attr.k4 <| toString value
 
@@ -429,7 +429,7 @@ k4 value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelMatrix
 -}
-kernelMatrix : List number -> Attribute a
+kernelMatrix : List number -> Attribute msg
 kernelMatrix numberList =
     Attr.kernelMatrix (String.join " " (List.map toString numberList))
 
@@ -452,7 +452,7 @@ kernelMatrix numberList =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelUnitLength
 -}
-kernelUnitLength : number -> number -> Attribute a
+kernelUnitLength : number -> number -> Attribute msg
 kernelUnitLength dx dy =
     Attr.kernelUnitLength <| (toString dx) ++ " " ++ (toString dy)
 
@@ -470,7 +470,7 @@ kernelUnitLength dx dy =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/limitingConeAngle
 -}
-limitingConeAngle : number -> Attribute a
+limitingConeAngle : number -> Attribute msg
 limitingConeAngle number =
     Attr.limitingConeAngle <| toString number
 
@@ -483,7 +483,7 @@ limitingConeAngle number =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mode
 -}
-mode : Mode -> Attribute a
+mode : Mode -> Attribute msg
 mode option =
     Attr.mode <|
         case option of
@@ -522,7 +522,7 @@ type Mode
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
 -}
-numOctaves : Int -> Attribute a
+numOctaves : Int -> Attribute msg
 numOctaves int =
     Attr.numOctaves <| toString int
 
@@ -535,7 +535,7 @@ numOctaves int =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
 -}
-morphologyOperator : MorphologyOperator -> Attribute a
+morphologyOperator : MorphologyOperator -> Attribute msg
 morphologyOperator operator =
     Attr.operator <|
         case operator of
@@ -570,7 +570,7 @@ type MorphologyOperator
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/order
 -}
-order : number -> number -> Attribute a
+order : number -> number -> Attribute msg
 order orderX orderY =
     Attr.order <| (toString orderX) ++ " " ++ (toString orderY)
 
@@ -587,7 +587,7 @@ order orderX orderY =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtX
 -}
-pointsAtX : number -> Attribute a
+pointsAtX : number -> Attribute msg
 pointsAtX lightSourceX =
     Attr.pointsAtX <| toString lightSourceX
 
@@ -604,7 +604,7 @@ pointsAtX lightSourceX =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtY
 -}
-pointsAtY : number -> Attribute a
+pointsAtY : number -> Attribute msg
 pointsAtY lightSourceY =
     Attr.pointsAtY <| toString lightSourceY
 
@@ -621,7 +621,7 @@ pointsAtY lightSourceY =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtZ
 -}
-pointsAtZ : number -> Attribute a
+pointsAtZ : number -> Attribute msg
 pointsAtZ lightSourceZ =
     Attr.pointsAtZ <| toString lightSourceZ
 
@@ -640,7 +640,7 @@ pointsAtZ lightSourceZ =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAlpha
 -}
-preserveAlpha : Bool -> Attribute a
+preserveAlpha : Bool -> Attribute msg
 preserveAlpha applyOnlyToColorChannels =
     Attr.preserveAlpha <| boolToString applyOnlyToColorChannels
 
@@ -657,7 +657,7 @@ preserveAlpha applyOnlyToColorChannels =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/radius
 -}
-radius : number -> number -> Attribute a
+radius : number -> number -> Attribute msg
 radius xRadius yRadius =
     Attr.radius <| (toString xRadius) ++ " " ++ (toString yRadius)
 
@@ -680,7 +680,7 @@ radius xRadius yRadius =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/result
 -}
-result : String -> Attribute a
+result : String -> Attribute msg
 result reference =
     Attr.result <| reference
 
@@ -701,7 +701,7 @@ result reference =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/scale
 -}
-scale : number -> Attribute a
+scale : number -> Attribute msg
 scale value =
     Attr.scale <| toString value
 
@@ -717,7 +717,7 @@ scale value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/seed
 -}
-seed : number -> Attribute a
+seed : number -> Attribute msg
 seed value =
     Attr.seed <| toString value
 
@@ -733,7 +733,7 @@ seed value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/surfaceScale
 -}
-surfaceScale : number -> Attribute a
+surfaceScale : number -> Attribute msg
 surfaceScale value =
     Attr.surfaceScale <| toString value
 
@@ -752,7 +752,7 @@ surfaceScale value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetX
 -}
-targetX : number -> Attribute a
+targetX : number -> Attribute msg
 targetX xPosition =
     Attr.targetX <| toString xPosition
 
@@ -771,7 +771,7 @@ targetX xPosition =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetY
 -}
-targetY : number -> Attribute a
+targetY : number -> Attribute msg
 targetY yPosition =
     Attr.targetY <| toString yPosition
 
@@ -786,7 +786,7 @@ targetY yPosition =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
-feColorMatrixType : FeColorMatrixType -> Attribute a
+feColorMatrixType : FeColorMatrixType -> Attribute msg
 feColorMatrixType t =
     Attr.type_ <|
         case t of
@@ -817,7 +817,7 @@ type FeColorMatrixType
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
-feFuncType : FeFuncType -> Attribute a
+feFuncType : FeFuncType -> Attribute msg
 feFuncType t =
     Attr.type_ <|
         case t of
@@ -853,7 +853,7 @@ type FeFuncType
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
-feTurbulenceType : FeTurbulenceType -> Attribute a
+feTurbulenceType : FeTurbulenceType -> Attribute msg
 feTurbulenceType t =
     Attr.type_ <|
         case t of
@@ -877,7 +877,7 @@ type FeTurbulenceType
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
 -}
-feColorMatrixValues : String -> Attribute a
+feColorMatrixValues : String -> Attribute msg
 feColorMatrixValues string =
     Attr.values string
 
@@ -895,6 +895,6 @@ feColorMatrixValues string =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/z
 -}
-z : number -> Attribute a
+z : number -> Attribute msg
 z value =
     Attr.z <| toString value
