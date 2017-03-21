@@ -1,23 +1,7 @@
 module TypedSvg.Attributes
     exposing
-        ( AccumulateOption(..)
-        , AdditiveOption(..)
-        , AttributeTypeOption(..)
-        , BezierAnchorPoint
-        , CalcModeOption(..)
-        , ClipOption(..)
-        , ColorInterpolation(..)
-        , CoordinateSystem(..)
-        , Cursor(..)
-        , Direction(..)
-        , DurationValue(..)
-        , LengthAdjustOption(..)
-        , MarkerCoordinateSystem(..)
-        , ShapeRenderingOption(..)
-        , TimingValue(..)
-        , Transform(..)
-          {--Regular Attributes-}
-        , accentHeight
+        ( {--Regular Attributes-}
+          accentHeight
         , accelerate
         , accumulate
         , additive
