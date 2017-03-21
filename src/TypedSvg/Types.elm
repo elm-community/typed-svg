@@ -1,5 +1,8 @@
 module TypedSvg.Types exposing (..)
 
+import Color exposing (Color)
+import Color.Convert exposing (colorToCssRgba)
+
 
 boolToString : Bool -> String
 boolToString bool =
@@ -340,6 +343,29 @@ colorInterpolationToString colorInterpolation =
             "inherit"
 
 
+type ColorMatrixType
+    = ColorMatrixTypeMatrix
+    | ColorMatrixTypeSaturate
+    | ColorMatrixTypeHueRotate
+    | ColorMatrixTypeLuminanceToAlpha
+
+
+colorMatrixTypeToString : ColorMatrixType -> String
+colorMatrixTypeToString colorMatrixType =
+    case colorMatrixType of
+        ColorMatrixTypeMatrix ->
+            "matrix"
+
+        ColorMatrixTypeSaturate ->
+            "saturate"
+
+        ColorMatrixTypeHueRotate ->
+            "hueRotate"
+
+        ColorMatrixTypeLuminanceToAlpha ->
+            "luminanceToAlpha"
+
+
 type ColorProfile
     = ColorProfileAuto
     | ColorProfileSRGB
@@ -384,6 +410,37 @@ colorRenderingToString colorRendering =
 
         ColorRenderingInherit ->
             "inherit"
+
+
+type CompositeOperator
+    = CompositeOperatorOver
+    | CompositeOperatorIn
+    | CompositeOperatorOut
+    | CompositeOperatorAtop
+    | CompositeOperatorXor
+    | CompositeOperatorArithmetic
+
+
+compositeOperatorToString : CompositeOperator -> String
+compositeOperatorToString compositeOperator =
+    case compositeOperator of
+        CompositeOperatorOver ->
+            "over"
+
+        CompositeOperatorIn ->
+            "in"
+
+        CompositeOperatorOut ->
+            "out"
+
+        CompositeOperatorAtop ->
+            "atop"
+
+        CompositeOperatorXor ->
+            "xor"
+
+        CompositeOperatorArithmetic ->
+            "arithmetic"
 
 
 type CoordinateSystem
@@ -650,6 +707,25 @@ durationToString duration =
             "indefinite"
 
 
+type EdgeMode
+    = EdgeModeDuplicate
+    | EdgeModeWrap
+    | EdgeModeNone
+
+
+edgeModeToString : EdgeMode -> String
+edgeModeToString edgeMode =
+    case edgeMode of
+        EdgeModeDuplicate ->
+            "duplicate"
+
+        EdgeModeWrap ->
+            "wrap"
+
+        EdgeModeNone ->
+            "none"
+
+
 type FillRule
     = FillRuleNonZero
     | FillRuleEvenOdd
@@ -682,6 +758,87 @@ filterToString f =
 
         Filter funcIRI ->
             funcIRI
+
+
+type FloodColor
+    = FloodInherit
+    | FloodCurrentColor
+    | Flood Color
+    | FloodICC String
+
+
+floodColorToString : FloodColor -> String
+floodColorToString floodColor =
+    case floodColor of
+        FloodInherit ->
+            "inherit"
+
+        FloodCurrentColor ->
+            "currentColor"
+
+        Flood color ->
+            colorToCssRgba color
+
+        FloodICC iccColor ->
+            iccColor
+
+
+type FuncType
+    = FuncTypeIdentity
+    | FuncTypeTable
+    | FuncTypeDiscrete
+    | FuncTypeLinear
+    | FuncTypeGamma
+
+
+funcTypeToString : FuncType -> String
+funcTypeToString funcType =
+    case funcType of
+        FuncTypeIdentity ->
+            "identity"
+
+        FuncTypeTable ->
+            "table"
+
+        FuncTypeDiscrete ->
+            "discrete"
+
+        FuncTypeLinear ->
+            "linear"
+
+        FuncTypeGamma ->
+            "gamma"
+
+
+type InValue
+    = InSourceGraphic
+    | InSourceAlpha
+    | InBackgroundAlpha
+    | InFillPaint
+    | InStrokePaint
+    | InReference String
+
+
+inValueToString : InValue -> String
+inValueToString inValue =
+    case inValue of
+        InSourceGraphic ->
+            "sourceGraphic"
+
+        InSourceAlpha ->
+            "sourceAlpha"
+
+        InBackgroundAlpha ->
+            "backgroundAlpha"
+
+        InFillPaint ->
+            "fillPaint"
+
+        InStrokePaint ->
+            "strokePaint"
+
+        InReference str ->
+            str
 
 
 type Kerning
@@ -847,6 +1004,48 @@ meetOrSliceToString meetOrSlice =
 
         Slice ->
             "slice"
+
+
+type Mode
+    = ModeNormal
+    | ModeMultiply
+    | ModeScreen
+    | ModeDarken
+    | ModeLighten
+
+
+modeToString : Mode -> String
+modeToString mode =
+    case mode of
+        ModeNormal ->
+            "normal"
+
+        ModeMultiply ->
+            "multiply"
+
+        ModeScreen ->
+            "screen"
+
+        ModeDarken ->
+            "darken"
+
+        ModeLighten ->
+            "lighten"
+
+
+type MorphologyOperator
+    = MorphologyOperatorErode
+    | MorphologyOperatorDilate
+
+
+morphologyOperatorToString : MorphologyOperator -> String
+morphologyOperatorToString morphologyOperator =
+    case morphologyOperator of
+        MorphologyOperatorErode ->
+            "erode"
+
+        MorphologyOperatorDilate ->
+            "dilate"
 
 
 type Opacity
@@ -1021,3 +1220,18 @@ timingValueAsString timingValue =
 
         TimingIndefinite ->
             "indefinite"
+
+
+type TurbulenceType
+    = TurbulenceTypeFractalNoise
+    | TurbulenceTypeTurbulence
+
+
+turbulenceTypeToString : TurbulenceType -> String
+turbulenceTypeToString turbulenceType =
+    case turbulenceType of
+        TurbulenceTypeFractalNoise ->
+            "fractalNoise"
+
+        TurbulenceTypeTurbulence ->
+            "turbulence"

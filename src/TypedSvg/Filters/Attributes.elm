@@ -3,8 +3,6 @@ module TypedSvg.Filters.Attributes exposing (..)
 {-| Attributes of SVG filter elements
 -}
 
-import Color exposing (Color)
-import Color.Convert exposing (colorToCssRgba)
 import Svg exposing (Attribute, Svg)
 import Svg.Attributes as Attr
 import TypedSvg.Types exposing (..)
@@ -17,7 +15,7 @@ import TypedSvg.Types exposing (..)
     If the attribute is not specified, then the effect is as if a value of 0
     were specified.
 
-    Used by Elements: feDistantLight
+    Used by Elements: Filters.distantLight
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/azimuth
 -}
@@ -28,8 +26,8 @@ azimuth angle =
 
 {-|
     The baseFrequency attribute represents the frequency parameter for the noise
-    function of the feTurbulence primitive. The first number represents a base
-    frequency in the X direction and the second value represents a base
+    function of the `Filters.turbulence` primitive. The first number represents
+    a base frequency in the X direction and the second value represents a base
     frequency in the Y direction.
 
     Negative values are forbidden.
@@ -37,7 +35,7 @@ azimuth angle =
     If the attribute is not specified, then the effect is as if a value of 0
     were specified.
 
-    Used by Elements: feTurbulence
+    Used by Elements: Filters.turbulence
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseFrequency
 -}
@@ -48,15 +46,15 @@ baseFrequency xFrequency yFrequency =
 
 {-|
     The bias attribute shifts the range of a filter. After applying the
-    kernelMatrix of the feConvolveMatrix element to the input image to yield a
-    number and applying the divisor attribute, the bias attribute is added to
-    each component. This allows representation of values that would otherwise
-    be clamped to 0 or 1.
+    kernelMatrix of the `Filters.convolveMatrix` element to the input image to
+    yield a number and applying the divisor attribute, the bias attribute is
+    added to each component. This allows representation of values that would
+    otherwise be clamped to 0 or 1.
 
     If bias is not specified, then the effect is as if a value of 0 were
     specified.
 
-    Used by Elements: feConvolveMatrix
+    Used by Elements: Filters.convolveMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/bias
 -}
@@ -79,9 +77,11 @@ bias rangeShift =
     As a presentation attribute, it also can be used as a property directly
     inside a CSS stylesheet.
 
-    Used by Elements: feBlend, feColorMatrix, feComponentTransfer, feComposite,
-        feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feGaussianBlur,
-        feMorphology, feOffset, feSpecularLighting, feTile
+    Used by Elements: Filters.blend, Filters.colorMatrix,
+        Filters.componentTransfer, Filters.composite, Filters.convolveMatrix,
+        Filters.diffuseLighting, Filters.displacementMap, Filters.gaussianBlur,
+        Filters.morphology, Filters.offset, Filters.specularLighting,
+        Filters.tile
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation-filters
 -}
@@ -92,42 +92,15 @@ colorInterpolationFilters colorInterpolation =
 
 {-|
     compositeOperator defines the compositing operation that is to be performed
-    in the `feComposite` element
+    in the `Filters.composite` element
 
-    Used by Elements: feComposite
+    Used by Elements: Filters.composite
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
 -}
 compositeOperator : CompositeOperator -> Attribute msg
-compositeOperator operator =
-    Attr.operator <|
-        case operator of
-            CompositeOperatorOver ->
-                "over"
-
-            CompositeOperatorIn ->
-                "in"
-
-            CompositeOperatorOut ->
-                "out"
-
-            CompositeOperatorAtop ->
-                "atop"
-
-            CompositeOperatorXor ->
-                "xor"
-
-            CompositeOperatorArithmetic ->
-                "arithmetic"
-
-
-type CompositeOperator
-    = CompositeOperatorOver
-    | CompositeOperatorIn
-    | CompositeOperatorOut
-    | CompositeOperatorAtop
-    | CompositeOperatorXor
-    | CompositeOperatorArithmetic
+compositeOperator compositeOperator =
+    Attr.operator <| compositeOperatorToString compositeOperator
 
 
 {-|
@@ -137,7 +110,7 @@ type CompositeOperator
     If the attribute is not specified, then the effect is as if a value of 1
     were specified.
 
-    Used by Elements: feDiffuseLighting
+    Used by Elements: Filters.diffuseLighting
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/diffuseConstant
 -}
@@ -147,18 +120,18 @@ diffuseConstant kdValue =
 
 
 {-|
-    After applying the kernelMatrix of the feConvolveMatrix element to the input
-    image to yield a number, that number is divided by the value given to the
-    divisor attribute to yield the final destination color value. A divisor that
-    is the sum of all the matrix values tends to have an evening effect on the
-    overall color intensity of the result.
+    After applying the kernelMatrix of the Filters.convolveMatrix element to the
+    input image to yield a number, that number is divided by the value given to
+    the divisor attribute to yield the final destination color value. A divisor
+    that is the sum of all the matrix values tends to have an evening effect on
+    the overall color intensity of the result.
 
     The default value is the sum of all values in kernelMatrix, with the
     exception that if the sum is zero, then the divisor is set to 1.
 
     It is an error to specify a divisor of zero.
 
-    Used by Elements: feConvolveMatrix
+    Used by Elements: Filters.convolveMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/divisor
 -}
@@ -172,28 +145,13 @@ divisor value =
     with color values so that the matrix operations can be applied when the
     kernel is positioned at or near the edge of the input image.
 
-    Used by Elements: feConvolveMatrix
+    Used by Elements: Filters.convolveMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/edgeMode
 -}
 edgeMode : EdgeMode -> Attribute msg
-edgeMode option =
-    Attr.edgeMode <|
-        case option of
-            EdgeModeDuplicate ->
-                "duplicate"
-
-            EdgeModeWrap ->
-                "wrap"
-
-            EdgeModeNone ->
-                "none"
-
-
-type EdgeMode
-    = EdgeModeDuplicate
-    | EdgeModeWrap
-    | EdgeModeNone
+edgeMode edgeMode =
+    Attr.edgeMode <| edgeModeToString edgeMode
 
 
 {-|
@@ -201,7 +159,7 @@ type EdgeMode
     from the XY plane towards the Z axis, in degrees. Note the positive Z-axis
     points towards the viewer of the content.
 
-    Used by Elements: feDistantLight
+    Used by Elements: Filters.distantLight
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/elevation
 -}
@@ -217,7 +175,7 @@ elevation angle =
 
     NOTE: Obsolete.
 
-    Used by Elements: filter
+    Used by Elements: Filters.filter
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterRes
 -}
@@ -230,7 +188,7 @@ filterRes xPixels yPixels =
     The filterUnits attribute defines the coordinate system for attributes x, y,
     width and height.
 
-    Used by Elements: filter
+    Used by Elements: Filters.filter
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterUnits
 -}
@@ -241,46 +199,28 @@ filterUnits coordinateSystem =
 
 {-|
     The `floodColor` attribute indicates what color to use to flood the current
-    filter primitive subregion defined through the `feFlood` element. The
+    filter primitive subregion defined through the `Filters.flood` element. The
     keyword currentColor and ICC colors can be specified in the same manner as
     within a `paint` specification for the fill and stroke attributes.
 
     As a presentation attribute, it also can be used as a property directly
     inside a CSS stylesheet.
 
-    Used by Elements: feFlood
+    Used by Elements: Filters.flood
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-color
 -}
 floodColor : FloodColor -> Attribute msg
-floodColor color =
-    Attr.floodColor <|
-        case color of
-            FloodInherit ->
-                "inherit"
-
-            FloodCurrentColor ->
-                "currentColor"
-
-            Flood color ->
-                colorToCssRgba color
-
-            FloodICC iccColor ->
-                iccColor
-
-
-type FloodColor
-    = FloodInherit
-    | FloodCurrentColor
-    | Flood Color
-    | FloodICC String
+floodColor floodColor =
+    Attr.floodColor <| floodColorToString floodColor
 
 
 {-|
     The `floodOpacity` attribute indicates the opacity value to use across the
-    current filter primitive subregion defined through the `feFlood` element.
+    current filter primitive subregion defined through the `Filters.flood`
+    element.
 
-    Used by Elements: feFlood
+    Used by Elements: Filters.flood
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-opacity
 -}
@@ -301,9 +241,11 @@ floodOpacity opacity =
     filter primitive will use the result from the previous filter primitive as
     its input.
 
-    Used by Elements: feBlend, feColorMatrix, feComponentTransfer, feComposite,
-        feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feGaussianBlur,
-        feMorphology, feOffset, feSpecularLighting, feTile
+    Used by Elements: Filters.blend, Filters.colorMatrix,
+        Filters.componentTransfer, Filters.composite, Filters.convolveMatrix,
+        Filters.diffuseLighting, Filters.displacementMap, Filters.gaussianBlur,
+        Filters.morphology, Filters.offset, Filters.specularLighting,
+        Filters.tile
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in
 -}
@@ -316,9 +258,11 @@ in_ value =
     The `in2` attribute identifies the second input for the given filter
     primitive. It works exactly like the in attribute.
 
-    Used by Elements: feBlend, feColorMatrix, feComponentTransfer, feComposite,
-        feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feGaussianBlur,
-        feMorphology, feOffset, feSpecularLighting, feTile
+    Used by Elements: Filters.blend, Filters.colorMatrix,
+        Filters.componentTransfer, Filters.composite, Filters.convolveMatrix,
+        Filters.diffuseLighting, Filters.displacementMap, Filters.gaussianBlur,
+        Filters.morphology, Filters.offset, Filters.specularLighting,
+        Filters.tile
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in2
 -}
@@ -327,44 +271,13 @@ in2 value =
     Attr.in2 <| inValueToString value
 
 
-type InValue
-    = InSourceGraphic
-    | InSourceAlpha
-    | InBackgroundAlpha
-    | InFillPaint
-    | InStrokePaint
-    | InReference String
-
-
-inValueToString : InValue -> String
-inValueToString value =
-    case value of
-        InSourceGraphic ->
-            "sourceGraphic"
-
-        InSourceAlpha ->
-            "sourceAlpha"
-
-        InBackgroundAlpha ->
-            "backgroundAlpha"
-
-        InFillPaint ->
-            "fillPaint"
-
-        InStrokePaint ->
-            "strokePaint"
-
-        InReference str ->
-            str
-
-
 {-|
     The k1 attribute defines one of the values to be used within the arithmetic
-    operation of the `feComposite` filter primitive.
+    operation of the `Filters.composite` filter primitive.
 
     If this attribute is not set, its default value is 0.
 
-    Used by Elements: feComposite
+    Used by Elements: Filters.composite
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k1
 -}
@@ -375,11 +288,11 @@ k1 value =
 
 {-|
     The k2 attribute defines one of the values to be used within the arithmetic
-    operation of the `feComposite` filter primitive.
+    operation of the `Filters.composite` filter primitive.
 
     If this attribute is not set, its default value is 0.
 
-    Used by Elements: feComposite
+    Used by Elements: Filters.composite
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k2
 -}
@@ -390,11 +303,11 @@ k2 value =
 
 {-|
     The k3 attribute defines one of the values to be used within the arithmetic
-    operation of the `feComposite` filter primitive.
+    operation of the `Filters.composite` filter primitive.
 
     If this attribute is not set, its default value is 0.
 
-    Used by Elements: feComposite
+    Used by Elements: Filters.composite
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k3
 -}
@@ -405,11 +318,11 @@ k3 value =
 
 {-|
     The k4 attribute defines one of the values to be used within the arithmetic
-    operation of the `feComposite` filter primitive.
+    operation of the `Filters.composite` filter primitive.
 
     If this attribute is not set, its default value is 0.
 
-    Used by Elements: feComposite
+    Used by Elements: Filters.composite
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k4
 -}
@@ -420,12 +333,12 @@ k4 value =
 
 {-|
     The `order` attribute defines the list of numbers that makes up the kernel
-    matrix for the `feConvolveMatrix` element.
+    matrix for the `Filters.convolveMatrix` element.
 
     The number of entries in the list must be equal to `orderX` x `orderY`, as
     defined in the `order` attribute.
 
-    Used by Elements: feConvolveMatrix
+    Used by Elements: Filters.convolveMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelMatrix
 -}
@@ -448,7 +361,8 @@ kernelMatrix numberList =
       attribute primitiveUnits) between successive columns and rows,
       respectively, in the kernelMatrix.
 
-    Used by Elements: feConvolveMatrix, feDiffuseLighting, feSpecularLighting
+    Used by Elements: Filters.convolveMatrix, Filters.diffuseLighting,
+        Filters.specularLighting
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelUnitLength
 -}
@@ -466,7 +380,7 @@ kernelUnitLength dx dy =
 
     If no value is specified, then no limiting cone will be applied.
 
-    Used by Elements: feSpotlight
+    Used by Elements: Filters.spotlight
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/limitingConeAngle
 -}
@@ -476,49 +390,26 @@ limitingConeAngle number =
 
 
 {-|
-    The mode attribute defines the blending mode on the `feBlend` filter
+    The mode attribute defines the blending mode on the `Filters.blend` filter
     primitive.
 
-    Used by Elements: feBlend
+    Used by Elements: Filters.blend
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mode
 -}
 mode : Mode -> Attribute msg
-mode option =
-    Attr.mode <|
-        case option of
-            ModeNormal ->
-                "normal"
-
-            ModeMultiply ->
-                "multiply"
-
-            ModeScreen ->
-                "screen"
-
-            ModeDarken ->
-                "darken"
-
-            ModeLighten ->
-                "lighten"
-
-
-type Mode
-    = ModeNormal
-    | ModeMultiply
-    | ModeScreen
-    | ModeDarken
-    | ModeLighten
+mode mode =
+    Attr.mode <| modeToString mode
 
 
 {-|
-    The numOctaves parameter for the noise function of the `feTurbulence`
+    The numOctaves parameter for the noise function of the `Filters.turbulence`
     primitive.
 
     If the attribute is not specified, then the effect is as if a value of 1
     were specified.
 
-    Used by Elements: feTurbulence
+    Used by Elements: Filters.turbulence
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
 -}
@@ -531,29 +422,18 @@ numOctaves int =
     compositeOperator defines the compositing operation that is to be performed
     in the `feMorphology` element
 
-    Used by Elements: feMorphology
+    Used by Elements: Filters.morphology
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
 -}
 morphologyOperator : MorphologyOperator -> Attribute msg
-morphologyOperator operator =
-    Attr.operator <|
-        case operator of
-            MorphologyOperatorErode ->
-                "erode"
-
-            MorphologyOperatorDilate ->
-                "dilate"
-
-
-type MorphologyOperator
-    = MorphologyOperatorErode
-    | MorphologyOperatorDilate
+morphologyOperator morphologyOperator =
+    Attr.operator <| morphologyOperatorToString morphologyOperator
 
 
 {-|
     The order attribute indicates the size of the matrix to be used by an
-    `feConvolveMatrix` element.
+    `Filters.convolveMatrix` element.
 
     The values provided must be integers greater than zero. The first number,
     `orderX`, indicates the number of columns in the matrix. The second number,
@@ -566,7 +446,7 @@ type MorphologyOperator
     If the attribute is not specified, the effect is as if a value of 3 were
     specified.
 
-    Used by Elements: feConvolveMatrix
+    Used by Elements: Filters.convolveMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/order
 -}
@@ -583,7 +463,7 @@ order orderX orderY =
     If the attribute is not specified, then the effect is as if a value of 0
     were specified.
 
-    Used by Elements: feSpotlight
+    Used by Elements: Filters.spotlight
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtX
 -}
@@ -600,7 +480,7 @@ pointsAtX lightSourceX =
     If the attribute is not specified, then the effect is as if a value of 0
     were specified.
 
-    Used by Elements: feSpotlight
+    Used by Elements: Filters.spotlight
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtY
 -}
@@ -617,7 +497,7 @@ pointsAtY lightSourceY =
     If the attribute is not specified, then the effect is as if a value of 0
     were specified.
 
-    Used by Elements: feSpotlight
+    Used by Elements: Filters.spotlight
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtZ
 -}
@@ -636,7 +516,7 @@ pointsAtZ lightSourceZ =
     A value of true indicates that the convolution matrix will only apply to the
     color channels.
 
-    Used by Elements: feConvolveMatrix
+    Used by Elements: Filters.convolveMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAlpha
 -}
@@ -653,7 +533,7 @@ preserveAlpha applyOnlyToColorChannels =
     If the attribute is not specified, then the effect is as if a value of 0
     were specified.
 
-    Used by Elements: feMorphology
+    Used by Elements: Filters.morphology
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/radius
 -}
@@ -687,7 +567,7 @@ result reference =
 
 {-|
     The `scale` attribute define the displacement scale factor to be used on a
-    `feDisplacementMap` filter primitive. The amount is expressed in the
+    `Filters.displacementMap` filter primitive. The amount is expressed in the
     coordinate system established by the `primitiveUnits` attribute on the
     `filter` element.
 
@@ -697,7 +577,7 @@ result reference =
     If the attribute is not specified, then the effect is as if a value of 0
     were specified.
 
-    Used by Elements: feDisplacementMap
+    Used by Elements: Filters.displacementMap
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/scale
 -}
@@ -708,12 +588,12 @@ scale value =
 
 {-|
     The seed attribute represents the starting number for the pseudo random
-    number generator of the `feTurbulence` primitive.
+    number generator of the `Filters.turbulence` primitive.
 
     If the attribute is not specified, then the effect is as if a value of 0
     were specified.
 
-    Used by Elements: feTurbulence
+    Used by Elements: Filters.turbulence
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/seed
 -}
@@ -729,7 +609,7 @@ seed value =
     If the attribute is not specified, then the effect is as if a value of 1
     were specified.
 
-    Used by Elements: feDiffuseLighting, feSpecularLighting
+    Used by Elements: Filters.diffuseLighting, Filters.specularLighting
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/surfaceScale
 -}
@@ -748,7 +628,7 @@ surfaceScale value =
     By default, the convolution matrix is centered in X over each pixel of the
     input image (i.e., targetX = floor ( orderX / 2 )).
 
-    Used by Elements: feConvolveMatrix
+    Used by Elements: convolveMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetX
 -}
@@ -767,7 +647,7 @@ targetX xPosition =
     By default, the convolution matrix is centered in Y over each pixel of the
     input image (i.e., targetY = floor ( orderY / 2 )).
 
-    Used by Elements: feConvolveMatrix
+    Used by Elements: Filters.convolveMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetY
 -}
@@ -782,103 +662,50 @@ targetY yPosition =
     convenience shortcuts to allow commonly used color operations to be
     performed without specifying a complete matrix.
 
-    Used by Elements: feColorMatrix
+    Used by Elements: Filters.colorMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
-feColorMatrixType : FeColorMatrixType -> Attribute msg
-feColorMatrixType t =
-    Attr.type_ <|
-        case t of
-            TypeMatrix ->
-                "matrix"
-
-            TypeSaturate ->
-                "saturate"
-
-            TypeHueRotate ->
-                "hueRotate"
-
-            TypeLuminanceToAlpha ->
-                "luminanceToAlpha"
-
-
-type FeColorMatrixType
-    = TypeMatrix
-    | TypeSaturate
-    | TypeHueRotate
-    | TypeLuminanceToAlpha
+colorMatrixType : ColorMatrixType -> Attribute msg
+colorMatrixType colorMatrixType =
+    Attr.type_ <| colorMatrixTypeToString colorMatrixType
 
 
 {-|
     Indicates the type of component transfer function.
 
-    Used by Elements: feFuncR, feFuncG, feFuncA, feFuncB
+    Used by Elements: Filters.funcR, Filters.funcG, Filters.funcA, Filters.funcB
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
-feFuncType : FeFuncType -> Attribute msg
-feFuncType t =
-    Attr.type_ <|
-        case t of
-            TypeIdentity ->
-                "identity"
-
-            TypeTable ->
-                "table"
-
-            TypeDiscrete ->
-                "discrete"
-
-            TypeLinear ->
-                "linear"
-
-            TypeGamma ->
-                "gamma"
-
-
-type FeFuncType
-    = TypeIdentity
-    | TypeTable
-    | TypeDiscrete
-    | TypeLinear
-    | TypeGamma
+funcType : FuncType -> Attribute msg
+funcType funcType =
+    Attr.type_ <| funcTypeToString funcType
 
 
 {-|
     Indicates whether the filter primitive should perform a noise or turbulence
     function.
 
-    Used by Elements: feTurbulence
+    Used by Elements: Filters.turbulence
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
-feTurbulenceType : FeTurbulenceType -> Attribute msg
-feTurbulenceType t =
-    Attr.type_ <|
-        case t of
-            TypeFractalNoise ->
-                "fractalNoise"
-
-            TypeTurbulence ->
-                "turbulence"
-
-
-type FeTurbulenceType
-    = TypeFractalNoise
-    | TypeTurbulence
+turbulenceType : TurbulenceType -> Attribute msg
+turbulenceType turbulenceType =
+    Attr.type_ <| turbulenceTypeToString turbulenceType
 
 
 {-|
-    Contents of feColorMatrixValues depends on the value of the attribute
+    Contents of `colorMatrixValues` depends on the value of the attribute
     `type`.
 
-    Used by Elements: feColorMatrix
+    Used by Elements: Filters.colorMatrix
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
 -}
-feColorMatrixValues : String -> Attribute msg
-feColorMatrixValues string =
+colorMatrixValues : String -> Attribute msg
+colorMatrixValues string =
     Attr.values string
 
 
@@ -891,7 +718,7 @@ feColorMatrixValues string =
 
     If the attribute is not specified, then the effect is as if a value of 0 were specified.
 
-    Used by Elements: fePointlight, feSpotlight
+    Used by Elements: Filters.pointlight, Filters.spotlight
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/z
 -}
