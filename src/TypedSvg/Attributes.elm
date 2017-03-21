@@ -11,10 +11,8 @@ module TypedSvg.Attributes
         , Cursor(..)
         , Direction(..)
         , DurationValue(..)
-        , EdgeModeOption(..)
         , LengthAdjustOption(..)
         , MarkerCoordinateSystem(..)
-        , ModeOption(..)
         , ShapeRenderingOption(..)
         , TimingValue(..)
         , Transform(..)
@@ -31,18 +29,14 @@ module TypedSvg.Attributes
         , attributeName
         , attributeType
           -- , autoReverse
-        , azimuth
-        , baseFrequency
           -- , baseProfile
           -- , bbox
         , begin
-        , bias
           -- , by
         , calcMode
           -- , capHeight
         , class
         , clipPathUnits
-        , compositeOperator
         , contentScriptType
         , contentStyleType
         , cx
@@ -50,19 +44,13 @@ module TypedSvg.Attributes
         , d
           -- , decelerate
           -- , descent
-        , diffuseConstant
-        , divisor
         , dur
         , dx
         , dy
-        , edgeMode
-        , elevation
           -- , enableBackground
         , end
           -- , exponent
         , externalResourcesRequired
-        , filterRes
-        , filterUnits
           -- , format
         , from
           -- , g1
@@ -77,22 +65,13 @@ module TypedSvg.Attributes
           -- , horizOriginY
           -- , id
           -- , ideographic
-        , in_
-        , in2
           -- , intercept
           -- , k
-        , k1
-        , k2
-        , k3
-        , k4
-        , kernelMatrix
-        , kernelUnitLength
           -- , keyPoints
         , keySplines
         , keyTimes
           -- , lang
         , lengthAdjust
-        , limitingConeAngle
           -- , local
         , markerHeight
         , markerUnits
@@ -104,13 +83,9 @@ module TypedSvg.Attributes
           -- , media
           -- , method
         , min
-        , mode
           -- , name
-        , morphologyOperator
-        , numOctaves
           -- , offset
           -- , operator -- see compositeOperator, morphologyOperator
-        , order
           -- , orient
           -- , orientation
           -- , origin
@@ -124,14 +99,9 @@ module TypedSvg.Attributes
         , patternUnits
           -- , pointOrder
         , points
-        , pointsAtX
-        , pointsAtY
-        , pointsAtZ
-        , preserveAlpha
         , preserveAspectRatio
         , primitiveUnits
         , r
-        , radius
           -- , refX
           -- , refY
           -- , renderingIntent
@@ -140,12 +110,9 @@ module TypedSvg.Attributes
           -- , requiredExtensions
         , requiredFeatures
         , restart
-        , result
           -- , rotate
         , rx
         , ry
-        , scale
-        , seed
           -- , slope
           -- , spacing
           -- , specularConstant
@@ -161,12 +128,9 @@ module TypedSvg.Attributes
           -- , strikethroughThickness
           -- , string
         , style
-        , surfaceScale
           -- , systemLanguage
           -- , tableValues
           -- , target
-        , targetX
-        , targetY
         , textLength
           -- , title
         , to
@@ -198,7 +162,6 @@ module TypedSvg.Attributes
           -- , xlinkType
           -- , xmlBase
           -- , yChannelSelector
-        , z
           -- , zoomAndPan
           --
           {--Length or Position Attributes-}
@@ -219,7 +182,6 @@ module TypedSvg.Attributes
         , clipPath
         , clipRule
         , clip
-        , colorInterpolationFilters
         , colorInterpolation
         , colorProfile
         , colorRendering
@@ -228,13 +190,13 @@ module TypedSvg.Attributes
         , direction
         , display
         , dominantBaseline
-        , enableBackground
+          -- , enableBackground
         , fillOpacity
         , fillRule
         , fill
         , filter
-        , floodColor
-        , floodOpacity
+          -- , floodColor
+          -- , floodOpacity
         , fontFamily
         , fontSizeAdjust
         , fontSize
@@ -280,120 +242,8 @@ import Color.Convert exposing (colorToCssRgba)
 import Html exposing (Html)
 import Html.Attributes exposing (name)
 import Svg exposing (Attribute, Svg)
-import Svg.Attributes as Attr exposing (colorInterpolationFilters)
-import TypedSvg.Lengths exposing (..)
-
-
-{-| The Transform type is used by `transform` and `gradientTransform`
--}
-type Transform
-    = Matrix Float Float Float Float Float Float
-    | Rotate Float Float Float
-    | Scale Float Float
-    | SkewX Float
-    | SkewY Float
-    | Translate Float Float
-
-
-transformToString : Transform -> String
-transformToString xform =
-    let
-        tr name args =
-            String.concat
-                [ name
-                , "("
-                , String.join " " (List.map toString args)
-                , ")"
-                ]
-    in
-        case xform of
-            Matrix a b c d e f ->
-                tr "matrix" [ a, b, c, d, e, f ]
-
-            Rotate a x y ->
-                tr "rotate" [ a, x, y ]
-
-            Scale x y ->
-                tr "scale" [ x, y ]
-
-            SkewX x ->
-                tr "skewX" [ x ]
-
-            SkewY y ->
-                tr "skewY" [ y ]
-
-            Translate x y ->
-                tr "translate" [ x, y ]
-
-
-{-| In a future version of TypedSvg, this may be turned into a DSL
--}
-type alias ClockValue =
-    String
-
-
-timingValueAsString : TimingValue -> String
-timingValueAsString timingValue =
-    case timingValue of
-        TimingOffsetValue clock ->
-            clock
-
-        TimingSyncBaseValue str ->
-            str
-
-        TimingEventValue str ->
-            str
-
-        TimingRepeatValue str ->
-            str
-
-        TimingAccessKeyValue str ->
-            str
-
-        TimingWallclockSyncValue str ->
-            str
-
-        TimingIndefinite ->
-            "indefinite"
-
-
-{-| Used by `begin` and `end` in constraining animation times
--}
-type TimingValue
-    = TimingOffsetValue ClockValue
-    | TimingSyncBaseValue String
-    | TimingEventValue String
-    | TimingRepeatValue String
-    | TimingAccessKeyValue String
-    | TimingWallclockSyncValue String
-    | TimingIndefinite
-
-
-{-| CoordinateSystem is used by filter and clip
--}
-coordinateSystemToString : CoordinateSystem -> String
-coordinateSystemToString coordinateSystem =
-    case coordinateSystem of
-        CoordinateSystemUserSpaceOnUse ->
-            "userSpaceOnUse"
-
-        CoordinateSystemObjectBoundingBox ->
-            "objectBoundingBox"
-
-
-type CoordinateSystem
-    = CoordinateSystemUserSpaceOnUse
-    | CoordinateSystemObjectBoundingBox
-
-
-boolToString : Bool -> String
-boolToString bool =
-    case bool of
-        True ->
-            "true"
-
-        False ->
-            "false"
+import Svg.Attributes as Attr exposing (colorInterpolationFilters, enableBackground)
+import TypedSvg.Types exposing (..)
 
 
 {-| Defines the distance from the origin to the top of accent characters,
@@ -433,20 +283,9 @@ accelerate rate =
 
     See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accumulate
 -}
-accumulate : AccumulateOption -> Attribute a
+accumulate : Accumulate -> Attribute a
 accumulate option =
-    Attr.accumulate <|
-        case option of
-            AccumulateNone ->
-                "none"
-
-            AccumulateSum ->
-                "sum"
-
-
-type AccumulateOption
-    = AccumulateNone
-    | AccumulateSum
+    Attr.accumulate <| accumulateToString option
 
 
 {-| This attribute controls whether or not the animation is additive.
@@ -458,20 +297,9 @@ type AccumulateOption
 
     See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/additive
 -}
-additive : AdditiveOption -> Attribute a
+additive : Additive -> Attribute a
 additive option =
-    Attr.additive <|
-        case option of
-            AdditiveNone ->
-                "none"
-
-            AdditiveReplace ->
-                "replace"
-
-
-type AdditiveOption
-    = AdditiveNone
-    | AdditiveReplace
+    Attr.additive <| additiveToString option
 
 
 {-|
@@ -485,7 +313,7 @@ type AdditiveOption
     alignmentBaseline property.
 
     As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet, see css alignmentBaseline for further information.
+    inside a CSS stylesheet.
 
     Used by Elements: altGlyph, tspan, tref, textPath
 
@@ -493,62 +321,7 @@ type AdditiveOption
 -}
 alignmentBaseline : AlignmentBaseline -> Attribute a
 alignmentBaseline alignmentBaseline =
-    Attr.alignmentBaseline <|
-        case alignmentBaseline of
-            AlignmentAuto ->
-                "auto"
-
-            AlignmentBaseline ->
-                "baseline"
-
-            AlignmentBeforeEdge ->
-                "before-edge"
-
-            AlignmentTextBeforeEdge ->
-                "text-before-edge"
-
-            AlignmentMiddle ->
-                "middle"
-
-            AlignmentCentral ->
-                "central"
-
-            AlignmentAfterEdge ->
-                "after-edge"
-
-            AlignmentTextAfterEdge ->
-                "text-after-edge"
-
-            AlignmentIdeographic ->
-                "ideographic"
-
-            AlignmentAlphabetic ->
-                "alphabetic"
-
-            AlignmentHanging ->
-                "hanging"
-
-            AlignmentMathematical ->
-                "mathematical"
-
-            AlignmentInherit ->
-                "inherit"
-
-
-type AlignmentBaseline
-    = AlignmentAuto
-    | AlignmentBaseline
-    | AlignmentBeforeEdge
-    | AlignmentTextBeforeEdge
-    | AlignmentMiddle
-    | AlignmentCentral
-    | AlignmentAfterEdge
-    | AlignmentTextAfterEdge
-    | AlignmentIdeographic
-    | AlignmentAlphabetic
-    | AlignmentHanging
-    | AlignmentMathematical
-    | AlignmentInherit
+    Attr.alignmentBaseline <| alignmentBaselineToString alignmentBaseline
 
 
 {-| This attribute defines the maximum unaccented depth of the font within the
@@ -585,24 +358,9 @@ attributeName name =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeType
 -}
-attributeType : AttributeTypeOption -> Attribute a
-attributeType option =
-    Attr.attributeType <|
-        case option of
-            AttributeTypeAuto ->
-                "auto"
-
-            AttributeTypeCss ->
-                "CSS"
-
-            AttributeTypeXml ->
-                "XML"
-
-
-type AttributeTypeOption
-    = AttributeTypeAuto
-    | AttributeTypeCss
-    | AttributeTypeXml
+attributeType : AttributeType -> Attribute a
+attributeType attributeType =
+    Attr.attributeType <| attributeTypeToString attributeType
 
 
 {-|
@@ -619,38 +377,7 @@ type AttributeTypeOption
 -}
 baselineShift : BaselineShift -> Attribute a
 baselineShift baselineShift =
-    Attr.baselineShift <|
-        case baselineShift of
-            ShiftAuto ->
-                "auto"
-
-            ShiftBaseline ->
-                "baseline"
-
-            ShiftSuper ->
-                "super"
-
-            ShiftSub ->
-                "sub"
-
-            ShiftPercentage value ->
-                (toString value) ++ "%"
-
-            ShiftLength length ->
-                (lengthToString length)
-
-            ShiftInherit ->
-                "inherit"
-
-
-type BaselineShift
-    = ShiftAuto
-    | ShiftBaseline
-    | ShiftSuper
-    | ShiftSub
-    | ShiftPercentage Float
-    | ShiftLength Length
-    | ShiftInherit
+    Attr.baselineShift <| baselineShiftToString baselineShift
 
 
 {-|
@@ -679,28 +406,9 @@ begin timingValues =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode
 -}
-calcMode : CalcModeOption -> Attribute a
-calcMode option =
-    Attr.calcMode <|
-        case option of
-            CalcModeDiscrete ->
-                "discrete"
-
-            CalcModeLinear ->
-                "linear"
-
-            CalcModePaced ->
-                "paced"
-
-            CalcModeSpline ->
-                "spline"
-
-
-type CalcModeOption
-    = CalcModeDiscrete
-    | CalcModeLinear
-    | CalcModePaced
-    | CalcModeSpline
+calcMode : CalcMode -> Attribute a
+calcMode calcMode =
+    Attr.calcMode <| calcModeToString calcMode
 
 
 {-|
@@ -743,32 +451,9 @@ class names =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip
 -}
-clip : ClipOption -> Attribute a
-clip option =
-    Attr.clip <|
-        case option of
-            ClipAuto ->
-                "auto"
-
-            ClipInherit ->
-                "inherit"
-
-            ClipShape top right bottom left ->
-                "rect("
-                    ++ (toString top)
-                    ++ " "
-                    ++ (toString right)
-                    ++ " "
-                    ++ (toString bottom)
-                    ++ " "
-                    ++ (toString left)
-                    ++ ")"
-
-
-type ClipOption
-    = ClipAuto
-    | ClipInherit
-    | ClipShape Length Length Length Length
+clip : Clip -> Attribute a
+clip clip =
+    Attr.clip <| clipToString clip
 
 
 {-|
@@ -786,22 +471,7 @@ type ClipOption
 -}
 clipPath : ClipPath -> Attribute a
 clipPath clipPath =
-    Attr.clipPath <|
-        case clipPath of
-            ClipPathNone ->
-                "none"
-
-            ClipPathInherit ->
-                "inherit"
-
-            ClipPathFunc value ->
-                value
-
-
-type ClipPath
-    = ClipPathNone
-    | ClipPathInherit
-    | ClipPathFunc String
+    Attr.clipPath <| clipPathToString clipPath
 
 
 {-|
@@ -838,22 +508,7 @@ clipPathUnits coordinateSystem =
 -}
 clipRule : ClipRule -> Attribute a
 clipRule clipRule =
-    Attr.clipRule <|
-        case clipRule of
-            ClipRuleNonZero ->
-                "nonzero"
-
-            ClipRuleEvenOdd ->
-                "evenodd"
-
-            ClipRuleInherit ->
-                "inherit"
-
-
-type ClipRule
-    = ClipRuleNonZero
-    | ClipRuleEvenOdd
-    | ClipRuleInherit
+    Attr.clipRule <| clipRuleToString clipRule
 
 
 {-|
@@ -886,29 +541,6 @@ colorInterpolation colorInterpolation =
     Attr.colorInterpolation <| colorInterpolationToString colorInterpolation
 
 
-type ColorInterpolation
-    = ColorInterpolationAuto
-    | ColorInterpolationSRGB
-    | ColorInterpolationLinearRGB
-    | ColorInterpolationInherit
-
-
-colorInterpolationToString : ColorInterpolation -> String
-colorInterpolationToString colorInterpolation =
-    case colorInterpolation of
-        ColorInterpolationAuto ->
-            "auto"
-
-        ColorInterpolationSRGB ->
-            "sRGB"
-
-        ColorInterpolationLinearRGB ->
-            "linearRGB"
-
-        ColorInterpolationInherit ->
-            "inherit"
-
-
 {-|
     The `colorProfile` attribute is used to define which color profile a raster
     image included through the `image` element should use.
@@ -922,26 +554,7 @@ colorInterpolationToString colorInterpolation =
 -}
 colorProfile : ColorProfile -> Attribute a
 colorProfile colorProfile =
-    Attr.colorProfile <|
-        case colorProfile of
-            ColorProfileAuto ->
-                "auto"
-
-            ColorProfileSRGB ->
-                "sRGB"
-
-            ColorProfile name ->
-                name
-
-            ColorProfileInherit ->
-                "inherit"
-
-
-type ColorProfile
-    = ColorProfileAuto
-    | ColorProfileSRGB
-    | ColorProfile String
-    | ColorProfileInherit
+    Attr.colorProfile <| colorProfileToString colorProfile
 
 
 {-|
@@ -966,26 +579,7 @@ type ColorProfile
 -}
 colorRendering : ColorRendering -> Attribute a
 colorRendering colorRendering =
-    Attr.colorRendering <|
-        case colorRendering of
-            ColorRenderingAuto ->
-                "auto"
-
-            ColorRenderingOptimizeSpeed ->
-                "optimizeSpeed"
-
-            ColorRenderingOptimizeQuality ->
-                "optimizeQuality"
-
-            ColorRenderingInherit ->
-                "inherit"
-
-
-type ColorRendering
-    = ColorRenderingAuto
-    | ColorRenderingOptimizeSpeed
-    | ColorRenderingOptimizeQuality
-    | ColorRenderingInherit
+    Attr.colorRendering <| colorRenderingToString colorRendering
 
 
 {-|
@@ -1054,79 +648,8 @@ contentStyleType styleSheetLanguage =
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cursor
 -}
 cursor : Cursor -> Attribute a
-cursor c =
-    Attr.cursor <|
-        case c of
-            CursorAuto ->
-                "auto"
-
-            CursorDefault ->
-                "default"
-
-            CursorCrosshair ->
-                "crosshair"
-
-            CursorPointer ->
-                "pointer"
-
-            CursorMove ->
-                "move"
-
-            CursorEResize ->
-                "e-resize"
-
-            CursorNEResize ->
-                "ne-resize"
-
-            CursorNWResize ->
-                "nw-resize"
-
-            CursorNResize ->
-                "n-resize"
-
-            CursorSEResize ->
-                "se-resize"
-
-            CursorSWResize ->
-                "sw-resize"
-
-            CursorWResize ->
-                "w-resize"
-
-            CursorText ->
-                "text"
-
-            CursorWait ->
-                "wait"
-
-            CursorHelp ->
-                "help"
-
-            CursorInherit ->
-                "inherit"
-
-            Cursor funcIRI ->
-                funcIRI
-
-
-type Cursor
-    = CursorAuto
-    | CursorDefault
-    | CursorCrosshair
-    | CursorPointer
-    | CursorMove
-    | CursorEResize
-    | CursorNEResize
-    | CursorNWResize
-    | CursorNResize
-    | CursorSEResize
-    | CursorSWResize
-    | CursorWResize
-    | CursorText
-    | CursorWait
-    | CursorHelp
-    | CursorInherit
-    | Cursor String
+cursor cursor =
+    Attr.cursor <| cursorToString cursor
 
 
 {-|
@@ -1186,23 +709,8 @@ d =
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/direction
 -}
 direction : Direction -> Attribute a
-direction dir =
-    Attr.direction <|
-        case dir of
-            DirectionLTR ->
-                "ltr"
-
-            DirectionRTL ->
-                "rtl"
-
-            DirectionInherit ->
-                "inherit"
-
-
-type Direction
-    = DirectionLTR
-    | DirectionRTL
-    | DirectionInherit
+direction direction =
+    Attr.direction <| directionToString direction
 
 
 {-|
@@ -1220,83 +728,36 @@ type Direction
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display
 -}
 display : Display -> Attribute a
-display d =
-    Attr.display <|
-        case d of
-            DisplayInline ->
-                "inline"
-
-            DisplayBlock ->
-                "block"
-
-            DisplayListItem ->
-                "list-item"
-
-            DisplayRunIn ->
-                "run-in"
-
-            DisplayCompact ->
-                "compact"
-
-            DisplayMarker ->
-                "marker"
-
-            DisplayTable ->
-                "table"
-
-            DisplayInlineTable ->
-                "inline-table"
-
-            DisplayTableRowGroup ->
-                "table-row-group"
-
-            DisplayTableHeaderGroup ->
-                "table-header-group"
-
-            DisplayTableFooterGroup ->
-                "table-footer-group"
-
-            DisplayTableRow ->
-                "table-row"
-
-            DisplayTableColumnGroup ->
-                "table-column-group"
-
-            DisplayTableColumn ->
-                "table-column"
-
-            DisplayTableCell ->
-                "table-cell"
-
-            DisplayTableCaption ->
-                "table-caption"
-
-            DisplayNone ->
-                "none"
-
-            DisplayInherit ->
-                "inherit"
+display display =
+    Attr.display <| displayToString display
 
 
-type Display
-    = DisplayInline
-    | DisplayBlock
-    | DisplayListItem
-    | DisplayRunIn
-    | DisplayCompact
-    | DisplayMarker
-    | DisplayTable
-    | DisplayInlineTable
-    | DisplayTableRowGroup
-    | DisplayTableHeaderGroup
-    | DisplayTableFooterGroup
-    | DisplayTableRow
-    | DisplayTableColumnGroup
-    | DisplayTableColumn
-    | DisplayTableCell
-    | DisplayTableCaption
-    | DisplayNone
-    | DisplayInherit
+{-|
+    The `dominantBaseline` attribute is used to determine or re-determine a
+    scaled-baseline-table. A scaled-baseline-table is a compound value with
+    three components: a baseline-identifier for the `dominantBaseline`, a
+    baseline-table and a baseline-table font-size.
+
+    Some values of the property re-determine all three values; other only
+    re-establish the baseline-table font-size. When the initial value, auto,
+    would give an undesired result, this property can be used to explicitly
+    set the desire scaled-baseline-table.
+
+    If there is no baseline table in the nominal font or if the baseline table
+    lacks an entry for the desired baseline, then the browser may use heuristics
+    to determine the position of the desired baseline.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+        textPath, text, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline
+-}
+dominantBaseline : DominantBaseline -> Attribute a
+dominantBaseline dominantBaseline =
+    Attr.dominantBaseline <| dominantBaselineToString dominantBaseline
 
 
 {-|
@@ -1307,24 +768,9 @@ type Display
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dur
 -}
-dur : DurationValue -> Attribute a
+dur : Duration -> Attribute a
 dur duration =
     Attr.dur <| durationToString duration
-
-
-type DurationValue
-    = Duration ClockValue
-    | DurationIndefinite
-
-
-durationToString : DurationValue -> String
-durationToString duration =
-    case duration of
-        Duration clockValue ->
-            clockValue
-
-        DurationIndefinite ->
-            "indefinite"
 
 
 {-|
@@ -1363,6 +809,61 @@ end timingValues =
 externalResourcesRequired : Bool -> Attribute a
 externalResourcesRequired bool =
     Attr.externalResourcesRequired <| boolToString bool
+
+
+{-|
+    This attribute specifies the opacity of the color or the content the current
+    object is filled with.
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
+        glyph, glyphRef, line, mesh, path, polygon, polyline, rect, text,
+        textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity
+-}
+fillOpacity : Opacity -> Attribute a
+fillOpacity opacity =
+    Attr.fillOpacity <| opacityToString opacity
+
+
+{-|
+    The fillRule attribute indicates how to determine what side of a path is
+    inside a shape, to determine how the fill property paints the shape. For a
+    simple, non-intersecting path, it is intuitively clear what region lies
+    "inside"; however, for a more complex path, such as a path that intersects
+    itself or where one subpath encloses another, the interpretation of
+    "inside" is not so obvious.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet
+
+    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
+        glyph, glyphRef, line, mesh, path, polygon, polyline, rect, text,
+        textPath, tref, tspan
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
+-}
+fillRule : FillRule -> Attribute a
+fillRule fillRule =
+    Attr.fillRule <| fillRuleToString fillRule
+
+
+{-|
+    The filter attribute defines the filter effects define by the `filter`
+    element that shall be applied to its element.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: a, circle, defs, ellipse, g, glyph, image, line, marker,
+        mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
+        switch, symbol, text, use
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filter
+-}
+filter : Filter -> Attribute a
+filter f =
+    Attr.filter <| filterToString f
 
 
 {-|
@@ -1451,24 +952,9 @@ gradientUnits coordinateSystem =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kerning
 -}
-kerning : KerningOption -> Attribute a
-kerning option =
-    Attr.kerning <|
-        case option of
-            KerningAuto ->
-                "auto"
-
-            KerningInherit ->
-                "inherit"
-
-            KerningLength length ->
-                lengthToString length
-
-
-type KerningOption
-    = KerningAuto
-    | KerningInherit
-    | KerningLength Length
+kerning : Kerning -> Attribute a
+kerning k =
+    Attr.kerning <| kerningToString k
 
 
 {-|
@@ -1483,10 +969,6 @@ type KerningOption
 keySplines : List BezierAnchorPoint -> Attribute a
 keySplines bezierAnchorPointList =
     Attr.keySplines <| (List.map bezierAnchorPointToString bezierAnchorPointList |> String.join ";")
-
-
-type alias BezierAnchorPoint =
-    ( Float, Float, Float, Float )
 
 
 bezierAnchorPointToString : ( number, number, number, number ) -> String
@@ -1537,20 +1019,9 @@ keyTimes floatList =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust
 -}
-lengthAdjust : LengthAdjustOption -> Attribute a
+lengthAdjust : LengthAdjust -> Attribute a
 lengthAdjust option =
-    Attr.lengthAdjust <|
-        case option of
-            LengthAdjustSpacing ->
-                "spacing"
-
-            LengthAdjustSpacingAndGlyphs ->
-                "spacingAndGlyphs"
-
-
-type LengthAdjustOption
-    = LengthAdjustSpacing
-    | LengthAdjustSpacingAndGlyphs
+    Attr.lengthAdjust <| lengthAdjustToString option
 
 
 {-|
@@ -1584,18 +1055,7 @@ markerHeight height =
 -}
 markerUnits : MarkerCoordinateSystem -> Attribute a
 markerUnits markerCoordinateSystem =
-    Attr.markerUnits <|
-        case markerCoordinateSystem of
-            MarkerCoordinateSystemUserSpaceOnUse ->
-                "userSpaceOnUse"
-
-            MarkerCoordinateSystemStrokeWidth ->
-                "strokeWidth"
-
-
-type MarkerCoordinateSystem
-    = MarkerCoordinateSystemUserSpaceOnUse
-    | MarkerCoordinateSystemStrokeWidth
+    Attr.markerUnits <| markerCoordinateSystemToString markerCoordinateSystem
 
 
 {-|
@@ -1813,55 +1273,13 @@ points pts =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
 -}
-preserveAspectRatio : AlignOption -> MeetOrSliceOption -> Attribute a
-preserveAspectRatio alignOption meetOrSliceOption =
-    let
-        a =
-            case alignOption of
-                AlignNone ->
-                    "none"
-
-                Align x y ->
-                    "x" ++ (scaleToString x) ++ "y" ++ (scaleToString y)
-
-        b =
-            case meetOrSliceOption of
-                Meet ->
-                    "meet"
-
-                Slice ->
-                    "slice"
-    in
-        Attr.preserveAspectRatio <| String.join " " [ a, b ]
-
-
-type AlignOption
-    = Align ScaleOption ScaleOption
-    | AlignNone
-
-
-type ScaleOption
-    = ScaleMin
-    | ScaleMid
-    | ScaleMax
-
-
-scaleToString : ScaleOption -> String
-scaleToString scaleOption =
-    case scaleOption of
-        ScaleMin ->
-            "min"
-
-        ScaleMid ->
-            "mid"
-
-        ScaleMax ->
-            "max"
-
-
-type MeetOrSliceOption
-    = Meet
-    | Slice
+preserveAspectRatio : Align -> MeetOrSlice -> Attribute a
+preserveAspectRatio align meetOrSlice =
+    Attr.preserveAspectRatio <|
+        String.join " "
+            [ alignToString align
+            , meetOrSliceToString meetOrSlice
+            ]
 
 
 {-|
@@ -1894,18 +1312,7 @@ primitiveUnits coordinateSystem =
 -}
 repeatCount : RepeatCount -> Attribute a
 repeatCount repeatCount =
-    Attr.repeatCount <|
-        case repeatCount of
-            RepeatCount count ->
-                toString count
-
-            RepeatIndefinite ->
-                "indefinite"
-
-
-type RepeatCount
-    = RepeatCount Float
-    | RepeatIndefinite
+    Attr.repeatCount <| repeatCountToString repeatCount
 
 
 {-|
@@ -1958,24 +1365,9 @@ requiredFeatures features =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart
 -}
-restart : RestartOption -> Attribute a
-restart option =
-    Attr.restart <|
-        case option of
-            RestartAlways ->
-                "always"
-
-            RestartWhenNotActive ->
-                "whenNotActive"
-
-            RestartNever ->
-                "never"
-
-
-type RestartOption
-    = RestartAlways
-    | RestartWhenNotActive
-    | RestartNever
+restart : Restart -> Attribute a
+restart restart =
+    Attr.restart <| restartToString restart
 
 
 {-|
@@ -1988,32 +1380,9 @@ type RestartOption
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering
 -}
-shapeRendering : ShapeRenderingOption -> Attribute a
-shapeRendering option =
-    Attr.shapeRendering <|
-        case option of
-            RenderAuto ->
-                "auto"
-
-            RenderOptimizeSpeed ->
-                "optimizeSpeed"
-
-            RenderCrispEdges ->
-                "crispEdges"
-
-            RenderGeometricPrecision ->
-                "geometricPrecision"
-
-            RenderInherit ->
-                "inherit"
-
-
-type ShapeRenderingOption
-    = RenderAuto
-    | RenderOptimizeSpeed
-    | RenderCrispEdges
-    | RenderGeometricPrecision
-    | RenderInherit
+shapeRendering : ShapeRendering -> Attribute a
+shapeRendering shapeRendering =
+    Attr.shapeRendering <| shapeRenderingToString shapeRendering
 
 
 {-|
@@ -2095,31 +1464,8 @@ transform transforms =
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
 animateTransformType : AnimateTransformType -> Attribute a
-animateTransformType t =
-    Attr.type_ <|
-        case t of
-            TypeTranslate ->
-                "translate"
-
-            TypeScale ->
-                "scale"
-
-            TypeRotate ->
-                "rotate"
-
-            TypeSkewX ->
-                "skewX"
-
-            TypeSkewY ->
-                "skewY"
-
-
-type AnimateTransformType
-    = TypeTranslate
-    | TypeScale
-    | TypeRotate
-    | TypeSkewX
-    | TypeSkewY
+animateTransformType animateTransformType =
+    Attr.type_ <| animateTransformTypeToString animateTransformType
 
 
 {-|
@@ -2335,28 +1681,9 @@ fontFamily families =
             Attr.fontFamily (String.join ", " families)
 
 
-type AnchorAlignment
-    = AnchorInherit
-    | AnchorStart
-    | AnchorMiddle
-    | AnchorEnd
-
-
 textAnchor : AnchorAlignment -> Attribute a
-textAnchor alignment =
-    Attr.textAnchor <|
-        case alignment of
-            AnchorInherit ->
-                "inherit"
-
-            AnchorStart ->
-                "start"
-
-            AnchorMiddle ->
-                "middle"
-
-            AnchorEnd ->
-                "end"
+textAnchor anchorAlignment =
+    Attr.textAnchor <| anchorAlignmentToString anchorAlignment
 
 
 

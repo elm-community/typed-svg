@@ -3,9 +3,11 @@ module TypedSvg.Filters.Attributes exposing (..)
 {-| Attributes of SVG filter elements
 -}
 
+import Color exposing (Color)
+import Color.Convert exposing (colorToCssRgba)
 import Svg exposing (Attribute, Svg)
-import Svg.Attributes as Attr exposing (colorInterpolationFilters)
-import TypedSvg.Attributes exposing (ColorInterpolation(..))
+import Svg.Attributes as Attr
+import TypedSvg.Types exposing (..)
 
 
 {-|
@@ -174,7 +176,7 @@ divisor value =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/edgeMode
 -}
-edgeMode : EdgeModeOption -> Attribute a
+edgeMode : EdgeMode -> Attribute a
 edgeMode option =
     Attr.edgeMode <|
         case option of
@@ -188,7 +190,7 @@ edgeMode option =
                 "none"
 
 
-type EdgeModeOption
+type EdgeMode
     = EdgeModeDuplicate
     | EdgeModeWrap
     | EdgeModeNone
@@ -235,6 +237,56 @@ filterRes xPixels yPixels =
 filterUnits : CoordinateSystem -> Attribute a
 filterUnits coordinateSystem =
     Attr.filterUnits <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    The `floodColor` attribute indicates what color to use to flood the current
+    filter primitive subregion defined through the `feFlood` element. The
+    keyword currentColor and ICC colors can be specified in the same manner as
+    within a `paint` specification for the fill and stroke attributes.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: feFlood
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-color
+-}
+floodColor : FloodColor -> Attribute a
+floodColor color =
+    Attr.floodColor <|
+        case color of
+            FloodInherit ->
+                "inherit"
+
+            FloodCurrentColor ->
+                "currentColor"
+
+            Flood color ->
+                colorToCssRgba color
+
+            FloodICC iccColor ->
+                iccColor
+
+
+type FloodColor
+    = FloodInherit
+    | FloodCurrentColor
+    | Flood Color
+    | FloodICC String
+
+
+{-|
+    The `floodOpacity` attribute indicates the opacity value to use across the
+    current filter primitive subregion defined through the `feFlood` element.
+
+    Used by Elements: feFlood
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-opacity
+-}
+floodOpacity : Opacity -> Attribute a
+floodOpacity opacity =
+    Attr.floodOpacity <| opacityToString opacity
 
 
 {-|
@@ -431,7 +483,7 @@ limitingConeAngle number =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mode
 -}
-mode : ModeOption -> Attribute a
+mode : Mode -> Attribute a
 mode option =
     Attr.mode <|
         case option of
@@ -451,7 +503,7 @@ mode option =
                 "lighten"
 
 
-type ModeOption
+type Mode
     = ModeNormal
     | ModeMultiply
     | ModeScreen
