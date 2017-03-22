@@ -22,7 +22,6 @@ module TypedSvg.TypesToStrings exposing (..)
     turbulenceTypeToString
 -}
 
-import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
 import TypedSvg.Types exposing (..)
 
