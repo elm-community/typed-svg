@@ -1,5 +1,64 @@
 module TypedSvg.Attributes exposing (..)
 
+{-| Typed SVG Attributes
+
+NOTE: For attributes pertaining to SVG filters, see Filters.Attributes
+
+# Other attributes
+@docs accelerate, accentHeight, accumulate, additive, alignmentBaseline,
+    allowReorder, alphabetic, amplitude, animateTransformType, animationValues,
+    arabicForm, ascent, attributeName, attributeType, autoReverse, baseProfile,
+    baselineShift, bbox, begin, by, calcMode, capHeight, class, clip, clipPath,
+    clipPathUnits, clipRule, color, colorInterpolation, colorProfile,
+    colorRendering, contentScriptType, contentStyleType, contentType, cursor,
+    cx, cy, d, decelerate, descent, direction, display, dominantBaseline, dur,
+    dx, dy, enableBackground, end, exponent, externalResourcesRequired,
+    fill, fillOpacity, fillRule, filter, fontFamily, fontSize, fontSizeAdjust,
+    fontStretch, fontStyle, fontVariant, fontWeight, format, from,
+    fx, fy, g1, g2, glyphName,
+    glyphOrientationHorizontal, glyphOrientationVertical, glyphRef,
+    gradientTransform, gradientUnits, hanging, height, horizAdvX,
+    horizOriginX, horizOriginY, ideographic, imageRendering, intercept, k,
+    kerning, keySplines, keyTimes, lang, lengthAdjust, letterSpacing,
+    lightingColor, local, markerEnd, markerHeight, markerMid, markerStart,
+    markerUnits, markerWidth, mask, maskContentUnits, maskUnits, max, media,
+    method, min, name, noFill, offset, opacity, orient, orientation, origin,
+    overflow, overlinePosition, overlineThickness, panose1, path, pathLength,
+    patternContentUnits, patternTransform, patternUnits, pointOrder,
+    pointerEvents, points, preserveAspectRatio, primitiveUnits, r, refX, refY,
+    renderingIntent, repeatCount, repeatDur, requiredExtensions,
+    requiredFeatures, restart, rotate, rx, ry, shapeRendering, slope, spacing,
+    specularConstant, specularExponent, speed, spreadMethod, startOffset,
+    stdDeviation, stemh, stemv, stitchTiles, stopColor, stopOpacity,
+    strikethroughPosition, strikethroughThickness, string, stroke,
+    strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin,
+    strokeMiterlimit, strokeOpacity, strokeWidth,
+    style, systemLanguage, tableValues, target, textAnchor, textDecoration,
+    textLength, textRendering, title, to, transform, u1, u2,
+    underlinePosition, underlineThickness, unicode, unicodeBidi, unicodeRange,
+    unitsPerEm, vAlphabetic, vHanging, vIdeographic, vMathematical,
+    version, vertAdvY, vertOriginX, vertOriginY,
+    viewBox, viewTarget, visibility, width, widths, wordSpacing, writingMode,
+    x, x1, x2, xChannelSelector, xHeight, xlinkActuate, xlinkArcrole, xlinkHref,
+    xlinkRole, xlinkShow, xlinkTitle, xlinkType, xmlBase, xmlLang, xmlSpace, y,
+    y1, y2, yChannelSelector, zoomAndPan
+
+# Presentation attributes
+@docs alignmentBaseline, baselineShift, clipPath, clipRule, clip,
+  colorInterpolation, colorProfile, colorRendering,
+  color, cursor, direction, display, dominantBaseline, enableBackground,
+  fillOpacity, fillRule, fill, filter, fontFamily,
+  fontSizeAdjust, fontSize, fontStretch, fontStyle, fontVariant, fontWeight,
+  glyphOrientationHorizontal, glyphOrientationVertical, imageRendering,
+  kerning, letterSpacing, lightingColor, markerEnd, markerMid, markerStart,
+  mask, opacity, overflow, pointerEvents, shapeRendering, stopColor,
+  stopOpacity, strokeDasharray, strokeDashoffset, strokeLinecap,
+  strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, stroke,
+  textAnchor, textDecoration, textRendering, unicodeBidi, visibility,
+  wordSpacing, writingMode
+
+-}
+
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
 import TypedSvg.Core exposing (..)
@@ -525,11 +584,13 @@ cursor cursor =
     attribute "cursor" <| cursorToString cursor
 
 
+{-| -}
 cx : Length -> Attribute msg
 cx length =
     attribute "cx" <| lengthToString length
 
 
+{-| -}
 cy : Length -> Attribute msg
 cy length =
     attribute "cy" <| lengthToString length
@@ -668,11 +729,13 @@ dur duration =
     attribute "dur" <| durationToString duration
 
 
+{-| -}
 dx : Length -> Attribute msg
 dx length =
     attribute "dx" <| lengthToString length
 
 
+{-| -}
 dy : Length -> Attribute msg
 dy length =
     attribute "dy" <| lengthToString length
@@ -1613,6 +1676,7 @@ primitiveUnits coordinateSystem =
     attribute "primitiveUnits" <| coordinateSystemToString coordinateSystem
 
 
+{-| -}
 r : Length -> Attribute msg
 r length =
     attribute "r" <| lengthToString length

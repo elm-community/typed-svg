@@ -1,10 +1,20 @@
 module TypedSvg.Filters.Attributes exposing (..)
 
 {-| Attributes of SVG filter elements
+
+# Attributes
+@docs azimuth, baseFrequency, bias, colorInterpolationFilters, colorMatrixType,
+    colorMatrixValues, compositeOperator, diffuseConstant, divisor, edgeMode,
+    elevation, filterRes, filterUnits, floodColor, floodOpacity, funcType, in2,
+    in_, k1, k2, k3, k4, kernelMatrix, kernelUnitLength, limitingConeAngle,
+    mode, morphologyOperator, numOctaves, order, pointsAtX, pointsAtY,
+    pointsAtZ, preserveAlpha, radius, result, scale, seed, surfaceScale,
+    targetX, targetY, turbulenceType, z
 -}
 
 import TypedSvg.Core exposing (..)
 import TypedSvg.Types exposing (..)
+import TypedSvg.TypesToStrings exposing (..)
 
 
 {-|
