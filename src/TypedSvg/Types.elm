@@ -1,7 +1,21 @@
 module TypedSvg.Types exposing (..)
 
+import VirtualDom
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
+
+
+{-| The core building block to create SVG. This library is filled with helper
+functions to create these `Svg` values.
+-}
+type alias Svg msg =
+    VirtualDom.Node msg
+
+
+{-| Set attributes on your `Svg`.
+-}
+type alias Attribute msg =
+    VirtualDom.Property msg
 
 
 boolToString : Bool -> String

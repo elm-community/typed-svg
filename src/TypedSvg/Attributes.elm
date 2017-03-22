@@ -224,9 +224,13 @@ module TypedSvg.Attributes
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
 import Html exposing (Html)
-import Html.Attributes exposing (name)
-import Svg exposing (Attribute, Svg)
-import Svg.Attributes as Attr exposing (colorInterpolationFilters, enableBackground, fontSizeAdjust)
+
+
+-- import Html.Attributes exposing (name)
+-- import Svg exposing (Attribute, Svg)
+-- import Svg.Attributes as Attr exposing (colorInterpolationFilters, enableBackground, fontSizeAdjust)
+
+import VirtualDom exposing (attribute)
 import TypedSvg.Types exposing (..)
 
 
@@ -239,7 +243,7 @@ import TypedSvg.Types exposing (..)
 -}
 accentHeight : number -> Attribute msg
 accentHeight height =
-    Attr.accentHeight <| toString height
+    attribute "accentHeight" <| toString height
 
 
 {-| Defines a simple acceleration of time for the element. Element time will
@@ -255,7 +259,7 @@ accentHeight height =
 -}
 accelerate : number -> Attribute msg
 accelerate rate =
-    Attr.accelerate <| toString rate
+    attribute "accelerate" <| toString rate
 
 
 {-| This attribute controls whether or not the animation is cumulative.
@@ -269,7 +273,7 @@ accelerate rate =
 -}
 accumulate : Accumulate -> Attribute msg
 accumulate option =
-    Attr.accumulate <| accumulateToString option
+    attribute "accumulate" <| accumulateToString option
 
 
 {-| This attribute controls whether or not the animation is additive.
@@ -283,7 +287,7 @@ accumulate option =
 -}
 additive : Additive -> Attribute msg
 additive option =
-    Attr.additive <| additiveToString option
+    attribute "additive" <| additiveToString option
 
 
 {-|
@@ -305,7 +309,7 @@ additive option =
 -}
 alignmentBaseline : AlignmentBaseline -> Attribute msg
 alignmentBaseline alignmentBaseline =
-    Attr.alignmentBaseline <| alignmentBaselineToString alignmentBaseline
+    attribute "alignmentBaseline" <| alignmentBaselineToString alignmentBaseline
 
 
 {-| This attribute defines the maximum unaccented depth of the font within the
@@ -320,7 +324,7 @@ alignmentBaseline alignmentBaseline =
 -}
 ascent : number -> Attribute msg
 ascent maxDepth =
-    Attr.ascent <| toString maxDepth
+    attribute "ascent" <| toString maxDepth
 
 
 {-| This attribute indicates the name of the attribute in the parent element
@@ -332,7 +336,7 @@ ascent maxDepth =
 -}
 attributeName : String -> Attribute msg
 attributeName name =
-    Attr.attributeName name
+    attribute "attributeName" name
 
 
 {-| This attribute specifies the namespace in which the target attribute and its
@@ -344,7 +348,7 @@ attributeName name =
 -}
 attributeType : AttributeType -> Attribute msg
 attributeType attributeType =
-    Attr.attributeType <| attributeTypeToString attributeType
+    attribute "attributeType" <| attributeTypeToString attributeType
 
 
 {-|
@@ -361,7 +365,7 @@ attributeType attributeType =
 -}
 baselineShift : BaselineShift -> Attribute msg
 baselineShift baselineShift =
-    Attr.baselineShift <| baselineShiftToString baselineShift
+    attribute "baselineShift" <| baselineShiftToString baselineShift
 
 
 {-|
@@ -377,7 +381,7 @@ baselineShift baselineShift =
 -}
 begin : List TimingValue -> Attribute msg
 begin timingValues =
-    Attr.begin <| String.join ";" (List.map timingValueAsString timingValues)
+    attribute "begin" <| String.join ";" (List.map timingValueAsString timingValues)
 
 
 {-|
@@ -392,7 +396,7 @@ begin timingValues =
 -}
 calcMode : CalcMode -> Attribute msg
 calcMode calcMode =
-    Attr.calcMode <| calcModeToString calcMode
+    attribute "calcMode" <| calcModeToString calcMode
 
 
 {-|
@@ -418,7 +422,7 @@ calcMode calcMode =
 -}
 class : List String -> Attribute msg
 class names =
-    Attr.class (String.join " " names)
+    attribute "class" (String.join " " names)
 
 
 {-|
@@ -437,7 +441,7 @@ class names =
 -}
 clip : Clip -> Attribute msg
 clip clip =
-    Attr.clip <| clipToString clip
+    attribute "clip" <| clipToString clip
 
 
 {-|
@@ -455,7 +459,7 @@ clip clip =
 -}
 clipPath : ClipPath -> Attribute msg
 clipPath clipPath =
-    Attr.clipPath <| clipPathToString clipPath
+    attribute "clipPath" <| clipPathToString clipPath
 
 
 {-|
@@ -476,7 +480,7 @@ clipPath clipPath =
 -}
 clipPathUnits : CoordinateSystem -> Attribute msg
 clipPathUnits coordinateSystem =
-    Attr.clipPathUnits <| coordinateSystemToString coordinateSystem
+    attribute "clipPathUnits" <| coordinateSystemToString coordinateSystem
 
 
 {-|
@@ -492,7 +496,7 @@ clipPathUnits coordinateSystem =
 -}
 clipRule : ClipRule -> Attribute msg
 clipRule clipRule =
-    Attr.clipRule <| clipRuleToString clipRule
+    attribute "clipRule" <| clipRuleToString clipRule
 
 
 {-|
@@ -522,7 +526,7 @@ clipRule clipRule =
 -}
 colorInterpolation : ColorInterpolation -> Attribute msg
 colorInterpolation colorInterpolation =
-    Attr.colorInterpolation <| colorInterpolationToString colorInterpolation
+    attribute "colorInterpolation" <| colorInterpolationToString colorInterpolation
 
 
 {-|
@@ -538,7 +542,7 @@ colorInterpolation colorInterpolation =
 -}
 colorProfile : ColorProfile -> Attribute msg
 colorProfile colorProfile =
-    Attr.colorProfile <| colorProfileToString colorProfile
+    attribute "colorProfile" <| colorProfileToString colorProfile
 
 
 {-|
@@ -563,7 +567,7 @@ colorProfile colorProfile =
 -}
 colorRendering : ColorRendering -> Attribute msg
 colorRendering colorRendering =
-    Attr.colorRendering <| colorRenderingToString colorRendering
+    attribute "colorRendering" <| colorRenderingToString colorRendering
 
 
 {-|
@@ -582,7 +586,7 @@ colorRendering colorRendering =
 -}
 color : Color -> Attribute msg
 color c =
-    Attr.color <| colorToCssRgba c
+    attribute "color" <| colorToCssRgba c
 
 
 {-|
@@ -599,7 +603,7 @@ color c =
 -}
 contentScriptType : String -> Attribute msg
 contentScriptType mimeType =
-    Attr.contentScriptType mimeType
+    attribute "contentScriptType" mimeType
 
 
 {-|
@@ -611,7 +615,7 @@ contentScriptType mimeType =
 -}
 contentStyleType : String -> Attribute msg
 contentStyleType styleSheetLanguage =
-    Attr.contentStyleType styleSheetLanguage
+    attribute "contentStyleType" styleSheetLanguage
 
 
 {-|
@@ -633,7 +637,7 @@ contentStyleType styleSheetLanguage =
 -}
 cursor : Cursor -> Attribute msg
 cursor cursor =
-    Attr.cursor <| cursorToString cursor
+    attribute "cursor" <| cursorToString cursor
 
 
 {-|
@@ -665,7 +669,7 @@ cursor cursor =
 -}
 d : String -> Attribute msg
 d =
-    Attr.d
+    attribute "d"
 
 
 {-|
@@ -694,7 +698,7 @@ d =
 -}
 direction : Direction -> Attribute msg
 direction direction =
-    Attr.direction <| directionToString direction
+    attribute "direction" <| directionToString direction
 
 
 {-|
@@ -713,7 +717,7 @@ direction direction =
 -}
 display : Display -> Attribute msg
 display display =
-    Attr.display <| displayToString display
+    attribute "display" <| displayToString display
 
 
 {-|
@@ -741,7 +745,7 @@ display display =
 -}
 dominantBaseline : DominantBaseline -> Attribute msg
 dominantBaseline dominantBaseline =
-    Attr.dominantBaseline <| dominantBaselineToString dominantBaseline
+    attribute "dominantBaseline" <| dominantBaselineToString dominantBaseline
 
 
 {-|
@@ -754,7 +758,7 @@ dominantBaseline dominantBaseline =
 -}
 dur : Duration -> Attribute msg
 dur duration =
-    Attr.dur <| durationToString duration
+    attribute "dur" <| durationToString duration
 
 
 {-|
@@ -771,7 +775,7 @@ dur duration =
 -}
 end : List TimingValue -> Attribute msg
 end timingValues =
-    Attr.end <| String.join ";" (List.map timingValueAsString timingValues)
+    attribute "end" <| String.join ";" (List.map timingValueAsString timingValues)
 
 
 {-|
@@ -792,7 +796,7 @@ end timingValues =
 -}
 externalResourcesRequired : Bool -> Attribute msg
 externalResourcesRequired bool =
-    Attr.externalResourcesRequired <| boolToString bool
+    attribute "externalResourcesRequired" <| boolToString bool
 
 
 {-|
@@ -807,7 +811,7 @@ externalResourcesRequired bool =
 -}
 fillOpacity : Opacity -> Attribute msg
 fillOpacity opacity =
-    Attr.fillOpacity <| opacityToString opacity
+    attribute "fillOpacity" <| opacityToString opacity
 
 
 {-|
@@ -829,7 +833,7 @@ fillOpacity opacity =
 -}
 fillRule : FillRule -> Attribute msg
 fillRule fillRule =
-    Attr.fillRule <| fillRuleToString fillRule
+    attribute "fillRule" <| fillRuleToString fillRule
 
 
 {-|
@@ -847,7 +851,7 @@ fillRule fillRule =
 -}
 filter : Filter -> Attribute msg
 filter f =
-    Attr.filter <| filterToString f
+    attribute "filter" <| filterToString f
 
 
 {-|
@@ -865,7 +869,7 @@ filter f =
 -}
 fontSizeAdjust : FontSizeAdjust -> Attribute msg
 fontSizeAdjust fontSizeAdjust =
-    Attr.fontSizeAdjust <| fontSizeAdjustToString fontSizeAdjust
+    attribute "fontSizeAdjust" <| fontSizeAdjustToString fontSizeAdjust
 
 
 {-|
@@ -882,7 +886,7 @@ fontSizeAdjust fontSizeAdjust =
 -}
 fontStretch : fontStretch -> Attribute msg
 fontStretch fontStretch =
-    Attr.fontStretch <| fontStretchToString fontStretch
+    attribute "fontStretch" <| fontStretchToString fontStretch
 
 
 {-|
@@ -899,7 +903,7 @@ fontStretch fontStretch =
 -}
 fontStyle : FontStyle -> Attribute msg
 fontStyle fontStyle =
-    Attr.fontStyle <| fontStyleToString fontStyle
+    attribute "fontStyle" <| fontStyleToString fontStyle
 
 
 {-|
@@ -917,7 +921,7 @@ fontStyle fontStyle =
 -}
 fontVariant : FontVariant -> Attribute msg
 fontVariant fontVariant =
-    Attr.fontVariant <| fontVariantToString fontVariant
+    attribute "fontVariant" <| fontVariantToString fontVariant
 
 
 {-|
@@ -934,7 +938,7 @@ fontVariant fontVariant =
 -}
 fontWeight : FontWeight -> Attribute msg
 fontWeight fontWeight =
-    Attr.fontWeight <| fontWeightToString fontWeight
+    attribute "fontWeight" <| fontWeightToString fontWeight
 
 
 {-|
@@ -949,7 +953,7 @@ fontWeight fontWeight =
 -}
 from : number -> Attribute msg
 from value =
-    Attr.from <| toString value
+    attribute "from" <| toString value
 
 
 {-|
@@ -968,7 +972,7 @@ from value =
 -}
 gradientTransform : List Transform -> Attribute msg
 gradientTransform transforms =
-    Attr.gradientTransform <| String.join " " (List.map transformToString transforms)
+    attribute "gradientTransform" <| String.join " " (List.map transformToString transforms)
 
 
 {-|
@@ -985,7 +989,7 @@ gradientTransform transforms =
 -}
 gradientUnits : CoordinateSystem -> Attribute msg
 gradientUnits coordinateSystem =
-    Attr.gradientUnits <| coordinateSystemToString coordinateSystem
+    attribute "gradientUnits" <| coordinateSystemToString coordinateSystem
 
 
 {-|
@@ -1025,7 +1029,7 @@ gradientUnits coordinateSystem =
 -}
 kerning : Kerning -> Attribute msg
 kerning k =
-    Attr.kerning <| kerningToString k
+    attribute "kerning" <| kerningToString k
 
 
 {-|
@@ -1039,7 +1043,7 @@ kerning k =
 -}
 keySplines : List BezierAnchorPoint -> Attribute msg
 keySplines bezierAnchorPointList =
-    Attr.keySplines <| (List.map bezierAnchorPointToString bezierAnchorPointList |> String.join ";")
+    attribute "keySplines" <| (List.map bezierAnchorPointToString bezierAnchorPointList |> String.join ";")
 
 
 bezierAnchorPointToString : ( number, number, number, number ) -> String
@@ -1067,7 +1071,7 @@ bezierAnchorPointToString ( x1, y1, x2, y2 ) =
 -}
 keyTimes : List Float -> Attribute msg
 keyTimes floatList =
-    Attr.keyTimes <| (List.map toString floatList |> String.join ";")
+    attribute "keyTimes" <| (List.map toString floatList |> String.join ";")
 
 
 {-|
@@ -1092,7 +1096,7 @@ keyTimes floatList =
 -}
 lengthAdjust : LengthAdjust -> Attribute msg
 lengthAdjust option =
-    Attr.lengthAdjust <| lengthAdjustToString option
+    attribute "lengthAdjust" <| lengthAdjustToString option
 
 
 {-|
@@ -1110,7 +1114,7 @@ lengthAdjust option =
 -}
 markerHeight : Length -> Attribute msg
 markerHeight height =
-    Attr.markerHeight <| lengthToString height
+    attribute "markerHeight" <| lengthToString height
 
 
 {-|
@@ -1126,7 +1130,7 @@ markerHeight height =
 -}
 markerUnits : MarkerCoordinateSystem -> Attribute msg
 markerUnits markerCoordinateSystem =
-    Attr.markerUnits <| markerCoordinateSystemToString markerCoordinateSystem
+    attribute "markerUnits" <| markerCoordinateSystemToString markerCoordinateSystem
 
 
 {-|
@@ -1144,7 +1148,7 @@ markerUnits markerCoordinateSystem =
 -}
 markerWidth : Length -> Attribute msg
 markerWidth width =
-    Attr.markerWidth <| lengthToString width
+    attribute "markerWidth" <| lengthToString width
 
 
 {-|
@@ -1166,7 +1170,7 @@ markerWidth width =
 -}
 maskContentUnits : CoordinateSystem -> Attribute msg
 maskContentUnits coordinateSystem =
-    Attr.maskContentUnits <| coordinateSystemToString coordinateSystem
+    attribute "maskContentUnits" <| coordinateSystemToString coordinateSystem
 
 
 {-|
@@ -1182,7 +1186,7 @@ maskContentUnits coordinateSystem =
 -}
 maskUnits : CoordinateSystem -> Attribute msg
 maskUnits coordinateSystem =
-    Attr.maskUnits <| coordinateSystemToString coordinateSystem
+    attribute "maskUnits" <| coordinateSystemToString coordinateSystem
 
 
 {-|
@@ -1198,7 +1202,7 @@ maskUnits coordinateSystem =
 -}
 max : ClockValue -> Attribute msg
 max clockValue =
-    Attr.max <| clockValue
+    attribute "max" <| clockValue
 
 
 {-|
@@ -1214,7 +1218,7 @@ max clockValue =
 -}
 min : ClockValue -> Attribute msg
 min clockValue =
-    Attr.min <| clockValue
+    attribute "min" <| clockValue
 
 
 {-|
@@ -1228,7 +1232,7 @@ min clockValue =
 -}
 overlinePosition : number -> Attribute msg
 overlinePosition position =
-    Attr.overlinePosition <| toString position
+    attribute "overlinePosition" <| toString position
 
 
 {-|
@@ -1242,7 +1246,7 @@ overlinePosition position =
 -}
 overlineThickness : number -> Attribute msg
 overlineThickness thickness =
-    Attr.overlineThickness <| toString thickness
+    attribute "overlineThickness" <| toString thickness
 
 
 {-|
@@ -1257,7 +1261,7 @@ overlineThickness thickness =
 -}
 pathLength : number -> Attribute msg
 pathLength length =
-    Attr.pathLength <| toString length
+    attribute "pathLength" <| toString length
 
 
 {-|
@@ -1274,7 +1278,7 @@ pathLength length =
 -}
 patternContentUnits : CoordinateSystem -> Attribute msg
 patternContentUnits coordinateSystem =
-    Attr.patternContentUnits <| coordinateSystemToString coordinateSystem
+    attribute "patternContentUnits" <| coordinateSystemToString coordinateSystem
 
 
 {-|
@@ -1295,7 +1299,7 @@ patternContentUnits coordinateSystem =
 -}
 patternTransform : List Transform -> Attribute msg
 patternTransform transforms =
-    Attr.patternTransform <| String.join " " (List.map transformToString transforms)
+    attribute "patternTransform" <| String.join " " (List.map transformToString transforms)
 
 
 {-|
@@ -1311,7 +1315,7 @@ patternTransform transforms =
 -}
 patternUnits : CoordinateSystem -> Attribute msg
 patternUnits coordinateSystem =
-    Attr.patternUnits <| coordinateSystemToString coordinateSystem
+    attribute "patternUnits" <| coordinateSystemToString coordinateSystem
 
 
 {-|
@@ -1331,7 +1335,7 @@ points pts =
         pointToString ( x, y ) =
             (toString x) ++ ", " ++ (toString y)
     in
-        Attr.points <| String.join " " (List.map pointToString pts)
+        attribute "points" <| String.join " " (List.map pointToString pts)
 
 
 {-|
@@ -1346,7 +1350,7 @@ points pts =
 -}
 preserveAspectRatio : Align -> MeetOrSlice -> Attribute msg
 preserveAspectRatio align meetOrSlice =
-    Attr.preserveAspectRatio <|
+    attribute "preserveAspectRatio" <|
         String.join " "
             [ alignToString align
             , meetOrSliceToString meetOrSlice
@@ -1367,7 +1371,7 @@ preserveAspectRatio align meetOrSlice =
 -}
 primitiveUnits : CoordinateSystem -> Attribute msg
 primitiveUnits coordinateSystem =
-    Attr.primitiveUnits <| coordinateSystemToString coordinateSystem
+    attribute "primitiveUnits" <| coordinateSystemToString coordinateSystem
 
 
 {-|
@@ -1383,7 +1387,7 @@ primitiveUnits coordinateSystem =
 -}
 repeatCount : RepeatCount -> Attribute msg
 repeatCount repeatCount =
-    Attr.repeatCount <| repeatCountToString repeatCount
+    attribute "repeatCount" <| repeatCountToString repeatCount
 
 
 {-|
@@ -1396,7 +1400,7 @@ repeatCount repeatCount =
 -}
 repeatDur : DurationValue -> Attribute msg
 repeatDur duration =
-    Attr.repeatDur <| durationToString duration
+    attribute "repeatDur" <| durationToString duration
 
 
 {-|
@@ -1425,7 +1429,7 @@ repeatDur duration =
 -}
 requiredFeatures : List String -> Attribute msg
 requiredFeatures features =
-    Attr.requiredFeatures <| String.join " " features
+    attribute "requiredFeatures" <| String.join " " features
 
 
 {-|
@@ -1438,7 +1442,7 @@ requiredFeatures features =
 -}
 restart : Restart -> Attribute msg
 restart restart =
-    Attr.restart <| restartToString restart
+    attribute "restart" <| restartToString restart
 
 
 {-|
@@ -1453,7 +1457,7 @@ restart restart =
 -}
 shapeRendering : ShapeRendering -> Attribute msg
 shapeRendering shapeRendering =
-    Attr.shapeRendering <| shapeRenderingToString shapeRendering
+    attribute "shapeRendering" <| shapeRenderingToString shapeRendering
 
 
 {-|
@@ -1477,7 +1481,7 @@ shapeRendering shapeRendering =
 -}
 style : String -> Attribute msg
 style value =
-    Attr.style <| value
+    attribute "style" <| value
 
 
 {-|
@@ -1490,7 +1494,7 @@ style value =
 -}
 textLength : Length -> Attribute msg
 textLength length =
-    Attr.textLength <| lengthToString length
+    attribute "textLength" <| lengthToString length
 
 
 {-|
@@ -1508,7 +1512,7 @@ textLength length =
 -}
 to : number -> Attribute msg
 to value =
-    Attr.to <| toString value
+    attribute "to" <| toString value
 
 
 {-|
@@ -1524,7 +1528,7 @@ to value =
 -}
 transform : List Transform -> Attribute msg
 transform transforms =
-    Attr.transform <| String.join " " (List.map transformToString transforms)
+    attribute "transform" <| String.join " " (List.map transformToString transforms)
 
 
 {-|
@@ -1536,7 +1540,7 @@ transform transforms =
 -}
 animateTransformType : AnimateTransformType -> Attribute msg
 animateTransformType animateTransformType =
-    Attr.type_ <| animateTransformTypeToString animateTransformType
+    attribute "type_" <| animateTransformTypeToString animateTransformType
 
 
 {-|
@@ -1548,7 +1552,7 @@ animateTransformType animateTransformType =
 -}
 contentType : String -> Attribute msg
 contentType t =
-    Attr.type_ t
+    attribute "type_" t
 
 
 {-|
@@ -1562,7 +1566,7 @@ contentType t =
 -}
 underlinePosition : number -> Attribute msg
 underlinePosition position =
-    Attr.underlinePosition <| toString position
+    attribute "underlinePosition" <| toString position
 
 
 {-|
@@ -1576,7 +1580,7 @@ underlinePosition position =
 -}
 underlineThickness : number -> Attribute msg
 underlineThickness thickness =
-    Attr.underlineThickness <| toString thickness
+    attribute "underlineThickness" <| toString thickness
 
 
 {-|
@@ -1591,7 +1595,7 @@ underlineThickness thickness =
 -}
 animationValues : List number -> Attribute msg
 animationValues values =
-    Attr.values <| String.join ";" (List.map toString values)
+    attribute "values" <| String.join ";" (List.map toString values)
 
 
 {-|
@@ -1608,7 +1612,7 @@ animationValues values =
 -}
 version : Float -> Attribute msg
 version number =
-    Attr.version <| toString number
+    attribute "version" <| toString number
 
 
 {-|
@@ -1626,7 +1630,7 @@ version number =
 -}
 xlinkShow : String -> Attribute msg
 xlinkShow str =
-    Attr.xlinkShow str
+    attribute "xlinkShow" str
 
 
 {-|
@@ -1645,7 +1649,7 @@ xlinkShow str =
 -}
 xlinkTitle : String -> Attribute msg
 xlinkTitle str =
-    Attr.xlinkTitle str
+    attribute "xlinkTitle" str
 
 
 {-|
@@ -1661,7 +1665,7 @@ xlinkTitle str =
 -}
 x1 : Length -> Attribute msg
 x1 position =
-    Attr.x1 <| lengthToString position
+    attribute "x1" <| lengthToString position
 
 
 {-|
@@ -1677,7 +1681,7 @@ x1 position =
 -}
 y1 : Length -> Attribute msg
 y1 position =
-    Attr.y1 <| lengthToString position
+    attribute "y1" <| lengthToString position
 
 
 {-|
@@ -1693,7 +1697,7 @@ y1 position =
 -}
 x2 : Length -> Attribute msg
 x2 position =
-    Attr.x2 <| lengthToString position
+    attribute "x2" <| lengthToString position
 
 
 {-|
@@ -1709,7 +1713,7 @@ x2 position =
 -}
 y2 : Length -> Attribute msg
 y2 position =
-    Attr.y2 <| lengthToString position
+    attribute "y2" <| lengthToString position
 
 
 svgBox : ( number, number ) -> List (Svg msg) -> Html msg
@@ -1722,17 +1726,17 @@ viewBox minX minY width height =
     [ minX, minY, width, height ]
         |> List.map toString
         |> String.join " "
-        |> Attr.viewBox
+        |> attribute "viewBox"
 
 
 stroke : Color -> Attribute msg
 stroke color =
-    Attr.stroke (colorToCssRgba color)
+    attribute "stroke" (colorToCssRgba color)
 
 
 fill : Color -> Attribute msg
 fill color =
-    Attr.fill (colorToCssRgba color)
+    attribute "fill" (colorToCssRgba color)
 
 
 noFill : Attribute msg
@@ -1746,15 +1750,15 @@ fontFamily : List String -> Attribute msg
 fontFamily families =
     case families of
         [] ->
-            Attr.fontFamily "inherit"
+            attribute "fontFamily" "inherit"
 
         _ ->
-            Attr.fontFamily (String.join ", " families)
+            attribute "fontFamily" (String.join ", " families)
 
 
 textAnchor : AnchorAlignment -> Attribute msg
 textAnchor anchorAlignment =
-    Attr.textAnchor <| anchorAlignmentToString anchorAlignment
+    attribute "textAnchor" <| anchorAlignmentToString anchorAlignment
 
 
 
@@ -1763,27 +1767,27 @@ textAnchor anchorAlignment =
 
 cx : Length -> Attribute msg
 cx length =
-    Attr.cx <| lengthToString length
+    attribute "cx" <| lengthToString length
 
 
 cy : Length -> Attribute msg
 cy length =
-    Attr.cy <| lengthToString length
+    attribute "cy" <| lengthToString length
 
 
 dx : Length -> Attribute msg
 dx length =
-    Attr.dx <| lengthToString length
+    attribute "dx" <| lengthToString length
 
 
 dy : Length -> Attribute msg
 dy length =
-    Attr.dy <| lengthToString length
+    attribute "dy" <| lengthToString length
 
 
 fontSize : Length -> Attribute msg
 fontSize length =
-    Attr.fontSize <| lengthToString length
+    attribute "fontSize" <| lengthToString length
 
 
 {-|
@@ -1799,7 +1803,7 @@ fontSize length =
 -}
 fx : Length -> Attribute msg
 fx length =
-    Attr.fx <| lengthToString length
+    attribute "fx" <| lengthToString length
 
 
 {-|
@@ -1815,44 +1819,44 @@ fx length =
 -}
 fy : Length -> Attribute msg
 fy length =
-    Attr.fy <| lengthToString length
+    attribute "fy" <| lengthToString length
 
 
 rx : Length -> Attribute msg
 rx length =
-    Attr.rx <| lengthToString length
+    attribute "rx" <| lengthToString length
 
 
 ry : Length -> Attribute msg
 ry length =
-    Attr.ry <| lengthToString length
+    attribute "ry" <| lengthToString length
 
 
 r : Length -> Attribute msg
 r length =
-    Attr.r <| lengthToString length
+    attribute "r" <| lengthToString length
 
 
 strokeWidth : Length -> Attribute msg
 strokeWidth length =
-    Attr.strokeWidth <| lengthToString length
+    attribute "strokeWidth" <| lengthToString length
 
 
 width : Length -> Attribute msg
 width length =
-    Attr.width <| lengthToString length
+    attribute "width" <| lengthToString length
 
 
 height : Length -> Attribute msg
 height length =
-    Attr.height <| lengthToString length
+    attribute "height" <| lengthToString length
 
 
 x : Length -> Attribute msg
 x length =
-    Attr.x <| lengthToString length
+    attribute "x" <| lengthToString length
 
 
 y : Length -> Attribute msg
 y length =
-    Attr.y <| lengthToString length
+    attribute "y" <| lengthToString length
