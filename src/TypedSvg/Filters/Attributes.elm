@@ -3,8 +3,7 @@ module TypedSvg.Filters.Attributes exposing (..)
 {-| Attributes of SVG filter elements
 -}
 
-import Svg exposing (Attribute, Svg)
-import Svg.Attributes as Attr
+import TypedSvg.Core exposing (..)
 import TypedSvg.Types exposing (..)
 
 
@@ -21,7 +20,7 @@ import TypedSvg.Types exposing (..)
 -}
 azimuth : number -> Attribute msg
 azimuth angle =
-    Attr.azimuth <| toString angle
+    attribute "azimuth" <| toString angle
 
 
 {-|
@@ -41,7 +40,7 @@ azimuth angle =
 -}
 baseFrequency : number -> number -> Attribute msg
 baseFrequency xFrequency yFrequency =
-    Attr.baseFrequency <| (toString xFrequency) ++ " " ++ (toString yFrequency)
+    attribute "baseFrequency" <| (toString xFrequency) ++ " " ++ (toString yFrequency)
 
 
 {-|
@@ -60,7 +59,7 @@ baseFrequency xFrequency yFrequency =
 -}
 bias : number -> Attribute msg
 bias rangeShift =
-    Attr.bias <| toString rangeShift
+    attribute "bias" <| toString rangeShift
 
 
 {-|
@@ -87,7 +86,7 @@ bias rangeShift =
 -}
 colorInterpolationFilters : ColorInterpolation -> Attribute msg
 colorInterpolationFilters colorInterpolation =
-    Attr.colorInterpolationFilters <| colorInterpolationToString colorInterpolation
+    attribute "color-interpolation-filters" <| colorInterpolationToString colorInterpolation
 
 
 {-|
@@ -100,7 +99,7 @@ colorInterpolationFilters colorInterpolation =
 -}
 compositeOperator : CompositeOperator -> Attribute msg
 compositeOperator compositeOperator =
-    Attr.operator <| compositeOperatorToString compositeOperator
+    attribute "operator" <| compositeOperatorToString compositeOperator
 
 
 {-|
@@ -116,7 +115,7 @@ compositeOperator compositeOperator =
 -}
 diffuseConstant : number -> Attribute msg
 diffuseConstant kdValue =
-    Attr.diffuseConstant <| toString kdValue
+    attribute "diffuseConstant" <| toString kdValue
 
 
 {-|
@@ -137,7 +136,7 @@ diffuseConstant kdValue =
 -}
 divisor : number -> Attribute msg
 divisor value =
-    Attr.divisor <| toString value
+    attribute "divisor" <| toString value
 
 
 {-|
@@ -151,7 +150,7 @@ divisor value =
 -}
 edgeMode : EdgeMode -> Attribute msg
 edgeMode edgeMode =
-    Attr.edgeMode <| edgeModeToString edgeMode
+    attribute "edgeMode" <| edgeModeToString edgeMode
 
 
 {-|
@@ -165,7 +164,7 @@ edgeMode edgeMode =
 -}
 elevation : number -> Attribute msg
 elevation angle =
-    Attr.elevation <| toString angle
+    attribute "elevation" <| toString angle
 
 
 {-|
@@ -181,7 +180,7 @@ elevation angle =
 -}
 filterRes : number -> number -> Attribute msg
 filterRes xPixels yPixels =
-    Attr.filterRes <| (toString xPixels) ++ " " ++ (toString yPixels)
+    attribute "filterRes" <| (toString xPixels) ++ " " ++ (toString yPixels)
 
 
 {-|
@@ -194,7 +193,7 @@ filterRes xPixels yPixels =
 -}
 filterUnits : CoordinateSystem -> Attribute msg
 filterUnits coordinateSystem =
-    Attr.filterUnits <| coordinateSystemToString coordinateSystem
+    attribute "filterUnits" <| coordinateSystemToString coordinateSystem
 
 
 {-|
@@ -212,7 +211,7 @@ filterUnits coordinateSystem =
 -}
 floodColor : FloodColor -> Attribute msg
 floodColor floodColor =
-    Attr.floodColor <| floodColorToString floodColor
+    attribute "floodColor" <| floodColorToString floodColor
 
 
 {-|
@@ -226,7 +225,7 @@ floodColor floodColor =
 -}
 floodOpacity : Opacity -> Attribute msg
 floodOpacity opacity =
-    Attr.floodOpacity <| opacityToString opacity
+    attribute "floodOpacity" <| opacityToString opacity
 
 
 {-|
@@ -251,7 +250,7 @@ floodOpacity opacity =
 -}
 in_ : InValue -> Attribute msg
 in_ value =
-    Attr.in_ <| inValueToString value
+    attribute "in" <| inValueToString value
 
 
 {-|
@@ -268,7 +267,7 @@ in_ value =
 -}
 in2 : InValue -> Attribute msg
 in2 value =
-    Attr.in2 <| inValueToString value
+    attribute "in2" <| inValueToString value
 
 
 {-|
@@ -283,7 +282,7 @@ in2 value =
 -}
 k1 : number -> Attribute msg
 k1 value =
-    Attr.k1 <| toString value
+    attribute "k1" <| toString value
 
 
 {-|
@@ -298,7 +297,7 @@ k1 value =
 -}
 k2 : number -> Attribute msg
 k2 value =
-    Attr.k2 <| toString value
+    attribute "k2" <| toString value
 
 
 {-|
@@ -313,7 +312,7 @@ k2 value =
 -}
 k3 : number -> Attribute msg
 k3 value =
-    Attr.k3 <| toString value
+    attribute "k3" <| toString value
 
 
 {-|
@@ -328,7 +327,7 @@ k3 value =
 -}
 k4 : number -> Attribute msg
 k4 value =
-    Attr.k4 <| toString value
+    attribute "k4" <| toString value
 
 
 {-|
@@ -344,7 +343,7 @@ k4 value =
 -}
 kernelMatrix : List number -> Attribute msg
 kernelMatrix numberList =
-    Attr.kernelMatrix (String.join " " (List.map toString numberList))
+    attribute "kernelMatrix" (String.join " " (List.map toString numberList))
 
 
 {-|
@@ -368,7 +367,7 @@ kernelMatrix numberList =
 -}
 kernelUnitLength : number -> number -> Attribute msg
 kernelUnitLength dx dy =
-    Attr.kernelUnitLength <| (toString dx) ++ " " ++ (toString dy)
+    attribute "kernelUnitLength" <| (toString dx) ++ " " ++ (toString dy)
 
 
 {-|
@@ -386,7 +385,7 @@ kernelUnitLength dx dy =
 -}
 limitingConeAngle : number -> Attribute msg
 limitingConeAngle number =
-    Attr.limitingConeAngle <| toString number
+    attribute "limitingConeAngle" <| toString number
 
 
 {-|
@@ -399,7 +398,7 @@ limitingConeAngle number =
 -}
 mode : Mode -> Attribute msg
 mode mode =
-    Attr.mode <| modeToString mode
+    attribute "mode" <| modeToString mode
 
 
 {-|
@@ -415,7 +414,7 @@ mode mode =
 -}
 numOctaves : Int -> Attribute msg
 numOctaves int =
-    Attr.numOctaves <| toString int
+    attribute "numOctaves" <| toString int
 
 
 {-|
@@ -428,7 +427,7 @@ numOctaves int =
 -}
 morphologyOperator : MorphologyOperator -> Attribute msg
 morphologyOperator morphologyOperator =
-    Attr.operator <| morphologyOperatorToString morphologyOperator
+    attribute "operator" <| morphologyOperatorToString morphologyOperator
 
 
 {-|
@@ -452,7 +451,7 @@ morphologyOperator morphologyOperator =
 -}
 order : number -> number -> Attribute msg
 order orderX orderY =
-    Attr.order <| (toString orderX) ++ " " ++ (toString orderY)
+    attribute "order" <| (toString orderX) ++ " " ++ (toString orderY)
 
 
 {-|
@@ -469,7 +468,7 @@ order orderX orderY =
 -}
 pointsAtX : number -> Attribute msg
 pointsAtX lightSourceX =
-    Attr.pointsAtX <| toString lightSourceX
+    attribute "pointsAtX" <| toString lightSourceX
 
 
 {-|
@@ -486,7 +485,7 @@ pointsAtX lightSourceX =
 -}
 pointsAtY : number -> Attribute msg
 pointsAtY lightSourceY =
-    Attr.pointsAtY <| toString lightSourceY
+    attribute "pointsAtY" <| toString lightSourceY
 
 
 {-|
@@ -503,7 +502,7 @@ pointsAtY lightSourceY =
 -}
 pointsAtZ : number -> Attribute msg
 pointsAtZ lightSourceZ =
-    Attr.pointsAtZ <| toString lightSourceZ
+    attribute "pointsAtZ" <| toString lightSourceZ
 
 
 {-|
@@ -522,7 +521,7 @@ pointsAtZ lightSourceZ =
 -}
 preserveAlpha : Bool -> Attribute msg
 preserveAlpha applyOnlyToColorChannels =
-    Attr.preserveAlpha <| boolToString applyOnlyToColorChannels
+    attribute "preserveAlpha" <| boolToString applyOnlyToColorChannels
 
 
 {-|
@@ -539,7 +538,7 @@ preserveAlpha applyOnlyToColorChannels =
 -}
 radius : number -> number -> Attribute msg
 radius xRadius yRadius =
-    Attr.radius <| (toString xRadius) ++ " " ++ (toString yRadius)
+    attribute "radius" <| (toString xRadius) ++ " " ++ (toString yRadius)
 
 
 {-|
@@ -562,7 +561,7 @@ radius xRadius yRadius =
 -}
 result : String -> Attribute msg
 result reference =
-    Attr.result <| reference
+    attribute "result" <| reference
 
 
 {-|
@@ -583,7 +582,7 @@ result reference =
 -}
 scale : number -> Attribute msg
 scale value =
-    Attr.scale <| toString value
+    attribute "scale" <| toString value
 
 
 {-|
@@ -599,7 +598,7 @@ scale value =
 -}
 seed : number -> Attribute msg
 seed value =
-    Attr.seed <| toString value
+    attribute "seed" <| toString value
 
 
 {-|
@@ -615,7 +614,7 @@ seed value =
 -}
 surfaceScale : number -> Attribute msg
 surfaceScale value =
-    Attr.surfaceScale <| toString value
+    attribute "surfaceScale" <| toString value
 
 
 {-|
@@ -634,7 +633,7 @@ surfaceScale value =
 -}
 targetX : number -> Attribute msg
 targetX xPosition =
-    Attr.targetX <| toString xPosition
+    attribute "targetX" <| toString xPosition
 
 
 {-|
@@ -653,7 +652,7 @@ targetX xPosition =
 -}
 targetY : number -> Attribute msg
 targetY yPosition =
-    Attr.targetY <| toString yPosition
+    attribute "targetY" <| toString yPosition
 
 
 {-|
@@ -668,7 +667,7 @@ targetY yPosition =
 -}
 colorMatrixType : ColorMatrixType -> Attribute msg
 colorMatrixType colorMatrixType =
-    Attr.type_ <| colorMatrixTypeToString colorMatrixType
+    attribute "type" <| colorMatrixTypeToString colorMatrixType
 
 
 {-|
@@ -680,7 +679,7 @@ colorMatrixType colorMatrixType =
 -}
 funcType : FuncType -> Attribute msg
 funcType funcType =
-    Attr.type_ <| funcTypeToString funcType
+    attribute "type" <| funcTypeToString funcType
 
 
 {-|
@@ -693,7 +692,7 @@ funcType funcType =
 -}
 turbulenceType : TurbulenceType -> Attribute msg
 turbulenceType turbulenceType =
-    Attr.type_ <| turbulenceTypeToString turbulenceType
+    attribute "type" <| turbulenceTypeToString turbulenceType
 
 
 {-|
@@ -706,7 +705,7 @@ turbulenceType turbulenceType =
 -}
 colorMatrixValues : String -> Attribute msg
 colorMatrixValues string =
-    Attr.values string
+    attribute "values" string
 
 
 {-|
@@ -724,4 +723,4 @@ colorMatrixValues string =
 -}
 z : number -> Attribute msg
 z value =
-    Attr.z <| toString value
+    attribute "z" <| toString value

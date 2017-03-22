@@ -6,8 +6,6 @@ import Json.Encode as Json
 
 {-| The core building block to create SVG. This library is filled with helper
 functions to create these `Svg` values.
-This is backed by `VirtualDom.Node` in `evancz/virtual-dom`, but you do not
-need to know any details about that to use this library!
 -}
 type alias Svg msg =
     VirtualDom.Node msg
@@ -35,6 +33,11 @@ node : String -> List (Attribute msg) -> List (Svg msg) -> Svg msg
 node name =
     \attributes children ->
         VirtualDom.node name (svgNamespace :: attributes) children
+
+
+attribute : String -> String -> Attribute msg
+attribute =
+    VirtualDom.attribute
 
 
 {-| A simple text node, no tags at all.

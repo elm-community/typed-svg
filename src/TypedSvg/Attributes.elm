@@ -188,8 +188,8 @@ module TypedSvg.Attributes
         , fontStyle
         , fontVariant
         , fontWeight
-        , glyphOrientationHorizontal
-        , glyphOrientationVertical
+          -- , glyphOrientationHorizontal
+          -- , glyphOrientationVertical
         , imageRendering
         , kerning
         , letterSpacing
@@ -224,14 +224,8 @@ module TypedSvg.Attributes
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
 import Html exposing (Html)
-
-
--- import Html.Attributes exposing (name)
--- import Svg exposing (Attribute, Svg)
--- import Svg.Attributes as Attr exposing (colorInterpolationFilters, enableBackground, fontSizeAdjust)
-
-import VirtualDom exposing (attribute)
 import TypedSvg.Types exposing (..)
+import TypedSvg.Core exposing (attribute)
 
 
 {-| Defines the distance from the origin to the top of accent characters,
@@ -243,7 +237,7 @@ import TypedSvg.Types exposing (..)
 -}
 accentHeight : number -> Attribute msg
 accentHeight height =
-    attribute "accentHeight" <| toString height
+    attribute "accent-height" <| toString height
 
 
 {-| Defines a simple acceleration of time for the element. Element time will
@@ -290,8 +284,14 @@ additive option =
     attribute "additive" <| additiveToString option
 
 
+{-| -}
+alphabetic : String -> Attribute msg
+alphabetic =
+    attribute "alphabetic"
+
+
 {-|
-    The alignmentBaseline attribute specifies how an object is aligned with
+    The `alignmentBaseline` attribute specifies how an object is aligned with
     respect to its parent. This property specifies which baseline of this
     element is to be aligned with the corresponding baseline of the parent. For
     example, this allows alphabetic baselines in Roman text to stay aligned
@@ -305,11 +305,29 @@ additive option =
 
     Used by Elements: altGlyph, tspan, tref, textPath
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignmentBaseline
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignment-baseline
 -}
 alignmentBaseline : AlignmentBaseline -> Attribute msg
 alignmentBaseline alignmentBaseline =
-    attribute "alignmentBaseline" <| alignmentBaselineToString alignmentBaseline
+    attribute "alignment-baseline" <| alignmentBaselineToString alignmentBaseline
+
+
+{-| -}
+allowReorder : String -> Attribute msg
+allowReorder =
+    attribute "allowReorder"
+
+
+{-| -}
+amplitude : String -> Attribute msg
+amplitude =
+    attribute "amplitude"
+
+
+{-| -}
+arabicForm : String -> Attribute msg
+arabicForm =
+    attribute "arabic-form"
 
 
 {-| This attribute defines the maximum unaccented depth of the font within the
@@ -351,6 +369,17 @@ attributeType attributeType =
     attribute "attributeType" <| attributeTypeToString attributeType
 
 
+{-| -}
+autoReverse : String -> Attribute msg
+autoReverse =
+    attribute "autoReverse"
+
+
+
+-- azimuth is in Filters.Attributes
+-- baseFrequency is in Filters.Attributes
+
+
 {-|
     The baselineShift attribute allows repositioning of the dominant-baseline
     relative to the dominant-baseline of the parent text content element. The
@@ -361,11 +390,23 @@ attributeType attributeType =
 
     Used by Elements: altGlyph, tref, tspan, textPath
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baselineShift
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseline-shift
 -}
 baselineShift : BaselineShift -> Attribute msg
 baselineShift baselineShift =
-    attribute "baselineShift" <| baselineShiftToString baselineShift
+    attribute "baseline-shift" <| baselineShiftToString baselineShift
+
+
+{-| -}
+baseProfile : String -> Attribute msg
+baseProfile =
+    attribute "baseProfile"
+
+
+{-| -}
+bbox : String -> Attribute msg
+bbox =
+    attribute "bbox"
 
 
 {-|
@@ -384,6 +425,16 @@ begin timingValues =
     attribute "begin" <| String.join ";" (List.map timingValueAsString timingValues)
 
 
+
+-- bias is in Filters.Attributes
+
+
+{-| -}
+by : String -> Attribute msg
+by =
+    attribute "by"
+
+
 {-|
     This attribute specifies the interpolation mode for an animation. The
     default mode is linear, however if the attribute does not support linear
@@ -397,6 +448,12 @@ begin timingValues =
 calcMode : CalcMode -> Attribute msg
 calcMode calcMode =
     attribute "calcMode" <| calcModeToString calcMode
+
+
+{-| -}
+capHeight : String -> Attribute msg
+capHeight =
+    attribute "cap-height"
 
 
 {-|
@@ -433,7 +490,7 @@ class names =
     element.
 
     As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet, see css clip for further information.
+    inside a CSS stylesheet.
 
     Used by Elements: svg, symbol, image, foreignobject, pattern, marker
 
@@ -459,7 +516,7 @@ clip clip =
 -}
 clipPath : ClipPath -> Attribute msg
 clipPath clipPath =
-    attribute "clipPath" <| clipPathToString clipPath
+    attribute "clip-path" <| clipPathToString clipPath
 
 
 {-|
@@ -496,7 +553,7 @@ clipPathUnits coordinateSystem =
 -}
 clipRule : ClipRule -> Attribute msg
 clipRule clipRule =
-    attribute "clipRule" <| clipRuleToString clipRule
+    attribute "clip-rule" <| clipRuleToString clipRule
 
 
 {-|
@@ -565,9 +622,9 @@ colorProfile colorProfile =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-rendering
 -}
-colorRendering : ColorRendering -> Attribute msg
-colorRendering colorRendering =
-    attribute "colorRendering" <| colorRenderingToString colorRendering
+colorRendering : Rendering -> Attribute msg
+colorRendering rendering =
+    attribute "color-rendering" <| renderingToString rendering
 
 
 {-|
@@ -640,6 +697,16 @@ cursor cursor =
     attribute "cursor" <| cursorToString cursor
 
 
+cx : Length -> Attribute msg
+cx length =
+    attribute "cx" <| lengthToString length
+
+
+cy : Length -> Attribute msg
+cy length =
+    attribute "cy" <| lengthToString length
+
+
 {-|
     This attribute defines a path to follow.
 
@@ -670,6 +737,18 @@ cursor cursor =
 d : String -> Attribute msg
 d =
     attribute "d"
+
+
+{-| -}
+decelerate : String -> Attribute msg
+decelerate =
+    attribute "decelerate"
+
+
+{-| -}
+descent : String -> Attribute msg
+descent =
+    attribute "descent"
 
 
 {-|
@@ -761,6 +840,16 @@ dur duration =
     attribute "dur" <| durationToString duration
 
 
+dx : Length -> Attribute msg
+dx length =
+    attribute "dx" <| lengthToString length
+
+
+dy : Length -> Attribute msg
+dy length =
+    attribute "dy" <| lengthToString length
+
+
 {-|
     This attribute defines an end value for the animation that can constrain
     the active duration.
@@ -776,6 +865,12 @@ dur duration =
 end : List TimingValue -> Attribute msg
 end timingValues =
     attribute "end" <| String.join ";" (List.map timingValueAsString timingValues)
+
+
+{-| -}
+exponent : String -> Attribute msg
+exponent =
+    attribute "exponent"
 
 
 {-|
@@ -990,6 +1085,22 @@ gradientTransform transforms =
 gradientUnits : CoordinateSystem -> Attribute msg
 gradientUnits coordinateSystem =
     attribute "gradientUnits" <| coordinateSystemToString coordinateSystem
+
+
+{-|
+    The `imageRendering` attribute provides a hint to the browser about how to
+    make speed vs. quality tradeoffs as it performs image processing.
+
+    As a presentation attribute, it also can be used as a property directly
+    inside a CSS stylesheet.
+
+    Used by Elements: image
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering
+-}
+imageRendering : Rendering -> Attribute msg
+imageRendering rendering =
+    attribute "image-rendering" <| renderingToString rendering
 
 
 {-|
@@ -1763,26 +1874,6 @@ textAnchor anchorAlignment =
 
 
 {- Attributes that express Lengths -}
-
-
-cx : Length -> Attribute msg
-cx length =
-    attribute "cx" <| lengthToString length
-
-
-cy : Length -> Attribute msg
-cy length =
-    attribute "cy" <| lengthToString length
-
-
-dx : Length -> Attribute msg
-dx length =
-    attribute "dx" <| lengthToString length
-
-
-dy : Length -> Attribute msg
-dy length =
-    attribute "dy" <| lengthToString length
 
 
 fontSize : Length -> Attribute msg
