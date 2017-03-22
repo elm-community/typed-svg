@@ -38,7 +38,7 @@ module TypedSvg.Events
 -}
 
 import Json.Decode as Json
-import Svg exposing (Attribute)
+import TypedSvg.Core exposing (Attribute)
 import VirtualDom
 
 

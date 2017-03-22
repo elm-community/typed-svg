@@ -1,16 +1,23 @@
 {
     "version": "1.0.0",
-    "summary": "An SVG builder",
+    "summary": "A Typed SVG (Scalable Vector Graphics) builder",
     "repository": "https://github.com/canadaduane/typed-svg.git",
     "license": "Apache2.0",
     "source-directories": [
         "src"
     ],
-    "exposed-modules": [],
+    "exposed-modules": [
+        "TypedSvg",
+        "TypedSvg.Core",
+        "TypedSvg.Types",
+        "TypedSvg.Attributes",
+        "TypedSvg.Filters",
+        "TypedSvg.Filters.Attributes",
+        "TypedSvg.Events"
+    ],
     "dependencies": {
         "elm-lang/core": "5.0.0 <= v < 6.0.0",
         "elm-lang/html": "2.0.0 <= v < 3.0.0",
-        "elm-lang/svg": "2.0.0 <= v < 3.0.0",
         "elm-lang/virtual-dom": "2.0.4 <= v < 3.0.0",
         "eskimoblood/elm-color-extra": "5.0.0 <= v < 6.0.0"
     },

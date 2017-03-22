@@ -1,4 +1,74 @@
-module TypedSvg.Types exposing (..)
+module TypedSvg.Types
+    exposing
+        ( Accumulate
+        , Additive
+        , Align
+        , AlignmentBaseline
+        , AnchorAlignment
+        , AnimateTransformType
+        , AttributeType
+        , BaselineShift
+        , BezierAnchorPoint
+        , CalcMode
+        , Clip
+        , ClipPath
+        , ClipRule
+        , ClockValue
+        , ColorInterpolation
+        , ColorMatrixType
+        , ColorProfile
+        , CompositeOperator
+        , CoordinateSystem
+        , Cursor
+        , Direction
+        , Display
+        , DominantBaseline
+        , Duration
+        , EdgeMode
+        , FillRule
+        , Filter
+        , FloodColor
+        , FontSizeAdjust
+        , FontStretch
+        , FontStyle
+        , FontVariant
+        , FontWeight
+        , FuncType
+        , InValue
+        , Kerning
+        , Length
+        , LengthAdjust
+        , MarkerCoordinateSystem
+        , MeetOrSlice
+        , Mode
+        , MorphologyOperator
+        , Opacity
+        , Rendering
+        , RepeatCount
+        , Restart
+        , Scale
+        , ShapeRendering
+        , TimingValue
+        , Transform
+        , TurbulenceType
+        )
+
+{-|
+
+The Types module defines all of the types used by TypedSvg.
+
+# Types
+@docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment,
+    AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint,
+    CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation,
+    ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor,
+    Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter,
+    FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight,
+    FuncType, InValue, Kerning, Length, LengthAdjust, MarkerCoordinateSystem,
+    MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount,
+    Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType
+
+-}
 
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
@@ -14,6 +84,7 @@ boolToString bool =
             "false"
 
 
+{-| -}
 type Accumulate
     = AccumulateNone
     | AccumulateSum
@@ -29,6 +100,7 @@ accumulateToString accumulate =
             "sum"
 
 
+{-| -}
 type Additive
     = AdditiveNone
     | AdditiveReplace
@@ -44,6 +116,7 @@ additiveToString additive =
             "replace"
 
 
+{-| -}
 type Align
     = Align Scale Scale
     | AlignNone
@@ -59,6 +132,7 @@ alignToString align =
             "x" ++ (scaleToString x) ++ "y" ++ (scaleToString y)
 
 
+{-| -}
 type AlignmentBaseline
     = AlignmentAuto
     | AlignmentBaseline
@@ -118,6 +192,7 @@ alignmentBaselineToString alignmentBaseline =
             "inherit"
 
 
+{-| -}
 type AnchorAlignment
     = AnchorInherit
     | AnchorStart
@@ -141,6 +216,7 @@ anchorAlignmentToString anchorAlignment =
             "end"
 
 
+{-| -}
 type AnimateTransformType
     = AnimateTransformTypeTranslate
     | AnimateTransformTypeScale
@@ -168,6 +244,7 @@ animateTransformTypeToString animateTransformType =
             "skewY"
 
 
+{-| -}
 type AttributeType
     = AttributeTypeAuto
     | AttributeTypeCss
@@ -187,6 +264,7 @@ attributeTypeToString attributeType =
             "XML"
 
 
+{-| -}
 type BaselineShift
     = ShiftAuto
     | ShiftBaseline
@@ -222,6 +300,7 @@ baselineShiftToString baselineShift =
             "inherit"
 
 
+{-| -}
 type alias BezierAnchorPoint =
     ( Float, Float, Float, Float )
 
@@ -231,6 +310,7 @@ bezierAnchorPointToString ( x1, y1, x2, y2 ) =
     List.map toString [ x1, y1, x2, y2 ] |> String.join " "
 
 
+{-| -}
 type CalcMode
     = CalcModeDiscrete
     | CalcModeLinear
@@ -254,6 +334,7 @@ calcModeToString calcMode =
             "spline"
 
 
+{-| -}
 type Clip
     = ClipAuto
     | ClipInherit
@@ -281,6 +362,7 @@ clipToString clip =
                 ++ ")"
 
 
+{-| -}
 type ClipPath
     = ClipPathNone
     | ClipPathInherit
@@ -300,6 +382,7 @@ clipPathToString clipPath =
             value
 
 
+{-| -}
 type ClipRule
     = ClipRuleNonZero
     | ClipRuleEvenOdd
@@ -325,6 +408,7 @@ type alias ClockValue =
     String
 
 
+{-| -}
 type ColorInterpolation
     = ColorInterpolationAuto
     | ColorInterpolationSRGB
@@ -348,6 +432,7 @@ colorInterpolationToString colorInterpolation =
             "inherit"
 
 
+{-| -}
 type ColorMatrixType
     = ColorMatrixTypeMatrix
     | ColorMatrixTypeSaturate
@@ -371,6 +456,7 @@ colorMatrixTypeToString colorMatrixType =
             "luminanceToAlpha"
 
 
+{-| -}
 type ColorProfile
     = ColorProfileAuto
     | ColorProfileSRGB
@@ -394,6 +480,7 @@ colorProfileToString colorProfile =
             "inherit"
 
 
+{-| -}
 type CompositeOperator
     = CompositeOperatorOver
     | CompositeOperatorIn
@@ -425,6 +512,7 @@ compositeOperatorToString compositeOperator =
             "arithmetic"
 
 
+{-| -}
 type CoordinateSystem
     = CoordinateSystemUserSpaceOnUse
     | CoordinateSystemObjectBoundingBox
@@ -442,6 +530,7 @@ coordinateSystemToString coordinateSystem =
             "objectBoundingBox"
 
 
+{-| -}
 type Cursor
     = CursorAuto
     | CursorDefault
@@ -517,6 +606,7 @@ cursorToString cursor =
             funcIRI
 
 
+{-| -}
 type Direction
     = DirectionLTR
     | DirectionRTL
@@ -536,6 +626,7 @@ directionToString direction =
             "inherit"
 
 
+{-| -}
 type Display
     = DisplayInline
     | DisplayBlock
@@ -615,6 +706,7 @@ displayToString display =
             "inherit"
 
 
+{-| -}
 type DominantBaseline
     = DominantBaselineAuto
     | DominantBaselineUseScript
@@ -674,6 +766,7 @@ dominantBaselineToString dominantBaseline =
             "inherit"
 
 
+{-| -}
 type Duration
     = Duration ClockValue
     | DurationIndefinite
@@ -689,6 +782,7 @@ durationToString duration =
             "indefinite"
 
 
+{-| -}
 type EdgeMode
     = EdgeModeDuplicate
     | EdgeModeWrap
@@ -708,6 +802,7 @@ edgeModeToString edgeMode =
             "none"
 
 
+{-| -}
 type FillRule
     = FillRuleNonZero
     | FillRuleEvenOdd
@@ -723,6 +818,7 @@ fillRuleToString fillRule =
             "evenodd"
 
 
+{-| -}
 type Filter
     = FilterNone
     | FilterInherit
@@ -742,6 +838,7 @@ filterToString f =
             funcIRI
 
 
+{-| -}
 type FloodColor
     = FloodInherit
     | FloodCurrentColor
@@ -765,6 +862,7 @@ floodColorToString floodColor =
             iccColor
 
 
+{-| -}
 type FontSizeAdjust
     = FontSizeAdjustNone
     | FontSizeAdjustInherit
@@ -784,6 +882,7 @@ fontSizeAdjustToString fontSizeAdjust =
             toString aspect
 
 
+{-| -}
 type FontStretch
     = FontStretchNormal
     | FontStretchWider
@@ -839,6 +938,7 @@ fontStretchToString fontStretch =
             "inherit"
 
 
+{-| -}
 type FontStyle
     = FontStyleNormal
     | FontStyleItalic
@@ -862,6 +962,7 @@ fontStyleToString fontStyle =
             "inherit"
 
 
+{-| -}
 type FontVariant
     = FontVariantNormal
     | FontVariantSmallCaps
@@ -881,6 +982,7 @@ fontVariantToString fontVariant =
             "inherit"
 
 
+{-| -}
 type FontWeight
     = FontWeightNormal
     | FontWeightBold
@@ -921,6 +1023,7 @@ fontWeightToString fontWeight =
                 fontWeightClamped weight |> toString
 
 
+{-| -}
 type FuncType
     = FuncTypeIdentity
     | FuncTypeTable
@@ -948,6 +1051,7 @@ funcTypeToString funcType =
             "gamma"
 
 
+{-| -}
 type InValue
     = InSourceGraphic
     | InSourceAlpha
@@ -979,6 +1083,7 @@ inValueToString inValue =
             str
 
 
+{-| -}
 type Kerning
     = KerningAuto
     | KerningInherit
@@ -1099,6 +1204,7 @@ lengthToString length =
             toString x ++ "px"
 
 
+{-| -}
 type LengthAdjust
     = LengthAdjustSpacing
     | LengthAdjustSpacingAndGlyphs
@@ -1114,6 +1220,7 @@ lengthAdjustToString lengthAdjust =
             "spacingAndGlyphs"
 
 
+{-| -}
 type MarkerCoordinateSystem
     = MarkerCoordinateSystemUserSpaceOnUse
     | MarkerCoordinateSystemStrokeWidth
@@ -1129,6 +1236,7 @@ markerCoordinateSystemToString markerCoordinateSystem =
             "strokeWidth"
 
 
+{-| -}
 type MeetOrSlice
     = Meet
     | Slice
@@ -1144,6 +1252,7 @@ meetOrSliceToString meetOrSlice =
             "slice"
 
 
+{-| -}
 type Mode
     = ModeNormal
     | ModeMultiply
@@ -1171,6 +1280,7 @@ modeToString mode =
             "lighten"
 
 
+{-| -}
 type MorphologyOperator
     = MorphologyOperatorErode
     | MorphologyOperatorDilate
@@ -1186,6 +1296,7 @@ morphologyOperatorToString morphologyOperator =
             "dilate"
 
 
+{-| -}
 type Opacity
     = Opacity Float
     | OpacityInherit
@@ -1201,6 +1312,7 @@ opacityToString opacity =
             "inherit"
 
 
+{-| -}
 type Rendering
     = RenderingAuto
     | RenderingOptimizeSpeed
@@ -1224,6 +1336,7 @@ renderingToString rendering =
             "inherit"
 
 
+{-| -}
 type RepeatCount
     = RepeatCount Float
     | RepeatIndefinite
@@ -1239,6 +1352,7 @@ repeatCountToString repeatCount =
             "indefinite"
 
 
+{-| -}
 type Restart
     = RestartAlways
     | RestartWhenNotActive
@@ -1258,6 +1372,7 @@ restartToString restart =
             "never"
 
 
+{-| -}
 type Scale
     = ScaleMin
     | ScaleMid
@@ -1277,6 +1392,7 @@ scaleToString scale =
             "max"
 
 
+{-| -}
 type ShapeRendering
     = RenderAuto
     | RenderOptimizeSpeed
@@ -1383,6 +1499,7 @@ timingValueAsString timingValue =
             "indefinite"
 
 
+{-| -}
 type TurbulenceType
     = TurbulenceTypeFractalNoise
     | TurbulenceTypeTurbulence
