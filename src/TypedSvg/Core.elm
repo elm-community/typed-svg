@@ -40,6 +40,11 @@ attribute =
     VirtualDom.attribute
 
 
+attributeNS : String -> String -> String -> Attribute msg
+attributeNS =
+    VirtualDom.attributeNS
+
+
 {-| A simple text node, no tags at all.
 Warning: not to be confused with `text_` which produces the SVG `<text>` tag!
 -}

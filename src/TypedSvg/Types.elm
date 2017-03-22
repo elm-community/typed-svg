@@ -2,7 +2,6 @@ module TypedSvg.Types exposing (..)
 
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
-import TypedSvg.Core exposing (Attribute)
 
 
 boolToString : Bool -> String
@@ -225,6 +224,11 @@ baselineShiftToString baselineShift =
 
 type alias BezierAnchorPoint =
     ( Float, Float, Float, Float )
+
+
+bezierAnchorPointToString : ( number, number, number, number ) -> String
+bezierAnchorPointToString ( x1, y1, x2, y2 ) =
+    List.map toString [ x1, y1, x2, y2 ] |> String.join " "
 
 
 type CalcMode

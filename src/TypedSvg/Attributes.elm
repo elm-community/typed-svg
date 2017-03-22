@@ -1,231 +1,9 @@
-module TypedSvg.Attributes
-    exposing
-        ( {--Regular Attributes-}
-          accentHeight
-        , accelerate
-        , accumulate
-        , additive
-          -- , alphabetic
-          -- , allowReorder
-          -- , amplitude
-          -- , arabicForm
-        , ascent
-        , attributeName
-        , attributeType
-          -- , autoReverse
-          -- , baseProfile
-          -- , bbox
-        , begin
-          -- , by
-        , calcMode
-          -- , capHeight
-        , class
-        , clipPathUnits
-        , contentScriptType
-        , contentStyleType
-        , cx
-        , cy
-        , d
-          -- , decelerate
-          -- , descent
-        , dur
-        , dx
-        , dy
-          -- , enableBackground
-        , end
-          -- , exponent
-        , externalResourcesRequired
-          -- , format
-        , from
-          -- , g1
-          -- , g2
-          -- , glyphName
-          -- , glyphRef
-        , gradientTransform
-        , gradientUnits
-          -- , hanging
-          -- , horizAdvX
-          -- , horizOriginX
-          -- , horizOriginY
-          -- , id
-          -- , ideographic
-          -- , intercept
-          -- , k
-          -- , keyPoints
-        , keySplines
-        , keyTimes
-          -- , lang
-        , lengthAdjust
-          -- , local
-        , markerHeight
-        , markerUnits
-        , markerWidth
-        , maskContentUnits
-        , maskUnits
-          -- , mathematical
-        , max
-          -- , media
-          -- , method
-        , min
-          -- , name
-          -- , offset
-          -- , operator -- see compositeOperator, morphologyOperator
-          -- , orient
-          -- , orientation
-          -- , origin
-        , overlinePosition
-        , overlineThickness
-          -- , panose1
-          -- , path
-        , pathLength
-        , patternContentUnits
-        , patternTransform
-        , patternUnits
-          -- , pointOrder
-        , points
-        , preserveAspectRatio
-        , primitiveUnits
-        , r
-          -- , refX
-          -- , refY
-          -- , renderingIntent
-        , repeatCount
-        , repeatDur
-          -- , requiredExtensions
-        , requiredFeatures
-        , restart
-          -- , rotate
-        , rx
-        , ry
-          -- , slope
-          -- , spacing
-          -- , specularConstant
-          -- , specularExponent
-          -- , speed
-          -- , spreadMethod
-          -- , startOffset
-          -- , stdDeviation
-          -- , stemh
-          -- , stemv
-          -- , stitchTiles
-          -- , strikethroughPosition
-          -- , strikethroughThickness
-          -- , string
-        , style
-          -- , systemLanguage
-          -- , tableValues
-          -- , target
-        , textLength
-          -- , title
-        , to
-        , transform
-          -- , u1
-          -- , u2
-        , underlinePosition
-        , underlineThickness
-          -- , unicode
-          -- , unicodeRange
-          -- , unitsPerEm
-          -- , vAlphabetic
-          -- , vHanging
-          -- , vIdeographic
-          -- , vMathematical
-        , version
-          -- , vertAdvY
-          -- , vertOriginX
-          -- , vertOriginY
-        , viewBox
-          -- , viewTarget
-          -- , widths
-          -- , xChannelSelector
-          -- , xlinkActuate
-          -- , xlinkArcrole
-          -- , xlinkRole
-        , xlinkShow
-        , xlinkTitle
-          -- , xlinkType
-          -- , xmlBase
-          -- , yChannelSelector
-          -- , zoomAndPan
-          --
-          {--Length or Position Attributes-}
-        , fx
-        , fy
-        , height
-        , width
-        , x
-        , y
-        , x1
-        , y1
-        , x2
-        , y2
-          --
-          {--Presentation Attributes-}
-        , alignmentBaseline
-        , baselineShift
-        , clipPath
-        , clipRule
-        , clip
-        , colorInterpolation
-        , colorProfile
-        , colorRendering
-        , color
-        , cursor
-        , direction
-        , display
-        , dominantBaseline
-          -- , enableBackground
-        , fillOpacity
-        , fillRule
-        , fill
-        , filter
-          -- , floodColor
-          -- , floodOpacity
-        , fontFamily
-        , fontSizeAdjust
-        , fontSize
-        , fontStretch
-        , fontStyle
-        , fontVariant
-        , fontWeight
-          -- , glyphOrientationHorizontal
-          -- , glyphOrientationVertical
-        , imageRendering
-        , kerning
-        , letterSpacing
-        , lightingColor
-        , markerEnd
-        , markerMid
-        , markerStart
-        , mask
-        , opacity
-        , overflow
-        , pointerEvents
-        , shapeRendering
-        , stopColor
-        , stopOpacity
-        , strokeDasharray
-        , strokeDashoffset
-        , strokeLinecap
-        , strokeLinejoin
-        , strokeMiterlimit
-        , strokeOpacity
-        , strokeWidth
-        , stroke
-        , textAnchor
-        , textDecoration
-        , textRendering
-        , unicodeBidi
-        , visibility
-        , wordSpacing
-        , writingMode
-        )
+module TypedSvg.Attributes exposing (..)
 
 import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
-import Html exposing (Html)
+import TypedSvg.Core exposing (..)
 import TypedSvg.Types exposing (..)
-import TypedSvg.Core exposing (attribute)
 
 
 {-| Defines the distance from the origin to the top of accent characters,
@@ -322,6 +100,36 @@ allowReorder =
 amplitude : String -> Attribute msg
 amplitude =
     attribute "amplitude"
+
+
+{-|
+    Defines the type of transformation, whose values change over time.
+
+    Used by Elements: animateTransform
+
+    NOTE: this is called `type_` in `elm-lang/svg` but is different here in
+          order to distinguish it from `contentType`
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+-}
+animateTransformType : AnimateTransformType -> Attribute msg
+animateTransformType animateTransformType =
+    attribute "type_" <| animateTransformTypeToString animateTransformType
+
+
+{-|
+    Values will be applied in order over the course of the animation. If a list
+    of values is specified, any `from`, `to` and `by` attribute values are
+    ignored.
+
+    Used by Elements: animate, animateColor, animateMotion, animateTransform,
+        discard, mpath, set
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
+-}
+animationValues : List number -> Attribute msg
+animationValues values =
+    attribute "values" <| String.join ";" (List.map toString values)
 
 
 {-| -}
@@ -586,6 +394,10 @@ colorInterpolation colorInterpolation =
     attribute "colorInterpolation" <| colorInterpolationToString colorInterpolation
 
 
+
+-- colorInterpolationFilters: see Filters.colorInterpolationFilters
+
+
 {-|
     The `colorProfile` attribute is used to define which color profile a raster
     image included through the `image` element should use.
@@ -599,7 +411,7 @@ colorInterpolation colorInterpolation =
 -}
 colorProfile : ColorProfile -> Attribute msg
 colorProfile colorProfile =
-    attribute "colorProfile" <| colorProfileToString colorProfile
+    attribute "color-profile" <| colorProfileToString colorProfile
 
 
 {-|
@@ -673,6 +485,21 @@ contentScriptType mimeType =
 contentStyleType : String -> Attribute msg
 contentStyleType styleSheetLanguage =
     attribute "contentStyleType" styleSheetLanguage
+
+
+{-|
+    Defines the content type of the element.
+
+    Used by Elements: script, style
+
+    NOTE: this is called `type_` in `elm-lang/svg` but is different here in
+          order to distinguish it from `animateTransformType`
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+-}
+contentType : String -> Attribute msg
+contentType t =
+    attribute "type_" t
 
 
 {-|
@@ -824,7 +651,7 @@ display display =
 -}
 dominantBaseline : DominantBaseline -> Attribute msg
 dominantBaseline dominantBaseline =
-    attribute "dominantBaseline" <| dominantBaselineToString dominantBaseline
+    attribute "dominant-baseline" <| dominantBaselineToString dominantBaseline
 
 
 {-|
@@ -848,6 +675,12 @@ dx length =
 dy : Length -> Attribute msg
 dy length =
     attribute "dy" <| lengthToString length
+
+
+{-| -}
+enableBackground : String -> Attribute msg
+enableBackground =
+    attribute "enable-background"
 
 
 {-|
@@ -894,6 +727,18 @@ externalResourcesRequired bool =
     attribute "externalResourcesRequired" <| boolToString bool
 
 
+{-| -}
+fill : Color -> Attribute msg
+fill color =
+    attribute "fill" (colorToCssRgba color)
+
+
+{-| -}
+noFill : Attribute msg
+noFill =
+    fill (Color.rgba 0 0 0 0.0)
+
+
 {-|
     This attribute specifies the opacity of the color or the content the current
     object is filled with.
@@ -906,7 +751,7 @@ externalResourcesRequired bool =
 -}
 fillOpacity : Opacity -> Attribute msg
 fillOpacity opacity =
-    attribute "fillOpacity" <| opacityToString opacity
+    attribute "fill-opacity" <| opacityToString opacity
 
 
 {-|
@@ -928,12 +773,14 @@ fillOpacity opacity =
 -}
 fillRule : FillRule -> Attribute msg
 fillRule fillRule =
-    attribute "fillRule" <| fillRuleToString fillRule
+    attribute "fill-rule" <| fillRuleToString fillRule
 
 
 {-|
     The filter attribute defines the filter effects define by the `filter`
     element that shall be applied to its element.
+
+    NOTE: See Filters and Filters.Attributes modules.
 
     As a presentation attribute, it also can be used as a property directly
     inside a CSS stylesheet.
@@ -947,6 +794,29 @@ fillRule fillRule =
 filter : Filter -> Attribute msg
 filter f =
     attribute "filter" <| filterToString f
+
+
+
+-- floodColor: see Filters.floodColor
+-- floodOpacity: see Filters.floodOpacity
+
+
+{-| An empty list will set `font-family: inherit`
+-}
+fontFamily : List String -> Attribute msg
+fontFamily families =
+    case families of
+        [] ->
+            attribute "fontFamily" "inherit"
+
+        _ ->
+            attribute "fontFamily" (String.join ", " families)
+
+
+{-| -}
+fontSize : Length -> Attribute msg
+fontSize length =
+    attribute "fontSize" <| lengthToString length
 
 
 {-|
@@ -979,7 +849,7 @@ fontSizeAdjust fontSizeAdjust =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch
 -}
-fontStretch : fontStretch -> Attribute msg
+fontStretch : FontStretch -> Attribute msg
 fontStretch fontStretch =
     attribute "fontStretch" <| fontStretchToString fontStretch
 
@@ -1036,6 +906,12 @@ fontWeight fontWeight =
     attribute "fontWeight" <| fontWeightToString fontWeight
 
 
+{-| -}
+format : String -> Attribute msg
+format =
+    attribute "format"
+
+
 {-|
     This attribute indicates the initial value of the attribute that will be
     modified during the animation. When used with the `to` attribute, the
@@ -1049,6 +925,74 @@ fontWeight fontWeight =
 from : number -> Attribute msg
 from value =
     attribute "from" <| toString value
+
+
+{-|
+    For the `radialGradient` element, this attribute defines the x-axis
+    coordinate of the focal point for the radial gradient.
+
+    If the attribute is not specified, it's assumed to be at the same place as
+    the center point.
+
+    Used by Elements: radialGradient
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+-}
+fx : Length -> Attribute msg
+fx length =
+    attribute "fx" <| lengthToString length
+
+
+{-|
+    For the `radialGradient` element, this attribute defines the y-axis
+    coordinate of the focal point for the radial gradient.
+
+    If the attribute is not specified, it's assumed to be at the same place as
+    the center point.
+
+    Used by Elements: radialGradient
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+-}
+fy : Length -> Attribute msg
+fy length =
+    attribute "fy" <| lengthToString length
+
+
+{-| -}
+g1 : String -> Attribute msg
+g1 =
+    attribute "g1"
+
+
+{-| -}
+g2 : String -> Attribute msg
+g2 =
+    attribute "g2"
+
+
+{-| -}
+glyphName : String -> Attribute msg
+glyphName =
+    attribute "glyph-name"
+
+
+{-| -}
+glyphOrientationHorizontal : String -> Attribute msg
+glyphOrientationHorizontal =
+    attribute "glyph-orientation-horizontal"
+
+
+{-| -}
+glyphOrientationVertical : String -> Attribute msg
+glyphOrientationVertical =
+    attribute "glyph-orientation-vertical"
+
+
+{-| -}
+glyphRef : String -> Attribute msg
+glyphRef =
+    attribute "glyphRef"
 
 
 {-|
@@ -1087,6 +1031,51 @@ gradientUnits coordinateSystem =
     attribute "gradientUnits" <| coordinateSystemToString coordinateSystem
 
 
+{-| -}
+hanging : String -> Attribute msg
+hanging =
+    attribute "hanging"
+
+
+{-|
+    This attribute indicates a vertical length in the user coordinate system.
+    The exact effect of this coordinate depends on each element. Most of the
+    time, it represents the height of the rectangular region of the reference
+    element (see each individual element's documentation for exceptions).
+
+    This attribute must be specified except for the `svg` element where the
+    default value is 100% and the `filter` and `mask` elements where the default
+    value is 120%.
+-}
+height : Length -> Attribute msg
+height length =
+    attribute "height" <| lengthToString length
+
+
+{-| -}
+horizAdvX : String -> Attribute msg
+horizAdvX =
+    attribute "horiz-adv-x"
+
+
+{-| -}
+horizOriginX : String -> Attribute msg
+horizOriginX =
+    attribute "horiz-origin-x"
+
+
+{-| -}
+horizOriginY : String -> Attribute msg
+horizOriginY =
+    attribute "horiz-origin-y"
+
+
+{-| -}
+ideographic : String -> Attribute msg
+ideographic =
+    attribute "ideographic"
+
+
 {-|
     The `imageRendering` attribute provides a hint to the browser about how to
     make speed vs. quality tradeoffs as it performs image processing.
@@ -1101,6 +1090,18 @@ gradientUnits coordinateSystem =
 imageRendering : Rendering -> Attribute msg
 imageRendering rendering =
     attribute "image-rendering" <| renderingToString rendering
+
+
+{-| -}
+intercept : String -> Attribute msg
+intercept =
+    attribute "intercept"
+
+
+{-| -}
+k : String -> Attribute msg
+k =
+    attribute "k"
 
 
 {-|
@@ -1157,11 +1158,6 @@ keySplines bezierAnchorPointList =
     attribute "keySplines" <| (List.map bezierAnchorPointToString bezierAnchorPointList |> String.join ";")
 
 
-bezierAnchorPointToString : ( number, number, number, number ) -> String
-bezierAnchorPointToString ( x1, y1, x2, y2 ) =
-    List.map toString [ x1, y1, x2, y2 ] |> String.join " "
-
-
 {-|
     The keyTimes attribute is a semicolon-separated list of time `values` used
     to control the pacing of the animation. Each time in the list corresponds to
@@ -1183,6 +1179,12 @@ bezierAnchorPointToString ( x1, y1, x2, y2 ) =
 keyTimes : List Float -> Attribute msg
 keyTimes floatList =
     attribute "keyTimes" <| (List.map toString floatList |> String.join ";")
+
+
+{-| -}
+lang : String -> Attribute msg
+lang =
+    attribute "lang"
 
 
 {-|
@@ -1210,6 +1212,30 @@ lengthAdjust option =
     attribute "lengthAdjust" <| lengthAdjustToString option
 
 
+{-| -}
+letterSpacing : String -> Attribute msg
+letterSpacing =
+    attribute "letter-spacing"
+
+
+{-| -}
+lightingColor : String -> Attribute msg
+lightingColor =
+    attribute "lighting-color"
+
+
+{-| -}
+local : String -> Attribute msg
+local =
+    attribute "local"
+
+
+{-| -}
+markerEnd : String -> Attribute msg
+markerEnd =
+    attribute "marker-end"
+
+
 {-|
     The markerHeight represents the height of the viewport into which the
     `marker` is to be fitted when it is rendered.
@@ -1226,6 +1252,18 @@ lengthAdjust option =
 markerHeight : Length -> Attribute msg
 markerHeight height =
     attribute "markerHeight" <| lengthToString height
+
+
+{-| -}
+markerMid : String -> Attribute msg
+markerMid =
+    attribute "marker-mid"
+
+
+{-| -}
+markerStart : String -> Attribute msg
+markerStart =
+    attribute "marker-start"
 
 
 {-|
@@ -1260,6 +1298,12 @@ markerUnits markerCoordinateSystem =
 markerWidth : Length -> Attribute msg
 markerWidth width =
     attribute "markerWidth" <| lengthToString width
+
+
+{-| -}
+mask : String -> Attribute msg
+mask =
+    attribute "mask"
 
 
 {-|
@@ -1316,6 +1360,18 @@ max clockValue =
     attribute "max" <| clockValue
 
 
+{-| -}
+media : String -> Attribute msg
+media =
+    attribute "media"
+
+
+{-| -}
+method : String -> Attribute msg
+method =
+    attribute "method"
+
+
 {-|
     This attribute specifies the minimum value of the active duration.
 
@@ -1330,6 +1386,52 @@ max clockValue =
 min : ClockValue -> Attribute msg
 min clockValue =
     attribute "min" <| clockValue
+
+
+{-| -}
+name : String -> Attribute msg
+name =
+    attribute "name"
+
+
+{-| -}
+offset : String -> Attribute msg
+offset =
+    attribute "offset"
+
+
+{-| -}
+opacity : String -> Attribute msg
+opacity =
+    attribute "opacity"
+
+
+
+-- operator: see compositeOperator and Filters.morphologyOperator
+
+
+{-| -}
+orient : String -> Attribute msg
+orient =
+    attribute "orient"
+
+
+{-| -}
+orientation : String -> Attribute msg
+orientation =
+    attribute "orientation"
+
+
+{-| -}
+origin : String -> Attribute msg
+origin =
+    attribute "origin"
+
+
+{-| -}
+overflow : String -> Attribute msg
+overflow =
+    attribute "overflow"
 
 
 {-|
@@ -1360,6 +1462,19 @@ overlineThickness thickness =
     attribute "overlineThickness" <| toString thickness
 
 
+{-| -}
+panose1 : String -> Attribute msg
+panose1 =
+    attribute "panose-1"
+
+
+{-| NOTE: is this used as an attribute? `elm-lang/svg` seems to think so.
+-}
+path : String -> Attribute msg
+path =
+    attribute "path"
+
+
 {-|
     This attribute lets the author specify a total length for the path, in user
     units. This value is then used to calibrate the browser's distance
@@ -1368,7 +1483,7 @@ overlineThickness thickness =
 
     Used by Elements: path
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/path
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
 -}
 pathLength : number -> Attribute msg
 pathLength length =
@@ -1429,6 +1544,18 @@ patternUnits coordinateSystem =
     attribute "patternUnits" <| coordinateSystemToString coordinateSystem
 
 
+{-| -}
+pointerEvents : String -> Attribute msg
+pointerEvents =
+    attribute "pointer-events"
+
+
+{-| -}
+pointOrder : String -> Attribute msg
+pointOrder =
+    attribute "point-order"
+
+
 {-|
     The points attribute defines a list of points required to draw a `polyline`
     or `polygon` element.
@@ -1485,6 +1612,33 @@ primitiveUnits coordinateSystem =
     attribute "primitiveUnits" <| coordinateSystemToString coordinateSystem
 
 
+r : Length -> Attribute msg
+r length =
+    attribute "r" <| lengthToString length
+
+
+
+-- radius: see Filters.radius
+
+
+{-| -}
+refX : String -> Attribute msg
+refX =
+    attribute "refX"
+
+
+{-| -}
+refY : String -> Attribute msg
+refY =
+    attribute "refY"
+
+
+{-| -}
+renderingIntent : String -> Attribute msg
+renderingIntent =
+    attribute "rendering-intent"
+
+
 {-|
     This attribute indicates the number of times the animation will take place.
 
@@ -1509,9 +1663,15 @@ repeatCount repeatCount =
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatDur
 -}
-repeatDur : DurationValue -> Attribute msg
+repeatDur : Duration -> Attribute msg
 repeatDur duration =
     attribute "repeatDur" <| durationToString duration
+
+
+{-| -}
+requiredExtensions : String -> Attribute msg
+requiredExtensions =
+    attribute "requiredExtensions"
 
 
 {-|
@@ -1556,6 +1716,33 @@ restart restart =
     attribute "restart" <| restartToString restart
 
 
+
+-- result: see Filters.result
+
+
+{-| -}
+rotate : String -> Attribute msg
+rotate =
+    attribute "rotate"
+
+
+{-| -}
+rx : Length -> Attribute msg
+rx length =
+    attribute "rx" <| lengthToString length
+
+
+{-| -}
+ry : Length -> Attribute msg
+ry length =
+    attribute "ry" <| lengthToString length
+
+
+
+-- scale: see Filters.scale
+-- seed: see Filters.seed
+
+
 {-|
     The creator of SVG content might want to provide a hint about what tradeoffs
     to make as the browser renders `path` element or basic shapes. The
@@ -1569,6 +1756,150 @@ restart restart =
 shapeRendering : ShapeRendering -> Attribute msg
 shapeRendering shapeRendering =
     attribute "shapeRendering" <| shapeRenderingToString shapeRendering
+
+
+{-| -}
+slope : String -> Attribute msg
+slope =
+    attribute "slope"
+
+
+{-| -}
+spacing : String -> Attribute msg
+spacing =
+    attribute "spacing"
+
+
+{-| -}
+specularConstant : String -> Attribute msg
+specularConstant =
+    attribute "specularConstant"
+
+
+{-| -}
+specularExponent : String -> Attribute msg
+specularExponent =
+    attribute "specularExponent"
+
+
+{-| -}
+speed : String -> Attribute msg
+speed =
+    attribute "speed"
+
+
+{-| -}
+spreadMethod : String -> Attribute msg
+spreadMethod =
+    attribute "spreadMethod"
+
+
+{-| -}
+startOffset : String -> Attribute msg
+startOffset =
+    attribute "startOffset"
+
+
+{-| -}
+stdDeviation : String -> Attribute msg
+stdDeviation =
+    attribute "stdDeviation"
+
+
+{-| -}
+stemh : String -> Attribute msg
+stemh =
+    attribute "stemh"
+
+
+{-| -}
+stemv : String -> Attribute msg
+stemv =
+    attribute "stemv"
+
+
+{-| -}
+stitchTiles : String -> Attribute msg
+stitchTiles =
+    attribute "stitchTiles"
+
+
+{-| -}
+stopColor : String -> Attribute msg
+stopColor =
+    attribute "stop-color"
+
+
+{-| -}
+stopOpacity : String -> Attribute msg
+stopOpacity =
+    attribute "stop-opacity"
+
+
+{-| -}
+strikethroughPosition : String -> Attribute msg
+strikethroughPosition =
+    attribute "strikethrough-position"
+
+
+{-| -}
+strikethroughThickness : String -> Attribute msg
+strikethroughThickness =
+    attribute "strikethrough-thickness"
+
+
+{-| -}
+string : String -> Attribute msg
+string =
+    attribute "string"
+
+
+{-| -}
+stroke : Color -> Attribute msg
+stroke color =
+    attribute "stroke" (colorToCssRgba color)
+
+
+{-| -}
+strokeDasharray : String -> Attribute msg
+strokeDasharray =
+    attribute "stroke-dasharray"
+
+
+{-| -}
+strokeDashoffset : String -> Attribute msg
+strokeDashoffset =
+    attribute "stroke-dashoffset"
+
+
+{-| -}
+strokeLinecap : String -> Attribute msg
+strokeLinecap =
+    attribute "stroke-linecap"
+
+
+{-| -}
+strokeLinejoin : String -> Attribute msg
+strokeLinejoin =
+    attribute "stroke-linejoin"
+
+
+{-| -}
+strokeMiterlimit : String -> Attribute msg
+strokeMiterlimit =
+    attribute "stroke-miterlimit"
+
+
+{-| -}
+strokeOpacity : String -> Attribute msg
+strokeOpacity =
+    attribute "stroke-opacity"
+
+
+{-| -}
+strokeWidth : Length -> Attribute msg
+strokeWidth length =
+    attribute "strokeWidth" <| lengthToString length
 
 
 {-|
@@ -1595,6 +1926,36 @@ style value =
     attribute "style" <| value
 
 
+{-| -}
+systemLanguage : String -> Attribute msg
+systemLanguage =
+    attribute "systemLanguage"
+
+
+{-| -}
+tableValues : String -> Attribute msg
+tableValues =
+    attribute "tableValues"
+
+
+{-| -}
+target : String -> Attribute msg
+target =
+    attribute "target"
+
+
+{-| -}
+textAnchor : AnchorAlignment -> Attribute msg
+textAnchor anchorAlignment =
+    attribute "textAnchor" <| anchorAlignmentToString anchorAlignment
+
+
+{-| -}
+textDecoration : String -> Attribute msg
+textDecoration =
+    attribute "text-decoration"
+
+
 {-|
     The `textLength` attribute is intended to preserve a span of SVG text's
     display width across a variety of conditions, such as webfonts not loading.
@@ -1606,6 +1967,18 @@ style value =
 textLength : Length -> Attribute msg
 textLength length =
     attribute "textLength" <| lengthToString length
+
+
+{-| -}
+textRendering : String -> Attribute msg
+textRendering =
+    attribute "text-rendering"
+
+
+{-| -}
+title : String -> Attribute msg
+title =
+    attribute "title"
 
 
 {-|
@@ -1642,28 +2015,20 @@ transform transforms =
     attribute "transform" <| String.join " " (List.map transformToString transforms)
 
 
-{-|
-    Defines the type of transformation, whose values change over time.
 
-    Used by Elements: animateTransform
-
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
--}
-animateTransformType : AnimateTransformType -> Attribute msg
-animateTransformType animateTransformType =
-    attribute "type_" <| animateTransformTypeToString animateTransformType
+-- type: see animateTransformType and contentType
 
 
-{-|
-    Defines the content type of the element.
+{-| -}
+u1 : String -> Attribute msg
+u1 =
+    attribute "u1"
 
-    Used by Elements: script, style
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
--}
-contentType : String -> Attribute msg
-contentType t =
-    attribute "type_" t
+{-| -}
+u2 : String -> Attribute msg
+u2 =
+    attribute "u2"
 
 
 {-|
@@ -1677,7 +2042,7 @@ contentType t =
 -}
 underlinePosition : number -> Attribute msg
 underlinePosition position =
-    attribute "underlinePosition" <| toString position
+    attribute "underline-position" <| toString position
 
 
 {-|
@@ -1691,22 +2056,59 @@ underlinePosition position =
 -}
 underlineThickness : number -> Attribute msg
 underlineThickness thickness =
-    attribute "underlineThickness" <| toString thickness
+    attribute "underline-thickness" <| toString thickness
 
 
-{-|
-    Values will be applied in order over the course of the animation. If a list
-    of values is specified, any `from`, `to` and `by` attribute values are
-    ignored.
+{-| -}
+unicode : String -> Attribute msg
+unicode =
+    attribute "unicode"
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
--}
-animationValues : List number -> Attribute msg
-animationValues values =
-    attribute "values" <| String.join ";" (List.map toString values)
+{-| -}
+unicodeBidi : String -> Attribute msg
+unicodeBidi =
+    attribute "unicode-bidi"
+
+
+{-| -}
+unicodeRange : String -> Attribute msg
+unicodeRange =
+    attribute "unicode-range"
+
+
+{-| -}
+unitsPerEm : String -> Attribute msg
+unitsPerEm =
+    attribute "units-per-em"
+
+
+{-| -}
+vAlphabetic : String -> Attribute msg
+vAlphabetic =
+    attribute "v-alphabetic"
+
+
+{-| -}
+vHanging : String -> Attribute msg
+vHanging =
+    attribute "v-hanging"
+
+
+{-| -}
+vIdeographic : String -> Attribute msg
+vIdeographic =
+    attribute "v-ideographic"
+
+
+{-| -}
+vMathematical : String -> Attribute msg
+vMathematical =
+    attribute "v-mathematical"
+
+
+
+-- values: see animationValues and Filters.colorMatrixValues
 
 
 {-|
@@ -1724,6 +2126,157 @@ animationValues values =
 version : Float -> Attribute msg
 version number =
     attribute "version" <| toString number
+
+
+{-| -}
+vertAdvY : String -> Attribute msg
+vertAdvY =
+    attribute "vert-adv-y"
+
+
+{-| -}
+vertOriginX : String -> Attribute msg
+vertOriginX =
+    attribute "vert-origin-x"
+
+
+{-| -}
+vertOriginY : String -> Attribute msg
+vertOriginY =
+    attribute "vert-origin-y"
+
+
+{-|
+    The `viewBox` attribute allows you to specify that a given set of graphics
+    stretch to fit a particular container element.
+
+    `minX`, `minY`, `width` and `height` specify a rectangle in user space
+    which should be mapped to the bounds of the viewport established by the
+    given element, taking into account attribute `preserveAspectRatio`.
+
+    Negative values for `width` or `height` are not permitted, and a value of
+    zero disables rendering of the element.
+
+    Used by Elements: svg, symbol, image, marker, pattern, view
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+-}
+viewBox : number -> number -> number -> number -> Attribute a
+viewBox minX minY width height =
+    [ minX, minY, width, height ]
+        |> List.map toString
+        |> String.join " "
+        |> attribute "viewBox"
+
+
+{-| -}
+viewTarget : String -> Attribute msg
+viewTarget =
+    attribute "viewTarget"
+
+
+{-| -}
+visibility : String -> Attribute msg
+visibility =
+    attribute "visibility"
+
+
+{-| -}
+width : Length -> Attribute msg
+width length =
+    attribute "width" <| lengthToString length
+
+
+{-| -}
+widths : String -> Attribute msg
+widths =
+    attribute "widths"
+
+
+{-| -}
+wordSpacing : String -> Attribute msg
+wordSpacing =
+    attribute "word-spacing"
+
+
+{-| -}
+writingMode : String -> Attribute msg
+writingMode =
+    attribute "writing-mode"
+
+
+{-| -}
+x : Length -> Attribute msg
+x length =
+    attribute "x" <| lengthToString length
+
+
+{-| -}
+xHeight : String -> Attribute msg
+xHeight =
+    attribute "x-height"
+
+
+{-|
+    This attribute defines the x-axis coordinate of the start of a line or
+    linearGradient.
+
+    If the attribute is not specified, the effect is as if a value of 0
+    (or 0%, in the case of a linearGradient) were specified.
+
+    Used by Elements: line, linearGradient
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+-}
+x1 : Length -> Attribute msg
+x1 position =
+    attribute "x1" <| lengthToString position
+
+
+{-|
+    This attribute defines the x-axis coordinate of the end of a line or
+    linearGradient.
+
+    If the attribute is not specified, the effect is as if a value of 0
+    (or 0%, in the case of a linearGradient) were specified.
+
+    Used by Elements: line, linearGradient
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+-}
+x2 : Length -> Attribute msg
+x2 position =
+    attribute "x2" <| lengthToString position
+
+
+{-| -}
+xChannelSelector : String -> Attribute msg
+xChannelSelector =
+    attribute "xChannelSelector"
+
+
+{-| -}
+xlinkActuate : String -> Attribute msg
+xlinkActuate =
+    attributeNS "http://www.w3.org/1999/xlink" "xlink:actuate"
+
+
+{-| -}
+xlinkArcrole : String -> Attribute msg
+xlinkArcrole =
+    attributeNS "http://www.w3.org/1999/xlink" "xlink:arcrole"
+
+
+{-| -}
+xlinkHref : String -> Attribute msg
+xlinkHref =
+    attributeNS "http://www.w3.org/1999/xlink" "xlink:href"
+
+
+{-| -}
+xlinkRole : String -> Attribute msg
+xlinkRole =
+    attributeNS "http://www.w3.org/1999/xlink" "xlink:role"
 
 
 {-|
@@ -1763,20 +2316,34 @@ xlinkTitle str =
     attribute "xlinkTitle" str
 
 
-{-|
-    This attribute defines the x-axis coordinate of the start of a line or
-    linearGradient.
+{-| -}
+xlinkType : String -> Attribute msg
+xlinkType =
+    attributeNS "http://www.w3.org/1999/xlink" "xlink:type"
 
-    If the attribute is not specified, the effect is as if a value of 0
-    (or 0%, in the case of a linearGradient) were specified.
 
-    Used by Elements: line, linearGradient
+{-| -}
+xmlBase : String -> Attribute msg
+xmlBase =
+    attributeNS "http://www.w3.org/XML/1998/namespace" "xml:base"
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
--}
-x1 : Length -> Attribute msg
-x1 position =
-    attribute "x1" <| lengthToString position
+
+{-| -}
+xmlLang : String -> Attribute msg
+xmlLang =
+    attributeNS "http://www.w3.org/XML/1998/namespace" "xml:lang"
+
+
+{-| -}
+xmlSpace : String -> Attribute msg
+xmlSpace =
+    attributeNS "http://www.w3.org/XML/1998/namespace" "xml:space"
+
+
+{-| -}
+y : Length -> Attribute msg
+y length =
+    attribute "y" <| lengthToString length
 
 
 {-|
@@ -1796,22 +2363,6 @@ y1 position =
 
 
 {-|
-    This attribute defines the x-axis coordinate of the end of a line or
-    linearGradient.
-
-    If the attribute is not specified, the effect is as if a value of 0
-    (or 0%, in the case of a linearGradient) were specified.
-
-    Used by Elements: line, linearGradient
-
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
--}
-x2 : Length -> Attribute msg
-x2 position =
-    attribute "x2" <| lengthToString position
-
-
-{-|
     This attribute defines the y-axis coordinate of the end of a line or
     linearGradient.
 
@@ -1827,127 +2378,24 @@ y2 position =
     attribute "y2" <| lengthToString position
 
 
-svgBox : ( number, number ) -> List (Svg msg) -> Html msg
-svgBox ( width, height ) =
-    svg [ viewBox 0 0 800 600 ]
-
-
-viewBox : number -> number -> number -> number -> Attribute msg
-viewBox minX minY width height =
-    [ minX, minY, width, height ]
-        |> List.map toString
-        |> String.join " "
-        |> attribute "viewBox"
-
-
-stroke : Color -> Attribute msg
-stroke color =
-    attribute "stroke" (colorToCssRgba color)
-
-
-fill : Color -> Attribute msg
-fill color =
-    attribute "fill" (colorToCssRgba color)
-
-
-noFill : Attribute msg
-noFill =
-    fill (Color.rgba 0 0 0 0.0)
-
-
-{-| An empty list will set `font-family: inherit`
--}
-fontFamily : List String -> Attribute msg
-fontFamily families =
-    case families of
-        [] ->
-            attribute "fontFamily" "inherit"
-
-        _ ->
-            attribute "fontFamily" (String.join ", " families)
-
-
-textAnchor : AnchorAlignment -> Attribute msg
-textAnchor anchorAlignment =
-    attribute "textAnchor" <| anchorAlignmentToString anchorAlignment
+{-| -}
+yChannelSelector : String -> Attribute msg
+yChannelSelector =
+    attribute "yChannelSelector"
 
 
 
-{- Attributes that express Lengths -}
+-- z: see Filters.z
 
 
-fontSize : Length -> Attribute msg
-fontSize length =
-    attribute "fontSize" <| lengthToString length
+{-| -}
+zoomAndPan : String -> Attribute msg
+zoomAndPan =
+    attribute "zoomAndPan"
 
 
-{-|
-    For the `radialGradient` element, this attribute defines the x-axis
-    coordinate of the focal point for the radial gradient.
 
-    If the attribute is not specified, it's assumed to be at the same place as
-    the center point.
-
-    Used by Elements: radialGradient
-
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
--}
-fx : Length -> Attribute msg
-fx length =
-    attribute "fx" <| lengthToString length
-
-
-{-|
-    For the `radialGradient` element, this attribute defines the y-axis
-    coordinate of the focal point for the radial gradient.
-
-    If the attribute is not specified, it's assumed to be at the same place as
-    the center point.
-
-    Used by Elements: radialGradient
-
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
--}
-fy : Length -> Attribute msg
-fy length =
-    attribute "fy" <| lengthToString length
-
-
-rx : Length -> Attribute msg
-rx length =
-    attribute "rx" <| lengthToString length
-
-
-ry : Length -> Attribute msg
-ry length =
-    attribute "ry" <| lengthToString length
-
-
-r : Length -> Attribute msg
-r length =
-    attribute "r" <| lengthToString length
-
-
-strokeWidth : Length -> Attribute msg
-strokeWidth length =
-    attribute "strokeWidth" <| lengthToString length
-
-
-width : Length -> Attribute msg
-width length =
-    attribute "width" <| lengthToString length
-
-
-height : Length -> Attribute msg
-height length =
-    attribute "height" <| lengthToString length
-
-
-x : Length -> Attribute msg
-x length =
-    attribute "x" <| lengthToString length
-
-
-y : Length -> Attribute msg
-y length =
-    attribute "y" <| lengthToString length
+-- Misc Additions
+-- svgBox : ( number, number ) -> List (Svg msg) -> Html msg
+-- svgBox ( width, height ) =
+--     svg [ viewBox 0 0 800 600 ]

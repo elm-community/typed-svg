@@ -90,6 +90,37 @@ colorInterpolationFilters colorInterpolation =
 
 
 {-|
+    Indicates the type of matrix operation. The keyword matrix indicates that a
+    full 5x4 matrix of values will be provided. The other keywords represent
+    convenience shortcuts to allow commonly used color operations to be
+    performed without specifying a complete matrix.
+
+    Used by Elements: Filters.colorMatrix
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+-}
+colorMatrixType : ColorMatrixType -> Attribute msg
+colorMatrixType colorMatrixType =
+    attribute "type" <| colorMatrixTypeToString colorMatrixType
+
+
+{-|
+    Contents of `colorMatrixValues` depends on the value of the attribute
+    `type`.
+
+    Used by Elements: Filters.colorMatrix
+
+    NOTE: this is called `values` in `elm-lang/svg` but is different here
+          in order to differentiate from animationValues.
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
+-}
+colorMatrixValues : String -> Attribute msg
+colorMatrixValues string =
+    attribute "values" string
+
+
+{-|
     compositeOperator defines the compositing operation that is to be performed
     in the `Filters.composite` element
 
@@ -402,6 +433,19 @@ mode mode =
 
 
 {-|
+    morphologyOperator defines the compositing operation that is to be performed
+    in the `feMorphology` element
+
+    Used by Elements: Filters.morphology
+
+    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
+-}
+morphologyOperator : MorphologyOperator -> Attribute msg
+morphologyOperator morphologyOperator =
+    attribute "operator" <| morphologyOperatorToString morphologyOperator
+
+
+{-|
     The numOctaves parameter for the noise function of the `Filters.turbulence`
     primitive.
 
@@ -415,19 +459,6 @@ mode mode =
 numOctaves : Int -> Attribute msg
 numOctaves int =
     attribute "numOctaves" <| toString int
-
-
-{-|
-    compositeOperator defines the compositing operation that is to be performed
-    in the `feMorphology` element
-
-    Used by Elements: Filters.morphology
-
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
--}
-morphologyOperator : MorphologyOperator -> Attribute msg
-morphologyOperator morphologyOperator =
-    attribute "operator" <| morphologyOperatorToString morphologyOperator
 
 
 {-|
@@ -656,21 +687,6 @@ targetY yPosition =
 
 
 {-|
-    Indicates the type of matrix operation. The keyword matrix indicates that a
-    full 5x4 matrix of values will be provided. The other keywords represent
-    convenience shortcuts to allow commonly used color operations to be
-    performed without specifying a complete matrix.
-
-    Used by Elements: Filters.colorMatrix
-
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
--}
-colorMatrixType : ColorMatrixType -> Attribute msg
-colorMatrixType colorMatrixType =
-    attribute "type" <| colorMatrixTypeToString colorMatrixType
-
-
-{-|
     Indicates the type of component transfer function.
 
     Used by Elements: Filters.funcR, Filters.funcG, Filters.funcA, Filters.funcB
@@ -693,19 +709,6 @@ funcType funcType =
 turbulenceType : TurbulenceType -> Attribute msg
 turbulenceType turbulenceType =
     attribute "type" <| turbulenceTypeToString turbulenceType
-
-
-{-|
-    Contents of `colorMatrixValues` depends on the value of the attribute
-    `type`.
-
-    Used by Elements: Filters.colorMatrix
-
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
--}
-colorMatrixValues : String -> Attribute msg
-colorMatrixValues string =
-    attribute "values" string
 
 
 {-|
