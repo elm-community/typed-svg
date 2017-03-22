@@ -1,5 +1,13 @@
 module TypedSvg.Core exposing (..)
 
+{-|
+# SVG Nodes
+@docs Svg, text, node, map
+
+# SVG Attributes
+@docs Attribute, attribute, attributeNS
+-}
+
 import VirtualDom
 import Json.Encode as Json
 
