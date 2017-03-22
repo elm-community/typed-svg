@@ -41,30 +41,6 @@ module TypedSvg
         , linearGradient
         , radialGradient
         , stop
-        , feBlend
-        , feColorMatrix
-        , feComponentTransfer
-        , feComposite
-        , feConvolveMatrix
-        , feDiffuseLighting
-        , feDisplacementMap
-        , feFlood
-        , feFuncA
-        , feFuncB
-        , feFuncG
-        , feFuncR
-        , feGaussianBlur
-        , feImage
-        , feMerge
-        , feMergeNode
-        , feMorphology
-        , feOffset
-        , feSpecularLighting
-        , feTile
-        , feTurbulence
-        , feDistantLight
-        , fePointLight
-        , feSpotLight
         , clipPath
         , colorProfile
         , cursor
@@ -263,136 +239,6 @@ title =
 
 
 
--- Filter primitive elements
-
-
-{-| -}
-feBlend : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feBlend =
-    node "feBlend"
-
-
-{-| -}
-feColorMatrix : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feColorMatrix =
-    node "feColorMatrix"
-
-
-{-| -}
-feComponentTransfer : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feComponentTransfer =
-    node "feComponentTransfer"
-
-
-{-| -}
-feComposite : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feComposite =
-    node "feComposite"
-
-
-{-| -}
-feConvolveMatrix : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feConvolveMatrix =
-    node "feConvolveMatrix"
-
-
-{-| -}
-feDiffuseLighting : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feDiffuseLighting =
-    node "feDiffuseLighting"
-
-
-{-| -}
-feDisplacementMap : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feDisplacementMap =
-    node "feDisplacementMap"
-
-
-{-| -}
-feFlood : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feFlood =
-    node "feFlood"
-
-
-{-| -}
-feFuncA : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feFuncA =
-    node "feFuncA"
-
-
-{-| -}
-feFuncB : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feFuncB =
-    node "feFuncB"
-
-
-{-| -}
-feFuncG : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feFuncG =
-    node "feFuncG"
-
-
-{-| -}
-feFuncR : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feFuncR =
-    node "feFuncR"
-
-
-{-| -}
-feGaussianBlur : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feGaussianBlur =
-    node "feGaussianBlur"
-
-
-{-| -}
-feImage : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feImage =
-    node "feImage"
-
-
-{-| -}
-feMerge : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feMerge =
-    node "feMerge"
-
-
-{-| -}
-feMergeNode : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feMergeNode =
-    node "feMergeNode"
-
-
-{-| -}
-feMorphology : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feMorphology =
-    node "feMorphology"
-
-
-{-| -}
-feOffset : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feOffset =
-    node "feOffset"
-
-
-{-| -}
-feSpecularLighting : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feSpecularLighting =
-    node "feSpecularLighting"
-
-
-{-| -}
-feTile : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feTile =
-    node "feTile"
-
-
-{-| -}
-feTurbulence : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feTurbulence =
-    node "feTurbulence"
-
-
-
 -- Font elements
 
 
@@ -489,28 +335,6 @@ rect =
 use : List (Attribute msg) -> List (Svg msg) -> Svg msg
 use =
     node "use"
-
-
-
--- Light source elements
-
-
-{-| -}
-feDistantLight : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feDistantLight =
-    node "feDistantLight"
-
-
-{-| -}
-fePointLight : List (Attribute msg) -> List (Svg msg) -> Svg msg
-fePointLight =
-    node "fePointLight"
-
-
-{-| -}
-feSpotLight : List (Attribute msg) -> List (Svg msg) -> Svg msg
-feSpotLight =
-    node "feSpotLight"
 
 
 

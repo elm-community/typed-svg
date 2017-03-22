@@ -5,7 +5,7 @@ module TypedSvg.Core exposing (..)
 @docs Svg, text, node, map
 
 # SVG Attributes
-@docs Attribute, attribute, attributeNS
+@docs Attribute, attribute, attributeNS, svgNamespace
 -}
 
 import VirtualDom
@@ -25,6 +25,7 @@ type alias Attribute msg =
     VirtualDom.Property msg
 
 
+{-| -}
 svgNamespace : Attribute msg
 svgNamespace =
     VirtualDom.property "namespace" (Json.string "http://www.w3.org/2000/svg")
@@ -43,11 +44,15 @@ node name =
         VirtualDom.node name (svgNamespace :: attributes) children
 
 
+{-| Creates any untyped attribute
+-}
 attribute : String -> String -> Attribute msg
 attribute =
     VirtualDom.attribute
 
 
+{-| Creates any untyped, namespaced attribute
+-}
 attributeNS : String -> String -> String -> Attribute msg
 attributeNS =
     VirtualDom.attributeNS
