@@ -4,6 +4,7 @@ import Color exposing (Color)
 import Color.Convert exposing (colorToCssRgba)
 import TypedSvg.Core exposing (..)
 import TypedSvg.Types exposing (..)
+import TypedSvg.TypesToStrings exposing (..)
 
 
 {-| Defines the distance from the origin to the top of accent characters,
