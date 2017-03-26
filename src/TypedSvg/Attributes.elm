@@ -67,11 +67,11 @@ import TypedSvg.TypesToStrings exposing (..)
 
 
 {-| Defines the distance from the origin to the top of accent characters,
-    measured by a distance within the font coordinate system.
+measured by a distance within the font coordinate system.
 
-    Used by Elements: fontFace
+Used by Elements: fontFace
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accent-height
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accent-height
 -}
 accentHeight : number -> Attribute msg
 accentHeight height =
@@ -79,15 +79,16 @@ accentHeight height =
 
 
 {-| Defines a simple acceleration of time for the element. Element time will
-    accelerate from a rate of 0 at the beginning up to a run rate, over the
-    course of the specified proportion of the simple duration.
+accelerate from a rate of 0 at the beginning up to a run rate, over the course
+of the specified proportion of the simple duration.
 
-    The default value is 0 (no acceleration).
+The default value is 0 (no acceleration).
 
-    Legal values for `rate` are floating point values between 0 and 1
-    (inclusive).
+Legal values for `rate` are floating point values between 0 and 1 (inclusive).
 
-    See https://www.w3.org/TR/smil/smil-timemanip.html#TimeManip-accelerateSyntax
+Used by Elements: animate, animateMotion
+
+See https://www.w3.org/TR/smil/smil-timemanip.html#TimeManip-accelerateSyntax
 -}
 accelerate : number -> Attribute msg
 accelerate rate =
@@ -96,12 +97,12 @@ accelerate rate =
 
 {-| This attribute controls whether or not the animation is cumulative.
 
-    It is useful for repeated animations to build upon the previous results,
-    accumulating with each iteration.
+It is useful for repeated animations to build upon the previous results,
+accumulating with each iteration.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform
+Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-    See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accumulate
+See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accumulate
 -}
 accumulate : Accumulate -> Attribute msg
 accumulate option =
@@ -110,12 +111,12 @@ accumulate option =
 
 {-| This attribute controls whether or not the animation is additive.
 
-    It is frequently useful to define animation as an offset or delta to an
-    attribute's value, rather than as absolute values.
+It is frequently useful to define animation as an offset or delta to an
+attribute's value, rather than as absolute values.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform
+Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-    See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/additive
+See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/additive
 -}
 additive : Additive -> Attribute msg
 additive option =
@@ -128,32 +129,40 @@ alphabetic =
     attribute "alphabetic"
 
 
-{-|
-    The `alignmentBaseline` attribute specifies how an object is aligned with
-    respect to its parent. This property specifies which baseline of this
-    element is to be aligned with the corresponding baseline of the parent. For
-    example, this allows alphabetic baselines in Roman text to stay aligned
-    across font size changes.
+{-| The `alignmentBaseline` attribute specifies how an object is aligned with
+respect to its parent. This property specifies which baseline of this element is
+to be aligned with the corresponding baseline of the parent. For example, this
+allows alphabetic baselines in Roman text to stay aligned across font size
+changes.
 
-    It defaults to the baseline with the same name as the computed value of the
-    alignmentBaseline property.
+It defaults to the baseline with the same name as the computed value of the
+`alignmentBaseline` property.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly inside a
+CSS stylesheet.
 
-    Used by Elements: altGlyph, tspan, tref, textPath
+Used by Elements: altGlyph, tspan, tref, textPath
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignment-baseline
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignment-baseline
 -}
 alignmentBaseline : AlignmentBaseline -> Attribute msg
 alignmentBaseline alignmentBaseline =
     attribute "alignment-baseline" <| alignmentBaselineToString alignmentBaseline
 
 
-{-| -}
-allowReorder : String -> Attribute msg
-allowReorder =
-    attribute "allowReorder"
+{-|
+The allowReorder attribute signals whether a user agent may reorder the direct
+descendents of the switch element, based on user preferences, if it thinks this
+could lead to a better user experience.
+
+The possible values are `no`, the default, disallowing reordering and `yes`,
+allowing reordering.
+
+See: https://www.w3.org/TR/smil/smil-content.html#adef-allowReorder
+-}
+allowReorder : YesNo -> Attribute msg
+allowReorder allowReorder =
+    attribute "allowReorder" <| yesNoToString allowReorder
 
 
 {-| -}
@@ -162,30 +171,28 @@ amplitude =
     attribute "amplitude"
 
 
-{-|
-    Defines the type of transformation, whose values change over time.
+{-| Defines the type of transformation, whose values change over time.
 
-    Used by Elements: animateTransform
+Used by Elements: animateTransform
 
-    NOTE: this is called `type_` in `elm-lang/svg` but is different here in
-          order to distinguish it from `contentType`
+NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
+distinguish it from `contentType`
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
 animateTransformType : AnimateTransformType -> Attribute msg
 animateTransformType animateTransformType =
     attribute "type_" <| animateTransformTypeToString animateTransformType
 
 
-{-|
-    Values will be applied in order over the course of the animation. If a list
-    of values is specified, any `from`, `to` and `by` attribute values are
-    ignored.
+{-| Values will be applied in order over the course of the animation. If a list
+of values is specified, any `from`, `to` and `by` attribute values are
+ignored.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
 -}
 animationValues : List number -> Attribute msg
 animationValues values =
@@ -199,14 +206,14 @@ arabicForm =
 
 
 {-| This attribute defines the maximum unaccented depth of the font within the
-    font coordinate system.
+font coordinate system.
 
-    If the attribute is not specified, the effect is as if the attribute were
-    set to the vert-origin-y value for the corresponding font.
+If the attribute is not specified, the effect is as if the attribute were set to
+the `vertOriginY` value for the corresponding font.
 
-    Used by Elements: fontFace
+Used by Elements: fontFace
 
-    See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ascent
+See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ascent
 -}
 ascent : number -> Attribute msg
 ascent maxDepth =
@@ -214,11 +221,11 @@ ascent maxDepth =
 
 
 {-| This attribute indicates the name of the attribute in the parent element
-    that is going to be changed during an animation.
+that is going to be changed during an animation.
 
-    Used by Elements: animate, animateColor, animateTransform, set
+Used by Elements: animate, animateColor, animateTransform, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName
 -}
 attributeName : String -> Attribute msg
 attributeName name =
@@ -226,11 +233,11 @@ attributeName name =
 
 
 {-| This attribute specifies the namespace in which the target attribute and its
-    associated values are defined.
+associated values are defined.
 
-    Used by Elements: animate, animateColor, animateTransform, set
+Used by Elements: animate, animateColor, animateTransform, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeType
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeType
 -}
 attributeType : AttributeType -> Attribute msg
 attributeType attributeType =
@@ -248,17 +255,16 @@ autoReverse =
 -- baseFrequency is in Filters.Attributes
 
 
-{-|
-    The baselineShift attribute allows repositioning of the dominant-baseline
-    relative to the dominant-baseline of the parent text content element. The
-    shifted object might be a sub- or superscript.
+{-| The baselineShift attribute allows repositioning of the dominant-baseline
+relative to the dominant-baseline of the parent text content element. The
+shifted object might be a sub- or superscript.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet, see css baseline-shift for further information.
+As a presentation attribute, it also can be used as a property directly inside a
+CSS stylesheet, see css baseline-shift for further information.
 
-    Used by Elements: altGlyph, tref, tspan, textPath
+Used by Elements: altGlyph, tref, tspan, textPath
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseline-shift
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseline-shift
 -}
 baselineShift : BaselineShift -> Attribute msg
 baselineShift baselineShift =
@@ -277,16 +283,15 @@ bbox =
     attribute "bbox"
 
 
-{-|
-    This attribute defines when an animation should begin.
+{-| This attribute defines when an animation should begin.
 
-    Each individual value can be one of the BeginValue types.
+Each individual value can be one of the BeginValue types.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/begin
-    See: https://www.w3.org/TR/2001/REC-smil-animation-20010904/#Timing-EvaluationOfBeginEndTimeLists
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/begin
+See: https://www.w3.org/TR/2001/REC-smil-animation-20010904/#Timing-EvaluationOfBeginEndTimeLists
 -}
 begin : List TimingValue -> Attribute msg
 begin timingValues =
@@ -303,15 +308,14 @@ by =
     attribute "by"
 
 
-{-|
-    This attribute specifies the interpolation mode for an animation. The
-    default mode is linear, however if the attribute does not support linear
-    interpolation (e.g. for strings), the calcMode attribute is ignored and
-    discrete interpolation is used.
+{-| This attribute specifies the interpolation mode for an animation. The
+default mode is linear, however if the attribute does not support linear
+interpolation (e.g. for strings), the calcMode attribute is ignored and
+discrete interpolation is used.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform
+Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode
 -}
 calcMode : CalcMode -> Attribute msg
 calcMode calcMode =
@@ -324,100 +328,95 @@ capHeight =
     attribute "cap-height"
 
 
-{-|
-    Assigns a class name or set of class names to an element. You can use this
-    to style SVG content using CSS.
+{-| Assigns a class name or set of class names to an element. You can use this
+to style SVG content using CSS.
 
-    An element's class name serves two key roles:
+An element's class name serves two key roles:
 
-    - As a style sheet selector, for when an author assigns style information
-      to a set of elements.
-    - For general use by the browser.
+- As a style sheet selector, for when an author assigns style information
+  to a set of elements.
+- For general use by the browser.
 
-    Used by Elements: a, altGlyph, circle, clipPath, defs, desc, ellipse,
-        feBlend, feColorMatrix, feComponentTransfer, feComposite,
-        feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feFlood,
-        feGaussianBlur, feImage, feMerge, feMorphology, feOffset,
-        feSpecularLighting, feTile, feTurbulence, filter, font, foreignObject,
-        g, glyph, glyphRef, image, line, linearGradient, marker, mask,
-        missingGlyph, path, pattern, polygon, polyline, radialGradient, rect,
-        stop, svg, switch, symbol, text, textPath, title, tref, tspan, use
+Used by Elements: a, altGlyph, circle, clipPath, defs, desc, ellipse,
+feBlend, feColorMatrix, feComponentTransfer, feComposite,
+feConvolveMatrix, feDiffuseLighting, feDisplacementMap, feFlood,
+feGaussianBlur, feImage, feMerge, feMorphology, feOffset,
+feSpecularLighting, feTile, feTurbulence, filter, font, foreignObject,
+g, glyph, glyphRef, image, line, linearGradient, marker, mask,
+missingGlyph, path, pattern, polygon, polyline, radialGradient, rect,
+stop, svg, switch, symbol, text, textPath, title, tref, tspan, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/class
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/class
 -}
 class : List String -> Attribute msg
 class names =
     attribute "class" (String.join " " names)
 
 
-{-|
-    The clip attribute has the same parameter values as defined for the css clip
-    property. Unitless values, which indicate current user coordinates, are
-    permitted on the coordinate values on the <shape>. The value of auto defines
-    a clipping path along the bounds of the viewport created by the given
-    element.
+{-| The clip attribute has the same parameter values as defined for the css clip
+property. Unitless values, which indicate current user coordinates, are
+permitted on the coordinate values on the <shape>. The value of auto defines
+a clipping path along the bounds of the viewport created by the given
+element.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: svg, symbol, image, foreignobject, pattern, marker
+Used by Elements: svg, symbol, image, foreignobject, pattern, marker
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip
 -}
 clip : Clip -> Attribute msg
 clip clip =
     attribute "clip" <| clipToString clip
 
 
-{-|
-    The `clipPath` attribute binds the element it is applied to with a given
-    `clipPath` element.
+{-| The `clipPath` attribute binds the element it is applied to with a given
+`clipPath` element.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly inside a
+CSS stylesheet.
 
-    Used by Elements: a, circle, defs, ellipse, g, image, line, marker, mask,
-        mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
-        switch, symbol, text, use
+Used by Elements: a, circle, defs, ellipse, g, image, line, marker, mask,
+mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
+switch, symbol, text, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-path
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-path
 -}
 clipPath : ClipPath -> Attribute msg
 clipPath clipPath =
     attribute "clip-path" <| clipPathToString clipPath
 
 
-{-|
-    The clipPathUnits attribute defines the coordinate system for the contents
-    of the clipPath element.
+{-| The `clipPathUnits` attribute defines the coordinate system for the contents
+of the `clipPath` element.
 
-    If the clipPathUnits attribute is not specified, then the effect is as if
-    a value of userSpaceOnUse were specified.
+If the `clipPathUnits` attribute is not specified, then the effect is as if a
+value of `userSpaceOnUse` were specified.
 
-    Note that values defined as a percentage inside the content of the clipPath
-    are not affected by this attribute. It means that even if you set the value
-    of maskContentUnits to objectBoundingBox, percentage values will be
-    calculated as if the value of the attribute were userSpaceOnUse.
+Note that values defined as a percentage inside the content of the `clipPath`
+are not affected by this attribute. It means that even if you set the value
+of `maskContentUnits` to `CoordinateSystemObjectBoundingBox`, percentage values
+will be calculated as if the value of the attribute were userSpaceOnUse.
 
-    Used by Elements: clipPath
+Used by Elements: clipPath
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clipPathUnits
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clipPathUnits
 -}
 clipPathUnits : CoordinateSystem -> Attribute msg
 clipPathUnits coordinateSystem =
     attribute "clipPathUnits" <| coordinateSystemToString coordinateSystem
 
 
-{-|
-    The `clipRule` attribute only applies to graphics elements that are
-    contained within a `clipPath` element. The `clipRule` attribute basically
-    works as the `fillRule` attribute, except that it applies to `clipPath`
-    definitions.
+{-| The `clipRule` attribute only applies to graphics elements that are
+contained within a `clipPath` element. The `clipRule` attribute basically
+works as the `fillRule` attribute, except that it applies to `clipPath`
+definitions.
 
-    Used by Elements: circle, ellipse, image, line, mesh, path, polygon,
-        polyline, rect, text, use
+Used by Elements: circle, ellipse, image, line, mesh, path, polygon, polyline,
+rect, text, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule
 -}
 clipRule : ClipRule -> Attribute msg
 clipRule clipRule =
@@ -425,29 +424,28 @@ clipRule clipRule =
 
 
 {-|
-    The `colorInterpolation` attribute specifies the color space for gradient
-    interpolations, color animations, and alpha compositing.
+The `colorInterpolation` attribute specifies the color space for gradient
+interpolations, color animations, and alpha compositing.
 
-    When a child element is blended into a background, the value of the
-    `colorInterpolation` attribute on the child determines the type of blending,
-    not the value of the `colorInterpolation` on the parent.
+When a child element is blended into a background, the value of the
+`colorInterpolation` attribute on the child determines the type of blending,
+not the value of the `colorInterpolation` on the parent.
 
-    For gradients which make use of the `xlinkHref` attribute to reference
-    another gradient, the gradient uses the `colorInterpolation` attribute value
-    from the gradient element which is directly referenced by the fill or stroke
-    attribute.
+For gradients which make use of the `xlinkHref` attribute to reference another
+gradient, the gradient uses the `colorInterpolation` attribute value from the
+gradient element which is directly referenced by the fill or stroke attribute.
 
-    When animating colors, color interpolation is performed according to the
-    value of the `colorInterpolation` attribute on the element being animated.
+When animating colors, color interpolation is performed according to the value
+of the `colorInterpolation` attribute on the element being animated.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly inside a
+CSS stylesheet.
 
-    Used by Elements: a, animage, animateColor, circle, defs, ellipse, g, image,
-        line, marker, mask, mesh, missing-glyph, path, pattern, polygon,
-        polyline, rect, svg, switch, symbol, text, use
+Used by Elements: a, animage, animateColor, circle, defs, ellipse, g, image,
+line, marker, mask, mesh, missing-glyph, path, pattern, polygon,
+polyline, rect, svg, switch, symbol, text, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation
 -}
 colorInterpolation : ColorInterpolation -> Attribute msg
 colorInterpolation colorInterpolation =
@@ -458,58 +456,55 @@ colorInterpolation colorInterpolation =
 -- colorInterpolationFilters: see Filters.colorInterpolationFilters
 
 
-{-|
-    The `colorProfile` attribute is used to define which color profile a raster
-    image included through the `image` element should use.
+{-| The `colorProfile` attribute is used to define which color profile a raster
+image included through the `image` element should use.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly inside a
+CSS stylesheet.
 
-    Used by Elements: image
+Used by Elements: image
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-profile
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-profile
 -}
 colorProfile : ColorProfile -> Attribute msg
 colorProfile colorProfile =
     attribute "color-profile" <| colorProfileToString colorProfile
 
 
-{-|
-    The colorRendering attribute provides a hint to the SVG user agent about
-    how to optimize its color interpolation and compositing operations.
+{-| The colorRendering attribute provides a hint to the SVG user agent about
+how to optimize its color interpolation and compositing operations.
 
-    `colorRendering` takes precedence over `colorInterpolationFilters`. For
-    example, assume `colorRendering` is set to `optimizeSpeed`, and
-    `ColorInterpolationFilters` is set to `linearRGB`. In this case, the SVG
-    user agent should perform color operations in a way that optimizes
-    performance, which might mean sacrificing the color interpolation precision
-    as specified by `colorInterpolationFilters`.
+`colorRendering` takes precedence over `colorInterpolationFilters`. For
+example, assume `colorRendering` is set to `optimizeSpeed`, and
+`ColorInterpolationFilters` is set to `linearRGB`. In this case, the SVG
+user agent should perform color operations in a way that optimizes
+performance, which might mean sacrificing the color interpolation precision
+as specified by `colorInterpolationFilters`.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly inside a
+CSS stylesheet.
 
-    Used by Elements: a, animate, animateColor, circle, defs, ellipse, g, image,
-        line, marker, mask, mesh, missing-glyph, path, pattern, polygon,
-        polyline, rect, svg, switch, symbol, text, use
+Used by Elements: a, animate, animateColor, circle, defs, ellipse, g, image,
+line, marker, mask, mesh, missing-glyph, path, pattern, polygon,
+polyline, rect, svg, switch, symbol, text, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-rendering
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-rendering
 -}
 colorRendering : Rendering -> Attribute msg
 colorRendering rendering =
     attribute "color-rendering" <| renderingToString rendering
 
 
-{-|
-    The `color` attribute is used to provide a potential indirect value
-    (currentColor) for the fill, stroke, stopColor, floodColor and
-    lightingColor attributes.
+{-| The `color` attribute is used to provide a potential indirect value
+(currentColor) for the `fill`, `stroke`, `stopColor`, `floodColor` and
+`lightingColor` attributes.
 
-    As a presentation attribute, it can also be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it can also be used as a property directly inside a
+CSS stylesheet.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
-        feDiffuseLighting, feFlood, feSpecularLighting, glyph, glyphRef, line,
-        mesh, path, polygon, polyline, rect, stop, text, textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
+feDiffuseLighting, feFlood, feSpecularLighting, glyph, glyphRef, line,
+mesh, path, polygon, polyline, rect, stop, text, textPath, tref, tspan
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color
 -}
@@ -518,44 +513,41 @@ color c =
     attribute "color" <| colorToCssRgba c
 
 
-{-|
-    The contentScriptType attribute on the <svg> element specifies the default
-    scripting language for the given document fragment.
+{-| The contentScriptType attribute on the <svg> element specifies the default
+scripting language for the given document fragment.
 
-    This attribute sets the default scripting language used to process the value
-    strings in event attributes. This language must be used for all instances of
-    scripts that do not specify their own scripting language. The value
-    contentType specifies a media type, per MIME Part Two: Media Types
-    [RFC2046]. The default value is application/ecmascript.
+This attribute sets the default scripting language used to process the value
+strings in event attributes. This language must be used for all instances of
+scripts that do not specify their own scripting language. The value
+contentType specifies a media type, per MIME Part Two: Media Types
+[RFC2046]. The default value is application/ecmascript.
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentScriptType
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentScriptType
 -}
 contentScriptType : String -> Attribute msg
 contentScriptType mimeType =
     attribute "contentScriptType" mimeType
 
 
-{-|
-    This attribute specifies the style sheet language for the given document
-    fragment. The contentStyleType is specified on the <svg> element. By
-    default, if it's not defined, the value is "text/css"
+{-| This attribute specifies the style sheet language for the given document
+fragment. The contentStyleType is specified on the <svg> element. By default,
+if it's not defined, the value is "text/css"
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentStyleType
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentStyleType
 -}
 contentStyleType : String -> Attribute msg
 contentStyleType styleSheetLanguage =
     attribute "contentStyleType" styleSheetLanguage
 
 
-{-|
-    Defines the content type of the element.
+{-| Defines the content type of the element.
 
-    Used by Elements: script, style
+Used by Elements: script, style
 
-    NOTE: this is called `type_` in `elm-lang/svg` but is different here in
-          order to distinguish it from `animateTransformType`
+NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
+distinguish it from `animateTransformType`
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
 -}
 contentType : String -> Attribute msg
 contentType t =
@@ -563,21 +555,21 @@ contentType t =
 
 
 {-|
-    The `cursor` attribute specifies the mouse cursor displayed when the mouse
-    pointer is over an element.
+The `cursor` attribute specifies the mouse cursor displayed when the mouse
+pointer is over an element.
 
-    This attribute behaves exactly like the css cursor property except that if
-    the browser supports the `cursor` element, you should be able to use it
-    with the `funcIRI` notation.
+This attribute behaves exactly like the css cursor property except that if the
+browser supports the `cursor` element, you should be able to use it with the
+`funcIRI` notation.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly inside a
+CSS stylesheet.
 
-    Used by Elements: a, circle, defs, ellipse, g, image, line, marker, mask,
-        mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
-        switch, symbol, text, use
+Used by Elements: a, circle, defs, ellipse, g, image, line, marker, mask,
+mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
+switch, symbol, text, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cursor
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cursor
 -}
 cursor : Cursor -> Attribute msg
 cursor cursor =

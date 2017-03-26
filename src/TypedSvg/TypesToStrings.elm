@@ -19,7 +19,7 @@ module TypedSvg.TypesToStrings exposing (..)
     morphologyOperatorToString, num, opacityToString, pc, percent, pt, px,
     renderingToString, repeatCountToString, restartToString, scaleToString,
     shapeRenderingToString, timingValueAsString, transformToString,
-    turbulenceTypeToString
+    turbulenceTypeToString, yesNoToString
 -}
 
 import Color.Convert exposing (colorToCssRgba)
@@ -968,3 +968,13 @@ turbulenceTypeToString turbulenceType =
 
         TurbulenceTypeTurbulence ->
             "turbulence"
+
+
+yesNoToString : YesNo -> String
+yesNoToString question =
+    case question of
+        Yes ->
+            "yes"
+
+        No ->
+            "no"

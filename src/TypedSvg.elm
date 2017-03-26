@@ -1,7 +1,6 @@
 module TypedSvg
     exposing
         ( svg
-        , foreignObject
         , circle
         , ellipse
         , image
@@ -28,9 +27,6 @@ module TypedSvg
         , pattern
         , switch
         , symbol
-        , altGlyph
-        , altGlyphDef
-        , altGlyphItem
         , glyph
         , glyphRef
         , textPath
@@ -53,7 +49,7 @@ module TypedSvg
 {-|
 
 # HTML Embedding
-@docs svg, foreignObject
+@docs svg
 
 # Graphics elements
 @docs circle, ellipse, image, line, path, polygon, polyline, rect, use
@@ -68,8 +64,7 @@ module TypedSvg
 @docs a, defs, g, marker, mask, pattern, switch, symbol
 
 # Text
-@docs altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef, textPath, text_,
-  tref, tspan
+@docs glyph, glyphRef, textPath, text_, tref, tspan
 
 # Fonts
 @docs font
@@ -115,12 +110,6 @@ containing a rounded rectangle:
 svg : List (Html.Attribute msg) -> List (Svg msg) -> Html.Html msg
 svg =
     node "svg"
-
-
-{-| -}
-foreignObject : List (Attribute msg) -> List (Html.Html msg) -> Svg msg
-foreignObject =
-    node "foreignObject"
 
 
 
@@ -339,24 +328,6 @@ use =
 
 
 -- Text content elements
-
-
-{-| -}
-altGlyph : List (Attribute msg) -> List (Svg msg) -> Svg msg
-altGlyph =
-    node "altGlyph"
-
-
-{-| -}
-altGlyphDef : List (Attribute msg) -> List (Svg msg) -> Svg msg
-altGlyphDef =
-    node "altGlyphDef"
-
-
-{-| -}
-altGlyphItem : List (Attribute msg) -> List (Svg msg) -> Svg msg
-altGlyphItem =
-    node "altGlyphItem"
 
 
 {-| -}

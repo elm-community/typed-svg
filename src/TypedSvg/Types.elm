@@ -51,6 +51,7 @@ module TypedSvg.Types
         , TimingValue(..)
         , Transform(..)
         , TurbulenceType(..)
+        , YesNo(..)
           -- Lengths
         , cm
         , em
@@ -77,7 +78,8 @@ The Types module defines all of the types used by TypedSvg.
     FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight,
     FuncType, InValue, Kerning, Length, LengthAdjust, MarkerCoordinateSystem,
     MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount,
-    Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType
+    Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType,
+    YesNo
 
 @docs cm, em, ex, inch, mm, num, pc, percent, pt, px
 -}
@@ -600,3 +602,10 @@ type TimingValue
 type TurbulenceType
     = TurbulenceTypeFractalNoise
     | TurbulenceTypeTurbulence
+
+
+{-| Used by allowReorder
+-}
+type YesNo
+    = Yes
+    | No
