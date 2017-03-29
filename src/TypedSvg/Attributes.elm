@@ -588,32 +588,31 @@ cy length =
     attribute "cy" <| lengthToString length
 
 
-{-|
-    This attribute defines a path to follow.
+{-| This attribute defines a path to follow.
 
-    NOTE: You probably want to import the "folkertdev/svg-path-dsl" package for
-        access to a more Elm-like way of expressing paths. For instance:
+NOTE: You probably want to import the "folkertdev/svg-path-dsl" package for
+access to a more Elm-like way of expressing paths. For instance:
 
-        [ path
-            [ d (pathToString [
-                subpath
-                    (startAt (10, 10))
-                    open
-                    [ cubicTo
-                        (10, 50)
-                        (90, 50)
-                        (90, 90)
-                    ]
-                ])
-            , stroke Color.black
-            , strokeWidth 3.5
-            , noFill
-            ]
-            []
+    [ path
+        [ d (pathToString [
+            subpath
+                (startAt (10, 10))
+                open
+                [ cubicTo
+                    (10, 50)
+                    (90, 50)
+                    (90, 90)
+                ]
+            ])
+        , stroke Color.black
+        , strokeWidth 3.5
+        , noFill
+        ]
+        []
 
-    Used by Elements: path
+Used by Elements: path
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
 -}
 d : String -> Attribute msg
 d =
@@ -632,89 +631,85 @@ descent =
     attribute "descent"
 
 
-{-|
-    The `direction` attribute specifies the base writing direction of text and
-    the direction of embeddings and overrides for the Unicode bidirectional
-    algorithm.
+{-| The `direction` attribute specifies the base writing direction of text and
+the direction of embeddings and overrides for the Unicode bidirectional
+algorithm.
 
-    For the direction attribute to have any effect on an element that does not
-    by itself establish a new text chunk (such as a `tspan` element without
-    absolute position adjustments due to `x` or `y` attributes), the
-    unicode-bidi property's value must be `embed` or `bidiOverride`.
+For the direction attribute to have any effect on an element that does not
+by itself establish a new text chunk (such as a `tspan` element without
+absolute position adjustments due to `x` or `y` attributes), the
+unicode-bidi property's value must be `embed` or `bidiOverride`.
 
-    The `direction` attribute applies only to glyphs oriented perpendicular to
-    the `inlineProgressionDirection`, which includes the usual case of
-    horizontally-oriented Latin or Arabic text and the case of narrow-cell
-    Latin or Arabic characters rotated 90 degrees clockwise relative to a
-    top-to-bottom inline-progression-direction.
+The `direction` attribute applies only to glyphs oriented perpendicular to
+the `inlineProgressionDirection`, which includes the usual case of
+horizontally-oriented Latin or Arabic text and the case of narrow-cell
+Latin or Arabic characters rotated 90 degrees clockwise relative to a
+top-to-bottom inline-progression-direction.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
-        text, textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+text, textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/direction
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/direction
 -}
 direction : Direction -> Attribute msg
 direction direction =
     attribute "direction" <| directionToString direction
 
 
-{-|
-    The `display` attribute lets you control the rendering of graphical or
-    container elements. It is similar to the CSS "display" attribute (e.g.
-    display: "none", "block", etc.)
+{-| The `display` attribute lets you control the rendering of graphical or
+container elements. It is similar to the CSS "display" attribute (e.g.
+display: "none", "block", etc.)
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
-        foreignobject, g, glyph, glyphRef, image, line, mesh, path, polygon,
-        polyline, rect, svg, switch, text, text, textPath, tref, tspan, use
+Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
+foreignobject, g, glyph, glyphRef, image, line, mesh, path, polygon,
+polyline, rect, svg, switch, text, text, textPath, tref, tspan, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display
 -}
 display : Display -> Attribute msg
 display display =
     attribute "display" <| displayToString display
 
 
-{-|
-    The `dominantBaseline` attribute is used to determine or re-determine a
-    scaled-baseline-table. A scaled-baseline-table is a compound value with
-    three components: a baseline-identifier for the `dominantBaseline`, a
-    baseline-table and a baseline-table font-size.
+{-| The `dominantBaseline` attribute is used to determine or re-determine a
+scaled-baseline-table. A scaled-baseline-table is a compound value with
+three components: a baseline-identifier for the `dominantBaseline`, a
+baseline-table and a baseline-table font-size.
 
-    Some values of the property re-determine all three values; other only
-    re-establish the baseline-table font-size. When the initial value, auto,
-    would give an undesired result, this property can be used to explicitly
-    set the desire scaled-baseline-table.
+Some values of the property re-determine all three values; other only
+re-establish the baseline-table font-size. When the initial value, auto,
+would give an undesired result, this property can be used to explicitly
+set the desire scaled-baseline-table.
 
-    If there is no baseline table in the nominal font or if the baseline table
-    lacks an entry for the desired baseline, then the browser may use heuristics
-    to determine the position of the desired baseline.
+If there is no baseline table in the nominal font or if the baseline table
+lacks an entry for the desired baseline, then the browser may use heuristics
+to determine the position of the desired baseline.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
-        textPath, text, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+textPath, text, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline
 -}
 dominantBaseline : DominantBaseline -> Attribute msg
 dominantBaseline dominantBaseline =
     attribute "dominant-baseline" <| dominantBaselineToString dominantBaseline
 
 
-{-|
-    This attribute indicates the simple duration of the animation.
+{-| This attribute indicates the simple duration of the animation.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dur
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dur
 -}
 dur : Duration -> Attribute msg
 dur duration =
@@ -739,17 +734,16 @@ enableBackground =
     attribute "enable-background"
 
 
-{-|
-    This attribute defines an end value for the animation that can constrain
-    the active duration.
+{-| This attribute defines an end value for the animation that can constrain
+the active duration.
 
-    Each value can be of the same type as the ones defined for the begin
-    attribute.
+Each value can be of the same type as the ones defined for the begin
+attribute.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/end
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/end
 -}
 end : List TimingValue -> Attribute msg
 end timingValues =
@@ -762,21 +756,20 @@ exponent =
     attribute "exponent"
 
 
-{-|
-    The externalResourcesRequired attribute is available on all container
-    elements and to all elements which potentially can reference external
-    resources. It specifies whether referenced resources that are not part of
-    the current document are required for proper rendering of the given
-    container element or graphics element.
+{-| The externalResourcesRequired attribute is available on all container
+elements and to all elements which potentially can reference external
+resources. It specifies whether referenced resources that are not part of
+the current document are required for proper rendering of the given
+container element or graphics element.
 
-    Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, animate,
-        animateColor, animateMotion, animateTransform, circle, clipPath, cursor,
-        discard, defs, ellipse, feImage, filter, font, foreignObject, g, glyph,
-        glyphRef, image, line, linearGradient, mesh, meshGradient, marker, mask,
-        mpath, path, pattern, polygon, polyline, radialGradient, rect, script,
-        set, stop, svg, switch, symbol, text, textPath, tref, tspan, use, view
+Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, animate,
+animateColor, animateMotion, animateTransform, circle, clipPath, cursor,
+discard, defs, ellipse, feImage, filter, font, foreignObject, g, glyph,
+glyphRef, image, line, linearGradient, mesh, meshGradient, marker, mask,
+mpath, path, pattern, polygon, polyline, radialGradient, rect, script,
+set, stop, svg, switch, symbol, text, textPath, tref, tspan, use, view
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/externalResourcesRequired
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/externalResourcesRequired
 -}
 externalResourcesRequired : Bool -> Attribute msg
 externalResourcesRequired bool =
@@ -795,57 +788,54 @@ noFill =
     fill (Color.rgba 0 0 0 0.0)
 
 
-{-|
-    This attribute specifies the opacity of the color or the content the current
-    object is filled with.
+{-| This attribute specifies the opacity of the color or the content the current
+object is filled with.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
-        glyph, glyphRef, line, mesh, path, polygon, polyline, rect, text,
-        textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
+glyph, glyphRef, line, mesh, path, polygon, polyline, rect, text,
+textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity
 -}
 fillOpacity : Opacity -> Attribute msg
 fillOpacity opacity =
     attribute "fill-opacity" <| opacityToString opacity
 
 
-{-|
-    The fillRule attribute indicates how to determine what side of a path is
-    inside a shape, to determine how the fill property paints the shape. For a
-    simple, non-intersecting path, it is intuitively clear what region lies
-    "inside"; however, for a more complex path, such as a path that intersects
-    itself or where one subpath encloses another, the interpretation of
-    "inside" is not so obvious.
+{-| The fillRule attribute indicates how to determine what side of a path is
+inside a shape, to determine how the fill property paints the shape. For a
+simple, non-intersecting path, it is intuitively clear what region lies
+"inside"; however, for a more complex path, such as a path that intersects
+itself or where one subpath encloses another, the interpretation of
+"inside" is not so obvious.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
-        glyph, glyphRef, line, mesh, path, polygon, polyline, rect, text,
-        textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
+glyph, glyphRef, line, mesh, path, polygon, polyline, rect, text,
+textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
 -}
 fillRule : FillRule -> Attribute msg
 fillRule fillRule =
     attribute "fill-rule" <| fillRuleToString fillRule
 
 
-{-|
-    The filter attribute defines the filter effects define by the `filter`
-    element that shall be applied to its element.
+{-| The filter attribute defines the filter effects define by the `filter`
+element that shall be applied to its element.
 
-    NOTE: See Filters and Filters.Attributes modules.
+NOTE: See Filters and Filters.Attributes modules.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: a, circle, defs, ellipse, g, glyph, image, line, marker,
-        mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
-        switch, symbol, text, use
+Used by Elements: a, circle, defs, ellipse, g, glyph, image, line, marker,
+mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
+switch, symbol, text, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filter
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filter
 -}
 filter : Filter -> Attribute msg
 filter f =
@@ -875,87 +865,82 @@ fontSize length =
     attribute "fontSize" <| lengthToString length
 
 
-{-|
-    The `fontSizeAdjust` attribute allows authors to specify an aspect value
-    for an element that will preserve the X height of the first choice font in
-    a substitute font.
+{-| The `fontSizeAdjust` attribute allows authors to specify an aspect value
+for an element that will preserve the X height of the first choice font in
+a substitute font.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
-        text, textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+text, textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust
 -}
 fontSizeAdjust : FontSizeAdjust -> Attribute msg
 fontSizeAdjust fontSizeAdjust =
     attribute "fontSizeAdjust" <| fontSizeAdjustToString fontSizeAdjust
 
 
-{-|
-    The `fontStretch` attribute indicates the desired amount of condensing or
-    expansion in the glyphs used to render the text.
+{-| The `fontStretch` attribute indicates the desired amount of condensing or
+expansion in the glyphs used to render the text.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
-        text, textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+text, textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch
 -}
 fontStretch : FontStretch -> Attribute msg
 fontStretch fontStretch =
     attribute "fontStretch" <| fontStretchToString fontStretch
 
 
-{-|
-    The `fontStyle` attribute specifies whether the text is to be rendered using
-    a normal, italic or oblique face.
+{-| The `fontStyle` attribute specifies whether the text is to be rendered using
+a normal, italic or oblique face.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
-        text, textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+text, textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style
 -}
 fontStyle : FontStyle -> Attribute msg
 fontStyle fontStyle =
     attribute "fontStyle" <| fontStyleToString fontStyle
 
 
-{-|
-    The `fontVariant` attribute indicates whether the text is to be rendered
-    using the normal glyphs for lowercase characters or using small-caps glyphs
-    for lowercase characters.
+{-| The `fontVariant` attribute indicates whether the text is to be rendered
+using the normal glyphs for lowercase characters or using small-caps glyphs
+for lowercase characters.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
-        text, textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+text, textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant
 -}
 fontVariant : FontVariant -> Attribute msg
 fontVariant fontVariant =
     attribute "fontVariant" <| fontVariantToString fontVariant
 
 
-{-|
-    The `fontWeight` attribute refers to the boldness or lightness of the glyphs
-    used to render the text, relative to other fonts in the same font family.
+{-| The `fontWeight` attribute refers to the boldness or lightness of the glyphs
+used to render the text, relative to other fonts in the same font family.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
-        text, textPath, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
+text, textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight
 -}
 fontWeight : FontWeight -> Attribute msg
 fontWeight fontWeight =
@@ -968,47 +953,44 @@ format =
     attribute "format"
 
 
-{-|
-    This attribute indicates the initial value of the attribute that will be
-    modified during the animation. When used with the `to` attribute, the
-    animation will change the modified attribute from the from value to the to
-    value.
+{-| This attribute indicates the initial value of the attribute that will be
+modified during the animation. When used with the `to` attribute, the
+animation will change the modified attribute from the from value to the to
+value.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform
+Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from
 -}
 from : number -> Attribute msg
 from value =
     attribute "from" <| toString value
 
 
-{-|
-    For the `radialGradient` element, this attribute defines the x-axis
-    coordinate of the focal point for the radial gradient.
+{-| For the `radialGradient` element, this attribute defines the x-axis
+coordinate of the focal point for the radial gradient.
 
-    If the attribute is not specified, it's assumed to be at the same place as
-    the center point.
+If the attribute is not specified, it's assumed to be at the same place as
+the center point.
 
-    Used by Elements: radialGradient
+Used by Elements: radialGradient
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
 -}
 fx : Length -> Attribute msg
 fx length =
     attribute "fx" <| lengthToString length
 
 
-{-|
-    For the `radialGradient` element, this attribute defines the y-axis
-    coordinate of the focal point for the radial gradient.
+{-| For the `radialGradient` element, this attribute defines the y-axis
+coordinate of the focal point for the radial gradient.
 
-    If the attribute is not specified, it's assumed to be at the same place as
-    the center point.
+If the attribute is not specified, it's assumed to be at the same place as
+the center point.
 
-    Used by Elements: radialGradient
+Used by Elements: radialGradient
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
 -}
 fy : Length -> Attribute msg
 fy length =
@@ -1051,36 +1033,34 @@ glyphRef =
     attribute "glyphRef"
 
 
-{-|
-    The gradientTransform attribute contains the definition of an optional
-    additional transformation from the gradient coordinate system onto the
-    target coordinate system (i.e., userSpaceOnUse or objectBoundingBox). This
-    allows for things such as skewing the gradient. This additional
-    transformation matrix is post-multiplied to (i.e., inserted to the right of)
-    any previously defined transformations, including the implicit
-    transformation necessary to convert from object bounding box units to user
-    space.
+{-| The gradientTransform attribute contains the definition of an optional
+additional transformation from the gradient coordinate system onto the
+target coordinate system (i.e., userSpaceOnUse or objectBoundingBox). This
+allows for things such as skewing the gradient. This additional
+transformation matrix is post-multiplied to (i.e., inserted to the right of)
+any previously defined transformations, including the implicit
+transformation necessary to convert from object bounding box units to user
+space.
 
-    Used by Elements: linearGradient, radialGradient
+Used by Elements: linearGradient, radialGradient
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientTransform
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientTransform
 -}
 gradientTransform : List Transform -> Attribute msg
 gradientTransform transforms =
     attribute "gradientTransform" <| String.join " " (List.map transformToString transforms)
 
 
-{-|
-    The gradientUnits attribute defines the coordinate system for attributes
-    x1, y1, x2 and y2 on the `linearGradient` element or for attributes cx, cy,
-    r, fx, and fy on the `radialGradient`.
+{-| The gradientUnits attribute defines the coordinate system for attributes
+x1, y1, x2 and y2 on the `linearGradient` element or for attributes cx, cy,
+r, fx, and fy on the `radialGradient`.
 
-    If the `gradientUnits` attribute isn't specified, then the effect is as if a
-    value of CoordinateSystemObjectBoundingBox were specified.
+If the `gradientUnits` attribute isn't specified, then the effect is as if a
+value of CoordinateSystemObjectBoundingBox were specified.
 
-    Used by Elements: linearGradient, radialGradient
+Used by Elements: linearGradient, radialGradient
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientUnits
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientUnits
 -}
 gradientUnits : CoordinateSystem -> Attribute msg
 gradientUnits coordinateSystem =
@@ -1093,15 +1073,14 @@ hanging =
     attribute "hanging"
 
 
-{-|
-    This attribute indicates a vertical length in the user coordinate system.
-    The exact effect of this coordinate depends on each element. Most of the
-    time, it represents the height of the rectangular region of the reference
-    element (see each individual element's documentation for exceptions).
+{-| This attribute indicates a vertical length in the user coordinate system.
+The exact effect of this coordinate depends on each element. Most of the
+time, it represents the height of the rectangular region of the reference
+element (see each individual element's documentation for exceptions).
 
-    This attribute must be specified except for the `svg` element where the
-    default value is 100% and the `filter` and `mask` elements where the default
-    value is 120%.
+This attribute must be specified except for the `svg` element where the
+default value is 100% and the `filter` and `mask` elements where the default
+value is 120%.
 -}
 height : Length -> Attribute msg
 height length =
@@ -1132,16 +1111,15 @@ ideographic =
     attribute "ideographic"
 
 
-{-|
-    The `imageRendering` attribute provides a hint to the browser about how to
-    make speed vs. quality tradeoffs as it performs image processing.
+{-| The `imageRendering` attribute provides a hint to the browser about how to
+make speed vs. quality tradeoffs as it performs image processing.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet.
 
-    Used by Elements: image
+Used by Elements: image
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering
 -}
 imageRendering : Rendering -> Attribute msg
 imageRendering rendering =
@@ -1160,77 +1138,74 @@ k =
     attribute "k"
 
 
-{-|
-    The kerning attribute indicates whether the browser should adjust
-    inter-glyph spacing based on kerning tables that are included in the
-    relevant font (i.e., enable auto-kerning) or instead disable auto-kerning
-    and instead set inter-character spacing to a specific length (typically,
-    zero).
+{-| The kerning attribute indicates whether the browser should adjust
+inter-glyph spacing based on kerning tables that are included in the
+relevant font (i.e., enable auto-kerning) or instead disable auto-kerning
+and instead set inter-character spacing to a specific length (typically,
+zero).
 
-    The value of auto indicates that the user agent should adjust inter-glyph
-    spacing based on kerning tables that are included in the font that will be
-    used.
+The value of auto indicates that the user agent should adjust inter-glyph
+spacing based on kerning tables that are included in the font that will be
+used.
 
-    If a <length> is provided, then auto-kerning is disabled. Instead,
-    inter-character spacing is set to the given <length>. The most common
-    scenario, other than auto, is to set kerning to a value of 0 so that
-    auto-kerning is disabled.
+If a <length> is provided, then auto-kerning is disabled. Instead,
+inter-character spacing is set to the given <length>. The most common
+scenario, other than auto, is to set kerning to a value of 0 so that
+auto-kerning is disabled.
 
-    If a <length> is provided without a unit identifier (e.g., an unqualified
-    number such as 128), the browser processes the <length> as a width value in
-    the current user coordinate system.
+If a <length> is provided without a unit identifier (e.g., an unqualified
+number such as 128), the browser processes the <length> as a width value in
+the current user coordinate system.
 
-    If a <length> is provided with a unit identifier (e.g., .25em or 1%), then
-    the browser converts the <length> into a corresponding value in the current
-    user coordinate system.
+If a <length> is provided with a unit identifier (e.g., .25em or 1%), then
+the browser converts the <length> into a corresponding value in the current
+user coordinate system.
 
-    When a <length> is provided, its value is added to the inter-character
-    spacing value specified by the letter-spacing attribute.
+When a <length> is provided, its value is added to the inter-character
+spacing value specified by the letter-spacing attribute.
 
-    As a presentation attribute, it also can be used as a property directly
-    inside a CSS stylesheet, see css kerning for further information.
+As a presentation attribute, it also can be used as a property directly
+inside a CSS stylesheet, see css kerning for further information.
 
-    Used by Elements: altGlyph, altGlyphDef, glyph, glyphRef, textPath,
-        text, tref, tspan
+Used by Elements: altGlyph, altGlyphDef, glyph, glyphRef, textPath,
+text, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kerning
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kerning
 -}
 kerning : Kerning -> Attribute msg
 kerning k =
     attribute "kerning" <| kerningToString k
 
 
-{-|
-    The keySplines attribute define a set of Bézier control points associated
-    with the keyTimes list, defining a cubic Bézier function that controls
-    interval pacing.
+{-| The keySplines attribute define a set of Bézier control points associated
+with the keyTimes list, defining a cubic Bézier function that controls
+interval pacing.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform
+Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keySplines
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keySplines
 -}
 keySplines : List BezierAnchorPoint -> Attribute msg
 keySplines bezierAnchorPointList =
     attribute "keySplines" <| (List.map bezierAnchorPointToString bezierAnchorPointList |> String.join ";")
 
 
-{-|
-    The keyTimes attribute is a semicolon-separated list of time `values` used
-    to control the pacing of the animation. Each time in the list corresponds to
-    a value in the values attribute list, and defines when the value is used in
-    the animation. Each time value in the keyTimes list is specified as a
-    floating point value between 0 and 1 (inclusive), representing a
-    proportional offset into the duration of the animation element.
+{-| The keyTimes attribute is a semicolon-separated list of time `values` used
+to control the pacing of the animation. Each time in the list corresponds to
+a value in the values attribute list, and defines when the value is used in
+the animation. Each time value in the keyTimes list is specified as a
+floating point value between 0 and 1 (inclusive), representing a
+proportional offset into the duration of the animation element.
 
-    If a list of keyTimes is specified, there must be exactly as many values in
-    the keyTimes list as in the values list.
+If a list of keyTimes is specified, there must be exactly as many values in
+the keyTimes list as in the values list.
 
-    Each successive time value must be greater than or equal to the preceding
-    time value.
+Each successive time value must be greater than or equal to the preceding
+time value.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform
+Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyTimes
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyTimes
 -}
 keyTimes : List Float -> Attribute msg
 keyTimes floatList =
@@ -1243,25 +1218,24 @@ lang =
     attribute "lang"
 
 
-{-|
-    When an SVG `text` or `tspan` element has a specific length set using the
-    textLength attribute, the lengthAdjust attribute controls how the text is
-    stretched or compressed into that length.
+{-| When an SVG `text` or `tspan` element has a specific length set using the
+textLength attribute, the lengthAdjust attribute controls how the text is
+stretched or compressed into that length.
 
-    The two possible values for the attribute are:
+The two possible values for the attribute are:
 
-    - LengthAdjustSpacing
-    - LengthAdjustSpacingAndGlyphs
+    - `LengthAdjustSpacing`
+    - `LengthAdjustSpacingAndGlyphs`
 
-    Using LengthAdjustSpacing (the default), the letter forms are preserved,
-    but the space between them grows or shrinks.
+Using `LengthAdjustSpacing` (the default), the letter forms are preserved,
+but the space between them grows or shrinks.
 
-    Using LengthAdjustSpacingAndGlyphs, the entire text element is stretched in
-    the direction of the text.
+Using `LengthAdjustSpacingAndGlyphs`, the entire text element is stretched in
+the direction of the text.
 
-    Used by Elements: text, tspan
+Used by Elements: text, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust
 -}
 lengthAdjust : LengthAdjust -> Attribute msg
 lengthAdjust option =
@@ -1292,18 +1266,17 @@ markerEnd =
     attribute "marker-end"
 
 
-{-|
-    The markerHeight represents the height of the viewport into which the
-    `marker` is to be fitted when it is rendered.
+{-| The markerHeight represents the height of the viewport into which the
+`marker` is to be fitted when it is rendered.
 
-    A value of zero disables rendering of the element.
+A value of zero disables rendering of the element.
 
-    If the attribute is not specified, the effect is as if a value of 3 were
-    specified.
+If the attribute is not specified, the effect is as if a value of 3 were
+specified.
 
-    Used by Elements: marker
+Used by Elements: marker
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerHeight
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerHeight
 -}
 markerHeight : Length -> Attribute msg
 markerHeight height =
@@ -1322,34 +1295,32 @@ markerStart =
     attribute "marker-start"
 
 
-{-|
-    The `markerUnits` attribute defines the coordinate system for the attributes
-    `markerWidth`, `markerHeight` and the contents of the `marker`.
+{-| The `markerUnits` attribute defines the coordinate system for the attributes
+`markerWidth`, `markerHeight` and the contents of the `marker`.
 
-    If the `markerUnits` attribute is not specified, then the effect is as if a
-    value of `strokeWidth` were specified.
+If the `markerUnits` attribute is not specified, then the effect is as if a
+value of `strokeWidth` were specified.
 
-    Used by Elements: marker
+Used by Elements: marker
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerUnits
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerUnits
 -}
 markerUnits : MarkerCoordinateSystem -> Attribute msg
 markerUnits markerCoordinateSystem =
     attribute "markerUnits" <| markerCoordinateSystemToString markerCoordinateSystem
 
 
-{-|
-    The markerWidth represents the width of the viewport into which the
-    `marker` is to be fitted when it is rendered.
+{-| The markerWidth represents the width of the viewport into which the
+`marker` is to be fitted when it is rendered.
 
-    A value of zero disables rendering of the element.
+A value of zero disables rendering of the element.
 
-    If the attribute is not specified, the effect is as if a value of 3 were
-    specified.
+If the attribute is not specified, the effect is as if a value of 3 were
+specified.
 
-    Used by Elements: marker
+Used by Elements: marker
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerWidth
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerWidth
 -}
 markerWidth : Length -> Attribute msg
 markerWidth width =
@@ -1362,54 +1333,51 @@ mask =
     attribute "mask"
 
 
-{-|
-    The maskContentUnits attribute defines the coordinate system for the
-    contents of the `mask`.
+{-| The maskContentUnits attribute defines the coordinate system for the
+contents of the `mask`.
 
-    If the `maskContentUnits` attribute isn't specified, then the effect is as
-    if a value of CoordinateSystemUserSpaceOnUse were specified.
+If the `maskContentUnits` attribute isn't specified, then the effect is as
+if a value of CoordinateSystemUserSpaceOnUse were specified.
 
-    Note that values defined as a percentage inside the content of the `mask`
-    are not affected by this attribute. It means that even if you set the value
-    of `maskContentUnits` to CoordinateSystemObjectBoundingBox, percentage
-    values will be calculated as if the value of the attribute were
-    CoordinateSystemUserSpaceOnUse.
+Note that values defined as a percentage inside the content of the `mask`
+are not affected by this attribute. It means that even if you set the value
+of `maskContentUnits` to CoordinateSystemObjectBoundingBox, percentage
+values will be calculated as if the value of the attribute were
+CoordinateSystemUserSpaceOnUse.
 
-    Used by Elements: mask
+Used by Elements: mask
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits
 -}
 maskContentUnits : CoordinateSystem -> Attribute msg
 maskContentUnits coordinateSystem =
     attribute "maskContentUnits" <| coordinateSystemToString coordinateSystem
 
 
-{-|
-    The `maskUnits` attribute defines the coordinate system for attributes x, y,
-    width and height.
+{-| The `maskUnits` attribute defines the coordinate system for attributes x, y,
+width and height.
 
-    If the `maskUnits` attribute isn't specified, then the effect is as if a
-    value of CoordinateSystemObjectBoundingBox were specified.
+If the `maskUnits` attribute isn't specified, then the effect is as if a
+value of CoordinateSystemObjectBoundingBox were specified.
 
-    Used by Elements: mask
+Used by Elements: mask
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskUnits
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskUnits
 -}
 maskUnits : CoordinateSystem -> Attribute msg
 maskUnits coordinateSystem =
     attribute "maskUnits" <| coordinateSystemToString coordinateSystem
 
 
-{-|
-    This attribute specifies the maximum value of the active duration.
+{-| This attribute specifies the maximum value of the active duration.
 
-    The default value for max is 0. This does not constrain the active duration
-    at all.
+The default value for max is 0. This does not constrain the active duration
+at all.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/max
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/max
 -}
 max : ClockValue -> Attribute msg
 max clockValue =
@@ -1428,16 +1396,15 @@ method =
     attribute "method"
 
 
-{-|
-    This attribute specifies the minimum value of the active duration.
+{-| This attribute specifies the minimum value of the active duration.
 
-    The default value for max is 0. This does not constrain the active duration
-    at all.
+The default value for max is 0. This does not constrain the active duration
+at all.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/min
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/min
 -}
 min : ClockValue -> Attribute msg
 min clockValue =
@@ -1490,28 +1457,26 @@ overflow =
     attribute "overflow"
 
 
-{-|
-    The `overlinePosition` attribute represents the ideal vertical position of
-    the overline. The overline position is expressed in the font's coordinate
-    system.
+{-| The `overlinePosition` attribute represents the ideal vertical position of
+the overline. The overline position is expressed in the font's coordinate
+system.
 
-    Used by Elements: fontFace
+Used by Elements: fontFace
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlinePosition
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlinePosition
 -}
 overlinePosition : number -> Attribute msg
 overlinePosition position =
     attribute "overlinePosition" <| toString position
 
 
-{-|
-    The `overlineThickness` attribute represents the ideal thickness of
-    the overline. The overline position is expressed in the font's coordinate
-    system.
+{-| The `overlineThickness` attribute represents the ideal thickness of
+the overline. The overline position is expressed in the font's coordinate
+system.
 
-    Used by Elements: fontFace
+Used by Elements: fontFace
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlineThickness
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlineThickness
 -}
 overlineThickness : number -> Attribute msg
 overlineThickness thickness =
@@ -1531,69 +1496,65 @@ path =
     attribute "path"
 
 
-{-|
-    This attribute lets the author specify a total length for the path, in user
-    units. This value is then used to calibrate the browser's distance
-    calculations with those of the author, by scaling all distance computations
-    using the ratio pathLength / (computed value of path length).
+{-| This attribute lets the author specify a total length for the path, in user
+units. This value is then used to calibrate the browser's distance
+calculations with those of the author, by scaling all distance computations
+using the ratio pathLength / (computed value of path length).
 
-    Used by Elements: path
+Used by Elements: path
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
 -}
 pathLength : number -> Attribute msg
 pathLength length =
     attribute "pathLength" <| toString length
 
 
-{-|
-    The `patternContentUnits` attribute defines the coordinate system for the
-    contents of the `pattern`. Note that this attribute has no effect if
-    attribute viewBox is specified on the `pattern` element.
+{-| The `patternContentUnits` attribute defines the coordinate system for the
+contents of the `pattern`. Note that this attribute has no effect if
+attribute viewBox is specified on the `pattern` element.
 
-    If the `patternContentUnits` attribute isn't specified, then the effect is
-    as if a value of CoordinateSystemUserSpaceOnUse were specified.
+If the `patternContentUnits` attribute isn't specified, then the effect is
+as if a value of CoordinateSystemUserSpaceOnUse were specified.
 
-    Used by Elements: pattern
+Used by Elements: pattern
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternContentUnits
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternContentUnits
 -}
 patternContentUnits : CoordinateSystem -> Attribute msg
 patternContentUnits coordinateSystem =
     attribute "patternContentUnits" <| coordinateSystemToString coordinateSystem
 
 
-{-|
-    The `patternTransform` attribute contains the definition of an optional
-    additional transformation from the pattern coordinate system onto the target
-    coordinate system. This allows for things such as skewing the pattern tiles.
-    This additional transformation matrix is post-multiplied to (i.e., inserted
-    to the right of) any previously defined transformations, including the
-    implicit transformation necessary to convert from object bounding box units
-    to user space.
+{-| The `patternTransform` attribute contains the definition of an optional
+additional transformation from the pattern coordinate system onto the target
+coordinate system. This allows for things such as skewing the pattern tiles.
+This additional transformation matrix is post-multiplied to (i.e., inserted
+to the right of) any previously defined transformations, including the
+implicit transformation necessary to convert from object bounding box units
+to user space.
 
-    If attribute `patternTransform` is not specified, then the effect is as if
-    an identity transform were specified.
+If attribute `patternTransform` is not specified, then the effect is as if
+an identity transform were specified.
 
-    Used by Elements: pattern
+Used by Elements: pattern
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform
 -}
 patternTransform : List Transform -> Attribute msg
 patternTransform transforms =
     attribute "patternTransform" <| String.join " " (List.map transformToString transforms)
 
 
-{-|
-    The `patternUnits` attribute defines the coordinate system for attributes
-    x, y, width and height.
+{-| The `patternUnits` attribute defines the coordinate system for attributes
+x, y, width and height.
 
-    If the `patternUnits` attribute isn't specified, then the effect is as if a
-    value of CoordinateSystemObjectBoundingBox were specified.
+If the `patternUnits` attribute isn't specified, then the effect is as if a
+value of CoordinateSystemObjectBoundingBox were specified.
 
-    Used by Elements: pattern
+Used by Elements: pattern
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternUnits
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternUnits
 -}
 patternUnits : CoordinateSystem -> Attribute msg
 patternUnits coordinateSystem =
@@ -1612,16 +1573,15 @@ pointOrder =
     attribute "point-order"
 
 
-{-|
-    The points attribute defines a list of points required to draw a `polyline`
-    or `polygon` element.
+{-| The points attribute defines a list of points required to draw a `polyline`
+or `polygon` element.
 
-    Each point is defined by an X and a Y coordinate (pair) in the user
-    coordinate system.
+Each point is defined by an X and a Y coordinate (pair) in the user coordinate
+system.
 
-    Used by Elements: polyline, polygon
+Used by Elements: polyline, polygon
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points
 -}
 points : List ( number, number ) -> Attribute msg
 points pts =
@@ -1632,15 +1592,14 @@ points pts =
         attribute "points" <| String.join " " (List.map pointToString pts)
 
 
-{-|
-    In some cases, typically when using the `viewBox` attribute, it is desirable
-    that the graphics stretch to fit non-uniformly to take up the entire
-    viewport. In other cases, it is desirable that uniform scaling be used for
-    the purposes of preserving the aspect ratio of the graphics.
+{-| In some cases, typically when using the `viewBox` attribute, it is desirable
+that the graphics stretch to fit non-uniformly to take up the entire
+viewport. In other cases, it is desirable that uniform scaling be used for
+the purposes of preserving the aspect ratio of the graphics.
 
-    Used by Elements: svg, symbol, image, feImage, marker, pattern, view
+Used by Elements: svg, symbol, image, feImage, marker, pattern, view
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
 -}
 preserveAspectRatio : Align -> MeetOrSlice -> Attribute msg
 preserveAspectRatio align meetOrSlice =
@@ -1651,17 +1610,16 @@ preserveAspectRatio align meetOrSlice =
             ]
 
 
-{-|
-    The `primitiveUnits` attribute specifies the coordinate system for the
-    various length values within the `filter` primitives and for the attributes
-    that define the filter primitive subregion.
+{-| The `primitiveUnits` attribute specifies the coordinate system for the
+various length values within the `filter` primitives and for the attributes
+that define the filter primitive subregion.
 
-    If the `primitiveUnits` attribute isn't specified, then the effect is as if
-    a value of CoordinateSystemUserSpaceOnUse were specified.
+If the `primitiveUnits` attribute isn't specified, then the effect is as if
+a value of CoordinateSystemUserSpaceOnUse were specified.
 
-    Used by Elements: filter
+Used by Elements: filter
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/primitiveUnits
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/primitiveUnits
 -}
 primitiveUnits : CoordinateSystem -> Attribute msg
 primitiveUnits coordinateSystem =
@@ -1696,29 +1654,27 @@ renderingIntent =
     attribute "rendering-intent"
 
 
-{-|
-    This attribute indicates the number of times the animation will take place.
+{-| This attribute indicates the number of times the animation will take place.
 
-    The number can be a partial iteration, expressed as a fraction. Its value
-    must be greater than 0.
+The number can be a partial iteration, expressed as a fraction. Its value
+must be greater than 0.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatCount
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatCount
 -}
 repeatCount : RepeatCount -> Attribute msg
 repeatCount repeatCount =
     attribute "repeatCount" <| repeatCountToString repeatCount
 
 
-{-|
-    This attribute specifies the total duration for repeat.
+{-| This attribute specifies the total duration for repeat.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatDur
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatDur
 -}
 repeatDur : Duration -> Attribute msg
 repeatDur duration =
@@ -1731,42 +1687,40 @@ requiredExtensions =
     attribute "requiredExtensions"
 
 
-{-|
-    This attribute takes a list of feature strings. It determines whether or not
-    all of the named features are supported by the browser; if all of them are
-    supported, the attribute evaluates to true end the element is rendered;
-    otherwise, the attribute evaluates to false and the current element and its
-    children are skipped and thus will not be rendered. This provides a way to
-    design SVG that gracefully falls back when features aren't available.
+{-| This attribute takes a list of feature strings. It determines whether or not
+all of the named features are supported by the browser; if all of them are
+supported, the attribute evaluates to true end the element is rendered;
+otherwise, the attribute evaluates to false and the current element and its
+children are skipped and thus will not be rendered. This provides a way to
+design SVG that gracefully falls back when features aren't available.
 
-    If the attribute is not present, then its implicit evaluated value is true.
-    If a null string or empty string value is given to attribute
-    `requiredFeatures`, the attribute is evaluate to false.
+If the attribute is not present, then its implicit evaluated value is true.
+If a null string or empty string value is given to attribute
+`requiredFeatures`, the attribute is evaluate to false.
 
-    `requiredFeatures` is often used in conjunction with the `switch` element.
-    If `requiredFeatures` is used in other situations, it represents a simple
-    switch on the given element whether to render the element or not.
+`requiredFeatures` is often used in conjunction with the `switch` element.
+If `requiredFeatures` is used in other situations, it represents a simple
+switch on the given element whether to render the element or not.
 
-    Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
-        animateTransform, circle, clipPath, cursor, defs, discard, ellipse,
-        foreignObject, g, image, line, mask, mesh, mpath, path, pattern,
-        polygon, polyline, rect, set, svg, switch, text, textPath, tref,
-        tspan, use
+Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
+animateTransform, circle, clipPath, cursor, defs, discard, ellipse,
+foreignObject, g, image, line, mask, mesh, mpath, path, pattern,
+polygon, polyline, rect, set, svg, switch, text, textPath, tref,
+tspan, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/requiredFeatures
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/requiredFeatures
 -}
 requiredFeatures : List String -> Attribute msg
 requiredFeatures features =
     attribute "requiredFeatures" <| String.join " " features
 
 
-{-|
-    This attribute indicates when animation can or can not restart.
+{-| This attribute indicates when animation can or can not restart.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform,
-        discard, mpath, set
+Used by Elements: animate, animateColor, animateMotion, animateTransform,
+discard, mpath, set
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart
 -}
 restart : Restart -> Attribute msg
 restart restart =
@@ -1800,15 +1754,14 @@ ry length =
 -- seed: see Filters.seed
 
 
-{-|
-    The creator of SVG content might want to provide a hint about what tradeoffs
-    to make as the browser renders `path` element or basic shapes. The
-    shape-rendering attribute provides these hints.
+{-| The creator of SVG content might want to provide a hint about what tradeoffs
+to make as the browser renders `path` element or basic shapes. The
+shape-rendering attribute provides these hints.
 
-    Used by Elements: circle, ellipse, line, mesh, path, polygon, polyline,
-        rect, svg
+Used by Elements: circle, ellipse, line, mesh, path, polygon, polyline,
+rect, svg
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering
 -}
 shapeRendering : ShapeRendering -> Attribute msg
 shapeRendering shapeRendering =
@@ -1959,24 +1912,23 @@ strokeWidth length =
     attribute "strokeWidth" <| lengthToString length
 
 
-{-|
-    The style attribute specifies style information for its element. It
-    functions identically to the style attribute in HTML.
+{-| The style attribute specifies style information for its element. It
+functions identically to the style attribute in HTML.
 
-    Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, circle, clipPath,
-        defs, defs, ellipse, feBlend, feColorMatrix, feComponentTransfer,
-        feComposite, feConvolveMatrix, feDiffuseLighting, feDisplacementMap,
-        feDropShadow, feFlood, feFuncA, feFuncB, feFuncG, feFuncR,
-        feGaussianBlur, feImage, feMerge, feMergeNode, feMorphology, feOffset,
-        feSpecularLighting, feTile, feTurbulence, filter, font, foreignObject,
-        g, glyph, glyph, glyphRef, glyphRef, image, line, linearGradient,
-        marker, mask, mesh, meshGradient, missingGlyph, path, pattern, polygon,
-        polyline, radialGradient, rect, stop, svg, svg, switch, symbol,
-        text, text, textPath, tref, tspan, use, use
+Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, circle, clipPath,
+defs, defs, ellipse, feBlend, feColorMatrix, feComponentTransfer,
+feComposite, feConvolveMatrix, feDiffuseLighting, feDisplacementMap,
+feDropShadow, feFlood, feFuncA, feFuncB, feFuncG, feFuncR,
+feGaussianBlur, feImage, feMerge, feMergeNode, feMorphology, feOffset,
+feSpecularLighting, feTile, feTurbulence, filter, font, foreignObject,
+g, glyph, glyph, glyphRef, glyphRef, image, line, linearGradient,
+marker, mask, mesh, meshGradient, missingGlyph, path, pattern, polygon,
+polyline, radialGradient, rect, stop, svg, svg, switch, symbol,
+text, text, textPath, tref, tspan, use, use
 
-    TODO: easy use of a typed CSS library?
+TODO: easy use of a typed CSS library?
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/style
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/style
 -}
 style : String -> Attribute msg
 style value =
@@ -2013,13 +1965,12 @@ textDecoration =
     attribute "text-decoration"
 
 
-{-|
-    The `textLength` attribute is intended to preserve a span of SVG text's
-    display width across a variety of conditions, such as webfonts not loading.
+{-| The `textLength` attribute is intended to preserve a span of SVG text's
+display width across a variety of conditions, such as webfonts not loading.
 
-    Used by Elements: text, tspan
+Used by Elements: text, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength
 -}
 textLength : Length -> Attribute msg
 textLength length =
@@ -2038,34 +1989,31 @@ title =
     attribute "title"
 
 
-{-|
-    This attribute indicates the final value of the attribute that will be
-    modified during the animation. The value of the attribute will change
-    between the from attribute value and this value. By default the change will
-    be linear.
+{-| This attribute indicates the final value of the attribute that will be
+modified during the animation. The value of the attribute will change
+between the from attribute value and this value. By default the change will
+be linear.
 
-    When this attribute is used with the `set` element, it specifies the value
-    for the attribute during the duration of the `set` element.
+When this attribute is used with the `set` element, it specifies the value
+for the attribute during the duration of the `set` element.
 
-    Used by Elements: animate, animateColor, animateMotion, animateTransform
+Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to
 -}
 to : number -> Attribute msg
 to value =
     attribute "to" <| toString value
 
 
-{-|
-    The transform attribute defines a list of transform definitions that are
-    applied to an element and the element's children. The items in the transform
-    list are applied from right to left.
+{-| The transform attribute defines a list of transform definitions that are
+applied to an element and the element's children. The items in the transform
+list are applied from right to left.
 
-    Used by Elements: a, circle, clipPath, defs, ellipse, foreignObject, g,
-        image, line, mesh, path, polygon, polyline, rect, switch, text, use,
-        svg
+Used by Elements: a, circle, clipPath, defs, ellipse, foreignObject, g,
+image, line, mesh, path, polygon, polyline, rect, switch, text, use, svg
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
 -}
 transform : List Transform -> Attribute msg
 transform transforms =
@@ -2088,28 +2036,26 @@ u2 =
     attribute "u2"
 
 
-{-|
-    The underlinePosition attribute represents the ideal vertical position of
-    the underline. The underline position is expressed in the font's
-    coordinate system.
+{-| The underlinePosition attribute represents the ideal vertical position of
+the underline. The underline position is expressed in the font's
+coordinate system.
 
-    Used by Elements: fontFace
+Used by Elements: fontFace
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-position
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-position
 -}
 underlinePosition : number -> Attribute msg
 underlinePosition position =
     attribute "underline-position" <| toString position
 
 
-{-|
-    The underlineThickness attribute represents the ideal thickness of the
-    underline. The underline thickness is expressed in the font's coordinate
-    system.
+{-| The underlineThickness attribute represents the ideal thickness of the
+underline. The underline thickness is expressed in the font's coordinate
+system.
 
-    Used by Elements: fontFace
+Used by Elements: fontFace
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-thickness
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-thickness
 -}
 underlineThickness : number -> Attribute msg
 underlineThickness thickness =
@@ -2168,17 +2114,16 @@ vMathematical =
 -- values: see animationValues and Filters.colorMatrixValues
 
 
-{-|
-    The version attribute is used to indicate what specification a SVG document
-    conforms to. It is only allowed on the root <svg> element. It is purely
-    advisory and has no influence on rendering or processing.
+{-| The version attribute is used to indicate what specification a SVG document
+conforms to. It is only allowed on the root <svg> element. It is purely
+advisory and has no influence on rendering or processing.
 
-    While it is specified to accept any number, the only two valid choices are
-    currently 1.0 and 1.1.
+While it is specified to accept any number, the only two valid choices are
+currently 1.0 and 1.1.
 
-    Used by Elements: svg
+Used by Elements: svg
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version
 -}
 version : Float -> Attribute msg
 version number =
@@ -2203,20 +2148,19 @@ vertOriginY =
     attribute "vert-origin-y"
 
 
-{-|
-    The `viewBox` attribute allows you to specify that a given set of graphics
-    stretch to fit a particular container element.
+{-| The `viewBox` attribute allows you to specify that a given set of graphics
+stretch to fit a particular container element.
 
-    `minX`, `minY`, `width` and `height` specify a rectangle in user space
-    which should be mapped to the bounds of the viewport established by the
-    given element, taking into account attribute `preserveAspectRatio`.
+`minX`, `minY`, `width` and `height` specify a rectangle in user space
+which should be mapped to the bounds of the viewport established by the
+given element, taking into account attribute `preserveAspectRatio`.
 
-    Negative values for `width` or `height` are not permitted, and a value of
-    zero disables rendering of the element.
+Negative values for `width` or `height` are not permitted, and a value of
+zero disables rendering of the element.
 
-    Used by Elements: svg, symbol, image, marker, pattern, view
+Used by Elements: svg, symbol, image, marker, pattern, view
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
 -}
 viewBox : number -> number -> number -> number -> Attribute a
 viewBox minX minY width height =
@@ -2274,32 +2218,30 @@ xHeight =
     attribute "x-height"
 
 
-{-|
-    This attribute defines the x-axis coordinate of the start of a line or
-    linearGradient.
+{-| This attribute defines the x-axis coordinate of the start of a line or
+linearGradient.
 
-    If the attribute is not specified, the effect is as if a value of 0
-    (or 0%, in the case of a linearGradient) were specified.
+If the attribute is not specified, the effect is as if a value of 0
+(or 0%, in the case of a linearGradient) were specified.
 
-    Used by Elements: line, linearGradient
+Used by Elements: line, linearGradient
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
 -}
 x1 : Length -> Attribute msg
 x1 position =
     attribute "x1" <| lengthToString position
 
 
-{-|
-    This attribute defines the x-axis coordinate of the end of a line or
-    linearGradient.
+{-| This attribute defines the x-axis coordinate of the end of a line or
+linearGradient.
 
-    If the attribute is not specified, the effect is as if a value of 0
-    (or 0%, in the case of a linearGradient) were specified.
+If the attribute is not specified, the effect is as if a value of 0
+(or 0%, in the case of a linearGradient) were specified.
 
-    Used by Elements: line, linearGradient
+Used by Elements: line, linearGradient
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
 -}
 x2 : Length -> Attribute msg
 x2 position =
@@ -2336,37 +2278,35 @@ xlinkRole =
     attributeNS "http://www.w3.org/1999/xlink" "xlink:role"
 
 
-{-|
-    This attribute is provided for backwards compatibility with SVG 1.1. It
-    provides documentation to XLink-aware processors. In case of a conflict,
-    the target attribute has priority, since it can express a wider range of
-    values.
+{-| This attribute is provided for backwards compatibility with SVG 1.1. It
+provides documentation to XLink-aware processors. In case of a conflict,
+the target attribute has priority, since it can express a wider range of
+values.
 
-    Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
-        animateTransform, colorProfile, cursor, feImage, filter, fontFaceUri,
-        glyphRef, image, linearGradient, mpath, pattern, radialGradient,
-        script, set, textPath, tref, use
+Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
+animateTransform, colorProfile, cursor, feImage, filter, fontFaceUri, glyphRef,
+image, linearGradient, mpath, pattern, radialGradient, script, set, textPath,
+tref, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkShow
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkShow
 -}
 xlinkShow : String -> Attribute msg
 xlinkShow str =
     attribute "xlinkShow" str
 
 
-{-|
-    The xlinkTitle attribute is used to describe the meaning of a link or
-    resource in a human-readable fashion, along the same lines as the xlinkRole
-    or xlinkArcrole attribute. It is a string that describes the resource.
-    In general it is preferable to use a `title` child element rather than a
-    xlinkTitle attribute.
+{-| The xlinkTitle attribute is used to describe the meaning of a link or
+resource in a human-readable fashion, along the same lines as the xlinkRole
+or xlinkArcrole attribute. It is a string that describes the resource.
+In general it is preferable to use a `title` child element rather than a
+xlinkTitle attribute.
 
-    Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
-        animateTransform, colorProfile, cursor, feImage, filter, fontFaceUri,
-        glyphRef, image, linearGradient, mpath, pattern, radialGradient,
-        script, set, textPath, tref, use
+Used by Elements: a, altGlyph, animate, animateColor, animateMotion,
+animateTransform, colorProfile, cursor, feImage, filter, fontFaceUri, glyphRef,
+image, linearGradient, mpath, pattern, radialGradient, script, set, textPath,
+tref, use
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkTitle
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkTitle
 -}
 xlinkTitle : String -> Attribute msg
 xlinkTitle str =
@@ -2403,32 +2343,30 @@ y length =
     attribute "y" <| lengthToString length
 
 
-{-|
-    This attribute defines the y-axis coordinate of the start of a line or
-    linearGradient.
+{-| This attribute defines the y-axis coordinate of the start of a line or
+linearGradient.
 
-    If the attribute is not specified, the effect is as if a value of 0
-    (or 0%, in the case of a linearGradient) were specified.
+If the attribute is not specified, the effect is as if a value of 0
+(or 0%, in the case of a linearGradient) were specified.
 
-    Used by Elements: line, linearGradient
+Used by Elements: line, linearGradient
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
 -}
 y1 : Length -> Attribute msg
 y1 position =
     attribute "y1" <| lengthToString position
 
 
-{-|
-    This attribute defines the y-axis coordinate of the end of a line or
-    linearGradient.
+{-| This attribute defines the y-axis coordinate of the end of a line or
+linearGradient.
 
-    If the attribute is not specified, the effect is as if a value of 0
-    (or 0%, in the case of a linearGradient) were specified.
+If the attribute is not specified, the effect is as if a value of 0
+(or 0%, in the case of a linearGradient) were specified.
 
-    Used by Elements: line, linearGradient
+Used by Elements: line, linearGradient
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
 -}
 y2 : Length -> Attribute msg
 y2 position =
