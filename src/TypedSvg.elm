@@ -98,14 +98,14 @@ import TypedSvg.Core exposing (Svg, Attribute, node)
 containing a rounded rectangle:
 
     import Html
-    import Svg exposing (..)
-    import Svg.Attributes exposing (..)
+    import TypedSvg exposing (..)
+    import TypedSvg.Attributes exposing (..)
 
     roundRect : Html.Html msg
     roundRect =
         svg
-          [ width "120", height "120", viewBox "0 0 120 120" ]
-          [ rect [ x "10", y "10", width "100", height "100", rx "15", ry "15" ] [] ]
+          [ width (px 120), height (px 120), viewBox 0 0 120 120 ]
+          [ rect [ x (px 10), y (px 10), width (px 100), height (px 100), rx (px 15), ry (px 15) ] [] ]
 -}
 svg : List (Html.Attribute msg) -> List (Svg msg) -> Html.Html msg
 svg =
@@ -266,7 +266,7 @@ stop =
 {-| The circle element is an SVG basic shape, used to create circles based on
 a center point and a radius.
 
-    circle [ cx "60", cy "60", r "50" ] []
+    circle [ cx (px 60), cy (px 60), r (px 50) ] []
 -}
 circle : List (Attribute msg) -> List (Svg msg) -> Svg msg
 circle =
@@ -307,7 +307,7 @@ polygon =
 straight lines connecting several points. Typically a polyline is used to
 create open shapes.
 
-    polyline [ fill "none", stroke "black", points "20,100 40,60 70,80 100,20" ] []
+    polyline [ fill FillNone, stroke Color.black, points [(20,100), (40,60), (70,80), (100,20)] ] []
 -}
 polyline : List (Attribute msg) -> List (Svg msg) -> Svg msg
 polyline =

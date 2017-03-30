@@ -506,7 +506,7 @@ Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
 feDiffuseLighting, feFlood, feSpecularLighting, glyph, glyphRef, line,
 mesh, path, polygon, polyline, rect, stop, text, textPath, tref, tspan
 
-    See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color
 -}
 color : Color -> Attribute msg
 color c =
@@ -530,7 +530,7 @@ contentScriptType mimeType =
 
 
 {-| This attribute specifies the style sheet language for the given document
-fragment. The contentStyleType is specified on the <svg> element. By default,
+fragment. The contentStyleType is specified on the `svg` element. By default,
 if it's not defined, the value is "text/css"
 
 See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentStyleType
@@ -547,7 +547,7 @@ Used by Elements: script, style
 NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
 distinguish it from `animateTransformType`
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type
 -}
 contentType : String -> Attribute msg
 contentType t =
@@ -590,7 +590,7 @@ cy length =
 
 {-| This attribute defines a path to follow.
 
-NOTE: You probably want to import the "folkertdev/svg-path-dsl" package for
+NOTE: You probably want to import the `folkertdev/svg-path-dsl` package for
 access to a more Elm-like way of expressing paths. For instance:
 
     [ path
@@ -1222,10 +1222,8 @@ lang =
 textLength attribute, the lengthAdjust attribute controls how the text is
 stretched or compressed into that length.
 
-The two possible values for the attribute are:
-
-    - `LengthAdjustSpacing`
-    - `LengthAdjustSpacingAndGlyphs`
+The two possible values for the attribute are `LengthAdjustSpacing` and
+`LengthAdjustSpacingAndGlyphs`.
 
 Using `LengthAdjustSpacing` (the default), the letter forms are preserved,
 but the space between them grows or shrinks.
@@ -2115,7 +2113,7 @@ vMathematical =
 
 
 {-| The version attribute is used to indicate what specification a SVG document
-conforms to. It is only allowed on the root <svg> element. It is purely
+conforms to. It is only allowed on the root `svg` element. It is purely
 advisory and has no influence on rendering or processing.
 
 While it is specified to accept any number, the only two valid choices are
