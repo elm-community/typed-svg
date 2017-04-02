@@ -1,10 +1,11 @@
-module TypedSvg.InPx exposing (..)
+module TypedSvg.Extra.InPx exposing (..)
 
 {-| Typed SVG elements that default to `px` units
 -}
 
-import Svg exposing (Svg, image)
-import Svg.Attributes exposing (xlinkHref)
+import TypedSvg exposing (image)
+import TypedSvg.Core exposing (Svg)
+import TypedSvg.Attributes exposing (xlinkHref)
 import TypedSvg.Attributes.InPx exposing (x, y, width, height)
 
 

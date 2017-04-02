@@ -77,24 +77,17 @@ See TypedSvg.Filters
 
 # Miscellaneous
 @docs clipPath, colorProfile, cursor, filter, script, style, view
--}
 
--- centeredImage : String -> Float -> Float -> Float -> Float -> Svg msg
--- centeredImage href w_ h_ x_ y_ =
---     image
---         [ x (x_ - w_ / 2)
---         , y (y_ - h_ / 2)
---         , width w_
---         , height h_
---         , xlinkHref href
---         ]
---         []
+# Deprecated
+See `TypedSvg.Deprecated` (e.g. `altGlyph` etc.)
+
+-}
 
 import Html
 import TypedSvg.Core exposing (Svg, Attribute, node)
 
 
-{-| The root `<svg>` node for any SVG scene. This example shows a scene
+{-| The root `svg` node for any SVG scene. This example shows a scene
 containing a rounded rectangle:
 
     import Html
