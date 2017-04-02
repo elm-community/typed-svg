@@ -1,5 +1,5 @@
 {
-    "version": "2.0.1",
+    "version": "2.1.0",
     "summary": "A Typed SVG (Scalable Vector Graphics) builder",
     "repository": "https://github.com/canadaduane/typed-svg.git",
     "license": "Apache2.0",
