@@ -1148,20 +1148,20 @@ The value of auto indicates that the user agent should adjust inter-glyph
 spacing based on kerning tables that are included in the font that will be
 used.
 
-If a <length> is provided, then auto-kerning is disabled. Instead,
+If a `length` is provided, then auto-kerning is disabled. Instead,
 inter-character spacing is set to the given <length>. The most common
 scenario, other than auto, is to set kerning to a value of 0 so that
 auto-kerning is disabled.
 
-If a <length> is provided without a unit identifier (e.g., an unqualified
-number such as 128), the browser processes the <length> as a width value in
+If a `length` is provided without a unit identifier (e.g., an unqualified
+number such as 128), the browser processes the `length` as a width value in
 the current user coordinate system.
 
-If a <length> is provided with a unit identifier (e.g., .25em or 1%), then
-the browser converts the <length> into a corresponding value in the current
+If a `length` is provided with a unit identifier (e.g., .25em or 1%), then
+the browser converts the `length` into a corresponding value in the current
 user coordinate system.
 
-When a <length> is provided, its value is added to the inter-character
+When a `length` is provided, its value is added to the inter-character
 spacing value specified by the letter-spacing attribute.
 
 As a presentation attribute, it also can be used as a property directly
