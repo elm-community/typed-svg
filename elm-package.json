@@ -11,7 +11,9 @@
         "TypedSvg.Core",
         "TypedSvg.Types",
         "TypedSvg.Attributes",
+        "TypedSvg.Attributes.InEm",
         "TypedSvg.Attributes.InPx",
+        "TypedSvg.Extra.InPx",
         "TypedSvg.Filters",
         "TypedSvg.Filters.Attributes",
         "TypedSvg.Events"
