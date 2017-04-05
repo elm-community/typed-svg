@@ -12,7 +12,15 @@ import TypedSvg.Attributes exposing (xlinkHref)
 import TypedSvg.Attributes.InPx exposing (x, y, width, height)
 
 
-{-| Centers an image (png, svg, etc.) on the given x, y coordinate
+{-| Centers an image (png, svg, etc.) referenced by an url string and with a given width, height on the given x, y coordinate.
+
+    let
+        width = 80.5
+        height = 80.5
+        x = 100
+        y = 50
+    in
+        centeredImage "/images/example.png" width height x y
 -}
 centeredImage : String -> Float -> Float -> Float -> Float -> Svg msg
 centeredImage href w_ h_ x_ y_ =
