@@ -15,10 +15,10 @@ import TypedSvg.Attributes.InPx exposing (x, y, width, height)
 {-| Centers an image (png, svg, etc.) referenced by an url string and with a given image width and height on the given x, y coordinate. Usage example:
 
     let
-        width = 80.5
-        height = 80.5
-        x = 100
-        y = 50
+        width = 50.5
+        height = 50.5
+        x = 150
+        y = 200
     in
         centeredImage "/images/example.png" width height x y
 -}
