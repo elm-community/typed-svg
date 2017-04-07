@@ -12,7 +12,7 @@ import TypedSvg.Attributes exposing (xlinkHref)
 import TypedSvg.Attributes.InPx exposing (x, y, width, height)
 
 
-{-| Centers an image (png, svg, etc.) referenced by an url string and with a given width, height on the given x, y coordinate.
+{-| Centers an image (png, svg, etc.) referenced by an url string and with a given image width and height on the given x, y coordinate. Usage example:
 
     let
         width = 80.5
