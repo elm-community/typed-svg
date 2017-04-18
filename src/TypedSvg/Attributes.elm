@@ -1907,7 +1907,7 @@ strokeOpacity =
 {-| -}
 strokeWidth : Length -> Attribute msg
 strokeWidth length =
-    attribute "strokeWidth" <| lengthToString length
+    attribute "stroke-width" <| lengthToString length
 
 
 {-| The style attribute specifies style information for its element. It
