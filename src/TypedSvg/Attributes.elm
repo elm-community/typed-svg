@@ -449,7 +449,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolat
 -}
 colorInterpolation : ColorInterpolation -> Attribute msg
 colorInterpolation colorInterpolation =
-    attribute "colorInterpolation" <| colorInterpolationToString colorInterpolation
+    attribute "color-interpolation" <| colorInterpolationToString colorInterpolation
 
 
 
@@ -879,7 +879,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust
 -}
 fontSizeAdjust : FontSizeAdjust -> Attribute msg
 fontSizeAdjust fontSizeAdjust =
-    attribute "fontSizeAdjust" <| fontSizeAdjustToString fontSizeAdjust
+    attribute "font-size-adjust" <| fontSizeAdjustToString fontSizeAdjust
 
 
 {-| The `fontStretch` attribute indicates the desired amount of condensing or
@@ -895,7 +895,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch
 -}
 fontStretch : FontStretch -> Attribute msg
 fontStretch fontStretch =
-    attribute "fontStretch" <| fontStretchToString fontStretch
+    attribute "font-stretch" <| fontStretchToString fontStretch
 
 
 {-| The `fontStyle` attribute specifies whether the text is to be rendered using
@@ -911,7 +911,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style
 -}
 fontStyle : FontStyle -> Attribute msg
 fontStyle fontStyle =
-    attribute "fontStyle" <| fontStyleToString fontStyle
+    attribute "font-style" <| fontStyleToString fontStyle
 
 
 {-| The `fontVariant` attribute indicates whether the text is to be rendered
@@ -928,7 +928,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant
 -}
 fontVariant : FontVariant -> Attribute msg
 fontVariant fontVariant =
-    attribute "fontVariant" <| fontVariantToString fontVariant
+    attribute "font-variant" <| fontVariantToString fontVariant
 
 
 {-| The `fontWeight` attribute refers to the boldness or lightness of the glyphs
@@ -944,7 +944,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight
 -}
 fontWeight : FontWeight -> Attribute msg
 fontWeight fontWeight =
-    attribute "fontWeight" <| fontWeightToString fontWeight
+    attribute "font-weight" <| fontWeightToString fontWeight
 
 
 {-| -}
@@ -1465,7 +1465,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlinePosition
 -}
 overlinePosition : number -> Attribute msg
 overlinePosition position =
-    attribute "overlinePosition" <| toString position
+    attribute "overline-position" <| toString position
 
 
 {-| The `overlineThickness` attribute represents the ideal thickness of
@@ -1478,7 +1478,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlineThicknes
 -}
 overlineThickness : number -> Attribute msg
 overlineThickness thickness =
-    attribute "overlineThickness" <| toString thickness
+    attribute "overline-thickness" <| toString thickness
 
 
 {-| -}
@@ -1763,7 +1763,7 @@ See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering
 -}
 shapeRendering : ShapeRendering -> Attribute msg
 shapeRendering shapeRendering =
-    attribute "shapeRendering" <| shapeRenderingToString shapeRendering
+    attribute "shape-rendering" <| shapeRenderingToString shapeRendering
 
 
 {-| -}
@@ -1954,7 +1954,7 @@ target =
 {-| -}
 textAnchor : AnchorAlignment -> Attribute msg
 textAnchor anchorAlignment =
-    attribute "textAnchor" <| anchorAlignmentToString anchorAlignment
+    attribute "text-anchor" <| anchorAlignmentToString anchorAlignment
 
 
 {-| -}
