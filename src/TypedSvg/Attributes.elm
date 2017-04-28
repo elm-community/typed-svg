@@ -853,16 +853,16 @@ fontFamily : List String -> Attribute msg
 fontFamily families =
     case families of
         [] ->
-            attribute "fontFamily" "inherit"
+            attribute "font-family" "inherit"
 
         _ ->
-            attribute "fontFamily" (String.join ", " families)
+            attribute "font-family" (String.join ", " families)
 
 
 {-| -}
 fontSize : Length -> Attribute msg
 fontSize length =
-    attribute "fontSize" <| lengthToString length
+    attribute "font-size" <| lengthToString length
 
 
 {-| The `fontSizeAdjust` attribute allows authors to specify an aspect value
