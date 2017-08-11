@@ -1899,9 +1899,9 @@ strokeMiterlimit =
 
 
 {-| -}
-strokeOpacity : String -> Attribute msg
-strokeOpacity =
-    attribute "stroke-opacity"
+strokeOpacity : Opacity -> Attribute msg
+strokeOpacity opacity =
+    attribute "stroke-opacity" <| opacityToString opacity
 
 
 {-| -}

@@ -63,7 +63,7 @@ alignToString align =
             "none"
 
         Align x y ->
-            "x" ++ (scaleToString x) ++ "y" ++ (scaleToString y)
+            "x" ++ (scaleToString x) ++ "Y" ++ (scaleToString y)
 
 
 alignmentBaselineToString : AlignmentBaseline -> String
@@ -876,13 +876,13 @@ scaleToString : Scale -> String
 scaleToString scale =
     case scale of
         ScaleMin ->
-            "min"
+            "Min"
 
         ScaleMid ->
-            "mid"
+            "Mid"
 
         ScaleMax ->
-            "max"
+            "Max"
 
 
 shapeRenderingToString : ShapeRendering -> String
