@@ -2,8 +2,11 @@ module TypedSvg.Deprecated exposing (altGlyph, altGlyphDef, altGlyphItem)
 
 {-| Deprecated SVG Elements
 
+
 # Glyphs
+
 @docs altGlyph, altGlyphDef, altGlyphItem
+
 -}
 
 import TypedSvg.Core exposing (Svg, Attribute, node)

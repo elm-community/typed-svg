@@ -1,25 +1,29 @@
 module TypedSvg.TypesToStrings exposing (..)
 
 {-|
+
+
 # Converts each type from TypedSvg.Types to its corresponding string
+
 @docs accumulateToString, additiveToString, alignToString,
-    alignmentBaselineToString, anchorAlignmentToString,
-    animateTransformTypeToString, attributeTypeToString,
-    baselineShiftToString, bezierAnchorPointToString, boolToString,
-    calcModeToString, clipPathToString, clipRuleToString, clipToString,
-    cm, colorInterpolationToString, colorMatrixTypeToString,
-    colorProfileToString, compositeOperatorToString, coordinateSystemToString,
-    cursorToString, directionToString, displayToString,
-    dominantBaselineToString, durationToString, edgeModeToString, em, ex,
-    fillRuleToString, filterToString, floodColorToString,
-    fontSizeAdjustToString, fontStretchToString, fontStyleToString,
-    fontVariantToString, fontWeightToString, funcTypeToString, inValueToString,
-    inch, kerningToString, lengthAdjustToString, lengthToString,
-    markerCoordinateSystemToString, meetOrSliceToString, mm, modeToString,
-    morphologyOperatorToString, num, opacityToString, pc, percent, pt, px,
-    renderingToString, repeatCountToString, restartToString, scaleToString,
-    shapeRenderingToString, timingValueAsString, transformToString,
-    turbulenceTypeToString, yesNoToString
+alignmentBaselineToString, anchorAlignmentToString,
+animateTransformTypeToString, attributeTypeToString,
+baselineShiftToString, bezierAnchorPointToString, boolToString,
+calcModeToString, clipPathToString, clipRuleToString, clipToString,
+cm, colorInterpolationToString, colorMatrixTypeToString,
+colorProfileToString, compositeOperatorToString, coordinateSystemToString,
+cursorToString, directionToString, displayToString,
+dominantBaselineToString, durationToString, edgeModeToString, em, ex,
+fillRuleToString, filterToString, floodColorToString,
+fontSizeAdjustToString, fontStretchToString, fontStyleToString,
+fontVariantToString, fontWeightToString, funcTypeToString, inValueToString,
+inch, kerningToString, lengthAdjustToString, lengthToString,
+markerCoordinateSystemToString, meetOrSliceToString, mm, modeToString,
+morphologyOperatorToString, num, opacityToString, pc, percent, pt, px,
+renderingToString, repeatCountToString, restartToString, scaleToString,
+shapeRenderingToString, timingValueAsString, transformToString,
+turbulenceTypeToString, yesNoToString
+
 -}
 
 import Color.Convert exposing (colorToCssRgba)

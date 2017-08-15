@@ -1,11 +1,17 @@
 module TypedSvg.Core exposing (..)
 
 {-|
+
+
 # SVG Nodes
+
 @docs Svg, text, node, map
 
+
 # SVG Attributes
+
 @docs Attribute, attribute, attributeNS, svgNamespace
+
 -}
 
 import VirtualDom
@@ -32,9 +38,9 @@ svgNamespace =
 
 
 {-| Create any SVG node. To create a `<rect>` helper function, you would write:
-    rect : List (Attribute msg) -> List (Svg msg) -> Svg msg
-    rect attributes children =
-        node "rect" attributes children
+rect : List (Attribute msg) -> List (Svg msg) -> Svg msg
+rect attributes children =
+node "rect" attributes children
 You should always be able to use the helper functions already defined in this
 library though!
 -}

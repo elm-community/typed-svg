@@ -48,37 +48,59 @@ module TypedSvg
 
 {-|
 
+
 # HTML Embedding
+
 @docs svg
 
+
 # Graphics elements
+
 @docs circle, ellipse, image, line, path, polygon, polyline, rect, use
 
+
 # Animation elements
+
 @docs animate, animateColor, animateMotion, animateTransform, mpath, set
 
+
 # Descriptive elements
+
 @docs desc, metadata, title
 
+
 # Containers
+
 @docs a, defs, g, marker, mask, pattern, switch, symbol
 
+
 # Text
+
 @docs glyph, glyphRef, textPath, text_, tref, tspan
 
+
 # Fonts
+
 @docs font
 
+
 # Gradients
+
 @docs linearGradient, radialGradient, stop
 
+
 # Filters
+
 See TypedSvg.Filters
 
+
 # Miscellaneous
+
 @docs clipPath, colorProfile, cursor, filter, script, style, view
 
+
 # Deprecated
+
 See `TypedSvg.Deprecated` (e.g. `altGlyph` etc.)
 
 -}
@@ -97,8 +119,9 @@ containing a rounded rectangle:
     roundRect : Html.Html msg
     roundRect =
         svg
-          [ width (px 120), height (px 120), viewBox 0 0 120 120 ]
-          [ rect [ x (px 10), y (px 10), width (px 100), height (px 100), rx (px 15), ry (px 15) ] [] ]
+            [ width (px 120), height (px 120), viewBox 0 0 120 120 ]
+            [ rect [ x (px 10), y (px 10), width (px 100), height (px 100), rx (px 15), ry (px 15) ] [] ]
+
 -}
 svg : List (Html.Attribute msg) -> List (Svg msg) -> Html.Html msg
 svg =
@@ -260,6 +283,7 @@ stop =
 a center point and a radius.
 
     circle [ cx (px 60), cy (px 60), r (px 50) ] []
+
 -}
 circle : List (Attribute msg) -> List (Svg msg) -> Svg msg
 circle =
@@ -301,6 +325,7 @@ straight lines connecting several points. Typically a polyline is used to
 create open shapes.
 
     polyline [ fill FillNone, stroke Color.black, points [(20,100), (40,60), (70,80), (100,20)] ] []
+
 -}
 polyline : List (Attribute msg) -> List (Svg msg) -> Svg msg
 polyline =

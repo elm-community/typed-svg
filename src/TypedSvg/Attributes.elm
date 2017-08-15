@@ -4,58 +4,20 @@ module TypedSvg.Attributes exposing (..)
 
 NOTE: For attributes pertaining to SVG filters, see Filters.Attributes
 
+
 # Other attributes
-@docs accelerate, accentHeight, accumulate, additive, alignmentBaseline,
-    allowReorder, alphabetic, amplitude, animateTransformType, animationValues,
-    arabicForm, ascent, attributeName, attributeType, autoReverse, baseProfile,
-    baselineShift, bbox, begin, by, calcMode, capHeight, class, clip, clipPath,
-    clipPathUnits, clipRule, color, colorInterpolation, colorProfile,
-    colorRendering, contentScriptType, contentStyleType, contentType, cursor,
-    cx, cy, d, decelerate, descent, direction, display, dominantBaseline, dur,
-    dx, dy, enableBackground, end, exponent, externalResourcesRequired,
-    fill, fillOpacity, fillRule, filter, fontFamily, fontSize, fontSizeAdjust,
-    fontStretch, fontStyle, fontVariant, fontWeight, format, from,
-    fx, fy, g1, g2, glyphName,
-    glyphOrientationHorizontal, glyphOrientationVertical, glyphRef,
-    gradientTransform, gradientUnits, hanging, height, horizAdvX,
-    horizOriginX, horizOriginY, ideographic, imageRendering, intercept, k,
-    kerning, keySplines, keyTimes, lang, lengthAdjust, letterSpacing,
-    lightingColor, local, markerEnd, markerHeight, markerMid, markerStart,
-    markerUnits, markerWidth, mask, maskContentUnits, maskUnits, max, media,
-    method, min, name, noFill, offset, opacity, orient, orientation, origin,
-    overflow, overlinePosition, overlineThickness, panose1, path, pathLength,
-    patternContentUnits, patternTransform, patternUnits, pointOrder,
-    pointerEvents, points, preserveAspectRatio, primitiveUnits, r, refX, refY,
-    renderingIntent, repeatCount, repeatDur, requiredExtensions,
-    requiredFeatures, restart, rotate, rx, ry, shapeRendering, slope, spacing,
-    specularConstant, specularExponent, speed, spreadMethod, startOffset,
-    stdDeviation, stemh, stemv, stitchTiles, stopColor, stopOpacity,
-    strikethroughPosition, strikethroughThickness, string, stroke,
-    strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin,
-    strokeMiterlimit, strokeOpacity, strokeWidth,
-    style, systemLanguage, tableValues, target, textAnchor, textDecoration,
-    textLength, textRendering, title, to, transform, u1, u2,
-    underlinePosition, underlineThickness, unicode, unicodeBidi, unicodeRange,
-    unitsPerEm, vAlphabetic, vHanging, vIdeographic, vMathematical,
-    version, vertAdvY, vertOriginX, vertOriginY,
-    viewBox, viewTarget, visibility, width, widths, wordSpacing, writingMode,
-    x, x1, x2, xChannelSelector, xHeight, xlinkActuate, xlinkArcrole, xlinkHref,
-    xlinkRole, xlinkShow, xlinkTitle, xlinkType, xmlBase, xmlLang, xmlSpace, y,
-    y1, y2, yChannelSelector, zoomAndPan
+
+@docs accelerate, accentHeight, accumulate, additive, alignmentBaseline,allowReorder, alphabetic, amplitude, animateTransformType, animationValues,arabicForm, ascent, attributeName, attributeType, autoReverse, baseProfile,baselineShift, bbox, begin, by, calcMode, capHeight, class, clip, clipPath,clipPathUnits, clipRule, color, colorInterpolation, colorProfile,colorRendering, contentScriptType, contentStyleType, contentType, cursor,cx, cy, d, decelerate, descent, direction,display,dominantBaseline, dur,dx, dy, enableBackground, end, exponent, externalResourcesRequired,fill, fillOpacity, fillRule, filter, fontFamily, fontSize, fontSizeAdjust
+@docs fontStretch, fontStyle, fontVariant, fontWeight, format, from,fx, fy, g1, g2, glyphName,glyphOrientationHorizontal, glyphOrientationVertical, glyphRef,gradientTransform, gradientUnits, hanging, height, horizAdvX,horizOriginX, horizOriginY, ideographic, imageRendering, intercept, k,kerning, keySplines, keyTimes, lang, lengthAdjust, letterSpacing,lightingColor, local, markerEnd, markerHeight, markerMid, markerStart,markerUnits, markerWidth, mask, maskContentUnits, maskUnits, max, media
+@docs method, min, name, noFill, offset, opacity, orient, orientation, origin,overflow, overlinePosition, overlineThickness, panose1, path, pathLength,patternContentUnits, patternTransform, patternUnits, pointOrder,pointerEvents, points, preserveAspectRatio, primitiveUnits, r, refX, refY,renderingIntent, repeatCount, repeatDur, requiredExtensions,requiredFeatures, restart, rotate, rx, ry, shapeRendering, slope, spacing,specularConstant, specularExponent, speed, spreadMethod, startOffset
+@docs stdDeviation, stemh, stemv, stitchTiles, stopColor, stopOpacity,strikethroughPosition, strikethroughThickness, string, stroke,strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin,strokeMiterlimit, strokeOpacity, strokeWidth,style, systemLanguage, tableValues, target, textAnchor, textDecoration,textLength, textRendering, title, to, transform, u1, u2,underlinePosition, underlineThickness, unicode, unicodeBidi, unicodeRange,unitsPerEm, vAlphabetic, vHanging, vIdeographic
+@docs vMathematical,version, vertAdvY, vertOriginX, vertOriginY,viewBox, viewTarget, visibility, width, widths, wordSpacing, writingMode,x, x1, x2, xChannelSelector, xHeight, xlinkActuate, xlinkArcrole, xlinkHref,xlinkRole, xlinkShow, xlinkTitle, xlinkType, xmlBase, xmlLang, xmlSpace, y,y1, y2, yChannelSelector, zoomAndPan
+
 
 # Presentation attributes
-@docs alignmentBaseline, baselineShift, clipPath, clipRule, clip,
-  colorInterpolation, colorProfile, colorRendering,
-  color, cursor, direction, display, dominantBaseline, enableBackground,
-  fillOpacity, fillRule, fill, filter, fontFamily,
-  fontSizeAdjust, fontSize, fontStretch, fontStyle, fontVariant, fontWeight,
-  glyphOrientationHorizontal, glyphOrientationVertical, imageRendering,
-  kerning, letterSpacing, lightingColor, markerEnd, markerMid, markerStart,
-  mask, opacity, overflow, pointerEvents, shapeRendering, stopColor,
-  stopOpacity, strokeDasharray, strokeDashoffset, strokeLinecap,
-  strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, stroke,
-  textAnchor, textDecoration, textRendering, unicodeBidi, visibility,
-  wordSpacing, writingMode
+
+@docs alignmentBaseline, baselineShift, clipPath, clipRule, clip,colorInterpolation, colorProfile, colorRendering,color, cursor, direction, display, dominantBaseline, enableBackground,fillOpacity, fillRule, fill, filter, fontFamily,fontSizeAdjust, fontSize, fontStretch, fontStyle, fontVariant, fontWeight,glyphOrientationHorizontal, glyphOrientationVertical, imageRendering,kerning, letterSpacing, lightingColor, markerEnd, markerMid, markerStart,mask, opacity, overflow, pointerEvents
+@docs shapeRendering, stopColor,stopOpacity, strokeDasharray, strokeDashoffset, strokeLinecap,strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, stroke,textAnchor, textDecoration, textRendering, unicodeBidi, visibility,wordSpacing, writingMode
 
 -}
 
@@ -71,7 +33,8 @@ measured by a distance within the font coordinate system.
 
 Used by Elements: fontFace
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accent-height
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accent-height>
+
 -}
 accentHeight : number -> Attribute msg
 accentHeight height =
@@ -88,7 +51,8 @@ Legal values for `rate` are floating point values between 0 and 1 (inclusive).
 
 Used by Elements: animate, animateMotion
 
-See https://www.w3.org/TR/smil/smil-timemanip.html#TimeManip-accelerateSyntax
+See <https://www.w3.org/TR/smil/smil-timemanip.html#TimeManip-accelerateSyntax>
+
 -}
 accelerate : number -> Attribute msg
 accelerate rate =
@@ -102,7 +66,8 @@ accumulating with each iteration.
 
 Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accumulate
+See <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accumulate>
+
 -}
 accumulate : Accumulate -> Attribute msg
 accumulate option =
@@ -116,7 +81,8 @@ attribute's value, rather than as absolute values.
 
 Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/additive
+See <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/additive>
+
 -}
 additive : Additive -> Attribute msg
 additive option =
@@ -143,22 +109,23 @@ CSS stylesheet.
 
 Used by Elements: altGlyph, tspan, tref, textPath
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignment-baseline
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignment-baseline>
+
 -}
 alignmentBaseline : AlignmentBaseline -> Attribute msg
 alignmentBaseline alignmentBaseline =
     attribute "alignment-baseline" <| alignmentBaselineToString alignmentBaseline
 
 
-{-|
-The allowReorder attribute signals whether a user agent may reorder the direct
+{-| The allowReorder attribute signals whether a user agent may reorder the direct
 descendents of the switch element, based on user preferences, if it thinks this
 could lead to a better user experience.
 
 The possible values are `no`, the default, disallowing reordering and `yes`,
 allowing reordering.
 
-See: https://www.w3.org/TR/smil/smil-content.html#adef-allowReorder
+See: <https://www.w3.org/TR/smil/smil-content.html#adef-allowReorder>
+
 -}
 allowReorder : YesNo -> Attribute msg
 allowReorder allowReorder =
@@ -178,7 +145,8 @@ Used by Elements: animateTransform
 NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
 distinguish it from `contentType`
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_>
+
 -}
 animateTransformType : AnimateTransformType -> Attribute msg
 animateTransformType animateTransformType =
@@ -192,7 +160,8 @@ ignored.
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values>
+
 -}
 animationValues : List number -> Attribute msg
 animationValues values =
@@ -213,7 +182,8 @@ the `vertOriginY` value for the corresponding font.
 
 Used by Elements: fontFace
 
-See https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ascent
+See <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ascent>
+
 -}
 ascent : number -> Attribute msg
 ascent maxDepth =
@@ -225,7 +195,8 @@ that is going to be changed during an animation.
 
 Used by Elements: animate, animateColor, animateTransform, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName>
+
 -}
 attributeName : String -> Attribute msg
 attributeName name =
@@ -237,7 +208,8 @@ associated values are defined.
 
 Used by Elements: animate, animateColor, animateTransform, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeType
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeType>
+
 -}
 attributeType : AttributeType -> Attribute msg
 attributeType attributeType =
@@ -264,7 +236,8 @@ CSS stylesheet, see css baseline-shift for further information.
 
 Used by Elements: altGlyph, tref, tspan, textPath
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseline-shift
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseline-shift>
+
 -}
 baselineShift : BaselineShift -> Attribute msg
 baselineShift baselineShift =
@@ -290,8 +263,9 @@ Each individual value can be one of the BeginValue types.
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/begin
-See: https://www.w3.org/TR/2001/REC-smil-animation-20010904/#Timing-EvaluationOfBeginEndTimeLists
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/begin>
+See: <https://www.w3.org/TR/2001/REC-smil-animation-20010904/#Timing-EvaluationOfBeginEndTimeLists>
+
 -}
 begin : List TimingValue -> Attribute msg
 begin timingValues =
@@ -315,7 +289,8 @@ discrete interpolation is used.
 
 Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode>
+
 -}
 calcMode : CalcMode -> Attribute msg
 calcMode calcMode =
@@ -333,9 +308,9 @@ to style SVG content using CSS.
 
 An element's class name serves two key roles:
 
-- As a style sheet selector, for when an author assigns style information
-  to a set of elements.
-- For general use by the browser.
+  - As a style sheet selector, for when an author assigns style information
+    to a set of elements.
+  - For general use by the browser.
 
 Used by Elements: a, altGlyph, circle, clipPath, defs, desc, ellipse,
 feBlend, feColorMatrix, feComponentTransfer, feComposite,
@@ -346,7 +321,8 @@ g, glyph, glyphRef, image, line, linearGradient, marker, mask,
 missingGlyph, path, pattern, polygon, polyline, radialGradient, rect,
 stop, svg, switch, symbol, text, textPath, title, tref, tspan, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/class
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/class>
+
 -}
 class : List String -> Attribute msg
 class names =
@@ -364,7 +340,8 @@ inside a CSS stylesheet.
 
 Used by Elements: svg, symbol, image, foreignobject, pattern, marker
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip>
+
 -}
 clip : Clip -> Attribute msg
 clip clip =
@@ -381,7 +358,8 @@ Used by Elements: a, circle, defs, ellipse, g, image, line, marker, mask,
 mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
 switch, symbol, text, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-path
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-path>
+
 -}
 clipPath : ClipPath -> Attribute msg
 clipPath clipPath =
@@ -401,7 +379,8 @@ will be calculated as if the value of the attribute were userSpaceOnUse.
 
 Used by Elements: clipPath
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clipPathUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clipPathUnits>
+
 -}
 clipPathUnits : CoordinateSystem -> Attribute msg
 clipPathUnits coordinateSystem =
@@ -416,15 +395,15 @@ definitions.
 Used by Elements: circle, ellipse, image, line, mesh, path, polygon, polyline,
 rect, text, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule>
+
 -}
 clipRule : ClipRule -> Attribute msg
 clipRule clipRule =
     attribute "clip-rule" <| clipRuleToString clipRule
 
 
-{-|
-The `colorInterpolation` attribute specifies the color space for gradient
+{-| The `colorInterpolation` attribute specifies the color space for gradient
 interpolations, color animations, and alpha compositing.
 
 When a child element is blended into a background, the value of the
@@ -445,7 +424,8 @@ Used by Elements: a, animage, animateColor, circle, defs, ellipse, g, image,
 line, marker, mask, mesh, missing-glyph, path, pattern, polygon,
 polyline, rect, svg, switch, symbol, text, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation>
+
 -}
 colorInterpolation : ColorInterpolation -> Attribute msg
 colorInterpolation colorInterpolation =
@@ -464,7 +444,8 @@ CSS stylesheet.
 
 Used by Elements: image
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-profile
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-profile>
+
 -}
 colorProfile : ColorProfile -> Attribute msg
 colorProfile colorProfile =
@@ -488,7 +469,8 @@ Used by Elements: a, animate, animateColor, circle, defs, ellipse, g, image,
 line, marker, mask, mesh, missing-glyph, path, pattern, polygon,
 polyline, rect, svg, switch, symbol, text, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-rendering
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-rendering>
+
 -}
 colorRendering : Rendering -> Attribute msg
 colorRendering rendering =
@@ -506,7 +488,8 @@ Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
 feDiffuseLighting, feFlood, feSpecularLighting, glyph, glyphRef, line,
 mesh, path, polygon, polyline, rect, stop, text, textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color>
+
 -}
 color : Color -> Attribute msg
 color c =
@@ -522,7 +505,8 @@ scripts that do not specify their own scripting language. The value
 contentType specifies a media type, per MIME Part Two: Media Types
 [RFC2046]. The default value is application/ecmascript.
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentScriptType
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentScriptType>
+
 -}
 contentScriptType : String -> Attribute msg
 contentScriptType mimeType =
@@ -533,7 +517,8 @@ contentScriptType mimeType =
 fragment. The contentStyleType is specified on the `svg` element. By default,
 if it's not defined, the value is "text/css"
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentStyleType
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/contentStyleType>
+
 -}
 contentStyleType : String -> Attribute msg
 contentStyleType styleSheetLanguage =
@@ -547,15 +532,15 @@ Used by Elements: script, style
 NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
 distinguish it from `animateTransformType`
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type>
+
 -}
 contentType : String -> Attribute msg
 contentType t =
     attribute "type_" t
 
 
-{-|
-The `cursor` attribute specifies the mouse cursor displayed when the mouse
+{-| The `cursor` attribute specifies the mouse cursor displayed when the mouse
 pointer is over an element.
 
 This attribute behaves exactly like the css cursor property except that if the
@@ -569,7 +554,8 @@ Used by Elements: a, circle, defs, ellipse, g, image, line, marker, mask,
 mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
 switch, symbol, text, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cursor
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cursor>
+
 -}
 cursor : Cursor -> Attribute msg
 cursor cursor =
@@ -612,7 +598,8 @@ access to a more Elm-like way of expressing paths. For instance:
 
 Used by Elements: path
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d>
+
 -}
 d : String -> Attribute msg
 d =
@@ -652,7 +639,8 @@ inside a CSS stylesheet.
 Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
 text, textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/direction
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/direction>
+
 -}
 direction : Direction -> Attribute msg
 direction direction =
@@ -670,7 +658,8 @@ Used by Elements: a, altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
 foreignobject, g, glyph, glyphRef, image, line, mesh, path, polygon,
 polyline, rect, svg, switch, text, text, textPath, tref, tspan, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display>
+
 -}
 display : Display -> Attribute msg
 display display =
@@ -697,7 +686,8 @@ inside a CSS stylesheet.
 Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
 textPath, text, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline>
+
 -}
 dominantBaseline : DominantBaseline -> Attribute msg
 dominantBaseline dominantBaseline =
@@ -709,7 +699,8 @@ dominantBaseline dominantBaseline =
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dur
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dur>
+
 -}
 dur : Duration -> Attribute msg
 dur duration =
@@ -743,7 +734,8 @@ attribute.
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/end
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/end>
+
 -}
 end : List TimingValue -> Attribute msg
 end timingValues =
@@ -769,7 +761,8 @@ glyphRef, image, line, linearGradient, mesh, meshGradient, marker, mask,
 mpath, path, pattern, polygon, polyline, radialGradient, rect, script,
 set, stop, svg, switch, symbol, text, textPath, tref, tspan, use, view
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/externalResourcesRequired
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/externalResourcesRequired>
+
 -}
 externalResourcesRequired : Bool -> Attribute msg
 externalResourcesRequired bool =
@@ -795,7 +788,8 @@ Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
 glyph, glyphRef, line, mesh, path, polygon, polyline, rect, text,
 textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity>
+
 -}
 fillOpacity : Opacity -> Attribute msg
 fillOpacity opacity =
@@ -816,7 +810,8 @@ Used by Elements: altGlyph, altGlyphDef, altGlyphItem, circle, ellipse,
 glyph, glyphRef, line, mesh, path, polygon, polyline, rect, text,
 textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule>
+
 -}
 fillRule : FillRule -> Attribute msg
 fillRule fillRule =
@@ -835,7 +830,8 @@ Used by Elements: a, circle, defs, ellipse, g, glyph, image, line, marker,
 mesh, missing-glyph, path, pattern, polygon, polyline, rect, svg,
 switch, symbol, text, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filter
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filter>
+
 -}
 filter : Filter -> Attribute msg
 filter f =
@@ -875,7 +871,8 @@ inside a CSS stylesheet.
 Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
 text, textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust>
+
 -}
 fontSizeAdjust : FontSizeAdjust -> Attribute msg
 fontSizeAdjust fontSizeAdjust =
@@ -891,7 +888,8 @@ inside a CSS stylesheet.
 Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
 text, textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch>
+
 -}
 fontStretch : FontStretch -> Attribute msg
 fontStretch fontStretch =
@@ -907,7 +905,8 @@ inside a CSS stylesheet.
 Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
 text, textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style>
+
 -}
 fontStyle : FontStyle -> Attribute msg
 fontStyle fontStyle =
@@ -924,7 +923,8 @@ inside a CSS stylesheet.
 Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
 text, textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant>
+
 -}
 fontVariant : FontVariant -> Attribute msg
 fontVariant fontVariant =
@@ -940,7 +940,8 @@ inside a CSS stylesheet.
 Used by Elements: altGlyph, altGlyphDef, altGlyphItem, glyph, glyphRef,
 text, textPath, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight>
+
 -}
 fontWeight : FontWeight -> Attribute msg
 fontWeight fontWeight =
@@ -960,7 +961,8 @@ value.
 
 Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from>
+
 -}
 from : number -> Attribute msg
 from value =
@@ -975,7 +977,8 @@ the center point.
 
 Used by Elements: radialGradient
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/>
+
 -}
 fx : Length -> Attribute msg
 fx length =
@@ -990,7 +993,8 @@ the center point.
 
 Used by Elements: radialGradient
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/>
+
 -}
 fy : Length -> Attribute msg
 fy length =
@@ -1044,7 +1048,8 @@ space.
 
 Used by Elements: linearGradient, radialGradient
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientTransform
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientTransform>
+
 -}
 gradientTransform : List Transform -> Attribute msg
 gradientTransform transforms =
@@ -1060,7 +1065,8 @@ value of CoordinateSystemObjectBoundingBox were specified.
 
 Used by Elements: linearGradient, radialGradient
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientUnits>
+
 -}
 gradientUnits : CoordinateSystem -> Attribute msg
 gradientUnits coordinateSystem =
@@ -1081,6 +1087,7 @@ element (see each individual element's documentation for exceptions).
 This attribute must be specified except for the `svg` element where the
 default value is 100% and the `filter` and `mask` elements where the default
 value is 120%.
+
 -}
 height : Length -> Attribute msg
 height length =
@@ -1119,7 +1126,8 @@ inside a CSS stylesheet.
 
 Used by Elements: image
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering>
+
 -}
 imageRendering : Rendering -> Attribute msg
 imageRendering rendering =
@@ -1170,7 +1178,8 @@ inside a CSS stylesheet, see css kerning for further information.
 Used by Elements: altGlyph, altGlyphDef, glyph, glyphRef, textPath,
 text, tref, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kerning
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kerning>
+
 -}
 kerning : Kerning -> Attribute msg
 kerning k =
@@ -1183,7 +1192,8 @@ interval pacing.
 
 Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keySplines
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keySplines>
+
 -}
 keySplines : List BezierAnchorPoint -> Attribute msg
 keySplines bezierAnchorPointList =
@@ -1205,7 +1215,8 @@ time value.
 
 Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyTimes
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyTimes>
+
 -}
 keyTimes : List Float -> Attribute msg
 keyTimes floatList =
@@ -1233,7 +1244,8 @@ the direction of the text.
 
 Used by Elements: text, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust>
+
 -}
 lengthAdjust : LengthAdjust -> Attribute msg
 lengthAdjust option =
@@ -1274,7 +1286,8 @@ specified.
 
 Used by Elements: marker
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerHeight
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerHeight>
+
 -}
 markerHeight : Length -> Attribute msg
 markerHeight height =
@@ -1301,7 +1314,8 @@ value of `strokeWidth` were specified.
 
 Used by Elements: marker
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerUnits>
+
 -}
 markerUnits : MarkerCoordinateSystem -> Attribute msg
 markerUnits markerCoordinateSystem =
@@ -1318,7 +1332,8 @@ specified.
 
 Used by Elements: marker
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerWidth
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerWidth>
+
 -}
 markerWidth : Length -> Attribute msg
 markerWidth width =
@@ -1345,7 +1360,8 @@ CoordinateSystemUserSpaceOnUse.
 
 Used by Elements: mask
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskContentUnits>
+
 -}
 maskContentUnits : CoordinateSystem -> Attribute msg
 maskContentUnits coordinateSystem =
@@ -1360,7 +1376,8 @@ value of CoordinateSystemObjectBoundingBox were specified.
 
 Used by Elements: mask
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/maskUnits>
+
 -}
 maskUnits : CoordinateSystem -> Attribute msg
 maskUnits coordinateSystem =
@@ -1375,7 +1392,8 @@ at all.
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/max
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/max>
+
 -}
 max : ClockValue -> Attribute msg
 max clockValue =
@@ -1402,7 +1420,8 @@ at all.
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/min
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/min>
+
 -}
 min : ClockValue -> Attribute msg
 min clockValue =
@@ -1461,7 +1480,8 @@ system.
 
 Used by Elements: fontFace
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlinePosition
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlinePosition>
+
 -}
 overlinePosition : number -> Attribute msg
 overlinePosition position =
@@ -1474,7 +1494,8 @@ system.
 
 Used by Elements: fontFace
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlineThickness
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlineThickness>
+
 -}
 overlineThickness : number -> Attribute msg
 overlineThickness thickness =
@@ -1501,7 +1522,8 @@ using the ratio pathLength / (computed value of path length).
 
 Used by Elements: path
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength>
+
 -}
 pathLength : number -> Attribute msg
 pathLength length =
@@ -1517,7 +1539,8 @@ as if a value of CoordinateSystemUserSpaceOnUse were specified.
 
 Used by Elements: pattern
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternContentUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternContentUnits>
+
 -}
 patternContentUnits : CoordinateSystem -> Attribute msg
 patternContentUnits coordinateSystem =
@@ -1537,7 +1560,8 @@ an identity transform were specified.
 
 Used by Elements: pattern
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternTransform>
+
 -}
 patternTransform : List Transform -> Attribute msg
 patternTransform transforms =
@@ -1552,7 +1576,8 @@ value of CoordinateSystemObjectBoundingBox were specified.
 
 Used by Elements: pattern
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/patternUnits>
+
 -}
 patternUnits : CoordinateSystem -> Attribute msg
 patternUnits coordinateSystem =
@@ -1579,7 +1604,8 @@ system.
 
 Used by Elements: polyline, polygon
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points>
+
 -}
 points : List ( number, number ) -> Attribute msg
 points pts =
@@ -1597,7 +1623,8 @@ the purposes of preserving the aspect ratio of the graphics.
 
 Used by Elements: svg, symbol, image, feImage, marker, pattern, view
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio>
+
 -}
 preserveAspectRatio : Align -> MeetOrSlice -> Attribute msg
 preserveAspectRatio align meetOrSlice =
@@ -1617,7 +1644,8 @@ a value of CoordinateSystemUserSpaceOnUse were specified.
 
 Used by Elements: filter
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/primitiveUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/primitiveUnits>
+
 -}
 primitiveUnits : CoordinateSystem -> Attribute msg
 primitiveUnits coordinateSystem =
@@ -1660,7 +1688,8 @@ must be greater than 0.
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatCount
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatCount>
+
 -}
 repeatCount : RepeatCount -> Attribute msg
 repeatCount repeatCount =
@@ -1672,7 +1701,8 @@ repeatCount repeatCount =
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatDur
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatDur>
+
 -}
 repeatDur : Duration -> Attribute msg
 repeatDur duration =
@@ -1706,7 +1736,8 @@ foreignObject, g, image, line, mask, mesh, mpath, path, pattern,
 polygon, polyline, rect, set, svg, switch, text, textPath, tref,
 tspan, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/requiredFeatures
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/requiredFeatures>
+
 -}
 requiredFeatures : List String -> Attribute msg
 requiredFeatures features =
@@ -1718,7 +1749,8 @@ requiredFeatures features =
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
 discard, mpath, set
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart>
+
 -}
 restart : Restart -> Attribute msg
 restart restart =
@@ -1759,7 +1791,8 @@ shape-rendering attribute provides these hints.
 Used by Elements: circle, ellipse, line, mesh, path, polygon, polyline,
 rect, svg
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering>
+
 -}
 shapeRendering : ShapeRendering -> Attribute msg
 shapeRendering shapeRendering =
@@ -1926,7 +1959,8 @@ text, text, textPath, tref, tspan, use, use
 
 TODO: easy use of a typed CSS library?
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/style
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/style>
+
 -}
 style : String -> Attribute msg
 style value =
@@ -1968,7 +2002,8 @@ display width across a variety of conditions, such as webfonts not loading.
 
 Used by Elements: text, tspan
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength>
+
 -}
 textLength : Length -> Attribute msg
 textLength length =
@@ -1997,7 +2032,8 @@ for the attribute during the duration of the `set` element.
 
 Used by Elements: animate, animateColor, animateMotion, animateTransform
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to>
+
 -}
 to : number -> Attribute msg
 to value =
@@ -2011,7 +2047,8 @@ list are applied from right to left.
 Used by Elements: a, circle, clipPath, defs, ellipse, foreignObject, g,
 image, line, mesh, path, polygon, polyline, rect, switch, text, use, svg
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform>
+
 -}
 transform : List Transform -> Attribute msg
 transform transforms =
@@ -2040,7 +2077,8 @@ coordinate system.
 
 Used by Elements: fontFace
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-position
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-position>
+
 -}
 underlinePosition : number -> Attribute msg
 underlinePosition position =
@@ -2053,7 +2091,8 @@ system.
 
 Used by Elements: fontFace
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-thickness
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-thickness>
+
 -}
 underlineThickness : number -> Attribute msg
 underlineThickness thickness =
@@ -2121,7 +2160,8 @@ currently 1.0 and 1.1.
 
 Used by Elements: svg
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version>
+
 -}
 version : Float -> Attribute msg
 version number =
@@ -2158,7 +2198,8 @@ zero disables rendering of the element.
 
 Used by Elements: svg, symbol, image, marker, pattern, view
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox>
+
 -}
 viewBox : number -> number -> number -> number -> Attribute a
 viewBox minX minY width height =
@@ -2224,7 +2265,8 @@ If the attribute is not specified, the effect is as if a value of 0
 
 Used by Elements: line, linearGradient
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1>
+
 -}
 x1 : Length -> Attribute msg
 x1 position =
@@ -2239,7 +2281,8 @@ If the attribute is not specified, the effect is as if a value of 0
 
 Used by Elements: line, linearGradient
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1>
+
 -}
 x2 : Length -> Attribute msg
 x2 position =
@@ -2286,7 +2329,8 @@ animateTransform, colorProfile, cursor, feImage, filter, fontFaceUri, glyphRef,
 image, linearGradient, mpath, pattern, radialGradient, script, set, textPath,
 tref, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkShow
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkShow>
+
 -}
 xlinkShow : String -> Attribute msg
 xlinkShow str =
@@ -2304,7 +2348,8 @@ animateTransform, colorProfile, cursor, feImage, filter, fontFaceUri, glyphRef,
 image, linearGradient, mpath, pattern, radialGradient, script, set, textPath,
 tref, use
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkTitle
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlinkTitle>
+
 -}
 xlinkTitle : String -> Attribute msg
 xlinkTitle str =
@@ -2349,7 +2394,8 @@ If the attribute is not specified, the effect is as if a value of 0
 
 Used by Elements: line, linearGradient
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1>
+
 -}
 y1 : Length -> Attribute msg
 y1 position =
@@ -2364,7 +2410,8 @@ If the attribute is not specified, the effect is as if a value of 0
 
 Used by Elements: line, linearGradient
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/y1>
+
 -}
 y2 : Length -> Attribute msg
 y2 position =

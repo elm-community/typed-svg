@@ -12,14 +12,11 @@ Example:
     import TypedSvg.Attributes exposing (viewBox, fill, stroke)
     import TypedSvg.Attributes.InEm exposing (x, y, width, height, strokeWidth)
 
-
     type Msg
         = NoOp
 
-
     type alias Model =
         Int
-
 
     view : Model -> Html Msg
     view model =
@@ -38,17 +35,26 @@ Example:
                 []
             ]
 
+
 # Common Length Attributes
+
 @docs x, y, r, width, height, strokeWidth
 
+
 # Text
+
 @docs fontSize, textLength
 
+
 # Marker
+
 @docs markerWidth, markerHeight
 
+
 # Other
+
 @docs cx, cy, dx, dy, fx, fy, rx, ry, x1, y1, x2, y2
+
 -}
 
 import TypedSvg.Core exposing (Attribute)

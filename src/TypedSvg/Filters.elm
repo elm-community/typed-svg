@@ -11,12 +11,11 @@ module TypedSvg.Filters exposing (..)
             [ Fe.blend [in InSourceGraphic, in2 InFillPaint, mode ModeMultiply] []
             ]
 
-@docs blend, colorMatrix, componentTransfer, composite,
-  convolveMatrix, diffuseLighting, displacementMap, flood, funcA,
-  funcB, funcG, funcR, gaussianBlur, image, merge, mergeNode,
-  morphology, offset, specularLighting, tile, turbulence
+@docs blend, colorMatrix, componentTransfer, composite,convolveMatrix, diffuseLighting, displacementMap, flood, funcA,funcB, funcG, funcR, gaussianBlur, image, merge, mergeNode,morphology, offset, specularLighting, tile, turbulence
+
 
 # Light source elements
+
 @docs distantLight, pointLight, spotLight
 
 -}
@@ -25,6 +24,7 @@ import TypedSvg.Core exposing (Attribute, Svg, node)
 
 
 {-|
+
     The `Filters.blend` SVG filter primitive composes two objects together
     ruled by a certain blending mode. This is similar to what is known from
     image editing software when blending two layers. The mode is defined by the
@@ -44,6 +44,7 @@ blend =
 
 
 {-|
+
     The `colorMatrix` SVG filter element changes colors based on a
     transformation matrix. Every pixel's color value (represented by an
     [R,G,B,A] vector) is matrix multiplied to create a new color.
@@ -60,6 +61,7 @@ colorMatrix =
 
 
 {-|
+
     The `componentTransfer` SVG filter primitive performs color-component-wise
     remapping of data for each pixel. It allows operations like brightness
     adjustment, contrast adjustment, color balance or thresholding.
@@ -80,6 +82,7 @@ componentTransfer =
 
 
 {-|
+
     This filter primitive performs the combination of two input images
     pixel-wise in image space using one of the Porter-Duff compositing
     operations:
@@ -116,6 +119,7 @@ composite =
 
 
 {-|
+
     The `convolveMatrix` SVG filter primitive applies a matrix convolution
     filter effect. A convolution combines pixels in the input image with
     neighboring pixels to produce a resulting image. A wide variety of imaging

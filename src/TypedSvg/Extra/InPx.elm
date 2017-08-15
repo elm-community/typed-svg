@@ -2,8 +2,11 @@ module TypedSvg.Extra.InPx exposing (..)
 
 {-| Typed SVG elements that default to `px` units
 
+
 # Helpers
+
 @docs centeredImage
+
 -}
 
 import TypedSvg exposing (image)
@@ -21,6 +24,7 @@ import TypedSvg.Attributes.InPx exposing (x, y, width, height)
         y = 200
     in
         centeredImage "/images/example.png" width height x y
+
 -}
 centeredImage : String -> Float -> Float -> Float -> Float -> Svg msg
 centeredImage href w_ h_ x_ y_ =

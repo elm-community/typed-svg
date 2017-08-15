@@ -2,14 +2,11 @@ module TypedSvg.Filters.Attributes exposing (..)
 
 {-| Attributes of SVG filter elements
 
+
 # Attributes
-@docs azimuth, baseFrequency, bias, colorInterpolationFilters, colorMatrixType,
-    colorMatrixValues, compositeOperator, diffuseConstant, divisor, edgeMode,
-    elevation, filterRes, filterUnits, floodColor, floodOpacity, funcType, in2,
-    in_, k1, k2, k3, k4, kernelMatrix, kernelUnitLength, limitingConeAngle,
-    mode, morphologyOperator, numOctaves, order, pointsAtX, pointsAtY,
-    pointsAtZ, preserveAlpha, radius, result, scale, seed, surfaceScale,
-    targetX, targetY, turbulenceType, z
+
+@docs azimuth, baseFrequency, bias, colorInterpolationFilters, colorMatrixType,colorMatrixValues, compositeOperator, diffuseConstant, divisor, edgeMode,elevation, filterRes, filterUnits, floodColor, floodOpacity, funcType, in2,in_, k1, k2, k3, k4, kernelMatrix, kernelUnitLength, limitingConeAngle,mode, morphologyOperator, numOctaves, order, pointsAtX, pointsAtY,pointsAtZ, preserveAlpha, radius, result, scale, seed, surfaceScale,targetX, targetY, turbulenceType, z
+
 -}
 
 import TypedSvg.Core exposing (..)
@@ -25,7 +22,8 @@ were specified.
 
 Used by Elements: Filters.distantLight
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/azimuth
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/azimuth>
+
 -}
 azimuth : number -> Attribute msg
 azimuth angle =
@@ -44,7 +42,8 @@ were specified.
 
 Used by Elements: Filters.turbulence
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseFrequency
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseFrequency>
+
 -}
 baseFrequency : number -> number -> Attribute msg
 baseFrequency xFrequency yFrequency =
@@ -62,7 +61,8 @@ specified.
 
 Used by Elements: Filters.convolveMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/bias
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/bias>
+
 -}
 bias : number -> Attribute msg
 bias rangeShift =
@@ -88,7 +88,8 @@ Filters.diffuseLighting, Filters.displacementMap, Filters.gaussianBlur,
 Filters.morphology, Filters.offset, Filters.specularLighting,
 Filters.tile
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation-filters
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation-filters>
+
 -}
 colorInterpolationFilters : ColorInterpolation -> Attribute msg
 colorInterpolationFilters colorInterpolation =
@@ -102,7 +103,8 @@ performed without specifying a complete matrix.
 
 Used by Elements: Filters.colorMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_>
+
 -}
 colorMatrixType : ColorMatrixType -> Attribute msg
 colorMatrixType colorMatrixType =
@@ -117,7 +119,8 @@ Used by Elements: Filters.colorMatrix
 NOTE: this is called `values` in `elm-lang/svg` but is different here
 in order to differentiate from animationValues.
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values>
+
 -}
 colorMatrixValues : String -> Attribute msg
 colorMatrixValues string =
@@ -129,7 +132,8 @@ in the `Filters.composite` element
 
 Used by Elements: Filters.composite
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator>
+
 -}
 compositeOperator : CompositeOperator -> Attribute msg
 compositeOperator compositeOperator =
@@ -144,7 +148,8 @@ were specified.
 
 Used by Elements: Filters.diffuseLighting
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/diffuseConstant
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/diffuseConstant>
+
 -}
 diffuseConstant : number -> Attribute msg
 diffuseConstant kdValue =
@@ -164,7 +169,8 @@ It is an error to specify a divisor of zero.
 
 Used by Elements: Filters.convolveMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/divisor
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/divisor>
+
 -}
 divisor : number -> Attribute msg
 divisor value =
@@ -177,7 +183,8 @@ kernel is positioned at or near the edge of the input image.
 
 Used by Elements: Filters.convolveMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/edgeMode
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/edgeMode>
+
 -}
 edgeMode : EdgeMode -> Attribute msg
 edgeMode edgeMode =
@@ -190,7 +197,8 @@ points towards the viewer of the content.
 
 Used by Elements: Filters.distantLight
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/elevation
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/elevation>
+
 -}
 elevation : number -> Attribute msg
 elevation angle =
@@ -205,7 +213,8 @@ NOTE: Obsolete.
 
 Used by Elements: Filters.filter
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterRes
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterRes>
+
 -}
 filterRes : number -> number -> Attribute msg
 filterRes xPixels yPixels =
@@ -217,7 +226,8 @@ filterRes xPixels yPixels =
 
 Used by Elements: Filters.filter
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterUnits
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterUnits>
+
 -}
 filterUnits : CoordinateSystem -> Attribute msg
 filterUnits coordinateSystem =
@@ -234,7 +244,8 @@ inside a CSS stylesheet.
 
 Used by Elements: Filters.flood
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-color
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-color>
+
 -}
 floodColor : FloodColor -> Attribute msg
 floodColor floodColor =
@@ -246,7 +257,8 @@ current filter primitive subregion defined through the `Filters.flood` element.
 
 Used by Elements: Filters.flood
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-opacity
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-opacity>
+
 -}
 floodOpacity : Opacity -> Attribute msg
 floodOpacity opacity =
@@ -270,7 +282,8 @@ Filters.diffuseLighting, Filters.displacementMap, Filters.gaussianBlur,
 Filters.morphology, Filters.offset, Filters.specularLighting,
 Filters.tile
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in>
+
 -}
 in_ : InValue -> Attribute msg
 in_ value =
@@ -286,7 +299,8 @@ Filters.diffuseLighting, Filters.displacementMap, Filters.gaussianBlur,
 Filters.morphology, Filters.offset, Filters.specularLighting,
 Filters.tile
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in2
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in2>
+
 -}
 in2 : InValue -> Attribute msg
 in2 value =
@@ -300,7 +314,8 @@ If this attribute is not set, its default value is 0.
 
 Used by Elements: Filters.composite
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k1
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k1>
+
 -}
 k1 : number -> Attribute msg
 k1 value =
@@ -314,7 +329,8 @@ If this attribute is not set, its default value is 0.
 
 Used by Elements: Filters.composite
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k2
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k2>
+
 -}
 k2 : number -> Attribute msg
 k2 value =
@@ -328,7 +344,8 @@ If this attribute is not set, its default value is 0.
 
 Used by Elements: Filters.composite
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k3
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k3>
+
 -}
 k3 : number -> Attribute msg
 k3 value =
@@ -342,7 +359,8 @@ If this attribute is not set, its default value is 0.
 
 Used by Elements: Filters.composite
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k4
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k4>
+
 -}
 k4 : number -> Attribute msg
 k4 value =
@@ -357,7 +375,8 @@ defined in the `order` attribute.
 
 Used by Elements: Filters.convolveMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelMatrix
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelMatrix>
+
 -}
 kernelMatrix : List number -> Attribute msg
 kernelMatrix numberList =
@@ -367,20 +386,21 @@ kernelMatrix numberList =
 {-| The `kernelUnitLength` attribute has two meaning based on the context it's
 used:
 
-- For lighting filter primitives, it indicates the intended distance in
-  current filter units (i.e., units as determined by the value of attribute
-  primitiveUnits) for `dx` and `dy`, respectively, in the surface normal
-  calculation formulas.
+  - For lighting filter primitives, it indicates the intended distance in
+    current filter units (i.e., units as determined by the value of attribute
+    primitiveUnits) for `dx` and `dy`, respectively, in the surface normal
+    calculation formulas.
 
-- For the `feConvolveMatrix` primitive, it indicates the intended distance
-  in current filter units (i.e., units as determined by the value of
-  attribute primitiveUnits) between successive columns and rows,
-  respectively, in the kernelMatrix.
+  - For the `feConvolveMatrix` primitive, it indicates the intended distance
+    in current filter units (i.e., units as determined by the value of
+    attribute primitiveUnits) between successive columns and rows,
+    respectively, in the kernelMatrix.
 
 Used by Elements: Filters.convolveMatrix, Filters.diffuseLighting,
 Filters.specularLighting
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelUnitLength
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelUnitLength>
+
 -}
 kernelUnitLength : number -> number -> Attribute msg
 kernelUnitLength dx dy =
@@ -397,7 +417,8 @@ If no value is specified, then no limiting cone will be applied.
 
 Used by Elements: Filters.spotlight
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/limitingConeAngle
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/limitingConeAngle>
+
 -}
 limitingConeAngle : number -> Attribute msg
 limitingConeAngle number =
@@ -409,7 +430,8 @@ primitive.
 
 Used by Elements: Filters.blend
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mode
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mode>
+
 -}
 mode : Mode -> Attribute msg
 mode mode =
@@ -421,7 +443,8 @@ in the `feMorphology` element
 
 Used by Elements: Filters.morphology
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator>
+
 -}
 morphologyOperator : MorphologyOperator -> Attribute msg
 morphologyOperator morphologyOperator =
@@ -436,7 +459,8 @@ were specified.
 
 Used by Elements: Filters.turbulence
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/>
+
 -}
 numOctaves : Int -> Attribute msg
 numOctaves int =
@@ -459,7 +483,8 @@ specified.
 
 Used by Elements: Filters.convolveMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/order
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/order>
+
 -}
 order : number -> number -> Attribute msg
 order orderX orderY =
@@ -475,7 +500,8 @@ were specified.
 
 Used by Elements: Filters.spotlight
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtX
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtX>
+
 -}
 pointsAtX : number -> Attribute msg
 pointsAtX lightSourceX =
@@ -491,7 +517,8 @@ were specified.
 
 Used by Elements: Filters.spotlight
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtY
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtY>
+
 -}
 pointsAtY : number -> Attribute msg
 pointsAtY lightSourceY =
@@ -507,7 +534,8 @@ were specified.
 
 Used by Elements: Filters.spotlight
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtZ
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtZ>
+
 -}
 pointsAtZ : number -> Attribute msg
 pointsAtZ lightSourceZ =
@@ -525,7 +553,8 @@ color channels.
 
 Used by Elements: Filters.convolveMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAlpha
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAlpha>
+
 -}
 preserveAlpha : Bool -> Attribute msg
 preserveAlpha applyOnlyToColorChannels =
@@ -541,7 +570,8 @@ were specified.
 
 Used by Elements: Filters.morphology
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/radius
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/radius>
+
 -}
 radius : number -> number -> Attribute msg
 radius xRadius yRadius =
@@ -563,7 +593,8 @@ feFlood,feFuncA, feFuncB, feFuncG, feFuncR,feGaussianBlur, feImage,
 feMerge, feMergeNode, feMorphology, feOffset, feSpecularLighting,
 feTile, feTurbulence
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/result
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/result>
+
 -}
 result : String -> Attribute msg
 result reference =
@@ -583,7 +614,8 @@ were specified.
 
 Used by Elements: Filters.displacementMap
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/scale
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/scale>
+
 -}
 scale : number -> Attribute msg
 scale value =
@@ -598,7 +630,8 @@ were specified.
 
 Used by Elements: Filters.turbulence
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/seed
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/seed>
+
 -}
 seed : number -> Attribute msg
 seed value =
@@ -613,7 +646,8 @@ were specified.
 
 Used by Elements: Filters.diffuseLighting, Filters.specularLighting
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/surfaceScale
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/surfaceScale>
+
 -}
 surfaceScale : number -> Attribute msg
 surfaceScale value =
@@ -631,7 +665,8 @@ input image (i.e., targetX = floor ( orderX / 2 )).
 
 Used by Elements: convolveMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetX
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetX>
+
 -}
 targetX : number -> Attribute msg
 targetX xPosition =
@@ -649,7 +684,8 @@ input image (i.e., targetY = floor ( orderY / 2 )).
 
 Used by Elements: Filters.convolveMatrix
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetY
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetY>
+
 -}
 targetY : number -> Attribute msg
 targetY yPosition =
@@ -660,7 +696,8 @@ targetY yPosition =
 
 Used by Elements: Filters.funcR, Filters.funcG, Filters.funcA, Filters.funcB
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_>
+
 -}
 funcType : FuncType -> Attribute msg
 funcType funcType =
@@ -672,7 +709,8 @@ function.
 
 Used by Elements: Filters.turbulence
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_>
+
 -}
 turbulenceType : TurbulenceType -> Attribute msg
 turbulenceType turbulenceType =
@@ -689,7 +727,8 @@ If the attribute is not specified, then the effect is as if a value of 0 were sp
 
 Used by Elements: Filters.pointlight, Filters.spotlight
 
-See: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/z
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/z>
+
 -}
 z : number -> Attribute msg
 z value =

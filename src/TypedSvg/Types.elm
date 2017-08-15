@@ -65,23 +65,15 @@ module TypedSvg.Types
         , px
         )
 
-{-|
+{-| The Types module defines all of the types used by TypedSvg.
 
-The Types module defines all of the types used by TypedSvg.
 
 # Types
-@docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment,
-    AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint,
-    CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation,
-    ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor,
-    Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter,
-    FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight,
-    FuncType, InValue, Kerning, Length, LengthAdjust, MarkerCoordinateSystem,
-    MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount,
-    Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType,
-    YesNo
+
+@docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment,AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint,CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation,ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor,Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter,FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight,FuncType, InValue, Kerning, Length,LengthAdjust,MarkerCoordinateSystem,MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount,Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType,YesNo
 
 @docs cm, em, ex, inch, mm, num, pc, percent, pt, px
+
 -}
 
 import Color exposing (Color)
@@ -413,8 +405,8 @@ type Kerning
 
 
 {-| The Length type is an important type in the TypedSvg package--it is used
-    wherever CSS needs to measure a length or distance in a certain unit (px,
-    em, etc.)
+wherever CSS needs to measure a length or distance in a certain unit (px,
+em, etc.)
 -}
 type Length
     = Cm Float
