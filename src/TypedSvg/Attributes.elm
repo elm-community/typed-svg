@@ -1441,9 +1441,9 @@ offset =
 
 
 {-| -}
-opacity : String -> Attribute msg
+opacity : Opacity -> Attribute msg
 opacity =
-    attribute "opacity"
+    attribute "opacity" << opacityToString
 
 
 
@@ -1872,9 +1872,9 @@ stopColor =
 
 
 {-| -}
-stopOpacity : String -> Attribute msg
+stopOpacity : Opacity -> Attribute msg
 stopOpacity =
-    attribute "stop-opacity"
+    attribute "stop-opacity" << opacityToString
 
 
 {-| -}
@@ -1932,9 +1932,9 @@ strokeMiterlimit =
 
 
 {-| -}
-strokeOpacity : String -> Attribute msg
+strokeOpacity : Opacity -> Attribute msg
 strokeOpacity =
-    attribute "stroke-opacity"
+    attribute "stroke-opacity" << opacityToString
 
 
 {-| -}
