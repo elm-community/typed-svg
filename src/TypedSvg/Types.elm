@@ -25,6 +25,7 @@ module TypedSvg.Types
         , DominantBaseline(..)
         , Duration(..)
         , EdgeMode(..)
+        , Fill(..)
         , FillRule(..)
         , Filter(..)
         , FloodColor(..)
@@ -74,7 +75,7 @@ module TypedSvg.Types
 # Types
 
 @docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment,AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint,CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation,ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor,Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter,FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight,FuncType, InValue, Kerning, Length,LengthAdjust,MarkerCoordinateSystem,MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount,Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType,YesNo
-@docs StrokeLinecap, StrokeLinejoin, TextRendering
+@docs Fill, StrokeLinecap, StrokeLinejoin, TextRendering
 
 @docs cm, em, ex, inch, mm, num, pc, percent, pt, px
 
@@ -317,6 +318,12 @@ type EdgeMode
 type FillRule
     = FillRuleNonZero
     | FillRuleEvenOdd
+
+
+{-| -}
+type Fill
+    = Fill Color
+    | FillNone
 
 
 {-| -}

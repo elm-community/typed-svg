@@ -551,6 +551,16 @@ filterToString f =
             funcIRI
 
 
+fillToString : Fill -> String
+fillToString fill =
+    case fill of
+        Fill color ->
+            colorToCssRgba color
+
+        FillNone ->
+            "none"
+
+
 floodColorToString : FloodColor -> String
 floodColorToString floodColor =
     case floodColor of

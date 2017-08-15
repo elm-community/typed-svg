@@ -770,15 +770,15 @@ externalResourcesRequired bool =
 
 
 {-| -}
-fill : Color -> Attribute msg
-fill color =
-    attribute "fill" (colorToCssRgba color)
+fill : Fill -> Attribute msg
+fill =
+    attribute "fill" << fillToString
 
 
 {-| -}
 noFill : Attribute msg
 noFill =
-    fill (Color.rgba 0 0 0 0.0)
+    fill FillNone
 
 
 {-| This attribute specifies the opacity of the color or the content the current
