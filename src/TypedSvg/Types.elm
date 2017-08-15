@@ -48,6 +48,8 @@ module TypedSvg.Types
         , Restart(..)
         , Scale(..)
         , ShapeRendering(..)
+        , StrokeLinecap(..)
+        , StrokeLinejoin(..)
         , TimingValue(..)
         , Transform(..)
         , TurbulenceType(..)
@@ -71,6 +73,7 @@ module TypedSvg.Types
 # Types
 
 @docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment,AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint,CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation,ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor,Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter,FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight,FuncType, InValue, Kerning, Length,LengthAdjust,MarkerCoordinateSystem,MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount,Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType,YesNo
+@docs StrokeLinecap, StrokeLinejoin
 
 @docs cm, em, ex, inch, mm, num, pc, percent, pt, px
 
@@ -565,6 +568,31 @@ type ShapeRendering
     | RenderCrispEdges
     | RenderGeometricPrecision
     | RenderInherit
+
+
+{-| The stroke-linecap attribute specifies the shape to be used at the end of open subpaths when they are
+stroked.
+-}
+type StrokeLinecap
+    = StrokeLinecapButt
+    | StrokeLinecapRound
+    | StrokeLinecapSquare
+    | StrokeLinecapInherit
+
+
+{-| The stroke-linejoin attribute specifies the shape to be used at the corners of paths or basic shapes
+when they are stroked.
+
+As a presentation attribute, it also can be used as a property directly inside a CSS stylesheet.
+
+Note: the final appearence of the miter option is also influenced by the stroke-miterlimit attribute.
+
+-}
+type StrokeLinejoin
+    = StrokeLinejoinMiter
+    | StrokeLinejoinRound
+    | StrokeLinejoinBevel
+    | StrokeLinejoinInherit
 
 
 {-| The Transform type is used by `transform` and `gradientTransform`

@@ -908,6 +908,38 @@ shapeRenderingToString shapeRendering =
             "inherit"
 
 
+strokeLinecapToString : StrokeLinecap -> String
+strokeLinecapToString linecap =
+    case linecap of
+        StrokeLinecapButt ->
+            "butt"
+
+        StrokeLinecapRound ->
+            "round"
+
+        StrokeLinecapSquare ->
+            "square"
+
+        StrokeLinecapInherit ->
+            "inherit"
+
+
+strokeLinejoinToString : StrokeLinejoin -> String
+strokeLinejoinToString linejoin =
+    case linejoin of
+        StrokeLinejoinMiter ->
+            "miter"
+
+        StrokeLinejoinRound ->
+            "round"
+
+        StrokeLinejoinBevel ->
+            "bevel"
+
+        StrokeLinejoinInherit ->
+            "inherit"
+
+
 transformToString : Transform -> String
 transformToString xform =
     let

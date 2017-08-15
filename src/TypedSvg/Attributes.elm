@@ -1914,15 +1914,15 @@ strokeDashoffset =
 
 
 {-| -}
-strokeLinecap : String -> Attribute msg
+strokeLinecap : StrokeLinecap -> Attribute msg
 strokeLinecap =
-    attribute "stroke-linecap"
+    attribute "stroke-linecap" << strokeLinecapToString
 
 
 {-| -}
-strokeLinejoin : String -> Attribute msg
+strokeLinejoin : StrokeLinejoin -> Attribute msg
 strokeLinejoin =
-    attribute "stroke-linejoin"
+    attribute "stroke-linejoin" << strokeLinejoinToString
 
 
 {-| -}
