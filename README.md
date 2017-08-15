@@ -25,7 +25,7 @@ import Html exposing (Html)
 import Color
 import TypedSvg exposing (svg, circle)
 import TypedSvg.Attributes exposing (viewBox, cx, cy, r, fill, strokeWidth, stroke)
-import TypedSvg.Types exposing (px)
+import TypedSvg.Types exposing (px, Fill)
 
 
 type Msg
@@ -45,7 +45,7 @@ view model =
             [ cx (px 150)
             , cy (px 150)
             , r (px 30)
-            , fill Color.black
+            , fill <| Fill Color.black
             , strokeWidth (px 2)
             , stroke <| Color.rgba 90 60 60 0.5
             ]
