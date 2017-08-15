@@ -2163,9 +2163,9 @@ Used by Elements: svg
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version>
 
 -}
-version : Float -> Attribute msg
-version number =
-    attribute "version" <| toString number
+version : String -> Attribute msg
+version versionNumber =
+    attribute "version" versionNumber
 
 
 {-| -}
