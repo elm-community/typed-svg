@@ -50,6 +50,7 @@ module TypedSvg.Types
         , ShapeRendering(..)
         , StrokeLinecap(..)
         , StrokeLinejoin(..)
+        , TextRendering(..)
         , TimingValue(..)
         , Transform(..)
         , TurbulenceType(..)
@@ -73,7 +74,7 @@ module TypedSvg.Types
 # Types
 
 @docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment,AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint,CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation,ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor,Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter,FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight,FuncType, InValue, Kerning, Length,LengthAdjust,MarkerCoordinateSystem,MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount,Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType,YesNo
-@docs StrokeLinecap, StrokeLinejoin
+@docs StrokeLinecap, StrokeLinejoin, TextRendering
 
 @docs cm, em, ex, inch, mm, num, pc, percent, pt, px
 
@@ -604,6 +605,20 @@ type Transform
     | SkewX Float
     | SkewY Float
     | Translate Float Float
+
+
+{-| The creator of SVG content might want to provide a hint about what tradeoffs to make as the browser
+renders text. The text-rendering attribute provides these hints.
+
+As a presentation attribute, it also can be used as a property directly inside a CSS stylesheet, see css text-rendering for further information
+
+-}
+type TextRendering
+    = TextRenderingAuto
+    | TextRenderingOptimizeSpeed
+    | TextRenderingOptimizeLegibility
+    | TextRenderingGeometricPrecision
+    | TextRenderingInherit
 
 
 {-| Used by `begin` and `end` in constraining animation times

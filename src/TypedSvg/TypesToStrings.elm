@@ -940,6 +940,25 @@ strokeLinejoinToString linejoin =
             "inherit"
 
 
+textRenderingToString : TextRendering -> String
+textRenderingToString rendering =
+    case rendering of
+        TextRenderingAuto ->
+            "auto"
+
+        TextRenderingOptimizeSpeed ->
+            "optimizeSpeed"
+
+        TextRenderingOptimizeLegibility ->
+            "optimizeLegibility"
+
+        TextRenderingGeometricPrecision ->
+            "geometricPrecision"
+
+        TextRenderingInherit ->
+            "inherit"
+
+
 transformToString : Transform -> String
 transformToString xform =
     let

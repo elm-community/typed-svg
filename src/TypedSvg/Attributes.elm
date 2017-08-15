@@ -2011,9 +2011,9 @@ textLength length =
 
 
 {-| -}
-textRendering : String -> Attribute msg
+textRendering : TextRendering -> Attribute msg
 textRendering =
-    attribute "text-rendering"
+    attribute "text-rendering" << textRenderingToString
 
 
 {-| -}
