@@ -28,6 +28,7 @@ turbulenceTypeToString, yesNoToString
 
 import Color.Convert exposing (colorToCssRgba)
 import TypedSvg.Types exposing (..)
+import Color exposing (Color)
 
 
 boolToString : Bool -> String
@@ -551,13 +552,13 @@ filterToString f =
             funcIRI
 
 
-fillToString : Fill -> String
+fillToString : Maybe Color -> String
 fillToString fill =
     case fill of
-        Fill color ->
+        Just color ->
             colorToCssRgba color
 
-        FillNone ->
+        Nothing ->
             "none"
 
 

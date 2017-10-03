@@ -770,7 +770,7 @@ externalResourcesRequired bool =
 
 
 {-| -}
-fill : Fill -> Attribute msg
+fill : Maybe Color -> Attribute msg
 fill =
     attribute "fill" << fillToString
 
@@ -778,7 +778,7 @@ fill =
 {-| -}
 noFill : Attribute msg
 noFill =
-    fill FillNone
+    fill Nothing
 
 
 {-| This attribute specifies the opacity of the color or the content the current

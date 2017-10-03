@@ -5,7 +5,6 @@ import Color
 import TypedSvg exposing (svg, rect)
 import TypedSvg.Attributes exposing (viewBox, fill, stroke)
 import TypedSvg.Attributes.InPx exposing (x, y, width, height, strokeWidth)
-import TypedSvg.Types exposing (Fill(..))
 
 
 type Msg
@@ -26,7 +25,7 @@ view model =
             , y 150
             , width 200
             , height 200
-            , fill <| Fill Color.white
+            , fill <| Just Color.white
             , strokeWidth 2
             , stroke Color.black
             ]
