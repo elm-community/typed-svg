@@ -22,7 +22,7 @@ NOTE: For attributes pertaining to SVG filters, see Filters.Attributes
 -}
 
 import Color exposing (Color)
-import Color.Convert exposing (colorToCssRgba)
+import Color.Convert exposing (colorToCssRgba, colorToHex)
 import TypedSvg.Core exposing (..)
 import TypedSvg.Types exposing (..)
 import TypedSvg.TypesToStrings exposing (..)
@@ -1898,7 +1898,7 @@ string =
 {-| -}
 stroke : Color -> Attribute msg
 stroke color =
-    attribute "stroke" (colorToCssRgba color)
+    attribute "stroke" (colorToHex color)
 
 
 {-| -}
