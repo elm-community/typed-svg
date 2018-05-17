@@ -26,7 +26,7 @@ turbulenceTypeToString, yesNoToString
 
 -}
 
-import Color.Convert exposing (colorToCssRgba)
+import Color.Convert exposing (colorToHex)
 import TypedSvg.Types exposing (..)
 
 
@@ -555,7 +555,7 @@ fillToString : Fill -> String
 fillToString fill =
     case fill of
         Fill color ->
-            colorToCssRgba color
+            colorToHex color
 
         FillNone ->
             "none"
@@ -571,7 +571,7 @@ floodColorToString floodColor =
             "currentColor"
 
         Flood color ->
-            colorToCssRgba color
+            colorToHex color
 
         FloodICC iccColor ->
             iccColor
