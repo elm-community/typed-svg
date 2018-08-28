@@ -8,6 +8,7 @@ module Color exposing
     , darkRed, darkOrange, darkYellow, darkGreen, darkBlue, darkPurple, darkBrown
     , white, lightGrey, grey, darkGrey, lightCharcoal, charcoal, darkCharcoal, black
     , lightGray, gray, darkGray
+    , colorToCssRgba
     )
 
 {-| Library for working with colors. Includes
@@ -513,3 +514,29 @@ charcoal =
 darkCharcoal : Color
 darkCharcoal =
     RGBA 46 52 54 1
+
+
+
+--- CSS color conversion helpers.
+
+
+{-| Converts a color to an css rgba string.
+colorToCssRgba (rgba 255 0 0 0.5) -- "rgba(255, 0, 0, 0.5)"
+-}
+colorToCssRgba : Color -> String
+colorToCssRgba cl =
+    let
+        rgbaVal =
+            toRgb cl
+    in
+    cssColorString "rgba"
+        [ String.fromInt rgbaVal.red
+        , String.fromInt rgbaVal.green
+        , String.fromInt rgbaVal.blue
+        , String.fromFloat rgbaVal.alpha
+        ]
+
+
+cssColorString : String -> List String -> String
+cssColorString kind values =
+    kind ++ "(" ++ String.join ", " values ++ ")"

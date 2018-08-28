@@ -196,7 +196,7 @@ baselineShiftToString baselineShift =
             "sub"
 
         ShiftPercentage value ->
-            toString value ++ "%"
+            String.fromFloat value ++ "%"
 
         ShiftLength length ->
             lengthToString length
@@ -205,9 +205,9 @@ baselineShiftToString baselineShift =
             "inherit"
 
 
-bezierAnchorPointToString : { x1 : number, y1 : number, x2 : number, y2 : number } -> String
+bezierAnchorPointToString : { x1 : Float, y1 : Float, x2 : Float, y2 : Float } -> String
 bezierAnchorPointToString { x1, y1, x2, y2 } =
-    List.map toString [ x1, y1, x2, y2 ] |> String.join " "
+    List.map String.fromFloat [ x1, y1, x2, y2 ] |> String.join " "
 
 
 calcModeToString : CalcMode -> String
@@ -237,13 +237,13 @@ clipToString clip =
 
         ClipShape top right bottom left ->
             "rect("
-                ++ toString top
+                ++ lengthToString top
                 ++ " "
-                ++ toString right
+                ++ lengthToString right
                 ++ " "
-                ++ toString bottom
+                ++ lengthToString bottom
                 ++ " "
-                ++ toString left
+                ++ lengthToString left
                 ++ ")"
 
 
@@ -606,7 +606,7 @@ fontSizeAdjustToString fontSizeAdjust =
             "inherit"
 
         FontSizeAdjust aspect ->
-            toString aspect
+            String.fromFloat aspect
 
 
 fontStretchToString : FontStretch -> String
@@ -706,7 +706,7 @@ fontWeightToString fontWeight =
             "inherit"
 
         FontWeight weight ->
-            fontWeightClamped weight |> toString
+            fontWeightClamped weight |> String.fromInt
 
 
 funcTypeToString : FuncType -> String
@@ -767,34 +767,34 @@ lengthToString : Length -> String
 lengthToString length =
     case length of
         Cm x ->
-            toString x ++ "cm"
+            String.fromFloat x ++ "cm"
 
         Em x ->
-            toString x ++ "em"
+            String.fromFloat x ++ "em"
 
         Ex x ->
-            toString x ++ "ex"
+            String.fromFloat x ++ "ex"
 
         In x ->
-            toString x ++ "in"
+            String.fromFloat x ++ "in"
 
         Mm x ->
-            toString x ++ "mm"
+            String.fromFloat x ++ "mm"
 
         Num x ->
-            toString x
+            String.fromFloat x
 
         Pc x ->
-            toString x ++ "pc"
+            String.fromFloat x ++ "pc"
 
         Percent x ->
-            toString x ++ "%"
+            String.fromFloat x ++ "%"
 
         Pt x ->
-            toString x ++ "pt"
+            String.fromFloat x ++ "pt"
 
         Px x ->
-            toString x ++ "px"
+            String.fromFloat x ++ "px"
 
 
 lengthAdjustToString : LengthAdjust -> String
@@ -860,7 +860,7 @@ opacityToString : Opacity -> String
 opacityToString opacity =
     case opacity of
         Opacity n ->
-            toString n
+            String.fromFloat n
 
         OpacityInherit ->
             "inherit"
@@ -886,7 +886,7 @@ repeatCountToString : RepeatCount -> String
 repeatCountToString repeatCount =
     case repeatCount of
         RepeatCount count ->
-            toString count
+            String.fromFloat count
 
         RepeatIndefinite ->
             "indefinite"
@@ -995,7 +995,7 @@ transformToString xform =
             String.concat
                 [ name
                 , "("
-                , String.join " " (List.map toString args)
+                , String.join " " (List.map String.fromFloat args)
                 , ")"
                 ]
     in
