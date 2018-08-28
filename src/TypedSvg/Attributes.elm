@@ -29,8 +29,7 @@ NOTE: For attributes pertaining to SVG filters, see Filters.Attributes
 
 -}
 
-import Color exposing (Color)
-import Color.Convert exposing (colorToCssRgba)
+import Color exposing (Color, colorToCssRgba)
 import TypedSvg.Core exposing (..)
 import TypedSvg.Types exposing (..)
 import TypedSvg.TypesToStrings exposing (..)
@@ -153,7 +152,7 @@ Used by Elements: animateTransform
 NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
 distinguish it from `contentType`
 
-See: [https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 animateTransformType : AnimateTransformType -> Attribute msg

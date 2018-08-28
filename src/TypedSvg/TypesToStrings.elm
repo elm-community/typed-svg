@@ -45,7 +45,7 @@ module TypedSvg.TypesToStrings exposing
 
 -}
 
-import Color.Convert exposing (colorToCssRgba)
+import Color exposing (Color, colorToCssRgba)
 import TypedSvg.Types exposing (..)
 
 
