@@ -205,8 +205,8 @@ baselineShiftToString baselineShift =
             "inherit"
 
 
-bezierAnchorPointToString : ( number, number, number, number ) -> String
-bezierAnchorPointToString ( x1, y1, x2, y2 ) =
+bezierAnchorPointToString : { x1 : number, y1 : number, x2 : number, y2 : number } -> String
+bezierAnchorPointToString { x1, y1, x2, y2 } =
     List.map toString [ x1, y1, x2, y2 ] |> String.join " "
 
 
