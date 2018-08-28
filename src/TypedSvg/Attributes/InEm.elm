@@ -1,4 +1,9 @@
-module TypedSvg.Attributes.InEm exposing (..)
+module TypedSvg.Attributes.InEm exposing
+    ( x, y, r, width, height, strokeWidth
+    , fontSize, textLength
+    , markerWidth, markerHeight
+    , cx, cy, dx, dy, fx, fy, rx, ry, x1, y1, x2, y2
+    )
 
 {-| This module exposes all Length attributes (x, y, width, etc.) as `em`-based
 attributes. It's used as a shortcut so that it becomes unnecessary to prefix
@@ -6,11 +11,11 @@ each numeric length with the `em` function.
 
 Example:
 
-    import Html exposing (Html)
     import Color
-    import TypedSvg exposing (svg, rect)
-    import TypedSvg.Attributes exposing (viewBox, fill, stroke)
-    import TypedSvg.Attributes.InEm exposing (x, y, width, height, strokeWidth)
+    import Html exposing (Html)
+    import TypedSvg exposing (rect, svg)
+    import TypedSvg.Attributes exposing (fill, stroke, viewBox)
+    import TypedSvg.Attributes.InEm exposing (height, strokeWidth, width, x, y)
 
     type Msg
         = NoOp
@@ -57,9 +62,9 @@ Example:
 
 -}
 
+import TypedSvg.Attributes as Attr
 import TypedSvg.Core exposing (Attribute)
 import TypedSvg.Types exposing (em)
-import TypedSvg.Attributes as Attr
 
 
 {-| -}

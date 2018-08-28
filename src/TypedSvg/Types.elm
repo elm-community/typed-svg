@@ -1,80 +1,16 @@
-module TypedSvg.Types
-    exposing
-        ( Accumulate(..)
-        , Additive(..)
-        , Align(..)
-        , AlignmentBaseline(..)
-        , AnchorAlignment(..)
-        , AnimateTransformType(..)
-        , AttributeType(..)
-        , BaselineShift(..)
-        , BezierAnchorPoint
-        , CalcMode(..)
-        , Clip(..)
-        , ClipPath(..)
-        , ClipRule(..)
-        , ClockValue
-        , ColorInterpolation(..)
-        , ColorMatrixType(..)
-        , ColorProfile(..)
-        , CompositeOperator(..)
-        , CoordinateSystem(..)
-        , Cursor(..)
-        , Direction(..)
-        , Display(..)
-        , DominantBaseline(..)
-        , Duration(..)
-        , EdgeMode(..)
-        , Fill(..)
-        , FillRule(..)
-        , Filter(..)
-        , FloodColor(..)
-        , FontSizeAdjust(..)
-        , FontStretch(..)
-        , FontStyle(..)
-        , FontVariant(..)
-        , FontWeight(..)
-        , FuncType(..)
-        , InValue(..)
-        , Kerning(..)
-        , Length(..)
-        , LengthAdjust(..)
-        , MarkerCoordinateSystem(..)
-        , MeetOrSlice(..)
-        , Mode(..)
-        , MorphologyOperator(..)
-        , Opacity(..)
-        , Rendering(..)
-        , RepeatCount(..)
-        , Restart(..)
-        , Scale(..)
-        , ShapeRendering(..)
-        , StrokeLinecap(..)
-        , StrokeLinejoin(..)
-        , TextRendering(..)
-        , TimingValue(..)
-        , Transform(..)
-        , TurbulenceType(..)
-        , YesNo(..)
-          -- Lengths
-        , cm
-        , em
-        , ex
-        , inch
-        , mm
-        , num
-        , pc
-        , percent
-        , pt
-        , px
-        )
+module TypedSvg.Types exposing
+    ( Accumulate(..), Additive(..), Align(..), AlignmentBaseline(..), AnchorAlignment(..), AnimateTransformType(..), AttributeType(..), BaselineShift(..), BezierAnchorPoint, CalcMode(..), Clip(..), ClipPath(..), ClipRule(..), ClockValue, ColorInterpolation(..), ColorMatrixType(..), ColorProfile(..), CompositeOperator(..), CoordinateSystem(..), Cursor(..), Direction(..), Display(..), DominantBaseline(..), Duration(..), EdgeMode(..), FillRule(..), Filter(..), FloodColor(..), FontSizeAdjust(..), FontStretch(..), FontStyle(..), FontVariant(..), FontWeight(..), FuncType(..), InValue(..), Kerning(..), Length(..), LengthAdjust(..), MarkerCoordinateSystem(..), MeetOrSlice(..), Mode(..), MorphologyOperator(..), Opacity(..), Rendering(..), RepeatCount(..), Restart(..), Scale(..), ShapeRendering(..), TimingValue(..), Transform(..), TurbulenceType(..), YesNo(..)
+    , Fill(..), StrokeLinecap(..), StrokeLinejoin(..), TextRendering(..)
+    , cm, em, ex, inch, mm, num, pc, percent, pt, px
+    -- Lengths
+    )
 
 {-| The Types module defines all of the types used by TypedSvg.
 
 
 # Types
 
-@docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment,AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint,CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation,ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor,Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter,FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight,FuncType, InValue, Kerning, Length,LengthAdjust,MarkerCoordinateSystem,MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount,Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType,YesNo
+@docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment, AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint, CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation, ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor, Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter, FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight, FuncType, InValue, Kerning, Length, LengthAdjust, MarkerCoordinateSystem, MeetOrSlice, Mode, MorphologyOperator, Opacity, Rendering, RepeatCount, Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType, YesNo
 @docs Fill, StrokeLinecap, StrokeLinejoin, TextRendering
 
 @docs cm, em, ex, inch, mm, num, pc, percent, pt, px

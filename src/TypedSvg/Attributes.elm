@@ -1,4 +1,12 @@
-module TypedSvg.Attributes exposing (..)
+module TypedSvg.Attributes exposing
+    ( accelerate, accentHeight, accumulate, additive, alignmentBaseline, allowReorder, alphabetic, amplitude, animateTransformType, animationValues, arabicForm, ascent, attributeName, attributeType, autoReverse, baseProfile, baselineShift, bbox, begin, by, calcMode, capHeight, class, clip, clipPath, clipPathUnits, clipRule, color, colorInterpolation, colorProfile, colorRendering, contentScriptType, contentStyleType, contentType, cursor, cx, cy, d, decelerate, descent, direction, display, dominantBaseline, dur, dx, dy, enableBackground, end, exponent, externalResourcesRequired, fill, fillOpacity, fillRule, filter, fontFamily, fontSize, fontSizeAdjust
+    , fontStretch, fontStyle, fontVariant, fontWeight, format, from, fx, fy, g1, g2, glyphName, glyphOrientationHorizontal, glyphOrientationVertical, glyphRef, gradientTransform, gradientUnits, hanging, height, horizAdvX, horizOriginX, horizOriginY, ideographic, imageRendering, intercept, k, kerning, keySplines, keyTimes, lang, lengthAdjust, letterSpacing, lightingColor, local, markerEnd, markerHeight, markerMid, markerStart, markerUnits, markerWidth, mask, maskContentUnits, maskUnits, max, media
+    , method, min, name, noFill, offset, opacity, orient, orientation, origin, overflow, overlinePosition, overlineThickness, panose1, path, pathLength, patternContentUnits, patternTransform, patternUnits, pointOrder, pointerEvents, points, preserveAspectRatio, primitiveUnits, r, refX, refY, renderingIntent, repeatCount, repeatDur, requiredExtensions, requiredFeatures, restart, rotate, rx, ry, shapeRendering, slope, spacing, specularConstant, specularExponent, speed, spreadMethod, startOffset
+    , stdDeviation, stemh, stemv, stitchTiles, stopColor, stopOpacity, strikethroughPosition, strikethroughThickness, string, stroke, strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, style, systemLanguage, tableValues, target, textAnchor, textDecoration, textLength, textRendering, title, to, transform, u1, u2, underlinePosition, underlineThickness, unicode, unicodeBidi, unicodeRange, unitsPerEm, vAlphabetic, vHanging, vIdeographic
+    , vMathematical, version, vertAdvY, vertOriginX, vertOriginY, viewBox, viewTarget, visibility, width, widths, wordSpacing, writingMode, x, x1, x2, xChannelSelector, xHeight, xlinkActuate, xlinkArcrole, xlinkHref, xlinkRole, xlinkShow, xlinkTitle, xlinkType, xmlBase, xmlLang, xmlSpace, y, y1, y2, yChannelSelector, zoomAndPan
+    , alignmentBaseline, baselineShift, clipPath, clipRule, clip, colorInterpolation, colorProfile, colorRendering, color, cursor, direction, display, dominantBaseline, enableBackground, fillOpacity, fillRule, fill, filter, fontFamily, fontSizeAdjust, fontSize, fontStretch, fontStyle, fontVariant, fontWeight, glyphOrientationHorizontal, glyphOrientationVertical, imageRendering, kerning, letterSpacing, lightingColor, markerEnd, markerMid, markerStart, mask, opacity, overflow, pointerEvents
+    , shapeRendering, stopColor, stopOpacity, strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, stroke, textAnchor, textDecoration, textRendering, unicodeBidi, visibility, wordSpacing, writingMode
+    )
 
 {-| Typed SVG Attributes
 
@@ -7,17 +15,17 @@ NOTE: For attributes pertaining to SVG filters, see Filters.Attributes
 
 # Other attributes
 
-@docs accelerate, accentHeight, accumulate, additive, alignmentBaseline,allowReorder, alphabetic, amplitude, animateTransformType, animationValues,arabicForm, ascent, attributeName, attributeType, autoReverse, baseProfile,baselineShift, bbox, begin, by, calcMode, capHeight, class, clip, clipPath,clipPathUnits, clipRule, color, colorInterpolation, colorProfile,colorRendering, contentScriptType, contentStyleType, contentType, cursor,cx, cy, d, decelerate, descent, direction,display,dominantBaseline, dur,dx, dy, enableBackground, end, exponent, externalResourcesRequired,fill, fillOpacity, fillRule, filter, fontFamily, fontSize, fontSizeAdjust
-@docs fontStretch, fontStyle, fontVariant, fontWeight, format, from,fx, fy, g1, g2, glyphName,glyphOrientationHorizontal, glyphOrientationVertical, glyphRef,gradientTransform, gradientUnits, hanging, height, horizAdvX,horizOriginX, horizOriginY, ideographic, imageRendering, intercept, k,kerning, keySplines, keyTimes, lang, lengthAdjust, letterSpacing,lightingColor, local, markerEnd, markerHeight, markerMid, markerStart,markerUnits, markerWidth, mask, maskContentUnits, maskUnits, max, media
-@docs method, min, name, noFill, offset, opacity, orient, orientation, origin,overflow, overlinePosition, overlineThickness, panose1, path, pathLength,patternContentUnits, patternTransform, patternUnits, pointOrder,pointerEvents, points, preserveAspectRatio, primitiveUnits, r, refX, refY,renderingIntent, repeatCount, repeatDur, requiredExtensions,requiredFeatures, restart, rotate, rx, ry, shapeRendering, slope, spacing,specularConstant, specularExponent, speed, spreadMethod, startOffset
-@docs stdDeviation, stemh, stemv, stitchTiles, stopColor, stopOpacity,strikethroughPosition, strikethroughThickness, string, stroke,strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin,strokeMiterlimit, strokeOpacity, strokeWidth,style, systemLanguage, tableValues, target, textAnchor, textDecoration,textLength, textRendering, title, to, transform, u1, u2,underlinePosition, underlineThickness, unicode, unicodeBidi, unicodeRange,unitsPerEm, vAlphabetic, vHanging, vIdeographic
-@docs vMathematical,version, vertAdvY, vertOriginX, vertOriginY,viewBox, viewTarget, visibility, width, widths, wordSpacing, writingMode,x, x1, x2, xChannelSelector, xHeight, xlinkActuate, xlinkArcrole, xlinkHref,xlinkRole, xlinkShow, xlinkTitle, xlinkType, xmlBase, xmlLang, xmlSpace, y,y1, y2, yChannelSelector, zoomAndPan
+@docs accelerate, accentHeight, accumulate, additive, alignmentBaseline, allowReorder, alphabetic, amplitude, animateTransformType, animationValues, arabicForm, ascent, attributeName, attributeType, autoReverse, baseProfile, baselineShift, bbox, begin, by, calcMode, capHeight, class, clip, clipPath, clipPathUnits, clipRule, color, colorInterpolation, colorProfile, colorRendering, contentScriptType, contentStyleType, contentType, cursor, cx, cy, d, decelerate, descent, direction, display, dominantBaseline, dur, dx, dy, enableBackground, end, exponent, externalResourcesRequired, fill, fillOpacity, fillRule, filter, fontFamily, fontSize, fontSizeAdjust
+@docs fontStretch, fontStyle, fontVariant, fontWeight, format, from, fx, fy, g1, g2, glyphName, glyphOrientationHorizontal, glyphOrientationVertical, glyphRef, gradientTransform, gradientUnits, hanging, height, horizAdvX, horizOriginX, horizOriginY, ideographic, imageRendering, intercept, k, kerning, keySplines, keyTimes, lang, lengthAdjust, letterSpacing, lightingColor, local, markerEnd, markerHeight, markerMid, markerStart, markerUnits, markerWidth, mask, maskContentUnits, maskUnits, max, media
+@docs method, min, name, noFill, offset, opacity, orient, orientation, origin, overflow, overlinePosition, overlineThickness, panose1, path, pathLength, patternContentUnits, patternTransform, patternUnits, pointOrder, pointerEvents, points, preserveAspectRatio, primitiveUnits, r, refX, refY, renderingIntent, repeatCount, repeatDur, requiredExtensions, requiredFeatures, restart, rotate, rx, ry, shapeRendering, slope, spacing, specularConstant, specularExponent, speed, spreadMethod, startOffset
+@docs stdDeviation, stemh, stemv, stitchTiles, stopColor, stopOpacity, strikethroughPosition, strikethroughThickness, string, stroke, strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, style, systemLanguage, tableValues, target, textAnchor, textDecoration, textLength, textRendering, title, to, transform, u1, u2, underlinePosition, underlineThickness, unicode, unicodeBidi, unicodeRange, unitsPerEm, vAlphabetic, vHanging, vIdeographic
+@docs vMathematical, version, vertAdvY, vertOriginX, vertOriginY, viewBox, viewTarget, visibility, width, widths, wordSpacing, writingMode, x, x1, x2, xChannelSelector, xHeight, xlinkActuate, xlinkArcrole, xlinkHref, xlinkRole, xlinkShow, xlinkTitle, xlinkType, xmlBase, xmlLang, xmlSpace, y, y1, y2, yChannelSelector, zoomAndPan
 
 
 # Presentation attributes
 
-@docs alignmentBaseline, baselineShift, clipPath, clipRule, clip,colorInterpolation, colorProfile, colorRendering,color, cursor, direction, display, dominantBaseline, enableBackground,fillOpacity, fillRule, fill, filter, fontFamily,fontSizeAdjust, fontSize, fontStretch, fontStyle, fontVariant, fontWeight,glyphOrientationHorizontal, glyphOrientationVertical, imageRendering,kerning, letterSpacing, lightingColor, markerEnd, markerMid, markerStart,mask, opacity, overflow, pointerEvents
-@docs shapeRendering, stopColor,stopOpacity, strokeDasharray, strokeDashoffset, strokeLinecap,strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, stroke,textAnchor, textDecoration, textRendering, unicodeBidi, visibility,wordSpacing, writingMode
+@docs alignmentBaseline, baselineShift, clipPath, clipRule, clip, colorInterpolation, colorProfile, colorRendering, color, cursor, direction, display, dominantBaseline, enableBackground, fillOpacity, fillRule, fill, filter, fontFamily, fontSizeAdjust, fontSize, fontStretch, fontStyle, fontVariant, fontWeight, glyphOrientationHorizontal, glyphOrientationVertical, imageRendering, kerning, letterSpacing, lightingColor, markerEnd, markerMid, markerStart, mask, opacity, overflow, pointerEvents
+@docs shapeRendering, stopColor, stopOpacity, strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, stroke, textAnchor, textDecoration, textRendering, unicodeBidi, visibility, wordSpacing, writingMode
 
 -}
 
@@ -145,7 +153,7 @@ Used by Elements: animateTransform
 NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
 distinguish it from `contentType`
 
-See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_>
+See: [https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 animateTransformType : AnimateTransformType -> Attribute msg
@@ -1611,9 +1619,9 @@ points : List ( number, number ) -> Attribute msg
 points pts =
     let
         pointToString ( x, y ) =
-            (toString x) ++ ", " ++ (toString y)
+            toString x ++ ", " ++ toString y
     in
-        attribute "points" <| String.join " " (List.map pointToString pts)
+    attribute "points" <| String.join " " (List.map pointToString pts)
 
 
 {-| In some cases, typically when using the `viewBox` attribute, it is desirable

@@ -1,26 +1,9 @@
-module TypedSvg.Events
-    exposing
-        ( on
-        , onBegin
-        , onEnd
-        , onRepeat
-        , onAbort
-        , onError
-        , onResize
-        , onScroll
-        , onLoad
-        , onUnload
-        , onZoom
-        , onActivate
-        , onClick
-        , onFocusIn
-        , onFocusOut
-        , onMouseDown
-        , onMouseMove
-        , onMouseOut
-        , onMouseOver
-        , onMouseUp
-        )
+module TypedSvg.Events exposing
+    ( onBegin, onEnd, onRepeat
+    , onAbort, onError, onResize, onScroll, onLoad, onUnload, onZoom
+    , onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp
+    , on
+    )
 
 {-|
 
@@ -37,7 +20,7 @@ module TypedSvg.Events
 
 # Graphical event attributes
 
-@docs onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove,onMouseOut, onMouseOver, onMouseUp
+@docs onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp
 
 
 # Custom Events

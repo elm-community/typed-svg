@@ -1,4 +1,7 @@
-module TypedSvg.Core exposing (..)
+module TypedSvg.Core exposing
+    ( Svg, text, node, map, foreignObject
+    , Attribute, attribute, attributeNS, svgNamespace
+    )
 
 {-|
 
@@ -14,9 +17,9 @@ module TypedSvg.Core exposing (..)
 
 -}
 
-import VirtualDom
-import Json.Encode as Json
 import Html
+import Json.Encode as Json
+import VirtualDom
 
 
 {-| The core building block to create SVG. This library is filled with helper

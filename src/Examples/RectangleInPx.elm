@@ -1,10 +1,10 @@
-module Examples.RectangleInPx exposing (..)
+module Examples.RectangleInPx exposing (Model, Msg(..), view)
 
-import Html exposing (Html)
 import Color
-import TypedSvg exposing (svg, rect)
-import TypedSvg.Attributes exposing (viewBox, fill, stroke)
-import TypedSvg.Attributes.InPx exposing (x, y, width, height, strokeWidth)
+import Html exposing (Html)
+import TypedSvg exposing (rect, svg)
+import TypedSvg.Attributes exposing (fill, stroke, viewBox)
+import TypedSvg.Attributes.InPx exposing (height, strokeWidth, width, x, y)
 import TypedSvg.Types exposing (Fill(..))
 
 

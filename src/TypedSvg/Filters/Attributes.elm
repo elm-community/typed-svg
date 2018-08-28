@@ -1,11 +1,11 @@
-module TypedSvg.Filters.Attributes exposing (..)
+module TypedSvg.Filters.Attributes exposing (azimuth, baseFrequency, bias, colorInterpolationFilters, colorMatrixType, colorMatrixValues, compositeOperator, diffuseConstant, divisor, edgeMode, elevation, filterRes, filterUnits, floodColor, floodOpacity, funcType, in2, in_, k1, k2, k3, k4, kernelMatrix, kernelUnitLength, limitingConeAngle, mode, morphologyOperator, numOctaves, order, pointsAtX, pointsAtY, pointsAtZ, preserveAlpha, radius, result, scale, seed, surfaceScale, targetX, targetY, turbulenceType, z)
 
 {-| Attributes of SVG filter elements
 
 
 # Attributes
 
-@docs azimuth, baseFrequency, bias, colorInterpolationFilters, colorMatrixType,colorMatrixValues, compositeOperator, diffuseConstant, divisor, edgeMode,elevation, filterRes, filterUnits, floodColor, floodOpacity, funcType, in2,in_, k1, k2, k3, k4, kernelMatrix, kernelUnitLength, limitingConeAngle,mode, morphologyOperator, numOctaves, order, pointsAtX, pointsAtY,pointsAtZ, preserveAlpha, radius, result, scale, seed, surfaceScale,targetX, targetY, turbulenceType, z
+@docs azimuth, baseFrequency, bias, colorInterpolationFilters, colorMatrixType, colorMatrixValues, compositeOperator, diffuseConstant, divisor, edgeMode, elevation, filterRes, filterUnits, floodColor, floodOpacity, funcType, in2, in_, k1, k2, k3, k4, kernelMatrix, kernelUnitLength, limitingConeAngle, mode, morphologyOperator, numOctaves, order, pointsAtX, pointsAtY, pointsAtZ, preserveAlpha, radius, result, scale, seed, surfaceScale, targetX, targetY, turbulenceType, z
 
 -}
 
@@ -47,7 +47,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseFrequency>
 -}
 baseFrequency : number -> number -> Attribute msg
 baseFrequency xFrequency yFrequency =
-    attribute "baseFrequency" <| (toString xFrequency) ++ " " ++ (toString yFrequency)
+    attribute "baseFrequency" <| toString xFrequency ++ " " ++ toString yFrequency
 
 
 {-| The bias attribute shifts the range of a filter. After applying the
@@ -103,7 +103,7 @@ performed without specifying a complete matrix.
 
 Used by Elements: Filters.colorMatrix
 
-See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_>
+See: [https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 colorMatrixType : ColorMatrixType -> Attribute msg
@@ -218,7 +218,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterRes>
 -}
 filterRes : number -> number -> Attribute msg
 filterRes xPixels yPixels =
-    attribute "filterRes" <| (toString xPixels) ++ " " ++ (toString yPixels)
+    attribute "filterRes" <| toString xPixels ++ " " ++ toString yPixels
 
 
 {-| The `filterUnits` attribute defines the coordinate system for attributes
@@ -404,7 +404,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelUnitLengt
 -}
 kernelUnitLength : number -> number -> Attribute msg
 kernelUnitLength dx dy =
-    attribute "kernelUnitLength" <| (toString dx) ++ " " ++ (toString dy)
+    attribute "kernelUnitLength" <| toString dx ++ " " ++ toString dy
 
 
 {-| The limitingConeAngle attribute represents the angle in degrees between
@@ -488,7 +488,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/order>
 -}
 order : number -> number -> Attribute msg
 order orderX orderY =
-    attribute "order" <| (toString orderX) ++ " " ++ (toString orderY)
+    attribute "order" <| toString orderX ++ " " ++ toString orderY
 
 
 {-| The `pointsAtX` attribute represent the X location in the coordinate system
@@ -575,7 +575,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/radius>
 -}
 radius : number -> number -> Attribute msg
 radius xRadius yRadius =
-    attribute "radius" <| (toString xRadius) ++ " " ++ (toString yRadius)
+    attribute "radius" <| toString xRadius ++ " " ++ toString yRadius
 
 
 {-| The `result` attribute defines the assigned name for this filter primitive.
@@ -696,7 +696,7 @@ targetY yPosition =
 
 Used by Elements: Filters.funcR, Filters.funcG, Filters.funcA, Filters.funcB
 
-See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_>
+See: [https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 funcType : FuncType -> Attribute msg
@@ -709,7 +709,7 @@ function.
 
 Used by Elements: Filters.turbulence
 
-See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_>
+See: [https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 turbulenceType : TurbulenceType -> Attribute msg

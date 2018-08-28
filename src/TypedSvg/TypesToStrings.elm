@@ -1,28 +1,47 @@
-module TypedSvg.TypesToStrings exposing (..)
+module TypedSvg.TypesToStrings exposing
+    ( accumulateToString, additiveToString, alignToString
+    , alignmentBaselineToString, anchorAlignmentToString
+    , animateTransformTypeToString, attributeTypeToString
+    , baselineShiftToString, bezierAnchorPointToString, boolToString
+    , calcModeToString, clipPathToString, clipRuleToString, clipToString
+    , colorInterpolationToString, colorMatrixTypeToString
+    , colorProfileToString, compositeOperatorToString, coordinateSystemToString
+    , cursorToString, directionToString, displayToString
+    , dominantBaselineToString, durationToString, edgeModeToString
+    , fillRuleToString, filterToString, floodColorToString
+    , fontSizeAdjustToString, fontStretchToString, fontStyleToString
+    , fontVariantToString, fontWeightToString, funcTypeToString, inValueToString
+    , kerningToString, lengthAdjustToString, lengthToString
+    , markerCoordinateSystemToString, meetOrSliceToString, modeToString
+    , morphologyOperatorToString, opacityToString
+    , renderingToString, repeatCountToString, restartToString, scaleToString
+    , shapeRenderingToString, timingValueAsString, transformToString
+    , turbulenceTypeToString, yesNoToString
+    )
 
 {-|
 
 
 # Converts each type from TypedSvg.Types to its corresponding string
 
-@docs accumulateToString, additiveToString, alignToString,
-alignmentBaselineToString, anchorAlignmentToString,
-animateTransformTypeToString, attributeTypeToString,
-baselineShiftToString, bezierAnchorPointToString, boolToString,
-calcModeToString, clipPathToString, clipRuleToString, clipToString,
-cm, colorInterpolationToString, colorMatrixTypeToString,
-colorProfileToString, compositeOperatorToString, coordinateSystemToString,
-cursorToString, directionToString, displayToString,
-dominantBaselineToString, durationToString, edgeModeToString, em, ex,
-fillRuleToString, filterToString, floodColorToString,
-fontSizeAdjustToString, fontStretchToString, fontStyleToString,
-fontVariantToString, fontWeightToString, funcTypeToString, inValueToString,
-inch, kerningToString, lengthAdjustToString, lengthToString,
-markerCoordinateSystemToString, meetOrSliceToString, mm, modeToString,
-morphologyOperatorToString, num, opacityToString, pc, percent, pt, px,
-renderingToString, repeatCountToString, restartToString, scaleToString,
-shapeRenderingToString, timingValueAsString, transformToString,
-turbulenceTypeToString, yesNoToString
+@docs accumulateToString, additiveToString, alignToString
+@docs alignmentBaselineToString, anchorAlignmentToString
+@docs animateTransformTypeToString, attributeTypeToString
+@docs baselineShiftToString, bezierAnchorPointToString, boolToString
+@docs calcModeToString, clipPathToString, clipRuleToString, clipToString
+@docs cm, colorInterpolationToString, colorMatrixTypeToString
+@docs colorProfileToString, compositeOperatorToString, coordinateSystemToString
+@docs cursorToString, directionToString, displayToString
+@docs dominantBaselineToString, durationToString, edgeModeToString, em, ex
+@docs fillRuleToString, filterToString, floodColorToString
+@docs fontSizeAdjustToString, fontStretchToString, fontStyleToString
+@docs fontVariantToString, fontWeightToString, funcTypeToString, inValueToString
+@docs inch, kerningToString, lengthAdjustToString, lengthToString
+@docs markerCoordinateSystemToString, meetOrSliceToString, mm, modeToString
+@docs morphologyOperatorToString, num, opacityToString, pc, percent, pt, px
+@docs renderingToString, repeatCountToString, restartToString, scaleToString
+@docs shapeRenderingToString, timingValueAsString, transformToString
+@docs turbulenceTypeToString, yesNoToString
 
 -}
 
@@ -67,7 +86,7 @@ alignToString align =
             "none"
 
         Align x y ->
-            "x" ++ (scaleToString x) ++ "Y" ++ (scaleToString y)
+            "x" ++ scaleToString x ++ "Y" ++ scaleToString y
 
 
 alignmentBaselineToString : AlignmentBaseline -> String
@@ -177,10 +196,10 @@ baselineShiftToString baselineShift =
             "sub"
 
         ShiftPercentage value ->
-            (toString value) ++ "%"
+            toString value ++ "%"
 
         ShiftLength length ->
-            (lengthToString length)
+            lengthToString length
 
         ShiftInherit ->
             "inherit"
@@ -218,13 +237,13 @@ clipToString clip =
 
         ClipShape top right bottom left ->
             "rect("
-                ++ (toString top)
+                ++ toString top
                 ++ " "
-                ++ (toString right)
+                ++ toString right
                 ++ " "
-                ++ (toString bottom)
+                ++ toString bottom
                 ++ " "
-                ++ (toString left)
+                ++ toString left
                 ++ ")"
 
 
@@ -670,24 +689,24 @@ fontWeightToString fontWeight =
             (((weight + 50) // 100) * 100)
                 |> clamp 100 900
     in
-        case fontWeight of
-            FontWeightNormal ->
-                "normal"
+    case fontWeight of
+        FontWeightNormal ->
+            "normal"
 
-            FontWeightBold ->
-                "bold"
+        FontWeightBold ->
+            "bold"
 
-            FontWeightBolder ->
-                "bolder"
+        FontWeightBolder ->
+            "bolder"
 
-            FontWeightLighter ->
-                "lighter"
+        FontWeightLighter ->
+            "lighter"
 
-            FontWeightInherit ->
-                "inherit"
+        FontWeightInherit ->
+            "inherit"
 
-            FontWeight weight ->
-                fontWeightClamped weight |> toString
+        FontWeight weight ->
+            fontWeightClamped weight |> toString
 
 
 funcTypeToString : FuncType -> String
@@ -841,7 +860,7 @@ opacityToString : Opacity -> String
 opacityToString opacity =
     case opacity of
         Opacity n ->
-            (toString n)
+            toString n
 
         OpacityInherit ->
             "inherit"
@@ -980,24 +999,24 @@ transformToString xform =
                 , ")"
                 ]
     in
-        case xform of
-            Matrix a b c d e f ->
-                tr "matrix" [ a, b, c, d, e, f ]
+    case xform of
+        Matrix a b c d e f ->
+            tr "matrix" [ a, b, c, d, e, f ]
 
-            Rotate a x y ->
-                tr "rotate" [ a, x, y ]
+        Rotate a x y ->
+            tr "rotate" [ a, x, y ]
 
-            Scale x y ->
-                tr "scale" [ x, y ]
+        Scale x y ->
+            tr "scale" [ x, y ]
 
-            SkewX x ->
-                tr "skewX" [ x ]
+        SkewX x ->
+            tr "skewX" [ x ]
 
-            SkewY y ->
-                tr "skewY" [ y ]
+        SkewY y ->
+            tr "skewY" [ y ]
 
-            Translate x y ->
-                tr "translate" [ x, y ]
+        Translate x y ->
+            tr "translate" [ x, y ]
 
 
 timingValueAsString : TimingValue -> String
