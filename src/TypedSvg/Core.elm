@@ -32,7 +32,7 @@ type alias Svg msg =
 {-| Set attributes on your `Svg`.
 -}
 type alias Attribute msg =
-    VirtualDom.Property msg
+    VirtualDom.Attribute msg
 
 
 {-| -}
