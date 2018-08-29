@@ -50,8 +50,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accent-height>
 
 -}
 accentHeight : number -> Attribute msg
-accentHeight height =
-    attribute "accent-height" <| toString height
+accentHeight h =
+    attribute "accent-height" <| toString h
 
 
 {-| Defines a simple acceleration of time for the element. Element time will
@@ -126,8 +126,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignment-basel
 
 -}
 alignmentBaseline : AlignmentBaseline -> Attribute msg
-alignmentBaseline alignmentBaseline =
-    attribute "alignment-baseline" <| alignmentBaselineToString alignmentBaseline
+alignmentBaseline baseline =
+    attribute "alignment-baseline" <| alignmentBaselineToString baseline
 
 
 {-| The allowReorder attribute signals whether a user agent may reorder the direct
@@ -141,8 +141,8 @@ See: <https://www.w3.org/TR/smil/smil-content.html#adef-allowReorder>
 
 -}
 allowReorder : YesNo -> Attribute msg
-allowReorder allowReorder =
-    attribute "allowReorder" <| yesNoToString allowReorder
+allowReorder allow =
+    attribute "allowReorder" <| yesNoToString allow
 
 
 {-| -}
@@ -158,12 +158,12 @@ Used by Elements: animateTransform
 NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
 distinguish it from `contentType`
 
-See: [[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 animateTransformType : AnimateTransformType -> Attribute msg
-animateTransformType animateTransformType =
-    attribute "type_" <| animateTransformTypeToString animateTransformType
+animateTransformType transformType =
+    attribute "type_" <| animateTransformTypeToString transformType
 
 
 {-| Values will be applied in order over the course of the animation. If a list
@@ -212,8 +212,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeName>
 
 -}
 attributeName : String -> Attribute msg
-attributeName name =
-    attribute "attributeName" name
+attributeName nm =
+    attribute "attributeName" nm
 
 
 {-| This attribute specifies the namespace in which the target attribute and its
@@ -225,8 +225,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/attributeType>
 
 -}
 attributeType : AttributeType -> Attribute msg
-attributeType attributeType =
-    attribute "attributeType" <| attributeTypeToString attributeType
+attributeType attType =
+    attribute "attributeType" <| attributeTypeToString attType
 
 
 {-| -}
@@ -253,8 +253,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseline-shift>
 
 -}
 baselineShift : BaselineShift -> Attribute msg
-baselineShift baselineShift =
-    attribute "baseline-shift" <| baselineShiftToString baselineShift
+baselineShift shift =
+    attribute "baseline-shift" <| baselineShiftToString shift
 
 
 {-| -}
@@ -306,8 +306,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/calcMode>
 
 -}
 calcMode : CalcMode -> Attribute msg
-calcMode calcMode =
-    attribute "calcMode" <| calcModeToString calcMode
+calcMode mode =
+    attribute "calcMode" <| calcModeToString mode
 
 
 {-| -}
@@ -357,8 +357,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip>
 
 -}
 clip : Clip -> Attribute msg
-clip clip =
-    attribute "clip" <| clipToString clip
+clip clp =
+    attribute "clip" <| clipToString clp
 
 
 {-| The `clipPath` attribute binds the element it is applied to with a given
@@ -375,8 +375,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-path>
 
 -}
 clipPath : ClipPath -> Attribute msg
-clipPath clipPath =
-    attribute "clip-path" <| clipPathToString clipPath
+clipPath cPath =
+    attribute "clip-path" <| clipPathToString cPath
 
 
 {-| The `clipPathUnits` attribute defines the coordinate system for the contents
@@ -412,8 +412,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/clip-rule>
 
 -}
 clipRule : ClipRule -> Attribute msg
-clipRule clipRule =
-    attribute "clip-rule" <| clipRuleToString clipRule
+clipRule rule =
+    attribute "clip-rule" <| clipRuleToString rule
 
 
 {-| The `colorInterpolation` attribute specifies the color space for gradient
@@ -441,8 +441,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpola
 
 -}
 colorInterpolation : ColorInterpolation -> Attribute msg
-colorInterpolation colorInterpolation =
-    attribute "color-interpolation" <| colorInterpolationToString colorInterpolation
+colorInterpolation interpolation =
+    attribute "color-interpolation" <| colorInterpolationToString interpolation
 
 
 
@@ -461,8 +461,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-profile>
 
 -}
 colorProfile : ColorProfile -> Attribute msg
-colorProfile colorProfile =
-    attribute "color-profile" <| colorProfileToString colorProfile
+colorProfile profile =
+    attribute "color-profile" <| colorProfileToString profile
 
 
 {-| The colorRendering attribute provides a hint to the SVG user agent about
@@ -571,8 +571,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/cursor>
 
 -}
 cursor : Cursor -> Attribute msg
-cursor cursor =
-    attribute "cursor" <| cursorToString cursor
+cursor csor =
+    attribute "cursor" <| cursorToString csor
 
 
 {-| -}
@@ -656,8 +656,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/direction>
 
 -}
 direction : Direction -> Attribute msg
-direction direction =
-    attribute "direction" <| directionToString direction
+direction dir =
+    attribute "direction" <| directionToString dir
 
 
 {-| The `display` attribute lets you control the rendering of graphical or
@@ -675,8 +675,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/display>
 
 -}
 display : Display -> Attribute msg
-display display =
-    attribute "display" <| displayToString display
+display disp =
+    attribute "display" <| displayToString disp
 
 
 {-| The `dominantBaseline` attribute is used to determine or re-determine a
@@ -703,8 +703,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseli
 
 -}
 dominantBaseline : DominantBaseline -> Attribute msg
-dominantBaseline dominantBaseline =
-    attribute "dominant-baseline" <| dominantBaselineToString dominantBaseline
+dominantBaseline baseline =
+    attribute "dominant-baseline" <| dominantBaselineToString baseline
 
 
 {-| This attribute indicates the simple duration of the animation.
@@ -805,8 +805,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity>
 
 -}
 fillOpacity : Opacity -> Attribute msg
-fillOpacity opacity =
-    attribute "fill-opacity" <| opacityToString opacity
+fillOpacity opa =
+    attribute "fill-opacity" <| opacityToString opa
 
 
 {-| The fillRule attribute indicates how to determine what side of a path is
@@ -827,8 +827,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule>
 
 -}
 fillRule : FillRule -> Attribute msg
-fillRule fillRule =
-    attribute "fill-rule" <| fillRuleToString fillRule
+fillRule rule =
+    attribute "fill-rule" <| fillRuleToString rule
 
 
 {-| The filter attribute defines the filter effects define by the `filter`
@@ -888,8 +888,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjus
 
 -}
 fontSizeAdjust : FontSizeAdjust -> Attribute msg
-fontSizeAdjust fontSizeAdjust =
-    attribute "font-size-adjust" <| fontSizeAdjustToString fontSizeAdjust
+fontSizeAdjust adjust =
+    attribute "font-size-adjust" <| fontSizeAdjustToString adjust
 
 
 {-| The `fontStretch` attribute indicates the desired amount of condensing or
@@ -905,8 +905,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch>
 
 -}
 fontStretch : FontStretch -> Attribute msg
-fontStretch fontStretch =
-    attribute "font-stretch" <| fontStretchToString fontStretch
+fontStretch stretch =
+    attribute "font-stretch" <| fontStretchToString stretch
 
 
 {-| The `fontStyle` attribute specifies whether the text is to be rendered using
@@ -922,8 +922,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style>
 
 -}
 fontStyle : FontStyle -> Attribute msg
-fontStyle fontStyle =
-    attribute "font-style" <| fontStyleToString fontStyle
+fontStyle fStyle =
+    attribute "font-style" <| fontStyleToString fStyle
 
 
 {-| The `fontVariant` attribute indicates whether the text is to be rendered
@@ -940,8 +940,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant>
 
 -}
 fontVariant : FontVariant -> Attribute msg
-fontVariant fontVariant =
-    attribute "font-variant" <| fontVariantToString fontVariant
+fontVariant variant =
+    attribute "font-variant" <| fontVariantToString variant
 
 
 {-| The `fontWeight` attribute refers to the boldness or lightness of the glyphs
@@ -957,8 +957,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight>
 
 -}
 fontWeight : FontWeight -> Attribute msg
-fontWeight fontWeight =
-    attribute "font-weight" <| fontWeightToString fontWeight
+fontWeight fWeight =
+    attribute "font-weight" <| fontWeightToString fWeight
 
 
 {-| -}
@@ -1195,8 +1195,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kerning>
 
 -}
 kerning : Kerning -> Attribute msg
-kerning k =
-    attribute "kerning" <| kerningToString k
+kerning kning =
+    attribute "kerning" <| kerningToString kning
 
 
 {-| The keySplines attribute define a set of Bézier control points associated
@@ -1303,8 +1303,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerHeight>
 
 -}
 markerHeight : Length -> Attribute msg
-markerHeight height =
-    attribute "markerHeight" <| lengthToString height
+markerHeight mHeight =
+    attribute "markerHeight" <| lengthToString mHeight
 
 
 {-| -}
@@ -1349,8 +1349,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/markerWidth>
 
 -}
 markerWidth : Length -> Attribute msg
-markerWidth width =
-    attribute "markerWidth" <| lengthToString width
+markerWidth mWidth =
+    attribute "markerWidth" <| lengthToString mWidth
 
 
 {-| -}
@@ -1623,8 +1623,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points>
 points : List ( number, number ) -> Attribute msg
 points pts =
     let
-        pointToString ( x, y ) =
-            toString x ++ ", " ++ toString y
+        pointToString ( xx, yy ) =
+            toString xx ++ ", " ++ toString yy
     in
     attribute "points" <| String.join " " (List.map pointToString pts)
 
@@ -1705,8 +1705,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/repeatCount>
 
 -}
 repeatCount : RepeatCount -> Attribute msg
-repeatCount repeatCount =
-    attribute "repeatCount" <| repeatCountToString repeatCount
+repeatCount count =
+    attribute "repeatCount" <| repeatCountToString count
 
 
 {-| This attribute specifies the total duration for repeat.
@@ -1766,8 +1766,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/restart>
 
 -}
 restart : Restart -> Attribute msg
-restart restart =
-    attribute "restart" <| restartToString restart
+restart rstart =
+    attribute "restart" <| restartToString rstart
 
 
 
@@ -1808,8 +1808,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shapeRendering>
 
 -}
 shapeRendering : ShapeRendering -> Attribute msg
-shapeRendering shapeRendering =
-    attribute "shape-rendering" <| shapeRenderingToString shapeRendering
+shapeRendering rendering =
+    attribute "shape-rendering" <| shapeRenderingToString rendering
 
 
 {-| -}
@@ -1910,8 +1910,8 @@ string =
 
 {-| -}
 stroke : Color -> Attribute msg
-stroke color =
-    attribute "stroke" (colorToCssRgba color)
+stroke col =
+    attribute "stroke" (colorToCssRgba col)
 
 
 {-| -}
@@ -2215,8 +2215,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox>
 
 -}
 viewBox : number -> number -> number -> number -> Attribute a
-viewBox minX minY width height =
-    [ minX, minY, width, height ]
+viewBox minX minY vWidth vHeight =
+    [ minX, minY, vWidth, vHeight ]
         |> List.map toString
         |> String.join " "
         |> attribute "viewBox"
