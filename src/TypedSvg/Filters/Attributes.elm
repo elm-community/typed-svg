@@ -109,12 +109,12 @@ performed without specifying a complete matrix.
 
 Used by Elements: Filters.colorMatrix
 
-See: [[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 colorMatrixType : ColorMatrixType -> Attribute msg
-colorMatrixType colorMatrixType =
-    attribute "type" <| colorMatrixTypeToString colorMatrixType
+colorMatrixType cmType =
+    attribute "type" <| colorMatrixTypeToString cmType
 
 
 {-| Contents of `colorMatrixValues` depends on the value of the attribute
@@ -142,8 +142,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator>
 
 -}
 compositeOperator : CompositeOperator -> Attribute msg
-compositeOperator compositeOperator =
-    attribute "operator" <| compositeOperatorToString compositeOperator
+compositeOperator operator =
+    attribute "operator" <| compositeOperatorToString operator
 
 
 {-| The `diffuseConstant` attribute represant the kd value in the Phong lighting
@@ -193,8 +193,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/edgeMode>
 
 -}
 edgeMode : EdgeMode -> Attribute msg
-edgeMode edgeMode =
-    attribute "edgeMode" <| edgeModeToString edgeMode
+edgeMode eMode =
+    attribute "edgeMode" <| edgeModeToString eMode
 
 
 {-| The elevation attribute represents the direction angle for a light source
@@ -254,8 +254,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-color>
 
 -}
 floodColor : FloodColor -> Attribute msg
-floodColor floodColor =
-    attribute "floodColor" <| floodColorToString floodColor
+floodColor col =
+    attribute "floodColor" <| floodColorToString col
 
 
 {-| The `floodOpacity` attribute indicates the opacity value to use across the
@@ -440,8 +440,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mode>
 
 -}
 mode : Mode -> Attribute msg
-mode mode =
-    attribute "mode" <| modeToString mode
+mode md =
+    attribute "mode" <| modeToString md
 
 
 {-| `morphologyOperator` defines the compositing operation that is to be performed
@@ -453,8 +453,8 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator>
 
 -}
 morphologyOperator : MorphologyOperator -> Attribute msg
-morphologyOperator morphologyOperator =
-    attribute "operator" <| morphologyOperatorToString morphologyOperator
+morphologyOperator operator =
+    attribute "operator" <| morphologyOperatorToString operator
 
 
 {-| The `numOctaves` parameter for the noise function of the
@@ -702,12 +702,12 @@ targetY yPosition =
 
 Used by Elements: Filters.funcR, Filters.funcG, Filters.funcA, Filters.funcB
 
-See: [[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 funcType : FuncType -> Attribute msg
-funcType funcType =
-    attribute "type" <| funcTypeToString funcType
+funcType fType =
+    attribute "type" <| funcTypeToString fType
 
 
 {-| Indicates whether the filter primitive should perform a noise or turbulence
@@ -715,12 +715,12 @@ function.
 
 Used by Elements: Filters.turbulence
 
-See: [[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 turbulenceType : TurbulenceType -> Attribute msg
-turbulenceType turbulenceType =
-    attribute "type" <| turbulenceTypeToString turbulenceType
+turbulenceType tType =
+    attribute "type" <| turbulenceTypeToString tType
 
 
 {-| The `z` attribute difines the location along the Z-axis for a light source

@@ -46,14 +46,14 @@ information out of the event object. If the decoder succeeds, it will produce
 a message and route it to your `update` function.
 
 -}
-on : String -> Json.Decoder msg -> Attribute msg
+on : String -> VirtualDom.Handler msg -> VirtualDom.Attribute msg
 on =
     VirtualDom.on
 
 
 simpleOn : String -> msg -> Attribute msg
 simpleOn name =
-    \msg -> on name (Json.succeed msg)
+    \msg -> on name (VirtualDom.Normal (Json.succeed msg))
 
 
 
