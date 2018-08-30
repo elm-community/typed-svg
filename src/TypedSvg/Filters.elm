@@ -1,4 +1,7 @@
-module TypedSvg.Filters exposing (..)
+module TypedSvg.Filters exposing
+    ( blend, colorMatrix, componentTransfer, composite, convolveMatrix, diffuseLighting, displacementMap, flood, funcA, funcB, funcG, funcR, gaussianBlur, image, merge, mergeNode, morphology, offset, specularLighting, tile, turbulence
+    , distantLight, pointLight, spotLight
+    )
 
 {-| SVG Filter Elements
 
@@ -11,7 +14,7 @@ module TypedSvg.Filters exposing (..)
             [ Fe.blend [in InSourceGraphic, in2 InFillPaint, mode ModeMultiply] []
             ]
 
-@docs blend, colorMatrix, componentTransfer, composite,convolveMatrix, diffuseLighting, displacementMap, flood, funcA,funcB, funcG, funcR, gaussianBlur, image, merge, mergeNode,morphology, offset, specularLighting, tile, turbulence
+@docs blend, colorMatrix, componentTransfer, composite, convolveMatrix, diffuseLighting, displacementMap, flood, funcA, funcB, funcG, funcR, gaussianBlur, image, merge, mergeNode, morphology, offset, specularLighting, tile, turbulence
 
 
 # Light source elements
@@ -37,6 +40,7 @@ import TypedSvg.Core exposing (Attribute, Svg, node)
     Presentation Attributes
 
     See: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feBlend
+
 -}
 blend : List (Attribute msg) -> List (Svg msg) -> Svg msg
 blend =
@@ -54,6 +58,7 @@ blend =
     Global Attributes: id, class, height, result, style, tabindex, width, x, y
 
     Presentation Attributes
+
 -}
 colorMatrix : List (Attribute msg) -> List (Svg msg) -> Svg msg
 colorMatrix =
@@ -75,6 +80,7 @@ colorMatrix =
     Global Attributes: id, class, height, result, style, tabindex, width, x, y
 
     Presentation Attributes
+
 -}
 componentTransfer : List (Attribute msg) -> List (Svg msg) -> Svg msg
 componentTransfer =
@@ -112,6 +118,7 @@ componentTransfer =
     Global Attributes: id, class, height, result, style, tabindex, width, x, y
 
     Presentation Attributes
+
 -}
 composite : List (Attribute msg) -> List (Svg msg) -> Svg msg
 composite =
@@ -132,6 +139,7 @@ composite =
     Global Attributes: id, class, height, result, style, tabindex, width, x, y
 
     Presentation Attributes
+
 -}
 convolveMatrix : List (Attribute msg) -> List (Svg msg) -> Svg msg
 convolveMatrix =

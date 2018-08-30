@@ -1,32 +1,52 @@
-module TypedSvg.TypesToStrings exposing (..)
+module TypedSvg.TypesToStrings exposing
+    ( accumulateToString, additiveToString, alignToString
+    , alignmentBaselineToString, anchorAlignmentToString
+    , animateTransformTypeToString, attributeTypeToString
+    , baselineShiftToString, bezierAnchorPointToString, boolToString
+    , calcModeToString, clipPathToString, clipRuleToString, clipToString
+    , colorInterpolationToString, colorMatrixTypeToString
+    , colorProfileToString, compositeOperatorToString, coordinateSystemToString
+    , cursorToString, directionToString, displayToString
+    , dominantBaselineToString, durationToString, edgeModeToString
+    , fillRuleToString, filterToString, floodColorToString
+    , fontSizeAdjustToString, fontStretchToString, fontStyleToString
+    , fontVariantToString, fontWeightToString, funcTypeToString, inValueToString
+    , kerningToString, lengthAdjustToString, lengthToString
+    , markerCoordinateSystemToString, meetOrSliceToString, modeToString
+    , morphologyOperatorToString, opacityToString
+    , renderingToString, repeatCountToString, restartToString, scaleToString
+    , shapeRenderingToString, timingValueAsString, transformToString
+    , turbulenceTypeToString, yesNoToString
+    , fillToString, strokeLinecapToString, strokeLinejoinToString, textRenderingToString
+    )
 
 {-|
 
 
 # Converts each type from TypedSvg.Types to its corresponding string
 
-@docs accumulateToString, additiveToString, alignToString,
-alignmentBaselineToString, anchorAlignmentToString,
-animateTransformTypeToString, attributeTypeToString,
-baselineShiftToString, bezierAnchorPointToString, boolToString,
-calcModeToString, clipPathToString, clipRuleToString, clipToString,
-cm, colorInterpolationToString, colorMatrixTypeToString,
-colorProfileToString, compositeOperatorToString, coordinateSystemToString,
-cursorToString, directionToString, displayToString,
-dominantBaselineToString, durationToString, edgeModeToString, em, ex,
-fillRuleToString, filterToString, floodColorToString,
-fontSizeAdjustToString, fontStretchToString, fontStyleToString,
-fontVariantToString, fontWeightToString, funcTypeToString, inValueToString,
-inch, kerningToString, lengthAdjustToString, lengthToString,
-markerCoordinateSystemToString, meetOrSliceToString, mm, modeToString,
-morphologyOperatorToString, num, opacityToString, pc, percent, pt, px,
-renderingToString, repeatCountToString, restartToString, scaleToString,
-shapeRenderingToString, timingValueAsString, transformToString,
-turbulenceTypeToString, yesNoToString
+@docs accumulateToString, additiveToString, alignToString
+@docs alignmentBaselineToString, anchorAlignmentToString
+@docs animateTransformTypeToString, attributeTypeToString
+@docs baselineShiftToString, bezierAnchorPointToString, boolToString
+@docs calcModeToString, clipPathToString, clipRuleToString, clipToString
+@docs cm, colorInterpolationToString, colorMatrixTypeToString
+@docs colorProfileToString, compositeOperatorToString, coordinateSystemToString
+@docs cursorToString, directionToString, displayToString
+@docs dominantBaselineToString, durationToString, edgeModeToString, em, ex
+@docs fillRuleToString, filterToString, floodColorToString
+@docs fontSizeAdjustToString, fontStretchToString, fontStyleToString
+@docs fontVariantToString, fontWeightToString, funcTypeToString, inValueToString
+@docs inch, kerningToString, lengthAdjustToString, lengthToString
+@docs markerCoordinateSystemToString, meetOrSliceToString, mm, modeToString
+@docs morphologyOperatorToString, num, opacityToString, pc, percent, pt, px
+@docs renderingToString, repeatCountToString, restartToString, scaleToString
+@docs shapeRenderingToString, timingValueAsString, transformToString
+@docs turbulenceTypeToString, yesNoToString
 
 -}
 
-import Color.Convert exposing (colorToCssRgba)
+import Color exposing (Color, colorToCssRgba)
 import TypedSvg.Types exposing (..)
 
 
@@ -67,7 +87,7 @@ alignToString align =
             "none"
 
         Align x y ->
-            "x" ++ (scaleToString x) ++ "Y" ++ (scaleToString y)
+            "x" ++ scaleToString x ++ "Y" ++ scaleToString y
 
 
 alignmentBaselineToString : AlignmentBaseline -> String
@@ -177,18 +197,18 @@ baselineShiftToString baselineShift =
             "sub"
 
         ShiftPercentage value ->
-            (toString value) ++ "%"
+            String.fromFloat value ++ "%"
 
         ShiftLength length ->
-            (lengthToString length)
+            lengthToString length
 
         ShiftInherit ->
             "inherit"
 
 
-bezierAnchorPointToString : ( number, number, number, number ) -> String
-bezierAnchorPointToString ( x1, y1, x2, y2 ) =
-    List.map toString [ x1, y1, x2, y2 ] |> String.join " "
+bezierAnchorPointToString : { x1 : Float, y1 : Float, x2 : Float, y2 : Float } -> String
+bezierAnchorPointToString { x1, y1, x2, y2 } =
+    List.map String.fromFloat [ x1, y1, x2, y2 ] |> String.join " "
 
 
 calcModeToString : CalcMode -> String
@@ -218,13 +238,13 @@ clipToString clip =
 
         ClipShape top right bottom left ->
             "rect("
-                ++ (toString top)
+                ++ lengthToString top
                 ++ " "
-                ++ (toString right)
+                ++ lengthToString right
                 ++ " "
-                ++ (toString bottom)
+                ++ lengthToString bottom
                 ++ " "
-                ++ (toString left)
+                ++ lengthToString left
                 ++ ")"
 
 
@@ -587,7 +607,7 @@ fontSizeAdjustToString fontSizeAdjust =
             "inherit"
 
         FontSizeAdjust aspect ->
-            toString aspect
+            String.fromFloat aspect
 
 
 fontStretchToString : FontStretch -> String
@@ -670,24 +690,24 @@ fontWeightToString fontWeight =
             (((weight + 50) // 100) * 100)
                 |> clamp 100 900
     in
-        case fontWeight of
-            FontWeightNormal ->
-                "normal"
+    case fontWeight of
+        FontWeightNormal ->
+            "normal"
 
-            FontWeightBold ->
-                "bold"
+        FontWeightBold ->
+            "bold"
 
-            FontWeightBolder ->
-                "bolder"
+        FontWeightBolder ->
+            "bolder"
 
-            FontWeightLighter ->
-                "lighter"
+        FontWeightLighter ->
+            "lighter"
 
-            FontWeightInherit ->
-                "inherit"
+        FontWeightInherit ->
+            "inherit"
 
-            FontWeight weight ->
-                fontWeightClamped weight |> toString
+        FontWeight weight ->
+            fontWeightClamped weight |> String.fromInt
 
 
 funcTypeToString : FuncType -> String
@@ -748,34 +768,34 @@ lengthToString : Length -> String
 lengthToString length =
     case length of
         Cm x ->
-            toString x ++ "cm"
+            String.fromFloat x ++ "cm"
 
         Em x ->
-            toString x ++ "em"
+            String.fromFloat x ++ "em"
 
         Ex x ->
-            toString x ++ "ex"
+            String.fromFloat x ++ "ex"
 
         In x ->
-            toString x ++ "in"
+            String.fromFloat x ++ "in"
 
         Mm x ->
-            toString x ++ "mm"
+            String.fromFloat x ++ "mm"
 
         Num x ->
-            toString x
+            String.fromFloat x
 
         Pc x ->
-            toString x ++ "pc"
+            String.fromFloat x ++ "pc"
 
         Percent x ->
-            toString x ++ "%"
+            String.fromFloat x ++ "%"
 
         Pt x ->
-            toString x ++ "pt"
+            String.fromFloat x ++ "pt"
 
         Px x ->
-            toString x ++ "px"
+            String.fromFloat x ++ "px"
 
 
 lengthAdjustToString : LengthAdjust -> String
@@ -841,7 +861,7 @@ opacityToString : Opacity -> String
 opacityToString opacity =
     case opacity of
         Opacity n ->
-            (toString n)
+            String.fromFloat n
 
         OpacityInherit ->
             "inherit"
@@ -867,7 +887,7 @@ repeatCountToString : RepeatCount -> String
 repeatCountToString repeatCount =
     case repeatCount of
         RepeatCount count ->
-            toString count
+            String.fromFloat count
 
         RepeatIndefinite ->
             "indefinite"
@@ -976,28 +996,28 @@ transformToString xform =
             String.concat
                 [ name
                 , "("
-                , String.join " " (List.map toString args)
+                , String.join " " (List.map String.fromFloat args)
                 , ")"
                 ]
     in
-        case xform of
-            Matrix a b c d e f ->
-                tr "matrix" [ a, b, c, d, e, f ]
+    case xform of
+        Matrix a b c d e f ->
+            tr "matrix" [ a, b, c, d, e, f ]
 
-            Rotate a x y ->
-                tr "rotate" [ a, x, y ]
+        Rotate a x y ->
+            tr "rotate" [ a, x, y ]
 
-            Scale x y ->
-                tr "scale" [ x, y ]
+        Scale x y ->
+            tr "scale" [ x, y ]
 
-            SkewX x ->
-                tr "skewX" [ x ]
+        SkewX x ->
+            tr "skewX" [ x ]
 
-            SkewY y ->
-                tr "skewY" [ y ]
+        SkewY y ->
+            tr "skewY" [ y ]
 
-            Translate x y ->
-                tr "translate" [ x, y ]
+        Translate x y ->
+            tr "translate" [ x, y ]
 
 
 timingValueAsString : TimingValue -> String

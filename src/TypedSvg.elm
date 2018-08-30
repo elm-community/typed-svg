@@ -1,50 +1,14 @@
-module TypedSvg
-    exposing
-        ( svg
-        , circle
-        , ellipse
-        , image
-        , line
-        , path
-        , polygon
-        , polyline
-        , rect
-        , use
-        , animate
-        , animateColor
-        , animateMotion
-        , animateTransform
-        , mpath
-        , set
-        , desc
-        , metadata
-        , title
-        , a
-        , defs
-        , g
-        , marker
-        , mask
-        , pattern
-        , switch
-        , symbol
-        , glyph
-        , glyphRef
-        , textPath
-        , text_
-        , tref
-        , tspan
-        , font
-        , linearGradient
-        , radialGradient
-        , stop
-        , clipPath
-        , colorProfile
-        , cursor
-        , filter
-        , script
-        , style
-        , view
-        )
+module TypedSvg exposing
+    ( svg
+    , circle, ellipse, image, line, path, polygon, polyline, rect, use
+    , animate, animateColor, animateMotion, animateTransform, mpath, set
+    , desc, metadata, title
+    , a, defs, g, marker, mask, pattern, switch, symbol
+    , glyph, glyphRef, textPath, text_, tref, tspan
+    , font
+    , linearGradient, radialGradient, stop
+    , clipPath, colorProfile, cursor, filter, script, style, view
+    )
 
 {-|
 
@@ -106,7 +70,7 @@ See `TypedSvg.Deprecated` (e.g. `altGlyph` etc.)
 -}
 
 import Html
-import TypedSvg.Core exposing (Svg, Attribute, node)
+import TypedSvg.Core exposing (Attribute, Svg, node)
 
 
 {-| The root `svg` node for any SVG scene. This example shows a scene
@@ -324,7 +288,7 @@ polygon =
 straight lines connecting several points. Typically a polyline is used to
 create open shapes.
 
-    polyline [ fill FillNone, stroke Color.black, points [(20,100), (40,60), (70,80), (100,20)] ] []
+    polyline [ fill FillNone, stroke Color.black, points [ ( 20, 100 ), ( 40, 60 ), ( 70, 80 ), ( 100, 20 ) ] ] []
 
 -}
 polyline : List (Attribute msg) -> List (Svg msg) -> Svg msg

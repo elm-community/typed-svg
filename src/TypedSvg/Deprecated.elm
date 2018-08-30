@@ -9,7 +9,7 @@ module TypedSvg.Deprecated exposing (altGlyph, altGlyphDef, altGlyphItem)
 
 -}
 
-import TypedSvg.Core exposing (Svg, Attribute, node)
+import TypedSvg.Core exposing (Attribute, Svg, node)
 
 
 {-| -}

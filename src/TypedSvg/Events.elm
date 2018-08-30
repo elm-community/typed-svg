@@ -1,26 +1,9 @@
-module TypedSvg.Events
-    exposing
-        ( on
-        , onBegin
-        , onEnd
-        , onRepeat
-        , onAbort
-        , onError
-        , onResize
-        , onScroll
-        , onLoad
-        , onUnload
-        , onZoom
-        , onActivate
-        , onClick
-        , onFocusIn
-        , onFocusOut
-        , onMouseDown
-        , onMouseMove
-        , onMouseOut
-        , onMouseOver
-        , onMouseUp
-        )
+module TypedSvg.Events exposing
+    ( onBegin, onEnd, onRepeat
+    , onAbort, onError, onResize, onScroll, onLoad, onUnload, onZoom
+    , onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp
+    , on
+    )
 
 {-|
 
@@ -37,7 +20,7 @@ module TypedSvg.Events
 
 # Graphical event attributes
 
-@docs onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove,onMouseOut, onMouseOver, onMouseUp
+@docs onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp
 
 
 # Custom Events
@@ -63,14 +46,14 @@ information out of the event object. If the decoder succeeds, it will produce
 a message and route it to your `update` function.
 
 -}
-on : String -> Json.Decoder msg -> Attribute msg
+on : String -> VirtualDom.Handler msg -> VirtualDom.Attribute msg
 on =
     VirtualDom.on
 
 
 simpleOn : String -> msg -> Attribute msg
 simpleOn name =
-    \msg -> on name (Json.succeed msg)
+    \msg -> on name (VirtualDom.Normal (Json.succeed msg))
 
 
 
