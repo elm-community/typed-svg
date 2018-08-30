@@ -17,6 +17,7 @@ module TypedSvg.TypesToStrings exposing
     , renderingToString, repeatCountToString, restartToString, scaleToString
     , shapeRenderingToString, timingValueAsString, transformToString
     , turbulenceTypeToString, yesNoToString
+    , fillToString, strokeLinecapToString, strokeLinejoinToString, textRenderingToString
     )
 
 {-|
