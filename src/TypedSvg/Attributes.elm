@@ -4,8 +4,6 @@ module TypedSvg.Attributes exposing
     , method, min, name, noFill, offset, opacity, orient, orientation, origin, overflow, overlinePosition, overlineThickness, panose1, path, pathLength, patternContentUnits, patternTransform, patternUnits, pointOrder, pointerEvents, points, preserveAspectRatio, primitiveUnits, r, refX, refY, renderingIntent, repeatCount, repeatDur, requiredExtensions, requiredFeatures, restart, rotate, rx, ry, shapeRendering, slope, spacing, specularConstant, specularExponent, speed, spreadMethod, startOffset
     , stdDeviation, stemh, stemv, stitchTiles, stopColor, stopOpacity, strikethroughPosition, strikethroughThickness, string, stroke, strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, style, systemLanguage, tableValues, target, textAnchor, textDecoration, textLength, textRendering, title, to, transform, u1, u2, underlinePosition, underlineThickness, unicode, unicodeBidi, unicodeRange, unitsPerEm, vAlphabetic, vHanging, vIdeographic
     , vMathematical, version, vertAdvY, vertOriginX, vertOriginY, viewBox, viewTarget, visibility, width, widths, wordSpacing, writingMode, x, x1, x2, xChannelSelector, xHeight, xlinkActuate, xlinkArcrole, xlinkHref, xlinkRole, xlinkShow, xlinkTitle, xlinkType, xmlBase, xmlLang, xmlSpace, y, y1, y2, yChannelSelector, zoomAndPan
-    , alignmentBaseline, baselineShift, clipPath, clipRule, clip, colorInterpolation, colorProfile, colorRendering, color, cursor, direction, display, dominantBaseline, enableBackground, fillOpacity, fillRule, fill, filter, fontFamily, fontSizeAdjust, fontSize, fontStretch, fontStyle, fontVariant, fontWeight, glyphOrientationHorizontal, glyphOrientationVertical, imageRendering, kerning, letterSpacing, lightingColor, markerEnd, markerMid, markerStart, mask, opacity, overflow, pointerEvents
-    , shapeRendering, stopColor, stopOpacity, strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, stroke, textAnchor, textDecoration, textRendering, unicodeBidi, visibility, wordSpacing, writingMode
     )
 
 {-| Typed SVG Attributes
@@ -1614,7 +1612,7 @@ Used by Elements: polyline, polygon
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points>
 
 -}
-points : List ( number, Float ) -> Attribute msg
+points : List ( Float, Float ) -> Attribute msg
 points pts =
     let
         pointToString ( xx, yy ) =
