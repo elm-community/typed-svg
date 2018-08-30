@@ -1,6 +1,6 @@
 module TypedSvg.Core exposing
     ( Svg, text, node, map, foreignObject
-    , Attribute, attribute, attributeNS, svgNamespace
+    , Attribute, attribute, attributeNS
     )
 
 {-|
@@ -33,12 +33,6 @@ type alias Svg msg =
 -}
 type alias Attribute msg =
     VirtualDom.Attribute msg
-
-
-{-| -}
-svgNamespace : Attribute msg
-svgNamespace =
-    VirtualDom.property "namespace" (Json.string "http://www.w3.org/2000/svg")
 
 
 {-| Create any SVG node. To create a `<rect>` helper function, you would write:
