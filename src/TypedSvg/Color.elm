@@ -66,9 +66,12 @@ These colors are a compatible series of shades of grey, fitting nicely
 with the Tango palette.
 
 @docs white, lightGrey, grey, darkGrey, lightCharcoal, charcoal, darkCharcoal, black
-@docs These are identical to the *grey* versions. It seems the spelling is regional, but
-@docs that has never helped me remember which one I should be writing.
 @docs lightGray, gray, darkGray
+
+
+### Color space conversion.
+
+@docs colorToCssRgba
 
 -}
 
