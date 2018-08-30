@@ -25,13 +25,13 @@ Used by Elements: Filters.distantLight
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/azimuth>
 
 -}
-azimuth : number -> Attribute msg
+azimuth : Float -> Attribute msg
 azimuth angle =
-    attribute "azimuth" <| toString angle
+    attribute "azimuth" <| String.fromFloat angle
 
 
 {-| The baseFrequency attribute represents the frequency parameter for the noise
-function of the `Filters.turbulence` primitive. The first number represents
+function of the `Filters.turbulence` primitive. The first Float represents
 a base frequency in the X direction and the second value represents a base
 frequency in the Y direction.
 
@@ -45,14 +45,14 @@ Used by Elements: Filters.turbulence
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseFrequency>
 
 -}
-baseFrequency : number -> number -> Attribute msg
+baseFrequency : Float -> Float -> Attribute msg
 baseFrequency xFrequency yFrequency =
-    attribute "baseFrequency" <| toString xFrequency ++ " " ++ toString yFrequency
+    attribute "baseFrequency" <| String.fromFloat xFrequency ++ " " ++ String.fromFloat yFrequency
 
 
 {-| The bias attribute shifts the range of a filter. After applying the
 kernelMatrix of the `Filters.convolveMatrix` element to the input image to
-yield a number and applying the divisor attribute, the bias attribute is
+yield a Float and applying the divisor attribute, the bias attribute is
 added to each component. This allows representation of values that would
 otherwise be clamped to 0 or 1.
 
@@ -64,9 +64,9 @@ Used by Elements: Filters.convolveMatrix
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/bias>
 
 -}
-bias : number -> Attribute msg
+bias : Float -> Attribute msg
 bias rangeShift =
-    attribute "bias" <| toString rangeShift
+    attribute "bias" <| String.fromFloat rangeShift
 
 
 {-| The `colorInterpolationFilters` attribute specifies the color space for
@@ -103,7 +103,7 @@ performed without specifying a complete matrix.
 
 Used by Elements: Filters.colorMatrix
 
-See: [[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 colorMatrixType : ColorMatrixType -> Attribute msg
@@ -151,13 +151,13 @@ Used by Elements: Filters.diffuseLighting
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/diffuseConstant>
 
 -}
-diffuseConstant : number -> Attribute msg
+diffuseConstant : Float -> Attribute msg
 diffuseConstant kdValue =
-    attribute "diffuseConstant" <| toString kdValue
+    attribute "diffuseConstant" <| String.fromFloat kdValue
 
 
 {-| After applying the `kernelMatrix` of the `Filters.convolveMatrix` element to
-the input image to yield a number, that number is divided by the value given to
+the input image to yield a number, that Float is divided by the value given to
 the divisor attribute to yield the final destination color value. A divisor
 that is the sum of all the matrix values tends to have an evening effect on
 the overall color intensity of the result.
@@ -172,9 +172,9 @@ Used by Elements: Filters.convolveMatrix
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/divisor>
 
 -}
-divisor : number -> Attribute msg
+divisor : Float -> Attribute msg
 divisor value =
-    attribute "divisor" <| toString value
+    attribute "divisor" <| String.fromFloat value
 
 
 {-| The edgeMode attribute determines how to extend the input image as necessary
@@ -200,9 +200,9 @@ Used by Elements: Filters.distantLight
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/elevation>
 
 -}
-elevation : number -> Attribute msg
+elevation : Float -> Attribute msg
 elevation angle =
-    attribute "elevation" <| toString angle
+    attribute "elevation" <| String.fromFloat angle
 
 
 {-| A `filter` element can define a region to which a given filter effect
@@ -216,9 +216,9 @@ Used by Elements: Filters.filter
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/filterRes>
 
 -}
-filterRes : number -> number -> Attribute msg
+filterRes : Float -> Float -> Attribute msg
 filterRes xPixels yPixels =
-    attribute "filterRes" <| toString xPixels ++ " " ++ toString yPixels
+    attribute "filterRes" <| String.fromFloat xPixels ++ " " ++ String.fromFloat yPixels
 
 
 {-| The `filterUnits` attribute defines the coordinate system for attributes
@@ -317,9 +317,9 @@ Used by Elements: Filters.composite
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k1>
 
 -}
-k1 : number -> Attribute msg
+k1 : Float -> Attribute msg
 k1 value =
-    attribute "k1" <| toString value
+    attribute "k1" <| String.fromFloat value
 
 
 {-| The k2 attribute defines one of the values to be used within the arithmetic
@@ -332,9 +332,9 @@ Used by Elements: Filters.composite
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k2>
 
 -}
-k2 : number -> Attribute msg
+k2 : Float -> Attribute msg
 k2 value =
-    attribute "k2" <| toString value
+    attribute "k2" <| String.fromFloat value
 
 
 {-| The k3 attribute defines one of the values to be used within the arithmetic
@@ -347,9 +347,9 @@ Used by Elements: Filters.composite
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k3>
 
 -}
-k3 : number -> Attribute msg
+k3 : Float -> Attribute msg
 k3 value =
-    attribute "k3" <| toString value
+    attribute "k3" <| String.fromFloat value
 
 
 {-| The k4 attribute defines one of the values to be used within the arithmetic
@@ -362,15 +362,15 @@ Used by Elements: Filters.composite
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/k4>
 
 -}
-k4 : number -> Attribute msg
+k4 : Float -> Attribute msg
 k4 value =
-    attribute "k4" <| toString value
+    attribute "k4" <| String.fromFloat value
 
 
 {-| The `order` attribute defines the list of numbers that makes up the kernel
 matrix for the `Filters.convolveMatrix` element.
 
-The number of entries in the list must be equal to `orderX` x `orderY`, as
+The Float of entries in the list must be equal to `orderX` x `orderY`, as
 defined in the `order` attribute.
 
 Used by Elements: Filters.convolveMatrix
@@ -378,9 +378,9 @@ Used by Elements: Filters.convolveMatrix
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelMatrix>
 
 -}
-kernelMatrix : List number -> Attribute msg
+kernelMatrix : List Float -> Attribute msg
 kernelMatrix numberList =
-    attribute "kernelMatrix" (String.join " " (List.map toString numberList))
+    attribute "kernelMatrix" (String.join " " (List.map String.fromFloat numberList))
 
 
 {-| The `kernelUnitLength` attribute has two meaning based on the context it's
@@ -402,9 +402,9 @@ Filters.specularLighting
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/kernelUnitLength>
 
 -}
-kernelUnitLength : number -> number -> Attribute msg
+kernelUnitLength : Float -> Float -> Attribute msg
 kernelUnitLength dx dy =
-    attribute "kernelUnitLength" <| toString dx ++ " " ++ toString dy
+    attribute "kernelUnitLength" <| String.fromFloat dx ++ " " ++ String.fromFloat dy
 
 
 {-| The limitingConeAngle attribute represents the angle in degrees between
@@ -420,9 +420,9 @@ Used by Elements: Filters.spotlight
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/limitingConeAngle>
 
 -}
-limitingConeAngle : number -> Attribute msg
-limitingConeAngle number =
-    attribute "limitingConeAngle" <| toString number
+limitingConeAngle : Float -> Attribute msg
+limitingConeAngle num =
+    attribute "limitingConeAngle" <| String.fromFloat num
 
 
 {-| The `mode` attribute defines the blending mode on the `Filters.blend` filter
@@ -464,15 +464,15 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/>
 -}
 numOctaves : Int -> Attribute msg
 numOctaves int =
-    attribute "numOctaves" <| toString int
+    attribute "numOctaves" <| String.fromInt int
 
 
 {-| The order attribute indicates the size of the matrix to be used by an
 `Filters.convolveMatrix` element.
 
 The values provided must be integers greater than zero. The first number,
-`orderX`, indicates the number of columns in the matrix. The second number,
-`orderY`, indicates the number of rows in the matrix.
+`orderX`, indicates the Float of columns in the matrix. The second number,
+`orderY`, indicates the Float of rows in the matrix.
 
 A typical value is order="3". It is recommended that only small values
 (e.g., 3) be used; higher values may result in very high CPU overhead and
@@ -486,9 +486,9 @@ Used by Elements: Filters.convolveMatrix
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/order>
 
 -}
-order : number -> number -> Attribute msg
+order : Float -> Float -> Attribute msg
 order orderX orderY =
-    attribute "order" <| toString orderX ++ " " ++ toString orderY
+    attribute "order" <| String.fromFloat orderX ++ " " ++ String.fromFloat orderY
 
 
 {-| The `pointsAtX` attribute represent the X location in the coordinate system
@@ -503,9 +503,9 @@ Used by Elements: Filters.spotlight
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtX>
 
 -}
-pointsAtX : number -> Attribute msg
+pointsAtX : Float -> Attribute msg
 pointsAtX lightSourceX =
-    attribute "pointsAtX" <| toString lightSourceX
+    attribute "pointsAtX" <| String.fromFloat lightSourceX
 
 
 {-| The `pointsAtY` attribute represent the Y location in the coordinate system
@@ -520,9 +520,9 @@ Used by Elements: Filters.spotlight
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtY>
 
 -}
-pointsAtY : number -> Attribute msg
+pointsAtY : Float -> Attribute msg
 pointsAtY lightSourceY =
-    attribute "pointsAtY" <| toString lightSourceY
+    attribute "pointsAtY" <| String.fromFloat lightSourceY
 
 
 {-| The `pointsAtZ` attribute represents the Z location in the coordinate system
@@ -537,9 +537,9 @@ Used by Elements: Filters.spotlight
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointsAtZ>
 
 -}
-pointsAtZ : number -> Attribute msg
+pointsAtZ : Float -> Attribute msg
 pointsAtZ lightSourceZ =
-    attribute "pointsAtZ" <| toString lightSourceZ
+    attribute "pointsAtZ" <| String.fromFloat lightSourceZ
 
 
 {-| The `preserveAlpha` attribute indicates how an `feConvolveMatrix` element
@@ -573,9 +573,9 @@ Used by Elements: Filters.morphology
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/radius>
 
 -}
-radius : number -> number -> Attribute msg
+radius : Float -> Float -> Attribute msg
 radius xRadius yRadius =
-    attribute "radius" <| toString xRadius ++ " " ++ toString yRadius
+    attribute "radius" <| String.fromFloat xRadius ++ " " ++ String.fromFloat yRadius
 
 
 {-| The `result` attribute defines the assigned name for this filter primitive.
@@ -617,12 +617,12 @@ Used by Elements: Filters.displacementMap
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/scale>
 
 -}
-scale : number -> Attribute msg
+scale : Float -> Attribute msg
 scale value =
-    attribute "scale" <| toString value
+    attribute "scale" <| String.fromFloat value
 
 
-{-| The seed attribute represents the starting number for the pseudo random
+{-| The seed attribute represents the starting Float for the pseudo random
 number generator of the `Filters.turbulence` primitive.
 
 If the attribute is not specified, then the effect is as if a value of 0
@@ -633,9 +633,9 @@ Used by Elements: Filters.turbulence
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/seed>
 
 -}
-seed : number -> Attribute msg
+seed : Float -> Attribute msg
 seed value =
-    attribute "seed" <| toString value
+    attribute "seed" <| String.fromFloat value
 
 
 {-| The `surfaceScale` attribute represents the height of the surface for a
@@ -649,14 +649,14 @@ Used by Elements: Filters.diffuseLighting, Filters.specularLighting
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/surfaceScale>
 
 -}
-surfaceScale : number -> Attribute msg
+surfaceScale : Float -> Attribute msg
 surfaceScale value =
-    attribute "surfaceScale" <| toString value
+    attribute "surfaceScale" <| String.fromFloat value
 
 
 {-| The `targetX` attribute determines the positioning in X of the convolution
 matrix relative to a given target pixel in the input image. The leftmost
-column of the matrix is column number zero. The value must be such that:
+column of the matrix is column Float zero. The value must be such that:
 
     0 <= targetX < orderX
 
@@ -668,14 +668,14 @@ Used by Elements: convolveMatrix
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetX>
 
 -}
-targetX : number -> Attribute msg
+targetX : Float -> Attribute msg
 targetX xPosition =
-    attribute "targetX" <| toString xPosition
+    attribute "targetX" <| String.fromFloat xPosition
 
 
 {-| The targetY attribute determines the positioning in Y of the convolution
 matrix relative to a given target pixel in the input image. The topmost
-row of the matrix is row number zero. The value must be such that:
+row of the matrix is row Float zero. The value must be such that:
 
     0 <= targetY < orderY
 
@@ -687,16 +687,16 @@ Used by Elements: Filters.convolveMatrix
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/targetY>
 
 -}
-targetY : number -> Attribute msg
+targetY : Float -> Attribute msg
 targetY yPosition =
-    attribute "targetY" <| toString yPosition
+    attribute "targetY" <| String.fromFloat yPosition
 
 
 {-| Indicates the type of component transfer function.
 
 Used by Elements: Filters.funcR, Filters.funcG, Filters.funcA, Filters.funcB
 
-See: [[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 funcType : FuncType -> Attribute msg
@@ -709,7 +709,7 @@ function.
 
 Used by Elements: Filters.turbulence
 
-See: [[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 turbulenceType : TurbulenceType -> Attribute msg
@@ -730,6 +730,6 @@ Used by Elements: Filters.pointlight, Filters.spotlight
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/z>
 
 -}
-z : number -> Attribute msg
+z : Float -> Attribute msg
 z value =
-    attribute "z" <| toString value
+    attribute "z" <| String.fromFloat value

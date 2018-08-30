@@ -43,9 +43,9 @@ Used by Elements: fontFace
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/accent-height>
 
 -}
-accentHeight : number -> Attribute msg
+accentHeight : Float -> Attribute msg
 accentHeight h =
-    attribute "accent-height" <| toString h
+    attribute "accent-height" <| String.fromFloat h
 
 
 {-| Defines a simple acceleration of time for the element. Element time will
@@ -61,9 +61,9 @@ Used by Elements: animate, animateMotion
 See <https://www.w3.org/TR/smil/smil-timemanip.html#TimeManip-accelerateSyntax>
 
 -}
-accelerate : number -> Attribute msg
+accelerate : Float -> Attribute msg
 accelerate rate =
-    attribute "accelerate" <| toString rate
+    attribute "accelerate" <| String.fromFloat rate
 
 
 {-| This attribute controls whether or not the animation is cumulative.
@@ -152,7 +152,7 @@ Used by Elements: animateTransform
 NOTE: this is called `type_` in `elm-lang/svg` but is different here in order to
 distinguish it from `contentType`
 
-See: [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 animateTransformType : AnimateTransformType -> Attribute msg
@@ -170,9 +170,9 @@ discard, mpath, set
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/values>
 
 -}
-animationValues : List number -> Attribute msg
+animationValues : List Float -> Attribute msg
 animationValues values =
-    attribute "values" <| String.join ";" (List.map toString values)
+    attribute "values" <| String.join ";" (List.map String.fromFloat values)
 
 
 {-| -}
@@ -192,9 +192,9 @@ Used by Elements: fontFace
 See <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ascent>
 
 -}
-ascent : number -> Attribute msg
+ascent : Float -> Attribute msg
 ascent maxDepth =
-    attribute "ascent" <| toString maxDepth
+    attribute "ascent" <| String.fromFloat maxDepth
 
 
 {-| This attribute indicates the name of the attribute in the parent element
@@ -971,9 +971,9 @@ Used by Elements: animate, animateColor, animateMotion, animateTransform
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from>
 
 -}
-from : number -> Attribute msg
+from : Float -> Attribute msg
 from value =
-    attribute "from" <| toString value
+    attribute "from" <| String.fromFloat value
 
 
 {-| For the `radialGradient` element, this attribute defines the x-axis
@@ -1227,7 +1227,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/keyTimes>
 -}
 keyTimes : List Float -> Attribute msg
 keyTimes floatList =
-    attribute "keyTimes" <| (List.map toString floatList |> String.join ";")
+    attribute "keyTimes" <| (List.map String.fromFloat floatList |> String.join ";")
 
 
 {-| -}
@@ -1490,9 +1490,9 @@ Used by Elements: fontFace
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlinePosition>
 
 -}
-overlinePosition : number -> Attribute msg
+overlinePosition : Float -> Attribute msg
 overlinePosition position =
-    attribute "overline-position" <| toString position
+    attribute "overline-position" <| String.fromFloat position
 
 
 {-| The `overlineThickness` attribute represents the ideal thickness of
@@ -1504,9 +1504,9 @@ Used by Elements: fontFace
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/overlineThickness>
 
 -}
-overlineThickness : number -> Attribute msg
+overlineThickness : Float -> Attribute msg
 overlineThickness thickness =
-    attribute "overline-thickness" <| toString thickness
+    attribute "overline-thickness" <| String.fromFloat thickness
 
 
 {-| -}
@@ -1532,9 +1532,9 @@ Used by Elements: path
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength>
 
 -}
-pathLength : number -> Attribute msg
+pathLength : Float -> Attribute msg
 pathLength length =
-    attribute "pathLength" <| toString length
+    attribute "pathLength" <| String.fromFloat length
 
 
 {-| The `patternContentUnits` attribute defines the coordinate system for the
@@ -1614,11 +1614,11 @@ Used by Elements: polyline, polygon
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/points>
 
 -}
-points : List ( number, number ) -> Attribute msg
+points : List ( number, Float ) -> Attribute msg
 points pts =
     let
         pointToString ( xx, yy ) =
-            toString xx ++ ", " ++ toString yy
+            String.fromFloat xx ++ ", " ++ String.fromFloat yy
     in
     attribute "points" <| String.join " " (List.map pointToString pts)
 
@@ -1687,9 +1687,9 @@ renderingIntent =
     attribute "rendering-intent"
 
 
-{-| This attribute indicates the number of times the animation will take place.
+{-| This attribute indicates the Float of times the animation will take place.
 
-The number can be a partial iteration, expressed as a fraction. Its value
+The Float can be a partial iteration, expressed as a fraction. Its value
 must be greater than 0.
 
 Used by Elements: animate, animateColor, animateMotion, animateTransform,
@@ -2042,9 +2042,9 @@ Used by Elements: animate, animateColor, animateMotion, animateTransform
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to>
 
 -}
-to : number -> Attribute msg
+to : Float -> Attribute msg
 to value =
-    attribute "to" <| toString value
+    attribute "to" <| String.fromFloat value
 
 
 {-| The transform attribute defines a list of transform definitions that are
@@ -2087,9 +2087,9 @@ Used by Elements: fontFace
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-position>
 
 -}
-underlinePosition : number -> Attribute msg
+underlinePosition : Float -> Attribute msg
 underlinePosition position =
-    attribute "underline-position" <| toString position
+    attribute "underline-position" <| String.fromFloat position
 
 
 {-| The underlineThickness attribute represents the ideal thickness of the
@@ -2101,9 +2101,9 @@ Used by Elements: fontFace
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/underline-thickness>
 
 -}
-underlineThickness : number -> Attribute msg
+underlineThickness : Float -> Attribute msg
 underlineThickness thickness =
-    attribute "underline-thickness" <| toString thickness
+    attribute "underline-thickness" <| String.fromFloat thickness
 
 
 {-| -}
@@ -2208,10 +2208,10 @@ Used by Elements: svg, symbol, image, marker, pattern, view
 See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox>
 
 -}
-viewBox : number -> number -> number -> number -> Attribute a
+viewBox : Float -> Float -> Float -> Float -> Attribute a
 viewBox minX minY vWidth vHeight =
     [ minX, minY, vWidth, vHeight ]
-        |> List.map toString
+        |> List.map String.fromFloat
         |> String.join " "
         |> attribute "viewBox"
 
@@ -2443,6 +2443,6 @@ zoomAndPan =
 
 
 -- Misc Additions
--- svgBox : ( number, number ) -> List (Svg msg) -> Html msg
+-- svgBox : ( number, Float ) -> List (Svg msg) -> Html msg
 -- svgBox ( width, height ) =
 --     svg [ viewBox 0 0 800 600 ]
