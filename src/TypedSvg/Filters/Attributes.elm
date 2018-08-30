@@ -14,12 +14,6 @@ import TypedSvg.Types exposing (..)
 import TypedSvg.TypesToStrings exposing (..)
 
 
-toString : number -> String
-toString val =
-    toFloat val
-        |> String.fromFloat
-
-
 {-| The azimuth attribute represents the direction angle of the light source on
 the XY plane (clockwise), in degrees from the x axis.
 
@@ -109,7 +103,7 @@ performed without specifying a complete matrix.
 
 Used by Elements: Filters.colorMatrix
 
-See: [[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 colorMatrixType : ColorMatrixType -> Attribute msg
@@ -702,7 +696,7 @@ targetY yPosition =
 
 Used by Elements: Filters.funcR, Filters.funcG, Filters.funcA, Filters.funcB
 
-See: [[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 funcType : FuncType -> Attribute msg
@@ -715,7 +709,7 @@ function.
 
 Used by Elements: Filters.turbulence
 
-See: [[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
+See: [[[[[[[[[[[[[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type\_](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type_)
 
 -}
 turbulenceType : TurbulenceType -> Attribute msg
