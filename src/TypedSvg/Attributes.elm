@@ -21,7 +21,7 @@ NOTE: For attributes pertaining to SVG filters, see Filters.Attributes
 
 -}
 
-import Color exposing (Color, colorToCssRgba)
+import TypedSvg.Color exposing (Color, colorToCssRgba)
 import TypedSvg.Core exposing (..)
 import TypedSvg.Types exposing (..)
 import TypedSvg.TypesToStrings exposing (..)

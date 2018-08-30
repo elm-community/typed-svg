@@ -1,4 +1,4 @@
-module Color exposing
+module TypedSvg.Color exposing
     ( Color
     , rgb, rgba, hsl, hsla, greyscale, grayscale, complement
     , Gradient, linear, radial

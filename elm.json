@@ -7,6 +7,7 @@
     "exposed-modules": [
         "TypedSvg",
         "TypedSvg.Core",
+        "TypedSvg.Color",
         "TypedSvg.Types",
         "TypedSvg.Attributes",
         "TypedSvg.Attributes.InEm",

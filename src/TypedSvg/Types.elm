@@ -17,7 +17,7 @@ module TypedSvg.Types exposing
 
 -}
 
-import Color exposing (Color)
+import TypedSvg.Color exposing (Color)
 
 
 {-| -}
