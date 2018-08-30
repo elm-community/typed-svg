@@ -49,9 +49,8 @@ You should always be able to use the helper functions already defined in this
 library though!
 -}
 node : String -> List (Attribute msg) -> List (Svg msg) -> Svg msg
-node name =
-    \attributes children ->
-        VirtualDom.node name (svgNamespace :: attributes) children
+node =
+    VirtualDom.nodeNS "http://www.w3.org/2000/svg"
 
 
 {-| Creates any untyped attribute
