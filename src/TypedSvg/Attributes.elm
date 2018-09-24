@@ -968,13 +968,31 @@ from value =
     attribute "from" <| String.fromFloat value
 
 
-{-| -}
+{-| This attribute indicates the initial values of 2 attributes that will be
+modified during the animation. When used with the `to2` attribute, the
+animation will change the modified attribute sfrom the from values to the to
+value.
+
+Used by Elements: animate, animateColor, animateMotion, animateTransform
+
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from>
+
+-}
 from2 : Float -> Float -> Attribute msg
 from2 a b =
     attribute "from" <| floatsToString [ a, b ]
 
 
-{-| -}
+{-| This attribute indicates the initial values of 3 attributes that will be
+modified during the animation. When used with the `to3` attribute, the
+animation will change the modified attributes from the from values to the to
+value.
+
+Used by Elements: animate, animateColor, animateMotion, animateTransform
+
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from>
+
+-}
 from3 : Float -> Float -> Float -> Attribute msg
 from3 a b c =
     attribute "from" <| floatsToString [ a, b, c ]
@@ -2051,13 +2069,37 @@ to value =
     attribute "to" <| String.fromFloat value
 
 
-{-| -}
+{-| This attribute indicates the final values of 2 attributes that will be
+modified during the animation. The values of the attributes will change
+between the from2 attribute values and these values. By default the change will
+be linear.
+
+When this attribute is used with the `set` element, it specifies the value
+for the attribute during the duration of the `set` element.
+
+Used by Elements: animate, animateColor, animateMotion, animateTransform
+
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to>
+
+-}
 to2 : Float -> Float -> Attribute msg
 to2 a b =
     attribute "to" <| floatsToString [ a, b ]
 
 
-{-| -}
+{-| This attribute indicates the final values of 3 attributes that will be
+modified during the animation. The values of the attributes will change
+between the from3 attribute values and these value. By default the change will
+be linear.
+
+When this attribute is used with the `set` element, it specifies the value
+for the attribute during the duration of the `set` element.
+
+Used by Elements: animate, animateColor, animateMotion, animateTransform
+
+See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/to>
+
+-}
 to3 : Float -> Float -> Float -> Attribute msg
 to3 a b c =
     attribute "to" <| floatsToString [ a, b, c ]
