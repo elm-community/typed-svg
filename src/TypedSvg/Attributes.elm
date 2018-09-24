@@ -149,7 +149,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type>
 -}
 animateTransformType : AnimateTransformType -> Attribute msg
 animateTransformType transformType =
-    attribute "type_" <| animateTransformTypeToString transformType
+    attribute "type" <| animateTransformTypeToString transformType
 
 
 {-| Values will be applied in order over the course of the animation. If a list
@@ -536,7 +536,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type>
 -}
 contentType : String -> Attribute msg
 contentType t =
-    attribute "type_" t
+    attribute "type" t
 
 
 {-| The `cursor` attribute specifies the mouse cursor displayed when the mouse
