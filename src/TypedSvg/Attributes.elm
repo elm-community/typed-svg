@@ -21,7 +21,7 @@ NOTE: For attributes pertaining to SVG filters, see Filters.Attributes
 
 -}
 
-import TypedSvg.Color exposing (Color, colorToCssRgba)
+import Color exposing (Color, toCssString)
 import TypedSvg.Core exposing (..)
 import TypedSvg.Types exposing (..)
 import TypedSvg.TypesToStrings exposing (..)
@@ -492,7 +492,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color>
 -}
 color : Color -> Attribute msg
 color c =
-    attribute "color" <| colorToCssRgba c
+    attribute "color" <| toCssString c
 
 
 {-| The contentScriptType attribute on the <svg> element specifies the default
@@ -1927,7 +1927,7 @@ string =
 {-| -}
 stroke : Color -> Attribute msg
 stroke col =
-    attribute "stroke" (colorToCssRgba col)
+    attribute "stroke" (toCssString col)
 
 
 {-| -}

@@ -46,7 +46,7 @@ module TypedSvg.TypesToStrings exposing
 
 -}
 
-import TypedSvg.Color exposing (Color, colorToCssRgba)
+import Color exposing (Color, toCssString)
 import TypedSvg.Types exposing (..)
 
 
@@ -575,7 +575,7 @@ fillToString : Fill -> String
 fillToString fill =
     case fill of
         Fill color ->
-            colorToCssRgba color
+            toCssString color
 
         FillNone ->
             "none"
@@ -591,7 +591,7 @@ floodColorToString floodColor =
             "currentColor"
 
         Flood color ->
-            colorToCssRgba color
+            toCssString color
 
         FloodICC iccColor ->
             iccColor

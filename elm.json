@@ -7,7 +7,6 @@
     "exposed-modules": [
         "TypedSvg",
         "TypedSvg.Core",
-        "TypedSvg.Color",
         "TypedSvg.Types",
         "TypedSvg.Attributes",
         "TypedSvg.Attributes.InEm",
@@ -22,7 +21,8 @@
         "elm/core": "1.0.0 <= v < 2.0.0",
         "elm/html": "1.0.0 <= v < 2.0.0",
         "elm/json": "1.0.0 <= v < 2.0.0",
-        "elm/virtual-dom": "1.0.0 <= v < 2.0.0"
+        "elm/virtual-dom": "1.0.0 <= v < 2.0.0",
+        "avh4/elm-color": "1.0.0 <= v < 2.0.0"
     },
     "test-dependencies": {}
 }
