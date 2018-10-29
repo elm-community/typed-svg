@@ -1,7 +1,7 @@
 module TypedSvg.Events exposing
     ( onBegin, onEnd, onRepeat
     , onAbort, onError, onResize, onScroll, onLoad, onUnload, onZoom
-    , onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp
+    , onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseLeave, onMouseOver, onMouseUp
     , on
     )
 
@@ -20,7 +20,7 @@ module TypedSvg.Events exposing
 
 # Graphical event attributes
 
-@docs onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp
+@docs onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseLeave, onMouseOver, onMouseUp
 
 
 # Custom Events
@@ -168,6 +168,12 @@ onMouseMove =
 onMouseOut : msg -> Attribute msg
 onMouseOut =
     simpleOn "mouseout"
+
+
+{-| -}
+onMouseLeave : msg -> Attribute msg
+onMouseLeave =
+    simpleOn "mouseleave"
 
 
 {-| -}
