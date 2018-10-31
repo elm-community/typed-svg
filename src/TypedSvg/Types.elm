@@ -28,8 +28,8 @@ type Accumulate
 
 {-| -}
 type Additive
-    = AdditiveNone
-    | AdditiveReplace
+    = AdditiveReplace
+    | AdditiveSum
 
 
 {-| -}

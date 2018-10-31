@@ -73,11 +73,11 @@ accumulateToString accumulate =
 additiveToString : Additive -> String
 additiveToString additive =
     case additive of
-        AdditiveNone ->
-            "none"
-
         AdditiveReplace ->
             "replace"
+
+        AdditiveSum ->
+            "sum"
 
 
 alignToString : Align -> String
