@@ -733,19 +733,19 @@ inValueToString : InValue -> String
 inValueToString inValue =
     case inValue of
         InSourceGraphic ->
-            "sourceGraphic"
+            "SourceGraphic"
 
         InSourceAlpha ->
-            "sourceAlpha"
+            "SourceAlpha"
 
         InBackgroundAlpha ->
-            "backgroundAlpha"
+            "BackgroundAlpha"
 
         InFillPaint ->
-            "fillPaint"
+            "FillPaint"
 
         InStrokePaint ->
-            "strokePaint"
+            "StrokePaint"
 
         InReference str ->
             str
