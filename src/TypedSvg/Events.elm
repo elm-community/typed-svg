@@ -1,7 +1,7 @@
 module TypedSvg.Events exposing
     ( onBegin, onEnd, onRepeat
     , onAbort, onError, onResize, onScroll, onLoad, onUnload, onZoom
-    , onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseLeave, onMouseOver, onMouseUp
+    , onActivate, onAuxClick, onClick, onContextMenu, onDblClick, onFocusIn, onFocusOut, onMouseDown, onMouseEnter, onMouseLeave, onMouseMove, onMouseOut, onMouseOver, onMouseUp
     , on
     )
 
@@ -20,7 +20,7 @@ module TypedSvg.Events exposing
 
 # Graphical event attributes
 
-@docs onActivate, onClick, onFocusIn, onFocusOut, onMouseDown, onMouseMove, onMouseOut, onMouseLeave, onMouseOver, onMouseUp
+@docs onActivate, onAuxClick, onClick, onContextMenu, onDblClick, onFocusIn, onFocusOut, onMouseDown, onMouseEnter, onMouseLeave, onMouseMove, onMouseOut, onMouseOver, onMouseUp
 
 
 # Custom Events
@@ -135,9 +135,27 @@ onActivate =
 
 
 {-| -}
+onAuxClick : msg -> Attribute msg
+onAuxClick =
+    simpleOn "auxclick"
+
+
+{-| -}
 onClick : msg -> Attribute msg
 onClick =
     simpleOn "click"
+
+
+{-| -}
+onContextMenu : msg -> Attribute msg
+onContextMenu =
+    simpleOn "contextmenu"
+
+
+{-| -}
+onDblClick : msg -> Attribute msg
+onDblClick =
+    simpleOn "dblclick"
 
 
 {-| -}
@@ -159,6 +177,18 @@ onMouseDown =
 
 
 {-| -}
+onMouseEnter : msg -> Attribute msg
+onMouseEnter =
+    simpleOn "mouseenter"
+
+
+{-| -}
+onMouseLeave : msg -> Attribute msg
+onMouseLeave =
+    simpleOn "mouseleave"
+
+
+{-| -}
 onMouseMove : msg -> Attribute msg
 onMouseMove =
     simpleOn "mousemove"
@@ -168,12 +198,6 @@ onMouseMove =
 onMouseOut : msg -> Attribute msg
 onMouseOut =
     simpleOn "mouseout"
-
-
-{-| -}
-onMouseLeave : msg -> Attribute msg
-onMouseLeave =
-    simpleOn "mouseleave"
 
 
 {-| -}
