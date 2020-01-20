@@ -14,7 +14,7 @@ NOTE: For attributes pertaining to SVG filters, see Filters.Attributes
 # Other attributes
 
 @docs accelerate, accentHeight, accumulate, additive, alignmentBaseline, allowReorder, alphabetic, amplitude, animateTransformType, animationValues, arabicForm, ascent, attributeName, attributeType, autoReverse, baseProfile, baselineShift, bbox, begin, by, calcMode, capHeight, class, clip, clipPath, clipPathUnits, clipRule, color, colorInterpolation, colorProfile, colorRendering, contentScriptType, contentStyleType, contentType, cursor, cx, cy, d, decelerate, descent, direction, display, dominantBaseline, dur, dx, dy, enableBackground, end, exponent, externalResourcesRequired, fill, fillOpacity, fillRule, filter, fontFamily, fontSize, fontSizeAdjust
-@docs fontStretch, fontStyle, fontVariant, fontWeight, format, from, from2, from3, fx, fy, g1, g2, glyphName, glyphOrientationHorizontal, glyphOrientationVertical, glyphRef, gradientTransform, gradientUnits, hanging, height, horizAdvX, horizOriginX, horizOriginY, ideographic, imageRendering, intercept, k, kerning, keySplines, keyTimes, lang, lengthAdjust, letterSpacing, lightingColor, local, markerEnd, markerHeight, markerMid, markerStart, markerUnits, markerWidth, mask, maskContentUnits, maskUnits, max, media
+@docs fontStretch, fontStyle, fontVariant, fontWeight, format, from, from2, from3, fx, fy, g1, g2, glyphName, glyphOrientationHorizontal, glyphOrientationVertical, glyphRef, gradientTransform, gradientUnits, hanging, height, horizAdvX, horizOriginX, horizOriginY, id, ideographic, imageRendering, intercept, k, kerning, keySplines, keyTimes, lang, lengthAdjust, letterSpacing, lightingColor, local, markerEnd, markerHeight, markerMid, markerStart, markerUnits, markerWidth, mask, maskContentUnits, maskUnits, max, media
 @docs method, min, name, noFill, offset, opacity, orient, orientation, origin, overflow, overlinePosition, overlineThickness, panose1, path, pathLength, patternContentUnits, patternTransform, patternUnits, pointOrder, pointerEvents, points, preserveAspectRatio, primitiveUnits, r, refX, refY, renderingIntent, repeatCount, repeatDur, requiredExtensions, requiredFeatures, restart, rotate, rx, ry, shapeRendering, slope, spacing, specularConstant, specularExponent, speed, spreadMethod, startOffset
 @docs stdDeviation, stemh, stemv, stitchTiles, stopColor, stopOpacity, strikethroughPosition, strikethroughThickness, string, stroke, strokeDasharray, strokeDashoffset, strokeLinecap, strokeLinejoin, strokeMiterlimit, strokeOpacity, strokeWidth, style, systemLanguage, tableValues, target, textAnchor, textDecoration, textLength, textRendering, title, to, to2, to3, transform, u1, u2, underlinePosition, underlineThickness, unicode, unicodeBidi, unicodeRange, unitsPerEm, vAlphabetic, vHanging, vIdeographic
 @docs vMathematical, version, vertAdvY, vertOriginX, vertOriginY, viewBox, viewTarget, visibility, width, widths, wordSpacing, writingMode, x, x1, x2, xChannelSelector, xHeight, xlinkActuate, xlinkArcrole, xlinkHref, xlinkRole, xlinkShow, xlinkTitle, xlinkType, xmlBase, xmlLang, xmlSpace, y, y1, y2, yChannelSelector, zoomAndPan
@@ -1146,7 +1146,7 @@ horizOriginY =
 The ID must be unique within the node tree, must not be an empty string,
 and must not contain any whitespace characters.
 
-Valid IDs should only include designated characters (letters, digits, 
+Valid IDs should only include designated characters (letters, digits,
 and a few punctuation marks), and do not start with a digit, a full stop (.)
 character, or a hyphen-minus (-) character.
 
@@ -1157,7 +1157,7 @@ See: <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/id>
 -}
 id : String -> Attribute msg
 id =
-  attribute "id"
+    attribute "id"
 
 
 {-| -}
