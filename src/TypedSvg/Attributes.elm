@@ -769,15 +769,15 @@ externalResourcesRequired bool =
 
 
 {-| -}
-fill : Fill -> Attribute msg
+fill : Paint -> Attribute msg
 fill =
-    attribute "fill" << fillToString
+    attribute "fill" << paintToString
 
 
 {-| -}
 noFill : Attribute msg
 noFill =
-    fill FillNone
+    fill PaintNone
 
 
 {-| This attribute specifies the opacity of the color or the content the current
@@ -1944,9 +1944,9 @@ string =
 
 
 {-| -}
-stroke : Color -> Attribute msg
-stroke col =
-    attribute "stroke" (toCssString col)
+stroke : Paint -> Attribute msg
+stroke =
+    attribute "stroke" << paintToString
 
 
 {-| -}

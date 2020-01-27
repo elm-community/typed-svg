@@ -1,6 +1,6 @@
 module TypedSvg.Types exposing
     ( Accumulate(..), Additive(..), Align(..), AlignmentBaseline(..), AnchorAlignment(..), AnimateTransformType(..), AttributeType(..), BaselineShift(..), BezierAnchorPoint, CalcMode(..), Clip(..), ClipPath(..), ClipRule(..), ClockValue, ColorInterpolation(..), ColorMatrixType(..), ColorProfile(..), CompositeOperator(..), CoordinateSystem(..), Cursor(..), Direction(..), Display(..), DominantBaseline(..), Duration(..), EdgeMode(..), FillRule(..), Filter(..), FloodColor(..), FontSizeAdjust(..), FontStretch(..), FontStyle(..), FontVariant(..), FontWeight(..), FuncType(..), InValue(..), Kerning(..), Length(..), LengthAdjust(..), MarkerCoordinateSystem(..), MeetOrSlice(..), Mode(..), MorphologyOperator(..), Opacity(..), Rendering(..), RepeatCount(..), Restart(..), Scale(..), ShapeRendering(..), TimingValue(..), Transform(..), TurbulenceType(..), YesNo(..)
-    , Fill(..), StrokeLinecap(..), StrokeLinejoin(..), TextRendering(..)
+    , Paint(..), StrokeLinecap(..), StrokeLinejoin(..), TextRendering(..)
     , cm, em, ex, inch, mm, num, pc, percent, pt, px
     -- Lengths
     )
@@ -257,12 +257,6 @@ type FillRule
 
 
 {-| -}
-type Fill
-    = Fill Color
-    | FillNone
-
-
-{-| -}
 type Filter
     = FilterNone
     | FilterInherit
@@ -475,6 +469,15 @@ type MorphologyOperator
 type Opacity
     = Opacity Float
     | OpacityInherit
+
+
+{-| -}
+type Paint
+    = Paint Color
+    | Reference String
+    | ContextFill
+    | ContextStroke
+    | PaintNone
 
 
 {-| -}

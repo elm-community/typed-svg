@@ -1,9 +1,9 @@
-module SumAnimateTransform exposing (main)
+module Examples.SumAnimateTransform exposing (main)
 
 import Color
 import Html exposing (Html)
 import TypedSvg exposing (..)
-import TypedSvg.Attributes exposing (..)
+import TypedSvg.Attributes exposing (attributeName, attributeType, animateTransformType, from, from3, to, to3, begin, dur, repeatCount, additive, stroke, fill)
 import TypedSvg.Types exposing (..)
 import TypedSvg.Core exposing (Svg)
 import TypedSvg.Attributes.InPx exposing (x, y, width, height)
@@ -48,8 +48,8 @@ myRectangle =
         , y 10
         , width 40
         , height 20
-        , stroke Color.black
-        , fill FillNone
+        , stroke <| Paint Color.black
+        , fill PaintNone
         ]
         [ myScale
         , myRotate

@@ -1,32 +1,25 @@
-module Examples.Basic exposing (Model, Msg(..), view)
+module Examples.Basic exposing (main)
 
 import Color
 import Html exposing (Html)
 import TypedSvg exposing (circle, svg)
 import TypedSvg.Attributes exposing (cx, cy, fill, r, stroke, strokeWidth, viewBox)
-import TypedSvg.Types exposing (Fill(..), px)
+import TypedSvg.Types exposing (Paint(..), px)
+import TypedSvg.Core exposing (Svg)
 
 
-type Msg
-    = NoOp
-
-
-type alias Model =
-    Int
-
-
-view : Model -> Html Msg
-view model =
-    svg
-        [ viewBox 0 0 800 600
+myCircle : Svg msg
+myCircle =
+    circle
+        [ cx (px 100)
+        , cy (px 100)
+        , r (px 30)
+        , fill <| Paint Color.blue
+        , strokeWidth (px 2)
+        , stroke <| Paint <| Color.rgba 0.8 0 0 0.5
         ]
-        [ circle
-            [ cx (px 150)
-            , cy (px 150)
-            , r (px 30)
-            , fill <| Fill Color.black
-            , strokeWidth (px 2)
-            , stroke <| Color.rgba 90 60 60 0.5
-            ]
-            []
-        ]
+        []
+
+main : Html msg
+main =
+    svg [ viewBox 0 0 800 600 ] [ myCircle ]

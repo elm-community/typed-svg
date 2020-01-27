@@ -13,11 +13,11 @@ module TypedSvg.TypesToStrings exposing
     , fontVariantToString, fontWeightToString, funcTypeToString, inValueToString
     , kerningToString, lengthAdjustToString, lengthToString
     , markerCoordinateSystemToString, meetOrSliceToString, modeToString
-    , morphologyOperatorToString, opacityToString
+    , morphologyOperatorToString, opacityToString, paintToString
     , renderingToString, repeatCountToString, restartToString, scaleToString
     , shapeRenderingToString, timingValueAsString, transformToString
     , turbulenceTypeToString, yesNoToString
-    , fillToString, strokeLinecapToString, strokeLinejoinToString, textRenderingToString
+    , strokeLinecapToString, strokeLinejoinToString, textRenderingToString
     )
 
 {-|
@@ -571,16 +571,6 @@ filterToString f =
             funcIRI
 
 
-fillToString : Fill -> String
-fillToString fill =
-    case fill of
-        Fill color ->
-            toCssString color
-
-        FillNone ->
-            "none"
-
-
 floodColorToString : FloodColor -> String
 floodColorToString floodColor =
     case floodColor of
@@ -866,6 +856,23 @@ opacityToString opacity =
         OpacityInherit ->
             "inherit"
 
+
+paintToString : Paint -> String
+paintToString paint =
+    case paint of
+        Paint color ->
+            toCssString color
+
+        Reference string ->
+            String.concat ["url(#", string,")"]
+
+        ContextFill ->
+            "context-fill"
+
+        ContextStroke ->
+            "context-stroke"
+        PaintNone ->
+            "none"
 
 renderingToString : Rendering -> String
 renderingToString rendering =
