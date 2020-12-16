@@ -324,7 +324,32 @@ glyphRef =
     node "glyphRef"
 
 
-{-| -}
+{-| The `textPath` element draws text along the shape of a path.
+It is usually embedded within a `text_` element.
+
+    import TypedSvg exposing (..)
+    import TypedSvg.Attributes exposing (..)
+    import TypedSvg.Core exposing (text, attribute)
+    import TypedSvg.Types exposing (px, Paint(..))
+
+    svg
+        [ width (px 100), height (px 100), viewBox 0 0 100 100 ]
+        [ TypedSvg.path
+            [ id "MyPath"
+            , fill PaintNone
+            , stroke (Paint Color.red)
+            , d "M10,90 Q90,90 90,45 Q90,10 50,10 Q10,10 10,40 Q10,70 45,70 Q70,70 75,50"
+            ]
+            []
+        , text_
+            []
+            [ textPath
+                [ attribute "href" "#MyPath" ]
+                [ text "Quick brown fox jumps over the lazy dog." ]
+            ]
+        ]
+
+-}
 textPath : List (Attribute msg) -> List (Svg msg) -> Svg msg
 textPath =
     node "textPath"
