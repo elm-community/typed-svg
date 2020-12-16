@@ -330,7 +330,26 @@ textPath =
     node "textPath"
 
 
-{-| -}
+{-| The `text_` element draws a graphics element consisting of text.
+It should not be confused with `text` in `TypedSvg.Core` which produces
+a simple text node without any tags. `text` is often embedded within `text_`
+to specify its content.
+
+    import TypedSvg exposing (..)
+    import TypedSvg.Core exposing (text)
+    import TypedSvg.Attributes exposing (..)
+    import TypedSvg.Types exposing (px, FontWeight(..))
+
+    text_
+        [ x (px 20)
+        , y (px 35)
+        , fontFamily [ "Helvetica", "sans-serif" ]
+        , fontSize (px 30)
+        , fontWeight FontWeightBold
+        ]
+        [ text "Hello World" ]
+
+-}
 text_ : List (Attribute msg) -> List (Svg msg) -> Svg msg
 text_ =
     node "text"
