@@ -386,7 +386,27 @@ tref =
     node "tref"
 
 
-{-| -}
+{-| The `tspan` element defines a subtext within a `text_` element or
+another `tspan` element. It allows for adjustment of the style and/or
+position of that subtext.
+
+    text_
+        [ x (px 0)
+        , y (px 40)
+        , fontFamily [ "Helvetica", "sans-serif" ]
+        ]
+        [ text "Hello "
+        , tspan
+            [ dy (px 10)
+            , fontFamily [ "Georgia", "serif" ]
+            , fontSize (px 30)
+            , fontWeight FontWeightBold
+            ]
+            [ text "New" ]
+        , text " World"
+        ]
+
+-}
 tspan : List (Attribute msg) -> List (Svg msg) -> Svg msg
 tspan =
     node "tspan"
