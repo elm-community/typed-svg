@@ -254,31 +254,83 @@ circle =
     node "circle"
 
 
-{-| -}
+{-| The ellipse element creates an ellipse based on a center coordinate
+and its x and y radius.
+
+    ellipse
+        [ cx (px 100), cy (px 60), rx (px 80), ry (px 50) ]
+        []
+
+-}
 ellipse : List (Attribute msg) -> List (Svg msg) -> Svg msg
 ellipse =
     node "ellipse"
 
 
-{-| -}
+{-| The image element displays JPEG, PNG, and other SVG files. Animated GIF behavior is undefined.
+
+    image
+        [ attribute "href" "path_to_image.png"
+        , width (px 200)
+        , height (px 200)
+        ]
+        []
+
+-}
 image : List (Attribute msg) -> List (Svg msg) -> Svg msg
 image =
     node "image"
 
 
-{-| -}
+{-| The line element creates a line connecting two points.
+
+    line
+        [ x1 (px 0)
+        , y1 (px 80)
+        , x2 (px 100)
+        , y2 (px 20)
+        , stroke (Paint Color.black)
+        ]
+        []
+
+-}
 line : List (Attribute msg) -> List (Svg msg) -> Svg msg
 line =
     node "line"
 
 
-{-| -}
+{-| The path element is the generic element for defining a shape.
+ All the basic shapes can be created with a path element.
+ Here, we show a heart-shaped path:
+
+    TypedSvg.path
+        [ d """M 10,30
+        A 20,20 0,0,1 50,30
+        A 20,20 0,0,1 90,30
+        Q 90,60 50,90
+        Q 10,60 10,30 z"""
+        ]
+        []
+
+-}
 path : List (Attribute msg) -> List (Svg msg) -> Svg msg
 path =
     node "path"
 
 
-{-| -}
+{-| The polygon element defines a closed shape with a set of
+ connected straight line segments. The last point is connected
+ to the first point. For open shapes, see the `polyline` element.
+ Here, we show a polygon with stroke and no fill:
+
+    polygon
+        [ points [(0,100), (50,25), (50,75), (100,0)]
+        , fill PaintNone
+        , stroke (Paint Color.black)
+        ]
+        []
+
+-}
 polygon : List (Attribute msg) -> List (Svg msg) -> Svg msg
 polygon =
     node "polygon"
@@ -288,7 +340,12 @@ polygon =
 straight lines connecting several points. Typically a polyline is used to
 create open shapes.
 
-    polyline [ fill FillNone, stroke Color.black, points [ ( 20, 100 ), ( 40, 60 ), ( 70, 80 ), ( 100, 20 ) ] ] []
+    polyline
+        [ fill FillNone
+        , stroke Color.black
+        , points [(20, 100), (40, 60), (70, 80), (100, 20)]
+        ]
+        []
 
 -}
 polyline : List (Attribute msg) -> List (Svg msg) -> Svg msg
@@ -296,7 +353,20 @@ polyline =
     node "polyline"
 
 
-{-| -}
+{-| The rect element draws a rectangle defined by its position,
+ width, and height. The rectangle may have rounded corners. Here,
+ we show a rounded corner rectangle:
+
+    rect
+        [ x (px 0)
+        , y (px 0)
+        , width (px 100)
+        , height (px 100)
+        , rx (px 15)
+        ]
+        []
+
+-}
 rect : List (Attribute msg) -> List (Svg msg) -> Svg msg
 rect =
     node "rect"
