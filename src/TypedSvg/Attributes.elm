@@ -2391,7 +2391,8 @@ xlinkArcrole =
     attributeNS "http://www.w3.org/1999/xlink" "xlink:arcrole"
 
 
-{-| -}
+{-| Deprecated since SVG 2. Use `href` instead.
+-}
 xlinkHref : String -> Attribute msg
 xlinkHref =
     attributeNS "http://www.w3.org/1999/xlink" "xlink:href"
