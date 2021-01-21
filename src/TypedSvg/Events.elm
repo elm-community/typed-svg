@@ -35,14 +35,16 @@ import VirtualDom
 
 
 {-| Create a custom event listener.
-import Json.Decode as Json
-import VirtualDom
-onClick : msg -> Attribute msg
-onClick msg =
-on "click" (VirtualDom.Normal <| Json.succeed msg)
+
+    import Json.Decode as Json
+    import VirtualDom
+
+    onClick : msg -> Attribute msg
+    onClick msg =
+        on "click" (VirtualDom.Normal <| Json.succeed msg)
 
 You first specify the name of the event in the same format as with JavaScript’s
-`addEventListener`. Next you give a virtual DOM handler with a JSON decoder, 
+`addEventListener`. Next you give a virtual DOM handler with a JSON decoder,
 which lets you pull information out of the event object. If the decoder succeeds,
 it will produce a message and route it to your `update` function.
 
