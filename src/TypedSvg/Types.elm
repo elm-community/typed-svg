@@ -471,9 +471,20 @@ type Opacity
     | OpacityInherit
 
 
-{-| -}
+{-| `fill` and `stroke` accepted values
+
+    [ fill <| Paint Color.red --      fill="#FF0000"
+    , fill <| CSSVariable "--text" -- fill="var(--text)"
+    , fill <| Reference "some-id" --  fill="url(#some-id)"
+    , fill <| ContextFill --          fill="context-fill"
+    , fill <| ContextStroke --        fill="context-stroke"
+    , fill <| PaintNone --            fill="none"
+    ]
+
+-}
 type Paint
     = Paint Color
+    | CSSVariable String
     | Reference String
     | ContextFill
     | ContextStroke
