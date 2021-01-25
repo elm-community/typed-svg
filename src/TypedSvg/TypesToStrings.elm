@@ -13,11 +13,11 @@ module TypedSvg.TypesToStrings exposing
     , fontVariantToString, fontWeightToString, funcTypeToString, inValueToString
     , kerningToString, lengthAdjustToString, lengthToString
     , markerCoordinateSystemToString, meetOrSliceToString, modeToString
-    , morphologyOperatorToString, opacityToString, paintToString
+    , morphologyOperatorToString, opacityToString
     , renderingToString, repeatCountToString, restartToString, scaleToString
     , shapeRenderingToString, timingValueAsString, transformToString
     , turbulenceTypeToString, yesNoToString
-    , strokeLinecapToString, strokeLinejoinToString, textRenderingToString
+    , paintToString, strokeLinecapToString, strokeLinejoinToString, textRenderingToString
     )
 
 {-|
@@ -863,16 +863,21 @@ paintToString paint =
         Paint color ->
             toCssString color
 
+        CSSVariable string ->
+            String.concat [ "var(" ++ string ++ ")" ]
+
         Reference string ->
-            String.concat ["url(#", string,")"]
+            String.concat [ "url(#", string, ")" ]
 
         ContextFill ->
             "context-fill"
 
         ContextStroke ->
             "context-stroke"
+
         PaintNone ->
             "none"
+
 
 renderingToString : Rendering -> String
 renderingToString rendering =

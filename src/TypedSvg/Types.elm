@@ -474,6 +474,7 @@ type Opacity
 {-| -}
 type Paint
     = Paint Color
+    | CSSVariable String
     | Reference String
     | ContextFill
     | ContextStroke
