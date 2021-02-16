@@ -1,7 +1,7 @@
 module TypedSvg.Types exposing
     ( Accumulate(..), Additive(..), Align(..), AlignmentBaseline(..), AnchorAlignment(..), AnimateTransformType(..), AttributeType(..), BaselineShift(..), BezierAnchorPoint, CalcMode(..), Clip(..), ClipPath(..), ClipRule(..), ClockValue, ColorInterpolation(..), ColorMatrixType(..), ColorProfile(..), CompositeOperator(..), CoordinateSystem(..), Cursor(..), Direction(..), Display(..), DominantBaseline(..), Duration(..), EdgeMode(..), FillRule(..), Filter(..), FloodColor(..), FontSizeAdjust(..), FontStretch(..), FontStyle(..), FontVariant(..), FontWeight(..), FuncType(..), InValue(..), Kerning(..), Length(..), LengthAdjust(..), MarkerCoordinateSystem(..), MeetOrSlice(..), Mode(..), MorphologyOperator(..), Opacity(..), Paint(..), Rendering(..), RepeatCount(..), Restart(..), Scale(..), ShapeRendering(..), TimingValue(..), Transform(..), TurbulenceType(..), YesNo(..)
     , StrokeLinecap(..), StrokeLinejoin(..), TextRendering(..)
-    , cm, em, ex, inch, mm, num, pc, percent, pt, px
+    , cm, em, ex, inch, mm, num, pc, percent, pt, px, rem
     -- Lengths
     )
 
@@ -13,7 +13,7 @@ module TypedSvg.Types exposing
 @docs Accumulate, Additive, Align, AlignmentBaseline, AnchorAlignment, AnimateTransformType, AttributeType, BaselineShift, BezierAnchorPoint, CalcMode, Clip, ClipPath, ClipRule, ClockValue, ColorInterpolation, ColorMatrixType, ColorProfile, CompositeOperator, CoordinateSystem, Cursor, Direction, Display, DominantBaseline, Duration, EdgeMode, FillRule, Filter, FloodColor, FontSizeAdjust, FontStretch, FontStyle, FontVariant, FontWeight, FuncType, InValue, Kerning, Length, LengthAdjust, MarkerCoordinateSystem, MeetOrSlice, Mode, MorphologyOperator, Opacity, Paint, Rendering, RepeatCount, Restart, Scale, ShapeRendering, TimingValue, Transform, TurbulenceType, YesNo
 @docs StrokeLinecap, StrokeLinejoin, TextRendering
 
-@docs cm, em, ex, inch, mm, num, pc, percent, pt, px
+@docs cm, em, ex, inch, mm, num, pc, percent, pt, px, rem
 
 -}
 
@@ -360,6 +360,7 @@ type Length
     | Percent Float
     | Pt Float
     | Px Float
+    | Rem Float
 
 
 {-| Length expressed as a centimeter
@@ -430,6 +431,13 @@ pt =
 px : Float -> Length
 px =
     Px
+
+
+{-| Length expressed in rem.
+-}
+rem : Float -> Length
+rem =
+    Rem
 
 
 {-| -}
