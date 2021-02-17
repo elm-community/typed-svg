@@ -787,6 +787,9 @@ lengthToString length =
         Px x ->
             String.fromFloat x ++ "px"
 
+        Rem x ->
+            String.fromFloat x ++ "rem"
+
 
 lengthAdjustToString : LengthAdjust -> String
 lengthAdjustToString lengthAdjust =
